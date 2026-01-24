@@ -259,7 +259,7 @@ function injectVersion()
         DOM.versionTag.textContent = GAME_VERSION;
     }
 
-    document.title = `Ant Empire Idle - ${GAME_VERSION}`;
+    document.title = `Idle Ant Empire - ${GAME_VERSION}`;
 }
 
 function initGame()
