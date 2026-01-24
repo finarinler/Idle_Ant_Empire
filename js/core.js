@@ -1,15 +1,15 @@
 /**
  * =========================
- * Ant Empire Idle
+ * Idle Ant Empire
  * Core Reset Build
- * Version: alpha-v0.00.002a
+ * Version: alpha-v0.00.003a
  * =========================
  */
 
 /* =========================
     Version
 ========================= */
-const GAME_VERSION = "alpha-v0.00.002a";
+const GAME_VERSION = "alpha-v0.00.003a";
 
 /* =========================
     Core Configuration
@@ -20,7 +20,7 @@ const CORE_CONFIG = {
     EXPEDITION_DURATION_MS: 10000,
     MAX_LOG_ENTRIES: 50,
     STATUS_RESET_MS: 10000,
-    SAVE_KEY: "ant_empire_save_v1",
+    SAVE_KEY: "ant_empire_save",
     ANT_BASE_COST_LARVAE: 1,
     ANT_BASE_COST_FOOD: 5,
     ANT_COST_SCALING: 1.05,
