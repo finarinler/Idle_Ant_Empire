@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ant Empire Idle</title>
+    <link rel="icon" type="image/png" href="images/header.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div id="flash-overlay"></div>
+    <div id="achievement-trophy-overlay">🏆</div>
+    <div id="game-container">
+        
+        <header class="sticky-top">
+            <div class="header-top">
+                <div class="header-brand">
+                    <img src="images/header.png" class="header-main-icon">
+                    <h1 class="fancy-title brand-gold main-title-large">
+                        Ant Empire
+                        <span class="version-tag"></span>
+                    </h1>
+                </div>
+            </div>
+            <div class="resource-bar">
+                <div class="res-item">
+                    <span class="res-label">Nahrung</span>
+                    <div class="res-value-container">
+                        <span id="food-count" class="res-value resource-gold">0.00</span>
+                        <span id="food-max" class="res-max">/ 0</span>
+                    </div>
+                    <div id="food-rate" class="res-rate rate-neutral">0.00/s</div>
+                </div>
+                <div class="res-item">
+                    <span class="res-label">Larven</span>
+                    <div class="res-value-container">
+                        <span id="larvae-count" class="res-value resource-gold">0.00</span>
+                        <span id="larvae-max" class="res-max">/ 0</span>
+                    </div>
+                    <div id="larvae-rate" class="res-rate rate-neutral">0.00/s</div>
+                </div>
+            </div>
+            <div class="action-bar">
+                <button id="expedition-btn" class="btn-progress">
+                    <div id="expedition-progress" class="progress-fill"></div>
+                    <span id="expedition-text" class="btn-text">Auf Expedition gehen (10s)</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="category-wrapper" id="cat-basis-units">
+                <div class="category-header" onclick="toggleCategory('basis-units')">
+                    <span class="category-title">Basis-Einheiten</span>
+                    <div class="category-divider"></div>
+                    <div class="mandible-icon" id="mandible-basis-units">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>        
+                <div id="basis-units-content" class="category-content unit-grid">
+                    <div class="unit-card">
+                        <div class="unit-header">
+                            <span class="worker-name">Ameise</span>
+                        </div>
+                        <span class="unit-desc">
+                            Sammelt 1 F /s<br>
+                            Benötigt 0.25 F /s
+                        </span>
+                        <div class="cost-label">
+                            <span id="ant-cost-display">1 L, 5 F</span>
+                        </div>
+                        <button id="buy-ant-btn" class="btn-buy-clean">
+                            Ameise kaufen
+                        </button>
+                        <div class="unit-stats-row">
+                            <span>Gesamt: <span id="ant-total">0</span></span>
+                            <span>Gekauft: <span id="ant-bought">0</span></span>
+                        </div>
+                    </div>
+                    <div class="unit-card">
+                        <div class="unit-header">
+                            <span class="worker-name">Königin</span>
+                        </div>
+                        <span class="unit-desc">
+                            Produziert 0.1 L /s<br>
+                            Benötigt 0.5 F /s
+                        </span>
+                        <div class="cost-label">
+                            <span id="queen-cost-display">1 A, 500 F</span>
+                        </div>
+                        <button id="buy-queen-btn" class="btn-buy-clean">
+                            Königin kaufen
+                        </button>
+                        <div class="unit-stats-row">
+                            <span>Gesamt: <span id="queen-total">0</span></span>
+                            <span>Gekauft: <span id="queen-bought">0</span></span>
+                        </div>
+                    </div>
+                    <div class="unit-card locked" id="card-scout" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Kundschafterin</span>
+                        </div>
+                        <span class="unit-desc">
+                            Automatisiert Expeditionen.<br>
+                            Benötigt aber Erholungspausen
+                        </span>
+                        <div class="cost-label">
+                            <span id="scout-cost-display">???</span>
+                        </div>
+                        <button id="buy-scout-btn" class="btn-buy-clean">Ausbilden</button>
+                        <div class="unit-stats-row">
+                            <span>Anzahl: <span id="scout-count">0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="category-wrapper locked" id="cat-elite-units" style="display: none;">
+                <div class="category-header" onclick="toggleCategory('elite-units')">
+                    <span class="category-title">Elite-Einheiten</span>
+                    <div class="category-divider"></div>
+                    <div class="mandible-icon" id="mandible-elite-units">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="elite-units-content" class="category-content unit-grid">
+        
+                    <div class="unit-card" id="card-guardian" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Vorrats-Hüterin</span>
+                        </div>
+                        <span class="unit-desc">
+                            Verdoppelt das Nahrungslager.<br>
+                            Verbraucht 1.00 F/s.
+                        </span>
+                        <div class="cost-label">
+                            <span id="guardian-cost-display">200 A, 7.500 F, 2.000 L, 1 Q</span>
+                        </div>
+                        <button id="buy-guardian-btn" class="btn-buy-clean">Ausbilden</button>
+                        <div class="unit-stats-row">
+                            <span>Anzahl: <span id="guardian-count">0</span></span>
+                        </div>
+                    </div>
+
+                    <div class="unit-card" id="card-nurse-matriarch" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Groß-Amme</span>
+                        </div>
+                        <span class="unit-desc">
+                            Verdoppelt das Larvenlager.<br>
+                            Verbraucht 1.00 F/s.
+                        </span>
+                        <div class="cost-label">
+                            <span id="nurse-matriarch-cost-display">200 A, 7.500 F, 2.000 L, 1 Q</span>
+                        </div>
+                        <button id="buy-nurse-matriarch-btn" class="btn-buy-clean">Ausbilden</button>
+                        <div class="unit-stats-row">
+                            <span>Anzahl: <span id="nurse-matriarch-count">0</span></span>
+                        </div>
+                    </div>
+
+                    <div class="unit-card locked" id="card-brood-expert" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Brut-Expertin</span>
+                        </div>
+                        <span class="unit-desc">
+                            Wandelt Larven in Ameisen um.<br>
+                            +1 A/s | -2 L/s.
+                        </span>
+                        <div class="cost-label">
+                            <span id="brood-expert-cost-display">10 A, 10 L, 100 F</span>
+                        </div>
+                        <button id="buy-brood-expert-btn" class="btn-buy-clean">Zuweisen</button>
+                        <div class="unit-stats-row">
+                            <span>Anzahl: <span id="brood-expert-count">0</span></span>
+                        </div>
+                    </div>
+
+                    <div class="unit-card" id="card-soldier" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Elite-Soldat</span>
+                        </div>
+                        <span class="unit-desc">
+                            Sichert Land bei Expeditionen.<br>
+                            Benötigt für Expansion.
+                        </span>
+                        <div class="cost-label">
+                            <span id="soldier-cost-display">???</span>
+                        </div>
+                        <button id="buy-soldier-btn" class="btn-buy-clean" disabled>Gesperrt</button>
+                        <div class="unit-stats-row">
+                            <span>Anzahl: <span id="soldier-count">0</span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="category-wrapper locked" id="cat-basis-structures"  style="display: none;">
+                <div class="category-header" onclick="toggleCategory('basis-structures')">
+                    <span class="category-title">Basis-Strukturen</span>
+                    <div class="category-divider"></div>
+                    <div class="mandible-icon" id="mandible-basis-structures">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>        
+                <div id="basis-structures-content" class="category-content unit-grid">
+                    <div class="unit-card" id="card-storage">
+                        <div class="unit-header">
+                            <span class="worker-name">Vorratskammer</span>
+                        </div>
+                        <span class="unit-desc">
+                            Perfektioniert die Lagerung<br>
+                            Verdoppelt das Nahrungslimit
+                        </span>
+                        <div class="cost-label">
+                            <span>50 L, 100 A, 10 Q, 1.000 F</span>
+                        </div>
+                        <button id="buy-storage-btn" class="btn-buy-clean">
+                            Bauen
+                        </button>
+                    </div>
+                    <div class="unit-card" id="card-nursery">
+                        <div class="unit-header">
+                            <span class="worker-name">Brutkammer</span>
+                        </div>
+                        <span class="unit-desc">
+                            Perfektioniert die Lagerung<br>
+                            Verdoppelt das Larvenlimit
+                        </span>
+                        <div class="cost-label">
+                            <span>150 L, 150 A, 10 Q, 3.000 F</span>
+                        </div>
+                        <button id="buy-nursery-btn" class="btn-buy-clean">
+                            Bauen
+                        </button>
+                    </div>
+                    <div class="unit-card locked" id="card-royal-chamber" style="display: none;">
+                        <div class="unit-header">
+                            <span class="worker-name">Königinnenkammer</span>
+                        </div>
+                        <span class="unit-desc">
+                            Zentrum der Macht.<br>
+                            Produziert Königinnen
+                        </span>
+                        <div class="cost-label">
+                            <span>???</span>
+                        </div>
+                        <button id="buy-royal-chamber-btn" class="btn-buy-clean">
+                            Bauen
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sticky-bottom">
+            <div id="achievement-menu-container" class="collapsed">
+                <div class="achievement-main-header">
+                    <span class="achievement-main-title">Erfolge</span>
+                </div>
+                <hr class="legend-separator">
+                <div id="achievement-list" class="achievement-content-padding">
+                    <p id="no-achievements-msg" style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px;">
+                        Noch keine Erfolge freigeschaltet.
+                    </p>
+                </div>
+            </div>
+            <div id="general-legend-container" class="collapsed">
+                <div class="legend-main-header">
+                    <span class="legend-main-title">Legende</span>
+                </div>
+                <hr class="legend-separator">
+                <div class="legend-grid">
+                    <div class="legend-grid-item"><span class="abbr-gold">F</span> = Nahrung</div>
+                    <div class="legend-grid-item"><span class="abbr-gold">L</span> = Larven</div>
+                    <div class="legend-grid-item"><span class="abbr-gold">A</span> = Ameise</div>
+                    <div class="legend-grid-item"><span class="abbr-gold">Q</span> = Königin</div>
+                </div>
+            </div>
+            <div id="log-container" class="collapsed">
+                <div id="log-header">
+                    <button id="log-reset-btn" class="log-reset-btn">Logbuch leeren</button>
+                    <span class="log-title-styled">Logbuch</span>
+                    <button id="game-reset-btn" class="game-reset-btn">Spielstand Löschen</button>
+                </div>        
+                <div id="log-legend">
+                    <div class="legend-item">
+                        <span class="dot dot-status"></span>
+                        <span class="legend-label">Status</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot dot-success"></span>
+                        <span class="legend-label">Expeditionsfund</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot dot-achievement"></span>
+                        <span class="legend-label">Erfolg errungen</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot dot-warning"></span>
+                        <span class="legend-label">Warnung</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot dot-system"></span>
+                        <span class="legend-label">System</span>
+                    </div>
+                </div>
+                <div id="log-content"></div>
+            </div>
+            <div id="status-bar">
+                <div class="status-display">
+                    <span class="status-label">Status:</span>
+                    <span id="status-text">Initialisierung...</span>
+                </div>
+                <div class="footer-btns">
+                    <button id="achievement-toggle-btn" class="legend-round-btn" title="Erfolge noch gesperrt" disabled>🏆</button>
+                    <button id="legend-toggle-btn" class="legend-round-btn" title="Legende">?</button>
+                    <button id="log-toggle-btn" class="hamburger-btn" title="Logbuch">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
