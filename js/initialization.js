@@ -180,6 +180,23 @@ function initDOM()
     DOM.eliteSoldierTotal = document.getElementById(
         "elite-soldier-total"
     );
+
+    DOM.versionTag = document.getElementById(
+        "version-tag-display"
+    );
+
+    if (!DOM.versionTag)
+    {
+        DOM.versionTag = document.querySelector(
+            ".version-tag"
+        );
+    }
+
+    // Sofortige Anzeige der Version beim Start
+    if (DOM.versionTag)
+    {
+        DOM.versionTag.textContent = GAME_VERSION;
+    }
 }
 
 function attachEventListeners()
