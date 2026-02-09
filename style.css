@@ -439,8 +439,8 @@ main
     pointer-events: none;
 }
 
-#achievement-menu-container, 
-#general-legend-container, 
+#achievement-container, 
+#legend-container, 
 #log-container
 {
     background-color: var(--log-bg-deep);
@@ -453,8 +453,8 @@ main
     overflow: hidden;
 }
 
-#achievement-menu-container.collapsed, 
-#general-legend-container.collapsed, 
+#achievement-container.collapsed, 
+#legend-container.collapsed, 
 #log-container.collapsed
 {
     max-height: 0 !important;
