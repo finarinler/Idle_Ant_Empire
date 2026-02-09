@@ -121,6 +121,8 @@ function unlockAchievement(
 
     triggerTrophy();
 
+    triggerFlash();
+
     triggerConfetti(
         1000
     );
