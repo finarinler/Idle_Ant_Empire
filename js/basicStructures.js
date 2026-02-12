@@ -29,32 +29,21 @@ function buyStorage()
             "Maximale Nahrungskapazität deutlich erhöht!"
         );
     }
-    else
-    {
-        updateStatus(
-            "Nicht genügend Ressourcen für die Vorratskammer!",
-            "error"
-        );
-    }
 }
 
 function buyNursery()
 {
-    if (GameState.structures.hasNursery)
-    {
-        return;
-    }
-    
     if (
-        GameState.resources.food >= CORE_CONFIG.NURSERY_COST_FOOD &&
-        GameState.resources.larvae >= CORE_CONFIG.NURSERY_COST_LARVAE &&
-        GameState.resources.ants >= CORE_CONFIG.NURSERY_COST_ANTS
+        GameState.resources.food >= 3000 &&
+        GameState.resources.larvae >= 150 &&
+        GameState.resources.ants >= 150 &&
+        GameState.resources.queens >= 10
     )
     {
-        GameState.resources.food -= CORE_CONFIG.NURSERY_COST_FOOD;
-        GameState.resources.larvae -= CORE_CONFIG.NURSERY_COST_LARVAE;
-        GameState.resources.ants -= CORE_CONFIG.NURSERY_COST_ANTS;
-        
+        GameState.resources.food -= 3000;
+        GameState.resources.larvae -= 150;
+        GameState.resources.ants -= 150;
+        GameState.resources.queens -= 10; 
         GameState.structures.nurseryCount = 1;
         GameState.structures.hasNursery = true;
         
@@ -67,13 +56,6 @@ function buyNursery()
         );
         updateStatus(
             "Maximale Larvenkapazität deutlich erhöht!"
-        );
-    }
-    else
-    {
-        updateStatus(
-            "Nicht genügend Ressourcen für die Brutkammer!",
-            "error"
         );
     }
 }

@@ -9,7 +9,7 @@
 /* =========================
     Version
 ========================= */
-const GAME_VERSION = "alpha-v0.00.003a";
+const GAME_VERSION = "alpha-v0.00.003b";
 
 /* =========================
     Core Configuration
@@ -34,7 +34,4 @@ const CORE_CONFIG = {
     QUEEN_FOOD_CONSUMPTION: 0.5,
     FOOD_BASE_CAPACITY: 1500,
     LARVAE_BASE_CAPACITY: 150,
-    NURSERY_COST_FOOD: 500,
-    NURSERY_COST_LARVAE: 100,
-    NURSERY_COST_ANTS: 50
 };

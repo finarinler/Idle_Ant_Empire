@@ -170,15 +170,15 @@ function initDOM()
     );
 
     DOM.buyEliteSoldierBtn = document.getElementById(
-        "buy-elite-soldier-btn"
+        "buy-soldier-btn"
     );
 
     DOM.eliteSoldierCount = document.getElementById(
-        "elite-soldier-count"
+        "soldier-count"
     );
 
     DOM.eliteSoldierTotal = document.getElementById(
-        "elite-soldier-total"
+        "soldier-total"
     );
 
     DOM.versionTag = document.getElementById(

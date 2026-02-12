@@ -116,7 +116,7 @@ function updateResources()
         else
         {
             DOM.buyStorageBtn.disabled = 
-                !GameState.achievements.smallColony || 
+                !GameState.achievements.smallColony ||
                 GameState.resources.larvae < 50 ||
                 GameState.resources.ants < 100 ||
                 GameState.resources.queens < 10 ||
@@ -134,7 +134,12 @@ function updateResources()
         }
         else
         {
-            DOM.buyNurseryBtn.disabled = !GameState.achievements.smallColony || GameState.resources.food < 500;
+            DOM.buyNurseryBtn.disabled = 
+                !GameState.achievements.smallColony || 
+                GameState.resources.food < 3000 ||
+                GameState.resources.larvae < 150 ||
+                GameState.resources.ants < 150 ||
+                GameState.resources.queens < 10
         }
     }
 
