@@ -1,0 +1,84 @@
+/* =========================
+   Effekte: Flash, Konfetti, Pokal
+========================= */
+
+#flash-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gold);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99999 !important;
+}
+
+#flash-overlay.animate-flash
+{
+    animation: flashEffect 0.5s ease-out;
+}
+
+@keyframes flashEffect
+{
+    0% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0; }
+}
+
+.confetti
+{
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+#achievement-trophy-overlay
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 15rem;
+    z-index: 4000;
+    pointer-events: none;
+    text-shadow: 0 0 50px rgba(198, 167, 0, 0.8);
+    opacity: 0;
+}
+
+#achievement-trophy-overlay.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.animate-trophy
+{
+    animation: trophyPop 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes trophyPop
+{
+    0%
+    { 
+        transform: translate(-50%, -50%) scale(0) rotate(-45deg); 
+        opacity: 0;
+    }
+    20%
+    { 
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg); 
+        opacity: 1;
+    }
+    80%
+    { 
+        transform: translate(-50%, -50%) scale(1) rotate(0deg); 
+        opacity: 1;
+    }
+    100%
+    { 
+        transform: translate(-50%, -70%) scale(0.5); 
+        opacity: 0;
+    }
+}
