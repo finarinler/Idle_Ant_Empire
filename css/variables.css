@@ -1,0 +1,24 @@
+/* =========================
+   Farbvariablen
+========================= */
+
+:root
+{
+    --earth-brown-rich: #5d4037;
+    --earth-brown-light: #8d6e63;
+    --accent-gold: #c6a700;
+    --gold-brown: #b08d57;
+    --gold-brown-light: #c5a36e;
+    --gold-brown-dark: #8c6d42;
+    --bg-pure-dark: #0a0a0a;
+    --card-bg-elevated: #1a1a1a;
+    --log-bg-deep: #121212;
+    --text-main: #e0e0e0;
+    --text-muted: #888888;
+    --success-green: #66bb6a;
+    --error-red: #ff0000;
+    --warning-orange: #ffcc00;
+    --system-red: #ff0000;
+    --neutral-white: #ffffff;
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.8);
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="icon" type="image/png" href="images/header.png">
+    <script src="css/__styles.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -140,7 +141,7 @@
                         </div>
                         <button id="buy-guardian-btn" class="btn-buy-clean" disabled>Gesperrt</button>
                         <div class="unit-stats-row">
-                            <span>Anzahl: <span id="guardian-count">0</span></span>
+                            <span>Anzahl: <span id="guardian-count">0</span>/5</span>
                         </div>
                     </div>
 
@@ -157,7 +158,7 @@
                         </div>
                         <button id="buy-nurse-matriarch-btn" class="btn-buy-clean" disabled>Gesperrt</button>
                         <div class="unit-stats-row">
-                            <span>Anzahl: <span id="nurse-matriarch-count">0</span></span>
+                            <span>Anzahl: <span id="nurse-matriarch-count">0</span>/5</span>
                         </div>
                     </div>
 
@@ -166,15 +167,20 @@
                             <span class="worker-name">Brut-Expertin</span>
                         </div>
                         <span class="unit-desc">
-                            Wandelt Larven in Ameisen um.<br>
-                            +1 A/s | -2 L/s.
+                            Züchtet neue Ameisen aus Larven.<br>
+                            Pro 5 Sekunden: +1 A, -2 L.
                         </span>
                         <div class="cost-label">
-                            <span id="brood-expert-cost-display">10 A, 10 L, 100 F</span>
+                            <span id="brood-expert-cost-display">100 A, 1.000 F, 250 L, 1 Q</span>
                         </div>
                         <button id="buy-brood-expert-btn" class="btn-buy-clean" disabled>Gesperrt</button>
                         <div class="unit-stats-row">
                             <span>Anzahl: <span id="brood-expert-count">0</span></span>
+                        </div> 
+                        <div class="brood-expert-progress-container">
+                            <div class="brood-expert-progress-track">
+                                <div id="brood-expert-progress" class="brood-expert-progress-fill"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -279,6 +285,7 @@
                     <div class="legend-grid-item"><span class="abbr-gold">L</span> = Larven</div>
                     <div class="legend-grid-item"><span class="abbr-gold">A</span> = Ameise</div>
                     <div class="legend-grid-item"><span class="abbr-gold">Q</span> = Königin</div>
+                    <div class="legend-grid-item"><span class="abbr-gold">S</span> = Elite-Soldat</div>
                 </div>
             </div>
             <div id="log-container" class="collapsed">
@@ -317,7 +324,7 @@
                     <span id="status-text">Initialisierung...</span>
                 </div>
                 <div class="footer-btns">
-                    <button id="achievement-toggle-btn" class="legend-round-btn" title="Erfolge noch gesperrt" disabled>🏆</button>
+                    <button id="achievement-toggle-btn" class="legend-round-btn" title="Erfolge noch gesperrt" disabled style="display: none">🏆</button>
                     <button id="legend-toggle-btn" class="legend-round-btn" title="Legende">?</button>
                     <button id="log-toggle-btn" class="hamburger-btn" title="Logbuch">
                         <div class="bar"></div>
