@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "expeditionVeteran",
-    order: 4,
+    order: 200,
     title: "Expeditionsveteran",
     locked: {
         description: "50 Expeditionen abschließen"

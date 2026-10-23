@@ -2,14 +2,14 @@
 
 registerAchievement({
     id: "expeditionMisfortuneLegend",
-    order: 8,
-    title: "Unaufhaltsame Expedition",
+    order: 207,
+    title: "Unglückliche Legende",
     locked: {
         description: "150 erfolglose Expeditionen erleben"
     },
     unlocked: {
         description: "150 erfolglose Expeditionen erlebt",
-        reward: "Belohnung: Expeditionen scheitern nicht mehr und die Chance auf kritische Erfolge steigt auf 15 %"
+        reward: "Belohnung: Expeditionen scheitern nicht mehr und die Chance auf kritische Erfolge steigt um 50%"
     },
     getProgress: () => ({
         current: GameState.stats.failedExpeditionsCount,

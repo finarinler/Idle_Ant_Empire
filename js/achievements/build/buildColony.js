@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "buildColony",
-    order: 9,
+    order: 301,
     title: "Bau der Kolonie",
     locked: {
         description: "Vorratskammer und Brutkammer errichtet"

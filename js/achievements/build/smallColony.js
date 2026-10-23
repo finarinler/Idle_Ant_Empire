@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "smallColony",
-    order: 8,
+    order: 300,
     title: "Kleiner Ameisenstaat",
     locked: {
         description: "5 Königinnen gekauft"

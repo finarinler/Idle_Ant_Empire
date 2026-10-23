@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "expeditionCommander",
-    order: 7,
+    order: 202,
     title: "Expeditionskommando",
     locked: {
         description: "1.000 Expeditionen abschließen"

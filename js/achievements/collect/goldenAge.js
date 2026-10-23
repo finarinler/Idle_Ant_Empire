@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "goldenAge",
-    order: 999,
+    order: 101,
     title: "Das goldene Zeitalter",
 
     locked: {

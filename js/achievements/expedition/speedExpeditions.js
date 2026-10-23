@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "speedExpeditions",
-    order: 6,
+    order: 201,
     title: "Schnelle Pfoten",
     locked: {
         description: "500 Expeditionen abschließen"

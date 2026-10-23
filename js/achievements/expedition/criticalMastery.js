@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "criticalMastery",
-    order: 5,
+    order: 204,
     title: "Meister der Expedition",
     locked: {
         description: "250 sehr erfolgreiche Expeditionen abschließen"
