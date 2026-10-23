@@ -9,7 +9,7 @@ registerAchievement({
     },
     unlocked: {
         description: "300 Nahrung gesammelt",
-        reward: "Belohnung: Chance eine verirrte Ameise zu finden"
+        reward: "Belohnung: Chance eine verirrte Ameise auf Expeditionen zu finden"
     },
     getProgress: () => ({
         current: GameState.resources.food,

@@ -5,15 +5,15 @@ registerAchievement({
     order: 8,
     title: "Kleiner Ameisenstaat",
     locked: {
-        description: "10 Königinnen gekauft"
+        description: "5 Königinnen gekauft"
     },
     unlocked: {
-        description: "10 Königinnen gekauft",
+        description: "5 Königinnen gekauft",
         reward: "Belohnung: Basis-Strukturen freigeschaltet"
     },
     getProgress: () => ({
         current: GameState.resources.queens,
-        goal: 10
+        goal: 5
     }),
     onUnlock: (restored) => unlockStructuresUI(restored)
 });
