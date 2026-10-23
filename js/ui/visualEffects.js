@@ -1,5 +1,10 @@
-/* =========================
+/* ==================================================
     Visuelle Effekte
+================================================== */
+
+
+/* =========================
+    Effekt: Bildschirm-Flash
 ========================= */
 
 function triggerFlash()
@@ -14,6 +19,41 @@ function triggerFlash()
     DOM.flashOverlay.classList.add("animate-flash");
 }
 
+
+/* =========================
+    Effekt: Kritischer Expeditionserfolg
+========================= */
+
+let expeditionGlowTimeout = null;
+
+function triggerExpeditionGlow()
+{
+    if (!DOM.expeditionBtn)
+    {
+        return;
+    }
+
+    clearTimeout(expeditionGlowTimeout);
+
+    DOM.expeditionBtn.classList.remove("expedition-glow");
+
+    // Animation zuverlässig neu starten
+    void DOM.expeditionBtn.offsetWidth;
+
+    DOM.expeditionBtn.classList.add("expedition-glow");
+
+    expeditionGlowTimeout = setTimeout(() =>
+    {
+        DOM.expeditionBtn.classList.remove("expedition-glow");
+        expeditionGlowTimeout = null;
+    }, 1500);
+}
+
+
+/* =========================
+    Effekt: Achievement-Trophäe
+========================= */
+
 function triggerTrophy()
 {
     if (!DOM.trophyOverlay)
@@ -25,6 +65,11 @@ function triggerTrophy()
     void DOM.trophyOverlay.offsetWidth;
     DOM.trophyOverlay.classList.add("animate-trophy");
 }
+
+
+/* =========================
+    Effekt: Einzelnes Konfetti
+========================= */
 
 function createSingleConfetti()
 {
@@ -67,6 +112,11 @@ function createSingleConfetti()
         confetti.remove();
     };
 }
+
+
+/* =========================
+    Effekt: Konfetti-Regen
+========================= */
 
 function triggerConfetti(durationMs = 2500)
 {
