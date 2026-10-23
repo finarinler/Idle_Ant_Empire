@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "smallCollector",
-    order: 100,
+    order: 200,
     title: "Kleiner Sammler",
     locked: {
         description: "150 Nahrung gesammelt"

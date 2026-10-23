@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "knowledgeIsPower",
-    order: 400,
+    order: 500,
     title: "Wissen ist Macht",
     locked: {
         description: "Eine Vorrats-Hüterin und eine Groß-Amme ausbilden"

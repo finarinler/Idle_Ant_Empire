@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "firstSteps",
-    order: 1,
+    order: 100,
     title: "Erste Schritte",
     locked: {
         description: "5 Expeditionen abgeschlossen"

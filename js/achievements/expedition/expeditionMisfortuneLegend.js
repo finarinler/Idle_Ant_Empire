@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "expeditionMisfortuneLegend",
-    order: 207,
+    order: 307,
     title: "Unglückliche Legende",
     locked: {
         description: "150 erfolglose Expeditionen erleben"

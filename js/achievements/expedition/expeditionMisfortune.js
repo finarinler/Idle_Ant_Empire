@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "expeditionMisfortune",
-    order: 205,
+    order: 305,
     title: "Pechvogel",
     locked: {
         description: "50 erfolglose Expeditionen erleben"

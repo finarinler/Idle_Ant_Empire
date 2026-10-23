@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "foundTenAnts",
-    order: 203,
+    order: 303,
     title: "Ameisenretter",
     locked: {
         description: "10 verirrte Ameisen auf Expeditionen finden"
