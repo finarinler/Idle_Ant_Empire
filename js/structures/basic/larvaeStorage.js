@@ -30,7 +30,7 @@ function canAffordLarvaeStorage()
 {
     return GameState.resources.food >= LARVAE_STORAGE_COST.food
         && GameState.resources.larvae >= LARVAE_STORAGE_COST.larvae
-        && GameState.resources.ants >= LARVAE_STORAGE_COST.ants
+        && getTotalAntPool() >= FOOD_STORAGE_COST.ants
         && GameState.resources.queens >= LARVAE_STORAGE_COST.queens;
 }
 
@@ -45,7 +45,7 @@ function buyNursery()
 
     GameState.resources.food -= LARVAE_STORAGE_COST.food;
     GameState.resources.larvae -= LARVAE_STORAGE_COST.larvae;
-    GameState.resources.ants -= LARVAE_STORAGE_COST.ants;
+    getTotalAntPool() >= FOOD_STORAGE_COST.ants;
     GameState.resources.queens -= LARVAE_STORAGE_COST.queens;
 
     GameState.structures.nurseryCount = 1;

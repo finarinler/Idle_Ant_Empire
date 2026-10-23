@@ -29,7 +29,7 @@ function initFoodStorageDOM()
 function canAffordFoodStorage()
 {
     return GameState.resources.larvae >= FOOD_STORAGE_COST.larvae
-        && GameState.resources.ants >= FOOD_STORAGE_COST.ants
+        && getTotalAntPool() >= FOOD_STORAGE_COST.ants
         && GameState.resources.queens >= FOOD_STORAGE_COST.queens
         && GameState.resources.food >= FOOD_STORAGE_COST.food;
 }
@@ -44,7 +44,7 @@ function buyStorage()
     }
 
     GameState.resources.larvae -= FOOD_STORAGE_COST.larvae;
-    GameState.resources.ants -= FOOD_STORAGE_COST.ants;
+    getTotalAntPool() >= FOOD_STORAGE_COST.ants;
     GameState.resources.queens -= FOOD_STORAGE_COST.queens;
     GameState.resources.food -= FOOD_STORAGE_COST.food;
 
