@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "goldenAge",
-    order: 201,
+    order: 299,
     title: "Das goldene Zeitalter",
 
     locked: {
@@ -15,10 +15,9 @@ registerAchievement({
     },
 
     getProgress: () => {
-       
         const progress = [
             Math.min(GameState.stats.criticalExpeditionsCount / 250, 1),
-            Math.min(GameState.resources.expeditionAntsFound / 300, 1),
+            Math.min(GameState.stats.expeditionAntsFound / 300, 1),
             Math.min(GameState.resources.queens / 25, 1),
         ];
 
@@ -27,7 +26,7 @@ registerAchievement({
             goal: 1,
             text: [
                 `${GameState.stats.criticalExpeditionsCount}/250 sehr erfolgreiche Expeditionen`,
-                `${GameState.resources.expeditionAntsFound}/300 gefundene Ameisen`,
+                `${GameState.stats.expeditionAntsFound}/300 gefundene Ameisen`,
                 `${GameState.resources.queens}/25 Königinnen`,
             ].join(" · ")
         };
