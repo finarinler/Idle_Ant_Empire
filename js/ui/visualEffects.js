@@ -49,6 +49,34 @@ function triggerExpeditionGlow()
     }, 1500);
 }
 
+/* =========================
+    Effekt: Expeditionsmisserfolg
+========================= */
+
+let expeditionFailureGlowTimeout = null;
+
+function triggerExpeditionFailureGlow()
+{
+    if (!DOM.expeditionBtn)
+    {
+        return;
+    }
+
+    clearTimeout(expeditionFailureGlowTimeout);
+
+    DOM.expeditionBtn.classList.remove("expedition-failure-glow");
+
+    // Animation zuverlässig neu starten
+    void DOM.expeditionBtn.offsetWidth;
+
+    DOM.expeditionBtn.classList.add("expedition-failure-glow");
+
+    expeditionFailureGlowTimeout = setTimeout(() =>
+    {
+        DOM.expeditionBtn.classList.remove("expedition-failure-glow");
+        expeditionFailureGlowTimeout = null;
+    }, 1500);
+}
 
 /* =========================
     Effekt: Achievement-Trophäe

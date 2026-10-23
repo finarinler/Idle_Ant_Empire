@@ -37,6 +37,7 @@ const GameState = {
         expeditionsCount: 0,
         expeditionAntsFound: 0,
         criticalExpeditionsCount: 0,
+        failedExpeditionsCount: 0,
     },
 
     achievements: {
@@ -51,6 +52,9 @@ const GameState = {
         expeditionCommander: false,
         criticalMastery: false,
         goldenAge: false,
+        expeditionMisfortune: false,
+        expeditionMisfortuneMaster: false,
+        expeditionMisfortuneLegend: false,
     },
 
     expedition: {

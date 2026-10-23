@@ -10,7 +10,10 @@ const EXPEDITION_ACHIEVEMENT_MODULES = [
     "js/achievements/expedition/expeditionVeteran.js",
     "js/achievements/expedition/criticalMastery.js",
     "js/achievements/expedition/speedExpeditions.js",
-    "js/achievements/expedition/expeditionCommander.js"
+    "js/achievements/expedition/expeditionCommander.js",
+    "js/achievements/expedition/expeditionMisfortune.js",
+    "js/achievements/expedition/expeditionMisfortuneMaster.js",
+    "js/achievements/expedition/expeditionMisfortuneLegend.js",
 ];
 
 async function loadExpeditionAchievements()
