@@ -36,7 +36,8 @@ const GameState = {
     stats: {
         expeditionsCount: 0,
         expeditionAntsFound: 0,
-        criticalExpeditionsCount: 0
+        criticalExpeditionsCount: 0,
+        antsBoughtCount: 0,
     },
 
     achievements: {
@@ -45,12 +46,12 @@ const GameState = {
         smallColony: false,
         buildColony: false,
         knowledgeIsPower: false,
-
         foundTenAnts: false,
         expeditionVeteran: false,
         speedExpeditions: false,
         expeditionCommander: false,
-        criticalMastery: false
+        criticalMastery: false,
+        oldenAge: false,
     },
 
     expedition: {
