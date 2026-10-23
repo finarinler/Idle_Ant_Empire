@@ -60,6 +60,11 @@ function getAntFoodProduction()
 
 function getAntFoodConsumption()
 {
+    if (GameState.achievements.goldenAge)
+    {
+        return 0;
+    }
+
     return getTotalAnts() * CORE_CONFIG.ANT_FOOD_CONSUMPTION;
 }
 
