@@ -17,6 +17,11 @@ function checkAchievement(definition)
 
     const progress = definition.getProgress();
 
+    if (definition.id === "goldenAge")
+{
+    console.log("Golden Age Progress:", progress);
+}
+
     if (progress.current >= progress.goal)
     {
         unlockAchievement(definition);
