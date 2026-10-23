@@ -5,7 +5,7 @@
 
 const FOOD_STORAGE_COST = {
     larvae: 50,
-    ants: 100,      // nur gekaufte Ameisen (wie bisher)
+    ants: 100,
     queens: 10,
     food: 1000
 };

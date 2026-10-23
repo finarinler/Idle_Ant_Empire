@@ -6,7 +6,7 @@
 const LARVAE_STORAGE_COST = {
     food: 3000,
     larvae: 150,
-    ants: 150,      // nur gekaufte Ameisen (wie bisher)
+    ants: 150,
     queens: 10
 };
 
@@ -30,7 +30,7 @@ function canAffordLarvaeStorage()
 {
     return GameState.resources.food >= LARVAE_STORAGE_COST.food
         && GameState.resources.larvae >= LARVAE_STORAGE_COST.larvae
-        && GameState.resources.ants >= LARVAE_STORAGE_COST.ants
+        && getTotalAnts() >= LARVAE_STORAGE_COST.ants
         && GameState.resources.queens >= LARVAE_STORAGE_COST.queens;
 }
 

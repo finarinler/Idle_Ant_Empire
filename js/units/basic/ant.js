@@ -23,23 +23,27 @@ function initAntDOM()
     }
 }
 
-/* ---------- Kosten ---------- */
+/* ---------- Futterkosten ---------- */
 
 function getAntCostScaling(antNumber)
 {
-    if (antNumber <= 10)   return 1.15;   // 2–10: +15 %
-    if (antNumber <= 25)   return 1.10;   // 11–25: +10 %
-    if (antNumber <= 50)   return 1.075;  // 26–50: +7,5 %
-    if (antNumber <= 100)  return 1.05;   // 51–100: +5 %
-    if (antNumber <= 150)  return 1.03;   // 101–150: +3 %
-    if (antNumber <= 200)  return 1.02;   // 151–200: +2 %
-    if (antNumber <= 300)  return 1.01;   // 201–300: +1 %
-    if (antNumber <= 500)  return 1.005;  // 301–500: +0,5 %
-    if (antNumber <= 1000) return 1.002;  // 501–1000: +0,2 %
-    if (antNumber <= 2000) return 1.001;  // 1001-2000: +0,1%
-    if (antNumber <= 5000) return 1.0005; // 2001-5000: +0.05%
-    if (antNumber <= 10000) return 1.00025; //5001-10000: +0,025%
-    return 1.0001;                        // 10001+: +0,01 %
+    if (antNumber <= 10)    return 1.125;
+    if (antNumber <= 20)    return 1.1125;
+    if (antNumber <= 40)    return 1.10;
+    if (antNumber <= 50)    return 1.075;
+    if (antNumber <= 70)    return 1.05;
+    if (antNumber <= 80)    return 1.025;
+    if (antNumber <= 100)   return 1.0125;
+    if (antNumber <= 250)   return 1.01;
+    if (antNumber <= 300)   return 1.0075;
+    if (antNumber <= 500)   return 1.005;
+    if (antNumber <= 1000)  return 1.0025;
+    if (antNumber <= 2500)  return 1.00125;
+    if (antNumber <= 5000)  return 1.001;
+    if (antNumber <= 7500)  return 1.00075;
+    if (antNumber <= 10000) return 1.0001;
+
+    return 1.00005;
 }
 
 function getCurrentAntFoodCost()
@@ -58,12 +62,32 @@ function getCurrentAntFoodCost()
     return cost;
 }
 
+/* ---------- Larvenkosten ---------- */
+
+function getCurrentAntLarvaeCost()
+{
+    const antNumber = GameState.resources.ants + 1;
+
+    if (antNumber <= 10)  return 1;
+    if (antNumber <= 20)  return 2;
+    if (antNumber <= 30)  return 3;
+    if (antNumber <= 40)  return 4;
+    if (antNumber <= 50)  return 5;
+    if (antNumber <= 60)  return 6;
+    if (antNumber <= 70)  return 7;
+    if (antNumber <= 80)  return 8;
+    if (antNumber <= 90)  return 9;
+    if (antNumber <= 100) return 10;
+
+    return 10 * Math.pow(1.001, antNumber - 101);
+}
+
 /* ---------- Kauf ---------- */
 
 function buyAnt()
 {
     const foodCost = getCurrentAntFoodCost();
-    const larvaeCost = CORE_CONFIG.ANT_BASE_COST_LARVAE;
+    const larvaeCost = getCurrentAntLarvaeCost();
 
     if (
         GameState.resources.larvae >= larvaeCost
@@ -102,7 +126,7 @@ function updateAntUI()
 {
     const resources = GameState.resources;
     const foodCost = getCurrentAntFoodCost();
-    const larvaeCost = CORE_CONFIG.ANT_BASE_COST_LARVAE;
+    const larvaeCost = getCurrentAntLarvaeCost();
 
     if (ANT_DOM.total)
     {
