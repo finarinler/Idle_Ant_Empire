@@ -2,7 +2,7 @@
 
 registerAchievement({
     id: "expeditionMisfortuneMaster",
-    order: 306,
+    order: 398,
     title: "Meister des Unglücks",
     locked: {
         description: "100 erfolglose Expeditionen erleben"
