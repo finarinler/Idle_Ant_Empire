@@ -1,14 +1,14 @@
+
 /* =========================
     Brut-Expertin
-    Züchtet alle 5 Sekunden neue Ameisen aus Larven
 ========================= */
 
 const BROOD_EXPERT_CONFIG = {
     cost: { ants: 100, food: 1000, larvae: 250, queens: 1 },
     costMultiplier: { ants: 1.75, food: 1.5, larvae: 1.75, queens: 2 },
-    larvaeConsumption: 0.4,   // nur für die Raten-Anzeige (Larven pro Sekunde und Expertin)
-    larvaePerUnit: 2,         // Larven pro Zyklus und Expertin
-    productionInterval: 5,    // Sekunden pro Zyklus
+    larvaeConsumption: 0.4,
+    larvaePerUnit: 2,
+    productionInterval: 5,
     maxCount: 5
 };
 
@@ -32,6 +32,8 @@ function initBroodExpertDOM()
     {
         BROOD_EXPERT_DOM.buyButton.onclick = buyBroodExpert;
     }
+
+    updateBroodExpertUI();
 }
 
 /* ---------- Kosten ---------- */
@@ -59,7 +61,10 @@ function buyBroodExpert()
 
     if (count >= BROOD_EXPERT_CONFIG.maxCount)
     {
-        updateStatus("Du hast bereits die maximale Anzahl dieser Elite-Einheit ausgebildet.", "warning");
+        updateStatus(
+            "Du hast bereits die maximale Anzahl dieser Elite-Einheit ausgebildet.",
+            "warning"
+        );
         return;
     }
 
@@ -67,7 +72,10 @@ function buyBroodExpert()
 
     if (!canAffordCost(cost))
     {
-        updateStatus("Ressourcen für diese Elite-Einheit reichen nicht aus.", "warning");
+        updateStatus(
+            "Ressourcen für diese Elite-Einheit reichen nicht aus.",
+            "warning"
+        );
         return;
     }
 
@@ -99,9 +107,13 @@ function updateBroodExpertProduction()
         return;
     }
 
-    GameState.eliteUnits.broodExpertProgress = (GameState.eliteUnits.broodExpertProgress || 0) + 1;
+    GameState.eliteUnits.broodExpertProgress =
+        (GameState.eliteUnits.broodExpertProgress || 0) + 1;
 
-    if (GameState.eliteUnits.broodExpertProgress >= BROOD_EXPERT_CONFIG.productionInterval)
+    if (
+        GameState.eliteUnits.broodExpertProgress >=
+        BROOD_EXPERT_CONFIG.productionInterval
+    )
     {
         GameState.resources.larvae -= larvaeRequired;
         GameState.resources.bredAnts += count;
@@ -113,7 +125,9 @@ function updateBroodExpertProduction()
 
 function getBroodExpertLarvaeConsumption()
 {
-    return (GameState.eliteUnits.broodExpertCount || 0) * BROOD_EXPERT_CONFIG.larvaeConsumption;
+    return (
+        GameState.eliteUnits.broodExpertCount || 0
+    ) * BROOD_EXPERT_CONFIG.larvaeConsumption;
 }
 
 /* ---------- UI ---------- */
@@ -139,18 +153,43 @@ function updateBroodExpertUI()
         BROOD_EXPERT_DOM.card.classList.toggle("unlocked", unlocked);
     }
 
-    if (BROOD_EXPERT_DOM.progress)
-    {
-        const progress = GameState.eliteUnits.broodExpertProgress || 0;
-        const percentage = Math.min(100, (progress / BROOD_EXPERT_CONFIG.productionInterval) * 100);
-        BROOD_EXPERT_DOM.progress.style.width = `${percentage}%`;
-    }
+    updateBroodExpertProgressUI();
 
     setTrainButtonState(BROOD_EXPERT_DOM.buyButton, {
         unlocked: unlocked,
         maxReached: count >= BROOD_EXPERT_CONFIG.maxCount,
         canAfford: canAffordCost(cost)
     });
+}
+
+/* ---------- Fortschrittsbalken ---------- */
+
+function updateBroodExpertProgressUI()
+{
+    if (!BROOD_EXPERT_DOM.progress)
+    {
+        return;
+    }
+
+    const count = GameState.eliteUnits.broodExpertCount || 0;
+    const progress = GameState.eliteUnits.broodExpertProgress || 0;
+    const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+
+    if (
+        count <= 0 ||
+        GameState.resources.larvae < larvaeRequired
+    )
+    {
+        BROOD_EXPERT_DOM.progress.style.width = "0%";
+        return;
+    }
+
+    const percentage = Math.min(
+        100,
+        (progress / BROOD_EXPERT_CONFIG.productionInterval) * 100
+    );
+
+    BROOD_EXPERT_DOM.progress.style.width = `${percentage}%`;
 }
 
 onDOMReady(initBroodExpertDOM);
