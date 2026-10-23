@@ -8,6 +8,7 @@
  * @param {boolean} useSuffix
  * @returns {string}
  */
+
 function formatGameNumber(value, useSuffix = false)
 {
     const num = Math.floor(value);
@@ -15,16 +16,40 @@ function formatGameNumber(value, useSuffix = false)
     if (useSuffix && num >= 10001)
     {
         const suffixes = [
+            { value: 1e33, symbol: " Dc" },
+            { value: 1e30, symbol: " No" },
+            { value: 1e27, symbol: " Oc" },
+            { value: 1e24, symbol: " Sp" },
+            { value: 1e21, symbol: " Sx" },
+            { value: 1e18, symbol: " Qi" },
+            { value: 1e15, symbol: " Qa" },
             { value: 1e12, symbol: " T" },
             { value: 1e9,  symbol: " B" },
             { value: 1e6,  symbol: " M" },
             { value: 1e3,  symbol: " k" }
         ];
 
-        const item = suffixes.find(item => num >= item.value);
-        if (item)
+        for (let i = 0; i < suffixes.length; i++)
         {
-            return (num / item.value).toFixed(1).replace(".", ",") + item.symbol;
+            const item = suffixes[i];
+            const next = suffixes[i - 1];
+
+            if (num >= item.value)
+            {
+                const rounded = Number(
+                    (num / item.value).toFixed(1)
+                );
+
+                if (rounded >= 1000 && next)
+                {
+                    return (num / next.value)
+                        .toFixed(1)
+                        .replace(".", ",") + next.symbol;
+                }
+
+                return rounded.toFixed(1)
+                    .replace(".", ",") + item.symbol;
+            }
         }
     }
 

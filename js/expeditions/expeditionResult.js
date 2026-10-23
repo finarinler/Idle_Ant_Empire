@@ -52,8 +52,7 @@ function rollFoodReward()
 
         GameState.resources.food += amount;
 
-        triggerFlash();
-        triggerConfetti(500);
+        triggerExpeditionGlow();
         updateStatus(`Expedition sehr erfolgreich: ${amount} Nahrung gefunden.`, "success");
 
         return true;

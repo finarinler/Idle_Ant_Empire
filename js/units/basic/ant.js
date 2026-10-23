@@ -79,7 +79,21 @@ function getCurrentAntLarvaeCost()
     if (antNumber <= 90)  return 9;
     if (antNumber <= 100) return 10;
 
-    return 10 * Math.pow(1.001, antNumber - 101);
+    let cost = 10;
+
+    for (let i = 101; i <= antNumber; i++)
+    {
+        if (i <= 200)
+            cost *= 1.001;
+        else if (i <= 500)
+            cost *= 1.0005;
+        else if (i <= 1000)
+            cost *= 1.00025;
+        else
+            cost *= 1.0001;
+    }
+
+    return cost;
 }
 
 /* ---------- Kauf ---------- */

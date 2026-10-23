@@ -1,5 +1,5 @@
 /* =========================
-   Effekte: Flash, Konfetti, Pokal
+   Effekte: Flash
 ========================= */
 
 #flash-overlay
@@ -27,6 +27,49 @@
     100% { opacity: 0; }
 }
 
+/* =========================
+   Effekte: ExpeditionGlow
+========================= */
+
+#expedition-btn.expedition-glow
+{
+    animation: expeditionGlow 1.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes expeditionGlow
+{
+    0%
+    {
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+        filter: brightness(1);
+    }
+    30%
+    {
+        box-shadow:
+            0 0 12px 4px rgba(255, 215, 0, 0.9),
+            0 0 28px 8px rgba(255, 170, 0, 0.55);
+        filter: brightness(1.2);
+    }
+    70%
+    {
+        box-shadow:
+            0 0 12px 4px rgba(255, 215, 0, 0.9),
+            0 0 28px 8px rgba(255, 170, 0, 0.55);
+        filter: brightness(1.2);
+    }
+    100%
+    {
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+        filter: brightness(1);
+    }
+}
+
+/* =========================
+   Effekte: Konfetti
+========================= */
+
 .confetti
 {
     position: fixed;
@@ -35,6 +78,10 @@
     pointer-events: none;
     z-index: 2000;
 }
+
+/* =========================
+   Effekte: Trophy
+========================= */
 
 #achievement-trophy-overlay
 {

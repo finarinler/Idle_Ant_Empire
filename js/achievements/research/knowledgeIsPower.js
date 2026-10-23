@@ -5,10 +5,10 @@ registerAchievement({
     order: 10,
     title: "Wissen ist Macht",
     locked: {
-        description: "Mindestens eine Vorrats-Hüterin und eine Groß-Amme ausbilden"
+        description: "Eine Vorrats-Hüterin und eine Groß-Amme ausbilden"
     },
     unlocked: {
-        description: "Mindestens eine Vorrats-Hüterin und eine Groß-Amme ausgebildet",
+        description: "Eine Vorrats-Hüterin und eine Groß-Amme ausgebildet",
         reward: "Belohnung: Forschung freigeschaltet"
     },
     getProgress: () =>
