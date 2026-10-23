@@ -9,7 +9,7 @@ registerAchievement({
     },
     unlocked: {
         description: "10 verirrte Ameisen auf Expeditionen gefunden",
-        reward: "Belohnung: Fundchance für Ameisen verdoppelt (5 % → 10 %)"
+        reward: "Belohnung: Fundchance für verirrte Ameisen verdoppelt"
     },
     getProgress: () => ({
         current: GameState.stats.expeditionAntsFound,

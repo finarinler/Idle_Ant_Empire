@@ -9,7 +9,7 @@ registerAchievement({
     },
     unlocked: {
         description: "250 Expeditionen abgeschlossen",
-        reward: "Belohnung: Kritische Erfolgschance verdoppelt (5 % → 10 %)"
+        reward: "Belohnung: Kritische Erfolgschance verdoppelt"
     },
     getProgress: () => ({
         current: GameState.stats.expeditionsCount,
