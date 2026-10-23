@@ -101,7 +101,6 @@ function buyBroodExpert()
 function updateBroodExpertProduction()
 {
     const count = GameState.eliteUnits.broodExpertCount || 0;
-    const progress = GameState.eliteUnits.broodExpertProgress || 0;
 
     if (count <= 0)
     {
@@ -120,29 +119,42 @@ function updateBroodExpertProduction()
         return;
     }
 
-    GameState.eliteUnits.broodExpertProgress = progress + 1;
+    const progress = GameState.eliteUnits.broodExpertProgress || 0;
+    const interval = BROOD_EXPERT_CONFIG.productionInterval;
 
-    if (
-        GameState.eliteUnits.broodExpertProgress >=
-        BROOD_EXPERT_CONFIG.productionInterval
-    )
+    // Pausentick: Der vorherige Tick hat die Produktion
+    // abgeschlossen. Jetzt beginnt ein neuer Zyklus.
+    if (progress > interval)
     {
-        // Produktion abschließen.
+        GameState.eliteUnits.broodExpertProgress = 0;
+
+        stopBroodExpertProgressAnimation();
+        updateBroodExpertProgressUI();
+        return;
+    }
+
+    // Produktionszyklus abschließen und einen Pausentick setzen.
+    if (progress === interval)
+    {
         GameState.resources.larvae -= larvaeRequired;
         GameState.resources.bredAnts += count;
 
-        // Neuen Zyklus starten.
-        GameState.eliteUnits.broodExpertProgress = 0;
+        // interval + 1 kennzeichnet den Pausentick.
+        GameState.eliteUnits.broodExpertProgress = interval + 1;
 
-        // Animation und Balken auf den neuen Zyklus synchronisieren.
         stopBroodExpertProgressAnimation();
-        updateBroodExpertProgressUI();
+
+        if (BROOD_EXPERT_DOM.progress)
+        {
+            BROOD_EXPERT_DOM.progress.style.width = "100%";
+        }
 
         return;
     }
 
-    // Bestehende Animation weiterlaufen lassen.
-    // Nur starten, wenn noch keine aktiv ist.
+    // Regulärer Fortschritt.
+    GameState.eliteUnits.broodExpertProgress = progress + 1;
+
     updateBroodExpertProgressUI();
 }
 
@@ -201,6 +213,7 @@ function updateBroodExpertProgressUI()
     const count = GameState.eliteUnits.broodExpertCount || 0;
     const progress = GameState.eliteUnits.broodExpertProgress || 0;
     const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+    const interval = BROOD_EXPERT_CONFIG.productionInterval;
 
     if (
         count <= 0 ||
@@ -212,15 +225,21 @@ function updateBroodExpertProgressUI()
         return;
     }
 
-    const interval = BROOD_EXPERT_CONFIG.productionInterval;
-    const percentage = Math.min(100, (progress / interval) * 100);
+    // Während des Pausenticks bleibt der Balken vollständig gefüllt.
+    if (progress > interval)
+    {
+        stopBroodExpertProgressAnimation();
+        bar.style.width = "100%";
+        return;
+    }
 
-    // Ist bereits eine Animation für diesen Zyklus aktiv,
-    // darf ein gewöhnliches UI-Update sie nicht neu starten.
+    // Eine aktive Animation nicht durch UI-Updates neu starten.
     if (broodExpertAnimationFrame !== null)
     {
         return;
     }
+
+    const percentage = Math.min(100, (progress / interval) * 100);
 
     bar.style.width = `${percentage}%`;
 
@@ -244,15 +263,9 @@ function startBroodExpertProgressAnimation(progress, interval)
     stopBroodExpertProgressAnimation();
 
     const cycle = ++broodExpertAnimationCycle;
-
-    broodExpertAnimationStartTime = performance.now();
-    broodExpertAnimationStartProgress = progress;
-
-    const duration =
-        (interval - broodExpertAnimationStartProgress) * 1000;
-
-    const startPercentage =
-        (broodExpertAnimationStartProgress / interval) * 100;
+    const startTime = performance.now();
+    const duration = (interval - progress) * 1000;
+    const startPercentage = (progress / interval) * 100;
 
     function animate(now)
     {
@@ -275,7 +288,7 @@ function startBroodExpertProgressAnimation(progress, interval)
             return;
         }
 
-        const elapsed = now - broodExpertAnimationStartTime;
+        const elapsed = now - startTime;
         const ratio = Math.min(elapsed / duration, 1);
 
         const percentage =
@@ -289,8 +302,6 @@ function startBroodExpertProgressAnimation(progress, interval)
         }
         else
         {
-            // 100 % anzeigen, bis der Produktionstick den
-            // nächsten Zyklus startet.
             bar.style.width = "100%";
             broodExpertAnimationFrame = null;
         }
@@ -301,7 +312,6 @@ function startBroodExpertProgressAnimation(progress, interval)
 
 function stopBroodExpertProgressAnimation()
 {
-    // Ungültig machen, damit alte Animationen nicht weiterlaufen.
     broodExpertAnimationCycle++;
 
     if (broodExpertAnimationFrame !== null)
