@@ -44,8 +44,7 @@ function buyAnt()
         GameState.resources.larvae -= larvaeCost;
         GameState.resources.food -= foodCost;
         GameState.resources.ants += 1;
-        GameState.stats.antsBoughtCount += 1;
-
+        
         updateResources();
         saveGame();
     }
