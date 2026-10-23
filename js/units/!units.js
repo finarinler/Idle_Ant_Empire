@@ -6,7 +6,7 @@ const UNIT_MODULES = [
     // Basis-Einheiten
     "js/units/basic/ant.js",
     "js/units/basic/queen.js",
-    "js/units/elite/scout.js",
+    "js/units/basic/scout.js",
 
     // Elite-Einheiten
     "js/units/elite/eliteRequirements.js",
