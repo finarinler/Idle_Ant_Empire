@@ -20,6 +20,10 @@ const BROOD_EXPERT_DOM = {
     buyButton: null
 };
 
+let broodExpertAnimationFrame = null;
+
+/* ---------- Initialisierung ---------- */
+
 function initBroodExpertDOM()
 {
     BROOD_EXPERT_DOM.count = getEl("brood-expert-count");
@@ -85,10 +89,11 @@ function buyBroodExpert()
     updateStatus("Brut-Expertin ausgebildet!", "success");
 
     updateResources();
+    updateBroodExpertUI();
     saveGame();
 }
 
-/* ---------- Produktion (1x pro Sekunde, aus updateProduction) ---------- */
+/* ---------- Produktion (1x pro Sekunde) ---------- */
 
 function updateBroodExpertProduction()
 {
@@ -97,6 +102,8 @@ function updateBroodExpertProduction()
     if (count <= 0)
     {
         GameState.eliteUnits.broodExpertProgress = 0;
+        stopBroodExpertProgressAnimation();
+        updateBroodExpertProgressUI();
         return;
     }
 
@@ -104,6 +111,8 @@ function updateBroodExpertProduction()
 
     if (GameState.resources.larvae < larvaeRequired)
     {
+        stopBroodExpertProgressAnimation();
+        updateBroodExpertProgressUI();
         return;
     }
 
@@ -118,10 +127,16 @@ function updateBroodExpertProduction()
         GameState.resources.larvae -= larvaeRequired;
         GameState.resources.bredAnts += count;
         GameState.eliteUnits.broodExpertProgress = 0;
+
+        // Der nächste Zyklus startet wieder bei 0 %.
+        updateBroodExpertProgressUI();
+        return;
     }
+
+    updateBroodExpertProgressUI();
 }
 
-/* ---------- Larven-Verbrauch pro Sekunde (Raten-Anzeige) ---------- */
+/* ---------- Larven-Verbrauch pro Sekunde ---------- */
 
 function getBroodExpertLarvaeConsumption()
 {
@@ -166,7 +181,9 @@ function updateBroodExpertUI()
 
 function updateBroodExpertProgressUI()
 {
-    if (!BROOD_EXPERT_DOM.progress)
+    const bar = BROOD_EXPERT_DOM.progress;
+
+    if (!bar)
     {
         return;
     }
@@ -180,16 +197,86 @@ function updateBroodExpertProgressUI()
         GameState.resources.larvae < larvaeRequired
     )
     {
-        BROOD_EXPERT_DOM.progress.style.width = "0%";
+        stopBroodExpertProgressAnimation();
+        bar.style.width = "0%";
         return;
     }
 
-    const percentage = Math.min(
-        100,
-        (progress / BROOD_EXPERT_CONFIG.productionInterval) * 100
-    );
+    const interval = BROOD_EXPERT_CONFIG.productionInterval;
+    const percentage = Math.min(100, (progress / interval) * 100);
 
-    BROOD_EXPERT_DOM.progress.style.width = `${percentage}%`;
+    // Alte Animation beenden, bevor der neue Fortschritt gesetzt wird.
+    stopBroodExpertProgressAnimation();
+
+    bar.style.width = `${percentage}%`;
+
+    // Zwischen den Produktionsticks flüssig bis zum nächsten
+    // Fortschritt animieren – ganz ohne CSS-Datei anzupassen.
+    if (progress > 0 && progress < interval)
+    {
+        startBroodExpertProgressAnimation(progress, interval);
+    }
+}
+
+/* ---------- JavaScript-Animation ---------- */
+
+function startBroodExpertProgressAnimation(progress, interval)
+{
+    const bar = BROOD_EXPERT_DOM.progress;
+
+    if (!bar)
+    {
+        return;
+    }
+
+    const startTime = performance.now();
+    const duration = (interval - progress) * 1000;
+    const startPercentage = (progress / interval) * 100;
+
+    function animate(now)
+    {
+        const count = GameState.eliteUnits.broodExpertCount || 0;
+        const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+
+        if (
+            !bar.isConnected ||
+            count <= 0 ||
+            GameState.resources.larvae < larvaeRequired
+        )
+        {
+            broodExpertAnimationFrame = null;
+            bar.style.width = "0%";
+            return;
+        }
+
+        const elapsed = now - startTime;
+        const ratio = Math.min(elapsed / duration, 1);
+        const percentage = startPercentage + (100 - startPercentage) * ratio;
+
+        bar.style.width = `${percentage}%`;
+
+        if (ratio < 1)
+        {
+            broodExpertAnimationFrame = requestAnimationFrame(animate);
+        }
+        else
+        {
+            // Bei 100 % bleiben, bis die Produktionslogik den
+            // nächsten Zyklus startet und den Balken zurücksetzt.
+            broodExpertAnimationFrame = null;
+        }
+    }
+
+    broodExpertAnimationFrame = requestAnimationFrame(animate);
+}
+
+function stopBroodExpertProgressAnimation()
+{
+    if (broodExpertAnimationFrame !== null)
+    {
+        cancelAnimationFrame(broodExpertAnimationFrame);
+        broodExpertAnimationFrame = null;
+    }
 }
 
 onDOMReady(initBroodExpertDOM);
