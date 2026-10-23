@@ -15,6 +15,15 @@ registerAchievement({
     },
 
     getProgress: () => {
+
+console.log(
+    "Golden Age:",
+    GameState.stats.expeditionAntsFound,
+    GameState.stats.criticalExpeditionsCount,
+    GameState.resources.queens
+);
+
+        
         const progress = [
             Math.min(GameState.stats.criticalExpeditionsCount / 250, 1),
             Math.min(GameState.resources.expeditionAntsFound / 300, 1),
