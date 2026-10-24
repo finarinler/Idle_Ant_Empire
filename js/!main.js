@@ -1,10 +1,11 @@
+
 /* =========================
     App Module Loader
 ========================= */
 
 const APP_MODULES = [
     // Big-Number-System: muss vor GameState und allen Berechnungen geladen sein.
-    // (Die Übersetzungen js/i18n/*.js werden direkt in game.html eingebunden.)
+    // Die Übersetzungen js/i18n/*.js werden direkt in game.html eingebunden.
     { script: "js/bignum/bigNumber.js" },
     { script: "js/core/!core.js", loader: "loadCoreModules" },
     { script: "js/state/gameState.js" },
@@ -16,7 +17,9 @@ const APP_MODULES = [
     { script: "js/units/!units.js", loader: "loadUnitModules" },
     { script: "js/structures/!structures.js", loader: "loadStructureModules" },
     { script: "js/initialization/!initialization.js", loader: "loadInitializationModules" },
-    { script: "js/research/!research.js" }
+
+    // Forschungsfenster: öffnet und schließt research/research.html.
+    { script: "js/researchPanel.js" }
 ];
 
 
@@ -169,7 +172,10 @@ async function loadModules() {
             const entry = APP_MODULES[i];
 
             updateLoadingStatus(
-                I18N.t("loading.modules", { current: i + 1, total: APP_MODULES.length })
+                I18N.t("loading.modules", {
+                    current: i + 1,
+                    total: APP_MODULES.length
+                })
             );
 
             await loadScript(entry.script);

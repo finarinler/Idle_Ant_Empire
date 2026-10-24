@@ -227,6 +227,7 @@ I18N.register("fr", {
 
     /* ---------- Menu des options et lecteur de musique ---------- */
     "options.button": "Options",
+    "research.button": "Recherche",
     "options.title": "Options",
     "options.close": "Fermer",
     "options.language": "Langue",

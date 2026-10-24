@@ -67,6 +67,11 @@ function unlockAchievement(definition)
 
     GameState.achievements[definition.id] = true;
 
+    if (definition.id === "knowledgeIsPower" && typeof updateResearchButtonVisibility === "function")
+    {
+        updateResearchButtonVisibility();
+    }
+
     const params = { title: { key: getAchievementTitleKey(definition.id) } };
 
     addLogEntry("log.achievementUnlocked", "achievement", params);
@@ -128,4 +133,9 @@ function rebuildAchievementsUI()
             definition.onUnlock(true);
         }
     });
+
+    if (typeof updateResearchButtonVisibility === "function")
+    {
+        updateResearchButtonVisibility();
+    }
 }

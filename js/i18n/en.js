@@ -226,6 +226,7 @@ I18N.register("en", {
     "landing.pillar.discover": "Discover",
     /* ---------- Options menu and music player ---------- */
     "options.button": "Options",
+    "research.button": "Research",
     "options.title": "Options",
     "options.close": "Close",
     "options.language": "Language",

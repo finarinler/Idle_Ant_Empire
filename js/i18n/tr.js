@@ -227,6 +227,7 @@ I18N.register("tr", {
 
     /* ---------- Seçenekler menüsü ve müzik çalar ---------- */
     "options.button": "Seçenekler",
+    "research.button": "Araştırma",
     "options.title": "Seçenekler",
     "options.close": "Kapat",
     "options.language": "Dil",

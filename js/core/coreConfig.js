@@ -2,14 +2,14 @@
  * =========================
  * Idle Ant Empire
  * Core Reset Build
- * Version: alpha-v0.00.005a
+ * Version: alpha-v0.00.006a
  * =========================
  */
 
 /* =========================
     Version
 ========================= */
-const GAME_VERSION = "alpha-v0.00.005a";
+const GAME_VERSION = "alpha-v0.00.006a";
 
 /* =========================
     Core Configuration
