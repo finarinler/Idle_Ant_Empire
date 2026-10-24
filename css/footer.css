@@ -254,6 +254,14 @@
     height: 50px;
 }
 
+.footer-left-controls
+{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
 .status-display
 {
     display: flex;
@@ -337,6 +345,8 @@
 {
     flex: 1 1 auto;
     min-width: 0;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 #status-text
@@ -360,9 +370,32 @@
         gap: 8px;
     }
 
+    .footer-left-controls
+    {
+        gap: 5px;
+    }
+
+    .status-display
+    {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
     #status-bar
     {
         padding-left: 10px;
         padding-right: 10px;
     }
+}
+
+/* Das Forschungszentrum bleibt bis zum Erfolg „Wissen ist Macht“ verborgen. */
+.research-toggle-btn[hidden]
+{
+    display: none !important;
+}
+
+.research-toggle-btn:focus-visible
+{
+    outline: 2px solid var(--gold-brown-light);
+    outline-offset: 2px;
 }

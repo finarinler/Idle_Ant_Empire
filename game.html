@@ -1,14 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Idle Ant Empire</title>
+
     <link rel="stylesheet" href="css/loading-screen.css">
     <link rel="icon" type="image/png" href="images/header.png">
+
     <script src="css/!styles.js"></script>
-    <!-- Mehrsprachigkeit: normale Skripte (kein fetch/Module), damit file:// funktioniert.
-         Reihenfolge: Logik, dann Übersetzungen, dann der Modul-Loader. -->
+
+    <!-- Mehrsprachigkeit: klassische Skripte für file:// -->
     <script src="js/i18n/i18n.js"></script>
     <script src="js/i18n/de.js"></script>
     <script src="js/i18n/en.js"></script>
@@ -16,11 +19,12 @@
     <script src="js/i18n/fr.js"></script>
     <script src="js/i18n/it.js"></script>
     <script src="js/i18n/tr.js"></script>
-    <!-- Musik: wird bewusst schon hier (vor dem Modul-Loader) geladen, damit der Autostart-Versuch
-         während des Ladebildschirms stattfinden kann. Eine blockierte Wiedergabe hält das Laden nicht auf. -->
+
+    <!-- Musik wird vor dem Modul-Loader geladen. -->
     <script src="js/musicController.js"></script>
     <script src="js/!main.js"></script>
 </head>
+
 <body>
 
     <!-- =========================
@@ -28,11 +32,7 @@
     ========================= -->
     <div id="loading-screen" role="status" aria-live="polite">
         <div class="loading-content">
-            <img
-                src="images/header.png"
-                alt=""
-                class="loading-icon"
-            >
+            <img src="images/header.png" alt="" class="loading-icon">
 
             <h1 class="loading-title">
                 Idle Ant <span>Empire</span>
@@ -59,24 +59,25 @@
         </div>
     </div>
 
-     <!-- =========================
-        Game Screen
-    ========================= -->   
-
+    <!-- =========================
+         Game Screen
+    ========================= -->
     <div id="flash-overlay"></div>
     <div id="achievement-trophy-overlay">🏆</div>
+
     <div id="game-container">
-        
+
         <header class="sticky-top">
             <div class="header-top">
                 <div class="header-brand">
-                    <img src="images/header.png" class="header-main-icon">
+                    <img src="images/header.png" class="header-main-icon" alt="">
                     <h1 class="fancy-title brand-gold main-title-large">
                         Idle Ant Empire
                         <span class="version-tag"></span>
                     </h1>
                 </div>
             </div>
+
             <div class="resource-bar">
                 <div class="res-item">
                     <span class="res-label" data-i18n="resource.food">Nahrung</span>
@@ -86,6 +87,7 @@
                     </div>
                     <div id="food-rate" class="res-rate rate-neutral">0.00/s</div>
                 </div>
+
                 <div class="res-item">
                     <span class="res-label" data-i18n="resource.larvae">Larven</span>
                     <div class="res-value-container">
@@ -95,24 +97,33 @@
                     <div id="larvae-rate" class="res-rate rate-neutral">0.00/s</div>
                 </div>
             </div>
+
             <div class="action-bar">
                 <button id="expedition-btn" class="btn-progress">
                     <div id="expedition-progress" class="progress-fill"></div>
-                    <span id="expedition-text" class="btn-text">Auf Expedition gehen (10s)</span>
+                    <span id="expedition-text" class="btn-text">
+                        Auf Expedition gehen (10s)
+                    </span>
                 </button>
             </div>
         </header>
 
         <main>
+            <!-- =========================
+                 Basis-Einheiten
+            ========================= -->
             <section class="category-wrapper" id="cat-basis-units">
                 <div class="category-header" onclick="toggleCategory('basis-units')">
-                    <span class="category-title" data-i18n="category.basisUnits">Basis-Einheiten</span>
+                    <span class="category-title" data-i18n="category.basisUnits">
+                        Basis-Einheiten
+                    </span>
                     <div class="category-divider"></div>
                     <div class="mandible-icon" id="mandible-basis-units">
                         <span></span>
                         <span></span>
                     </div>
-                </div>        
+                </div>
+
                 <div id="basis-units-content" class="category-content unit-grid">
                     <div class="unit-card">
                         <div class="unit-header">
@@ -126,10 +137,17 @@
                             Ameise kaufen
                         </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.total">Gesamt:</span> <span id="ant-total">0</span></span>
-                            <span><span data-i18n="ui.bought">Gekauft:</span> <span id="ant-bought">0</span></span>
+                            <span>
+                                <span data-i18n="ui.total">Gesamt:</span>
+                                <span id="ant-total">0</span>
+                            </span>
+                            <span>
+                                <span data-i18n="ui.bought">Gekauft:</span>
+                                <span id="ant-bought">0</span>
+                            </span>
                         </div>
                     </div>
+
                     <div class="unit-card">
                         <div class="unit-header">
                             <span class="worker-name" data-i18n="unit.queen.name">Königin</span>
@@ -142,13 +160,22 @@
                             Königin kaufen
                         </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.total">Gesamt:</span> <span id="queen-total">0</span></span>
-                            <span><span data-i18n="ui.bought">Gekauft:</span> <span id="queen-bought">0</span></span>
+                            <span>
+                                <span data-i18n="ui.total">Gesamt:</span>
+                                <span id="queen-total">0</span>
+                            </span>
+                            <span>
+                                <span data-i18n="ui.bought">Gekauft:</span>
+                                <span id="queen-bought">0</span>
+                            </span>
                         </div>
                     </div>
+
                     <div class="unit-card locked" id="card-scout" style="display: none;">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="unit.scout.name">Kundschafterin</span>
+                            <span class="worker-name" data-i18n="unit.scout.name">
+                                Kundschafterin
+                            </span>
                         </div>
                         <span class="unit-desc" data-i18n="unit.scout.desc"></span>
                         <div class="cost-label">
@@ -156,63 +183,92 @@
                         </div>
                         <button id="buy-scout-btn" class="btn-buy-clean">Ausbilden</button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.count">Anzahl:</span> <span id="scout-count">0</span></span>
+                            <span>
+                                <span data-i18n="ui.count">Anzahl:</span>
+                                <span id="scout-count">0</span>
+                            </span>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- =========================
+                 Elite-Einheiten
+            ========================= -->
             <section class="category-wrapper locked" id="cat-elite-units" style="display: none;">
                 <div class="category-header" onclick="toggleCategory('elite-units')">
-                    <span class="category-title" data-i18n="category.eliteUnits">Elite-Einheiten</span>
+                    <span class="category-title" data-i18n="category.eliteUnits">
+                        Elite-Einheiten
+                    </span>
                     <div class="category-divider"></div>
                     <div class="mandible-icon" id="mandible-elite-units">
                         <span></span>
                         <span></span>
                     </div>
                 </div>
+
                 <div id="elite-units-content" class="category-content unit-grid">
-        
                     <div class="unit-card" id="card-guardian">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="unit.storageGuardian.name">Vorrats-Hüterin</span>
+                            <span class="worker-name" data-i18n="unit.storageGuardian.name">
+                                Vorrats-Hüterin
+                            </span>
                         </div>
                         <span class="unit-desc" id="guardian-desc"></span>
                         <div class="cost-label">
                             <span id="guardian-cost-display"></span>
                         </div>
-                        <button id="buy-guardian-btn" class="btn-buy-clean" disabled>Gesperrt</button>
+                        <button id="buy-guardian-btn" class="btn-buy-clean" disabled>
+                            Gesperrt
+                        </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.count">Anzahl:</span> <span><span id="guardian-count">0</span>/5</span></span>
+                            <span>
+                                <span data-i18n="ui.count">Anzahl:</span>
+                                <span><span id="guardian-count">0</span>/5</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="unit-card" id="card-nurse-matriarch">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="unit.grandNurse.name">Groß-Amme</span>
+                            <span class="worker-name" data-i18n="unit.grandNurse.name">
+                                Groß-Amme
+                            </span>
                         </div>
                         <span class="unit-desc" id="nurse-matriarch-desc"></span>
                         <div class="cost-label">
                             <span id="nurse-matriarch-cost-display"></span>
                         </div>
-                        <button id="buy-nurse-matriarch-btn" class="btn-buy-clean" disabled>Gesperrt</button>
+                        <button id="buy-nurse-matriarch-btn" class="btn-buy-clean" disabled>
+                            Gesperrt
+                        </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.count">Anzahl:</span> <span><span id="nurse-matriarch-count">0</span>/5</span></span>
+                            <span>
+                                <span data-i18n="ui.count">Anzahl:</span>
+                                <span><span id="nurse-matriarch-count">0</span>/5</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="unit-card locked" id="card-brood-expert">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="unit.broodExpert.name">Brut-Expertin</span>
+                            <span class="worker-name" data-i18n="unit.broodExpert.name">
+                                Brut-Expertin
+                            </span>
                         </div>
                         <span class="unit-desc" id="brood-expert-desc"></span>
                         <div class="cost-label">
                             <span id="brood-expert-cost-display"></span>
                         </div>
-                        <button id="buy-brood-expert-btn" class="btn-buy-clean" disabled>Gesperrt</button>
+                        <button id="buy-brood-expert-btn" class="btn-buy-clean" disabled>
+                            Gesperrt
+                        </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.count">Anzahl:</span> <span id="brood-expert-count">0</span></span>
-                        </div> 
+                            <span>
+                                <span data-i18n="ui.count">Anzahl:</span>
+                                <span id="brood-expert-count">0</span>
+                            </span>
+                        </div>
                         <div class="brood-expert-progress-container">
                             <div class="brood-expert-progress-track">
                                 <div id="brood-expert-progress" class="brood-expert-progress-fill"></div>
@@ -222,64 +278,89 @@
 
                     <div class="unit-card" id="card-soldier">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="unit.soldier.name">Elite-Soldat</span>
+                            <span class="worker-name" data-i18n="unit.soldier.name">
+                                Elite-Soldat
+                            </span>
                         </div>
                         <span class="unit-desc" data-i18n="unit.soldier.desc"></span>
                         <div class="cost-label">
                             <span id="soldier-cost-display">???</span>
                         </div>
-                        <button id="buy-soldier-btn" class="btn-buy-clean" disabled>Gesperrt</button>
+                        <button id="buy-soldier-btn" class="btn-buy-clean" disabled>
+                            Gesperrt
+                        </button>
                         <div class="unit-stats-row">
-                            <span><span data-i18n="ui.count">Anzahl:</span> <span id="soldier-count">0</span></span>
+                            <span>
+                                <span data-i18n="ui.count">Anzahl:</span>
+                                <span id="soldier-count">0</span>
+                            </span>
                         </div>
                     </div>
-
                 </div>
             </section>
 
-            <section class="category-wrapper locked" id="cat-basis-structures"  style="display: none;">
+            <!-- =========================
+                 Basis-Strukturen
+            ========================= -->
+            <section
+                class="category-wrapper locked"
+                id="cat-basis-structures"
+                style="display: none;"
+            >
                 <div class="category-header" onclick="toggleCategory('basis-structures')">
-                    <span class="category-title" data-i18n="category.basisStructures">Basis-Strukturen</span>
+                    <span class="category-title" data-i18n="category.basisStructures">
+                        Basis-Strukturen
+                    </span>
                     <div class="category-divider"></div>
                     <div class="mandible-icon" id="mandible-basis-structures">
                         <span></span>
                         <span></span>
                     </div>
-                </div>        
+                </div>
+
                 <div id="basis-structures-content" class="category-content unit-grid">
                     <div class="unit-card" id="card-storage">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="structure.storage.name">Vorratskammer</span>
+                            <span class="worker-name" data-i18n="structure.storage.name">
+                                Vorratskammer
+                            </span>
                         </div>
                         <span class="unit-desc" data-i18n="structure.storage.desc"></span>
                         <div class="cost-label">
                             <span id="storage-cost-display"></span>
                         </div>
-                        <button id="buy-storage-btn" class="btn-buy-clean">
-                            Bauen
-                        </button>
+                        <button id="buy-storage-btn" class="btn-buy-clean">Bauen</button>
                     </div>
+
                     <div class="unit-card" id="card-nursery">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="structure.nursery.name">Brutkammer</span>
+                            <span class="worker-name" data-i18n="structure.nursery.name">
+                                Brutkammer
+                            </span>
                         </div>
                         <span class="unit-desc" data-i18n="structure.nursery.desc"></span>
                         <div class="cost-label">
                             <span id="nursery-cost-display"></span>
                         </div>
-                        <button id="buy-nursery-btn" class="btn-buy-clean">
-                            Bauen
-                        </button>
+                        <button id="buy-nursery-btn" class="btn-buy-clean">Bauen</button>
                     </div>
+
                     <div class="unit-card locked" id="card-royal-chamber">
                         <div class="unit-header">
-                            <span class="worker-name" data-i18n="structure.royalChamber.name">Königinnenkammer</span>
+                            <span class="worker-name" data-i18n="structure.royalChamber.name">
+                                Königinnenkammer
+                            </span>
                         </div>
                         <span class="unit-desc" data-i18n="structure.royalChamber.desc"></span>
                         <div class="cost-label">
                             <span>???</span>
                         </div>
-                        <button id="buy-royal-chamber-btn" class="btn-buy-clean" data-i18n="button.locked" disabled>
+                        <button
+                            id="buy-royal-chamber-btn"
+                            class="btn-buy-clean"
+                            data-i18n="button.locked"
+                            disabled
+                        >
                             Gesperrt
                         </button>
                     </div>
@@ -287,37 +368,72 @@
             </section>
         </main>
 
+        <!-- =========================
+             Footer
+        ========================= -->
         <footer class="sticky-bottom">
             <div id="achievement-container" class="collapsed">
                 <div class="achievement-main-header">
-                    <span class="achievement-main-title" data-i18n="panel.achievements.title">Erfolge</span>
+                    <span class="achievement-main-title" data-i18n="panel.achievements.title">
+                        Erfolge
+                    </span>
                 </div>
                 <hr class="legend-separator">
                 <div id="achievement-list" class="achievement-content-padding">
-                    <p id="no-achievements-msg" data-i18n="panel.achievements.empty" style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px;">
+                    <p
+                        id="no-achievements-msg"
+                        data-i18n="panel.achievements.empty"
+                        style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px;"
+                    >
                         Noch keine Erfolge freigeschaltet.
                     </p>
                 </div>
             </div>
+
             <div id="legend-container" class="collapsed">
                 <div class="legend-main-header">
-                    <span class="legend-main-title" data-i18n="panel.legend.title">Legende</span>
+                    <span class="legend-main-title" data-i18n="panel.legend.title">
+                        Legende
+                    </span>
                 </div>
                 <hr class="legend-separator">
                 <div class="legend-grid">
-                    <div class="legend-grid-item"><span class="abbr-gold">F</span> = <span data-i18n="resource.food">Nahrung</span></div>
-                    <div class="legend-grid-item"><span class="abbr-gold">L</span> = <span data-i18n="resource.larvae">Larven</span></div>
-                    <div class="legend-grid-item"><span class="abbr-gold">A</span> = <span data-i18n="resource.ant">Ameise</span></div>
-                    <div class="legend-grid-item"><span class="abbr-gold">Q</span> = <span data-i18n="resource.queen">Königin</span></div>
-                    <div class="legend-grid-item"><span class="abbr-gold">S</span> = <span data-i18n="resource.soldier">Elite-Soldat</span></div>
+                    <div class="legend-grid-item">
+                        <span class="abbr-gold">F</span> =
+                        <span data-i18n="resource.food">Nahrung</span>
+                    </div>
+                    <div class="legend-grid-item">
+                        <span class="abbr-gold">L</span> =
+                        <span data-i18n="resource.larvae">Larven</span>
+                    </div>
+                    <div class="legend-grid-item">
+                        <span class="abbr-gold">A</span> =
+                        <span data-i18n="resource.ant">Ameise</span>
+                    </div>
+                    <div class="legend-grid-item">
+                        <span class="abbr-gold">Q</span> =
+                        <span data-i18n="resource.queen">Königin</span>
+                    </div>
+                    <div class="legend-grid-item">
+                        <span class="abbr-gold">S</span> =
+                        <span data-i18n="resource.soldier">Elite-Soldat</span>
+                    </div>
                 </div>
             </div>
+
             <div id="log-container" class="collapsed">
                 <div id="log-header">
-                    <button id="log-reset-btn" class="log-reset-btn" data-i18n="log.clear">Logbuch leeren</button>
-                    <span class="log-title-styled" data-i18n="panel.log.title">Logbuch</span>
-                    <button id="game-reset-btn" class="game-reset-btn" data-i18n="log.resetGame">Spielstand Löschen</button>
-                </div>        
+                    <button id="log-reset-btn" class="log-reset-btn" data-i18n="log.clear">
+                        Logbuch leeren
+                    </button>
+                    <span class="log-title-styled" data-i18n="panel.log.title">
+                        Logbuch
+                    </span>
+                    <button id="game-reset-btn" class="game-reset-btn" data-i18n="log.resetGame">
+                        Spielstand Löschen
+                    </button>
+                </div>
+
                 <div id="log-legend">
                     <div class="legend-item">
                         <span class="dot dot-status"></span>
@@ -340,21 +456,68 @@
                         <span class="legend-label" data-i18n="log.type.system">System</span>
                     </div>
                 </div>
+
                 <div id="log-content"></div>
             </div>
+
             <div id="status-bar">
+                <div class="footer-left-controls">
+                    <button
+                        id="options-toggle-btn"
+                        class="options-btn"
+                        type="button"
+                        data-i18n-title="options.button"
+                        data-i18n-aria-label="options.button"
+                        title="Optionen"
+                        aria-label="Optionen"
+                        aria-haspopup="dialog"
+                        aria-expanded="false"
+                        aria-controls="options-menu"
+                    >
+                        <span class="options-btn-icon" aria-hidden="true">⚙</span>
+                    </button>
+                </div>
+
                 <div class="status-display">
                     <span class="status-label" data-i18n="status.label">Status:</span>
                     <span id="status-text" data-i18n="status.init">Initialisierung...</span>
                 </div>
+
                 <div class="footer-btns">
-                    <button id="options-toggle-btn" class="options-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="options-menu">
-                        <span class="options-btn-icon" aria-hidden="true">⚙</span>
-                        <span class="options-btn-label" data-i18n="options.button">Optionen</span>
-                    </button>
-                    <button id="achievement-toggle-btn" class="legend-round-btn" title="Erfolge noch gesperrt" disabled style="display: none">🏆</button>
-                    <button id="legend-toggle-btn" class="legend-round-btn" data-i18n-title="ui.legend" title="Legende">?</button>
-                    <button id="log-toggle-btn" class="hamburger-btn" data-i18n-title="ui.log" title="Logbuch">
+                    <button
+                        id="research-toggle-btn"
+                        class="legend-round-btn research-toggle-btn"
+                        type="button"
+                        data-i18n-title="research.button"
+                        data-i18n-aria-label="research.button"
+                        title="Forschungszentrum"
+                        aria-label="Forschungszentrum"
+                        aria-expanded="false"
+                        aria-controls="research-panel"
+                        hidden
+                    >💡</button>
+
+                    <button
+                        id="achievement-toggle-btn"
+                        class="legend-round-btn"
+                        title="Erfolge noch gesperrt"
+                        disabled
+                        style="display: none"
+                    >🏆</button>
+
+                    <button
+                        id="legend-toggle-btn"
+                        class="legend-round-btn"
+                        data-i18n-title="ui.legend"
+                        title="Legende"
+                    >?</button>
+
+                    <button
+                        id="log-toggle-btn"
+                        class="hamburger-btn"
+                        data-i18n-title="ui.log"
+                        title="Logbuch"
+                    >
                         <div class="bar"></div>
                         <div class="bar"></div>
                         <div class="bar"></div>
@@ -363,45 +526,132 @@
             </div>
 
             <!-- =========================
-                 Options-Menü (Sprache, Musik, Lautstärke)
-                 Nur sichtbar, solange es geöffnet ist (hidden-Attribut).
+                 Options-Menü
             ========================= -->
-            <div id="options-menu" class="options-panel" role="dialog" aria-modal="false" aria-labelledby="options-title" hidden>
+            <div
+                id="options-menu"
+                class="options-panel"
+                role="dialog"
+                aria-modal="false"
+                aria-labelledby="options-title"
+                hidden
+            >
                 <div class="options-header">
-                    <h2 id="options-title" class="options-title" data-i18n="options.title">Optionen</h2>
-                    <button id="options-close-btn" class="options-close-btn" type="button" data-i18n-aria-label="options.close" data-i18n-title="options.close" aria-label="Schließen" title="Schließen">×</button>
+                    <h2 id="options-title" class="options-title" data-i18n="options.title">
+                        Optionen
+                    </h2>
+                    <button
+                        id="options-close-btn"
+                        class="options-close-btn"
+                        type="button"
+                        data-i18n-aria-label="options.close"
+                        data-i18n-title="options.close"
+                        aria-label="Schließen"
+                        title="Schließen"
+                    >×</button>
                 </div>
 
                 <section class="options-section" aria-labelledby="options-language-title">
-                    <h3 id="options-language-title" class="options-section-title" data-i18n="options.language">Sprache</h3>
-                    <!-- Die Sprachbuttons werden aus I18N.getLanguageOrder() erzeugt (alphabetisch nach Sprachname). -->
-                    <div id="options-language-list" class="options-language-list" role="group" aria-labelledby="options-language-title"></div>
+                    <h3
+                        id="options-language-title"
+                        class="options-section-title"
+                        data-i18n="options.language"
+                    >Sprache</h3>
+                    <div
+                        id="options-language-list"
+                        class="options-language-list"
+                        role="group"
+                        aria-labelledby="options-language-title"
+                    ></div>
                 </section>
 
                 <section class="options-section" aria-labelledby="options-music-title">
-                    <h3 id="options-music-title" class="options-section-title" data-i18n="options.music">Musik</h3>
+                    <h3
+                        id="options-music-title"
+                        class="options-section-title"
+                        data-i18n="options.music"
+                    >Musik</h3>
+
                     <div class="music-controls-row">
-                        <button id="music-play-pause" class="music-play-btn" type="button" data-state="stopped">
+                        <button
+                            id="music-play-pause"
+                            class="music-play-btn"
+                            type="button"
+                            data-state="stopped"
+                        >
                             <span id="music-play-icon" class="music-play-icon" aria-hidden="true">▶</span>
                             <span id="music-play-label">Play</span>
                         </button>
+
                         <label class="music-toggle-row" for="music-toggle">
                             <input type="checkbox" id="music-toggle" checked>
                             <span data-i18n="music.enabled">Musik aktiviert</span>
                         </label>
                     </div>
+
                     <p id="music-status" class="music-status" role="status" aria-live="polite"></p>
                 </section>
 
                 <section class="options-section" aria-labelledby="options-volume-title">
-                    <h3 id="options-volume-title" class="options-section-title" data-i18n="options.volume">Lautstärke</h3>
+                    <h3
+                        id="options-volume-title"
+                        class="options-section-title"
+                        data-i18n="options.volume"
+                    >Lautstärke</h3>
+
                     <div class="music-volume-row">
-                        <input type="range" id="music-volume" min="0" max="100" step="1" value="25" data-i18n-aria-label="options.volume" aria-label="Lautstärke">
+                        <input
+                            type="range"
+                            id="music-volume"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value="25"
+                            data-i18n-aria-label="options.volume"
+                            aria-label="Lautstärke"
+                        >
                         <output id="music-volume-value" for="music-volume">25 %</output>
                     </div>
                 </section>
             </div>
         </footer>
+
+        <!-- =========================
+             Forschungszentrum-Panel
+             Öffnet sich über die Glühlampe im Footer.
+        ========================= -->
+        <section
+            id="research-panel"
+            class="research-panel"
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="research-panel-title"
+            aria-hidden="true"
+            hidden
+        >
+            <div class="research-panel-header">
+                <h2 id="research-panel-title" data-i18n="research.button">
+                    💡 Forschungszentrum
+                </h2>
+
+                <button
+                    id="research-close-btn"
+                    class="research-close-btn"
+                    type="button"
+                    data-i18n-title="research.close"
+                    data-i18n-aria-label="research.close"
+                    title="Schließen"
+                    aria-label="Forschungszentrum schließen"
+                >×</button>
+            </div>
+
+            <iframe
+                id="research-frame"
+                class="research-frame"
+                src="research/research.html"
+                title="Forschungszentrum"
+            ></iframe>
+        </section>
 
     </div>
 </body>
