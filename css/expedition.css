@@ -84,3 +84,11 @@
     60% { content: '..'; }
     80%, 100% { content: '...'; }
 }
+
+/* Kundschafterin vorhanden: Button bleibt sichtbar, ist aber dauerhaft gesperrt */
+.btn-progress.scout-locked:disabled
+{
+    cursor: not-allowed;
+    filter: grayscale(0.6);
+    opacity: 0.7;
+}

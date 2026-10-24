@@ -6,6 +6,9 @@
 {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;   /* zentriert den Footer; ohne left/right ragte er um 20 px über den rechten Rand */
     width: 100%;
     max-width: 800px;
     background-color: var(--bg-pure-dark);
@@ -324,4 +327,42 @@
     height: 2px;
     background-color: var(--text-main);
     transition: background-color 0.2s;
+}
+
+/* =========================
+   Statusleiste: lange Meldungen umbrechen statt die Buttons zu verdrängen
+========================= */
+
+.status-display
+{
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#status-text
+{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+.footer-btns
+{
+    flex-shrink: 0;
+}
+
+@media (max-width: 420px)
+{
+    .footer-btns
+    {
+        gap: 8px;
+    }
+
+    #status-bar
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

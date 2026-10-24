@@ -1,0 +1,360 @@
+/* =========================
+   Options-Button und Options-Menü (Sprache, Musik, Lautstärke)
+   Farben und Rundungen entsprechen den bestehenden Karten/Footer-Elementen.
+========================= */
+
+/* ---------- Button in der Statusleiste ---------- */
+
+.options-btn
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    height: 28px;
+    padding: 0 10px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.options-btn-icon
+{
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.options-btn:hover,
+.options-btn[aria-expanded="true"]
+{
+    background: #333;
+    color: var(--gold-brown);
+    border-color: var(--gold-brown);
+}
+
+/* ---------- Sichtbarer Tastaturfokus ---------- */
+
+.options-btn:focus-visible,
+.options-close-btn:focus-visible,
+.options-language-btn:focus-visible,
+.music-play-btn:focus-visible,
+.music-toggle-row input:focus-visible,
+#music-volume:focus-visible
+{
+    outline: 2px solid var(--gold-brown-light);
+    outline-offset: 2px;
+}
+
+/* ---------- Menü ---------- */
+
+.options-panel[hidden]
+{
+    display: none !important;
+}
+
+.options-panel
+{
+    position: absolute;
+    right: 8px;
+    bottom: calc(100% + 10px);
+    z-index: 1000;
+
+    width: min(330px, calc(100vw - 16px));
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 14px 16px 16px;
+
+    color: var(--text-main);
+    background: var(--card-bg-elevated);
+    border: 1px solid var(--gold-brown-dark);
+    border-radius: 16px;
+    box-shadow: var(--shadow-heavy);
+
+    animation: options-panel-appear 0.18s ease-out;
+}
+
+.options-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.options-title
+{
+    margin: 0;
+    color: var(--gold-brown);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.options-close-btn
+{
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 50%;
+    font-family: inherit;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.options-close-btn:hover
+{
+    color: var(--gold-brown);
+    border-color: var(--gold-brown);
+}
+
+.options-section
+{
+    padding-top: 14px;
+}
+
+.options-section-title
+{
+    margin: 0 0 8px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ---------- Sprachauswahl (alphabetisch, 2 Spalten) ---------- */
+
+.options-language-list
+{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.options-language-btn
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    min-height: 38px;
+    padding: 6px 10px;
+    color: var(--text-main);
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.options-language-flag
+{
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.options-language-name
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.options-language-btn:hover
+{
+    border-color: var(--gold-brown);
+}
+
+.options-language-btn.active
+{
+    color: var(--gold-brown-light);
+    background: #29251e;
+    border-color: var(--gold-brown);
+    font-weight: 700;
+}
+
+/* ---------- Musik ---------- */
+
+.music-controls-row
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.music-play-btn
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 108px;
+    min-height: 38px;
+    padding: 0 14px;
+    color: #ffffff;
+    background-color: var(--gold-brown);
+    border: 1px solid var(--gold-brown-dark);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.music-play-btn:hover:not(:disabled)
+{
+    background-color: var(--gold-brown-light);
+}
+
+.music-play-btn:disabled
+{
+    color: #555;
+    background-color: #2a2a2a;
+    border-color: #222;
+    cursor: not-allowed;
+}
+
+.music-play-icon
+{
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+.music-toggle-row
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.music-toggle-row input
+{
+    width: 17px;
+    height: 17px;
+    accent-color: var(--gold-brown);
+    cursor: pointer;
+}
+
+.music-status
+{
+    min-height: 2.4em;
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+.music-status[data-phase="blocked"],
+.music-status[data-phase="error"]
+{
+    color: var(--warning-orange);
+}
+
+/* ---------- Lautstärke ---------- */
+
+.music-volume-row
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#music-volume
+{
+    flex: 1;
+    min-width: 0;
+    height: 24px;
+    accent-color: var(--gold-brown);
+    cursor: pointer;
+}
+
+#music-volume-value
+{
+    min-width: 3.4em;
+    color: var(--gold-brown-light);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+/* ---------- Animation / kleine Bildschirme ---------- */
+
+@keyframes options-panel-appear
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+    }
+
+    to
+    {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 420px)
+{
+    .options-panel
+    {
+        right: 6px;
+        padding: 12px;
+    }
+
+    .options-btn-label
+    {
+        max-width: 78px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .music-controls-row
+    {
+        gap: 4px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .options-panel
+    {
+        animation: none;
+    }
+
+    .options-btn,
+    .options-language-btn,
+    .music-play-btn
+    {
+        transition: none;
+    }
+}

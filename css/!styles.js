@@ -16,6 +16,7 @@ const STYLE_MODULES = [
     "css/cards.css",
     "css/achievements.css",
     "css/footer.css",
+    "css/musicPlayer.css",
     "css/effects.css",
     "css/responsive.css"
 ];

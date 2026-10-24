@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Idle Ant Empire</title>
+    <title data-i18n="landing.pageTitle">Idle Ant Empire</title>
 
     <meta
+        data-i18n-content="landing.metaDescription"
         name="description"
         content="Baue dein Ameisenreich auf, sammle Ressourcen und erschaffe ein mächtiges Ameisenimperium in Idle Ant Empire."
     >
@@ -14,12 +15,20 @@
     <link rel="icon" type="image/png" href="images/header.png">
     <link rel="stylesheet" href="css/landing.css">
 
+    <!-- Mehrsprachigkeit (normale Skripte, file://-tauglich) -->
+    <script src="js/i18n/i18n.js"></script>
+    <script src="js/i18n/de.js"></script>
+    <script src="js/i18n/en.js"></script>
+    <script src="js/i18n/es.js"></script>
+    <script src="js/i18n/fr.js"></script>
+    <script src="js/i18n/it.js"></script>
+    <script src="js/i18n/tr.js"></script>
     <script src="js/landing.js" defer></script>
 </head>
 
 <body>
     <header class="site-header">
-        <a class="brand" href="index.html" aria-label="Idle Ant Empire – Startseite">
+        <a class="brand" href="index.html" data-i18n-aria-label="landing.brandLabel" aria-label="Idle Ant Empire – Startseite">
             <img
                 src="images/header.png"
                 alt=""
@@ -28,7 +37,7 @@
             <span>Idle Ant Empire</span>
         </a>
 
-        <nav class="header-actions" aria-label="Hauptnavigation">
+        <nav class="header-actions" data-i18n-aria-label="landing.navLabel" aria-label="Hauptnavigation">
             <div class="language-selector">
                 <button
                     class="language-button"
@@ -37,66 +46,57 @@
                     aria-expanded="false"
                     aria-controls="language-menu"
                 >
-                    <span class="language-flag" aria-hidden="true">🇩🇪</span>
-                    <span>Deutsch</span>
+                    <span class="language-flag" id="language-button-flag" aria-hidden="true">🇩🇪</span>
+                    <span id="language-button-name">Deutsch</span>
                     <span class="dropdown-arrow" aria-hidden="true">▾</span>
                 </button>
 
                 <div
                     class="language-menu"
                     id="language-menu"
+                    data-i18n-aria-label="landing.languageMenuLabel"
                     aria-label="Sprache auswählen"
                     hidden
                 >
-                    <button
-                        class="language-option active"
-                        type="button"
-                        data-lang="de"
-                        aria-current="true"
-                    >
+                    <button class="language-option active" type="button" data-lang="de" lang="de" aria-current="true">
                         <span class="language-flag" aria-hidden="true">🇩🇪</span>
                         <span>Deutsch</span>
-                        <span class="language-status">Aktiv</span>
+                        <span class="language-status" data-i18n="landing.languageActive">Aktiv</span>
                     </button>
 
-                    <button
-                        class="language-option"
-                        type="button"
-                        data-lang="en"
-                        disabled
-                    >
+                    <button class="language-option" type="button" data-lang="en" lang="en">
                         <span class="language-flag" aria-hidden="true">🇬🇧</span>
                         <span>English</span>
-                        <span class="language-status">Coming Soon</span>
+                        <span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span>
                     </button>
 
-                    <button
-                        class="language-option"
-                        type="button"
-                        data-lang="fr"
-                        disabled
-                    >
-                        <span class="language-flag" aria-hidden="true">🇫🇷</span>
-                        <span>Français</span>
-                        <span class="language-status">Bientôt</span>
-                    </button>
-
-                    <button
-                        class="language-option"
-                        type="button"
-                        data-lang="es"
-                        disabled
-                    >
+                    <button class="language-option" type="button" data-lang="es" lang="es">
                         <span class="language-flag" aria-hidden="true">🇪🇸</span>
                         <span>Español</span>
-                        <span class="language-status">Próximamente</span>
+                        <span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span>
+                    </button>
+
+                    <button class="language-option" type="button" data-lang="fr" lang="fr">
+                        <span class="language-flag" aria-hidden="true">🇫🇷</span>
+                        <span>Français</span>
+                        <span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span>
+                    </button>
+
+                    <button class="language-option" type="button" data-lang="it" lang="it">
+                        <span class="language-flag" aria-hidden="true">🇮🇹</span>
+                        <span>Italiano</span>
+                        <span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span>
+                    </button>
+
+                    <button class="language-option" type="button" data-lang="tr" lang="tr">
+                        <span class="language-flag" aria-hidden="true">🇹🇷</span>
+                        <span>Türkçe</span>
+                        <span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span>
                     </button>
                 </div>
             </div>
 
-            <a class="header-play-button" href="game.html">
-                Spielen
-            </a>
+            <a class="header-play-button" href="game.html" data-i18n="landing.play">Spielen</a>
         </nav>
     </header>
 
@@ -109,25 +109,20 @@
                     class="hero-icon"
                 >
 
-                <p class="eyebrow">Deine Kolonie. Dein Imperium.</p>
+                <p class="eyebrow" data-i18n="landing.eyebrow">Deine Kolonie. Dein Imperium.</p>
 
                 <h1>
                     Idle Ant <span>Empire</span>
                 </h1>
 
-                <p class="hero-description">
-                    Beginne mit einer kleinen Kolonie, sammle Ressourcen
-                    und erschaffe ein mächtiges Ameisenimperium.
-                </p>
+                <p class="hero-description" data-i18n="landing.heroDescription">Beginne mit einer kleinen Kolonie, sammle Ressourcen und erschaffe ein mächtiges Ameisenimperium.</p>
 
                 <a class="play-button" href="game.html">
-                    <span>Kolonie aufbauen</span>
+                    <span data-i18n="landing.cta">Kolonie aufbauen</span>
                     <span class="button-arrow" aria-hidden="true">→</span>
                 </a>
 
-                <p class="hero-note">
-                    Dein Ameisenreich wartet auf dich.
-                </p>
+                <p class="hero-note" data-i18n="landing.note">Dein Ameisenreich wartet auf dich.</p>
             </div>
 
             <div class="hero-divider" aria-hidden="true">
@@ -136,12 +131,12 @@
                 <span></span>
             </div>
 
-            <div class="game-pillars" aria-label="Spielprinzip">
-                <span>Aufbauen</span>
+            <div class="game-pillars" data-i18n-aria-label="landing.pillarsLabel" aria-label="Spielprinzip">
+                <span data-i18n="landing.pillar.build">Aufbauen</span>
                 <span class="pillar-dot" aria-hidden="true">·</span>
-                <span>Verbessern</span>
+                <span data-i18n="landing.pillar.improve">Verbessern</span>
                 <span class="pillar-dot" aria-hidden="true">·</span>
-                <span>Entdecken</span>
+                <span data-i18n="landing.pillar.discover">Entdecken</span>
             </div>
         </section>
     </main>
