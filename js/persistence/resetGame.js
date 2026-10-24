@@ -1,10 +1,11 @@
 /* =========================
     Spielstand löschen
+    Die Spracheinstellung bleibt bewusst erhalten (eigener Speicherschlüssel).
 ========================= */
 
 function resetGame()
 {
-    if (!confirm("Möchtest du wirklich den gesamten Spielstand löschen? Dies kann nicht rückgängig gemacht werden!"))
+    if (!confirm(I18N.t("confirm.resetGame")))
     {
         return;
     }
@@ -13,5 +14,7 @@ function resetGame()
     GameState.ui.isResetting = true;
 
     localStorage.removeItem(CORE_CONFIG.SAVE_KEY);
+    localStorage.removeItem(SAVE_BACKUP_KEY_V1);
+    localStorage.removeItem(SAVE_BACKUP_KEY_CORRUPT);
     location.reload();
 }

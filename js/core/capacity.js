@@ -10,7 +10,7 @@ function getMaxFoodCapacity()
         ? CORE_CONFIG.FOOD_STORAGE_CAPACITY
         : CORE_CONFIG.FOOD_BASE_CAPACITY;
 
-    return baseCapacity * Math.pow(2, GameState.eliteUnits.storageGuardianCount || 0);
+    return Big(baseCapacity).mul(Big(2).pow(GameState.eliteUnits.storageGuardianCount || 0));
 }
 
 function getMaxLarvaeCapacity()
@@ -19,5 +19,5 @@ function getMaxLarvaeCapacity()
         ? CORE_CONFIG.LARVAE_NURSERY_CAPACITY
         : CORE_CONFIG.LARVAE_BASE_CAPACITY;
 
-    return baseCapacity * Math.pow(2, GameState.eliteUnits.grandNurseCount || 0);
+    return Big(baseCapacity).mul(Big(2).pow(GameState.eliteUnits.grandNurseCount || 0));
 }

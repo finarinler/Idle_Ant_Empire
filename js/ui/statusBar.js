@@ -1,38 +1,58 @@
 /* =========================
     Statusleiste
+    Die aktuelle Meldung wird als { key, params } gehalten und bei
+    einem Sprachwechsel neu übersetzt.
 ========================= */
 
-function setDefaultStatus()
-{
-    if (DOM.statusText)
-    {
-        DOM.statusText.textContent = GameState.ui.defaultStatus;
-    }
-}
-
-function updateStatus(message, type = "status", preventReset = false)
+function renderStatus()
 {
     if (!DOM.statusText)
     {
         return;
     }
 
-    DOM.statusText.textContent = message;
+    const status = GameState.ui.status;
+    DOM.statusText.textContent = I18N.t(status.key, status.params);
+}
+
+function setDefaultStatus()
+{
+    GameState.ui.status = { key: "status.default", params: null };
+    renderStatus();
+}
+
+/**
+ * @param {string} key           Übersetzungsschlüssel der Meldung
+ * @param {string} type          status | success | achievement | warning | system
+ * @param {boolean} preventReset true: Meldung bleibt stehen (kein Zurücksetzen auf den Standardtext)
+ * @param {Object} params        Platzhalter für die Übersetzung
+ */
+function updateStatus(key, type = "status", preventReset = false, params = null)
+{
+    if (!DOM.statusText)
+    {
+        return;
+    }
+
+    GameState.ui.status = { key, params };
+    renderStatus();
 
     // Gleiche Warnung direkt hintereinander (z. B. Hunger jede Sekunde)
     // nur einmal ins Logbuch schreiben, die Statuszeile bleibt aktuell.
-    const isRepeatedWarning = type === "warning" && message === GameState.ui.lastLogMessage;
+    const signature = key + "\u0000" + JSON.stringify(params);
+    const isRepeatedWarning = type === "warning" && signature === GameState.ui.lastLogMessage;
 
     if (!isRepeatedWarning)
     {
-        addLogEntry(message, type);
+        addLogEntry(key, type, params);
     }
 
-    GameState.ui.lastLogMessage = type === "warning" ? message : "";
+    GameState.ui.lastLogMessage = type === "warning" ? signature : "";
 
     if (GameState.ui.statusTimeout)
     {
         clearTimeout(GameState.ui.statusTimeout);
+        GameState.ui.statusTimeout = null;
     }
 
     if (!preventReset)

@@ -1,5 +1,10 @@
 /* =========================
     Expedition: Start & Fortschritt
+
+    Es gibt zwei erlaubte Startwege, die jeweils selbst alle Voraussetzungen prüfen:
+      - startExpedition():       manueller Start (nur ohne Kundschafterin)
+      - startScoutExpedition():  automatischer Start durch die Kundschafterin
+    Beide enden in beginExpedition(), das keine zweite Expedition starten lässt.
 ========================= */
 
 function getExpeditionDurationMs()
@@ -9,11 +14,32 @@ function getExpeditionDurationMs()
         : CORE_CONFIG.EXPEDITION_DURATION_MS;
 }
 
-function startExpedition()
+/* ---------- Zustand (alles wird aus dem GameState abgeleitet) ---------- */
+
+function hasScout()
 {
-    if (GameState.expedition.isActive)
+    return (GameState.eliteUnits.scoutCount || 0) > 0;
+}
+
+// Der Expeditionsbutton ist gesperrt, solange eine Expedition läuft
+// oder eine Kundschafterin existiert (dann laufen Expeditionen automatisch).
+function isExpeditionButtonLocked()
+{
+    return GameState.expedition.isActive || hasScout();
+}
+
+function canBeginExpedition()
+{
+    return !GameState.ui.isResetting && !GameState.expedition.isActive;
+}
+
+/* ---------- Start ---------- */
+
+function beginExpedition()
+{
+    if (!canBeginExpedition())
     {
-        return;
+        return false;
     }
 
     GameState.expedition.isActive = true;
@@ -21,7 +47,48 @@ function startExpedition()
         Date.now() - (GameState.expedition.progress / 100) * getExpeditionDurationMs();
 
     setExpeditionRunningUI();
-    updateStatus("Deine Kolonie ist auf Expedition", "status", true);
+    updateStatus("status.expeditionStarted", "status", true);
+
+    return true;
+}
+
+// Manueller Start. Mit Kundschafterin ist er dauerhaft gesperrt.
+function startExpedition()
+{
+    if (hasScout())
+    {
+        return false;
+    }
+
+    return beginExpedition();
+}
+
+// Automatischer Start durch die Kundschafterin (jeder Tick, siehe scout.js)
+function startScoutExpedition()
+{
+    if (!hasScout())
+    {
+        return false;
+    }
+
+    if (Date.now() < GameState.expedition.scoutRestUntil)
+    {
+        return false;
+    }
+
+    return beginExpedition();
+}
+
+// Klick auf den Expeditionsbutton
+function handleExpeditionButtonClick()
+{
+    if (hasScout())
+    {
+        updateStatus("status.expeditionLockedByScout", "warning");
+        return;
+    }
+
+    startExpedition();
 }
 
 // Wird jeden Tick aus gameTick() aufgerufen
@@ -34,7 +101,7 @@ function updateExpedition()
 
     const duration = getExpeditionDurationMs();
     const elapsed = Date.now() - GameState.expedition.startTime;
-    const progress = Math.min((elapsed / duration) * 100, 100);
+    const progress = Math.max(0, Math.min((elapsed / duration) * 100, 100));
 
     GameState.expedition.progress = progress;
     updateExpeditionProgressUI(progress);

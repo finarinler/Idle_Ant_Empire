@@ -1,6 +1,8 @@
 /* =========================
     Kundschafterin
-    Startet Expeditionen automatisch, braucht danach eine Erholungspause
+    Startet Expeditionen automatisch, braucht danach eine Erholungspause.
+    Sobald eine Kundschafterin existiert, ist der manuelle Expeditionsbutton
+    gesperrt (abgeleitet aus GameState.eliteUnits.scoutCount, siehe expeditionControl.js).
 ========================= */
 
 const SCOUT_CONFIG = {
@@ -32,7 +34,12 @@ function buyScout()
 {
     if (!GameState.achievements.expeditionCommander)
     {
-        updateStatus("Schalte zuerst den Erfolg Expeditionskommando frei.", "warning");
+        updateStatus(
+            "status.scout.needAchievement",
+            "warning",
+            false,
+            { achievement: { key: "achievement.expeditionCommander.title" } }
+        );
         return;
     }
 
@@ -40,22 +47,23 @@ function buyScout()
 
     if (count >= SCOUT_CONFIG.maxCount)
     {
-        updateStatus("Du hast bereits eine Kundschafterin ausgebildet.", "warning");
+        updateStatus("status.scout.alreadyTrained", "warning");
         return;
     }
 
-    if (!canAffordCost(SCOUT_CONFIG.cost))
+    if (!canAffordCost(SCOUT_CONFIG.cost) || !payCost(SCOUT_CONFIG.cost))
     {
-        updateStatus("Ressourcen für die Kundschafterin reichen nicht aus.", "warning");
+        updateStatus("status.scout.cannotAfford", "warning");
         return;
     }
 
-    payCost(SCOUT_CONFIG.cost);
     GameState.eliteUnits.scoutCount = count + 1;
     GameState.expedition.scoutRestUntil = 0;
 
-    updateStatus("Kundschafterin ausgebildet!", "success");
+    updateStatus("status.scout.trained", "success");
 
+    // Button sofort sperren (leitet sich aus dem Spielzustand ab)
+    updateExpeditionButtonState();
     updateResources();
     saveGame();
 }
@@ -64,22 +72,9 @@ function buyScout()
 
 function updateScoutAutomation()
 {
-    if ((GameState.eliteUnits.scoutCount || 0) <= 0)
-    {
-        return;
-    }
-
-    if (GameState.expedition.isActive)
-    {
-        return;
-    }
-
-    if (Date.now() < GameState.expedition.scoutRestUntil)
-    {
-        return;
-    }
-
-    startExpedition();
+    // Alle Bedingungen (Scout vorhanden, keine laufende Expedition, Erholung vorbei)
+    // werden in startScoutExpedition() geprüft.
+    startScoutExpedition();
 }
 
 /* ---------- UI ---------- */
@@ -93,16 +88,12 @@ function updateScoutUI()
         SCOUT_DOM.count.textContent = formatGameNumber(count);
     }
 
-    if (SCOUT_DOM.costDisplay)
-    {
-        SCOUT_DOM.costDisplay.textContent = formatCostLine(SCOUT_CONFIG.cost);
-    }
+    renderCostLine(SCOUT_DOM.costDisplay, SCOUT_CONFIG.cost);
 
     setTrainButtonState(SCOUT_DOM.buyButton, {
         unlocked: Boolean(GameState.achievements.expeditionCommander),
         maxReached: count >= SCOUT_CONFIG.maxCount,
-        canAfford: canAffordCost(SCOUT_CONFIG.cost),
-        maxText: "Bereits ausgebildet"
+        canAfford: canAffordCost(SCOUT_CONFIG.cost)
     });
 }
 

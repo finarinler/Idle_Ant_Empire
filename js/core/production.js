@@ -4,6 +4,8 @@
 
 function updateProduction(showWarnings = true)
 {
+    const resources = GameState.resources;
+
     const antFoodProd = getAntFoodProduction();
     const antFoodCons = getAntFoodConsumption();
 
@@ -13,40 +15,40 @@ function updateProduction(showWarnings = true)
     const storageGuardianCons = getStorageGuardianFoodConsumption();
     const grandNurseCons = getGrandNurseFoodConsumption();
 
-    const essentialCons = antFoodCons + storageGuardianCons + grandNurseCons;
-    const totalCons = essentialCons + queenFoodCons;
+    const essentialCons = antFoodCons.add(storageGuardianCons).add(grandNurseCons);
+    const totalCons = essentialCons.add(queenFoodCons);
 
-    GameState.resources.food += antFoodProd;
+    resources.food = resources.food.add(antFoodProd);
 
-    if (GameState.resources.food >= totalCons)
+    if (resources.food.gte(totalCons))
     {
-        GameState.resources.food -= totalCons;
-        GameState.resources.larvae += queenLarvaeProd;
+        resources.food = resources.food.sub(totalCons);
+        resources.larvae = resources.larvae.add(queenLarvaeProd);
 
         // Mangel vorbei: nächste Warnung darf wieder ins Logbuch
         GameState.ui.lastLogMessage = "";
     }
-    else if (GameState.resources.food >= essentialCons)
+    else if (resources.food.gte(essentialCons))
     {
-        GameState.resources.food -= essentialCons;
+        resources.food = resources.food.sub(essentialCons);
 
-        if (showWarnings && GameState.resources.queens > 0)
+        if (showWarnings && resources.queens.isPositive())
         {
-            updateStatus("Produktion gestoppt: Zu wenig Nahrung für die Königinnen!", "warning");
+            updateStatus("status.production.queensStarved", "warning");
         }
     }
     else
     {
-        GameState.resources.food = 0;
+        resources.food = BigNum.ZERO;
 
-        if (showWarnings && totalCons > 0)
+        if (showWarnings && totalCons.isPositive())
         {
-            updateStatus("Kritischer Nahrungsmangel: Die Kolonie hungert!", "warning");
+            updateStatus("status.production.starving", "warning");
         }
     }
 
     updateBroodExpertProduction();
 
-    GameState.resources.food = Math.min(GameState.resources.food, getMaxFoodCapacity());
-    GameState.resources.larvae = Math.min(GameState.resources.larvae, getMaxLarvaeCapacity());
+    resources.food = BigNum.min(resources.food, getMaxFoodCapacity());
+    resources.larvae = BigNum.min(resources.larvae, getMaxLarvaeCapacity());
 }

@@ -1,5 +1,7 @@
 /* =========================
     Logbuch
+    Einträge werden als Daten ({ Zeit, Typ, Schlüssel, Parameter }) gehalten und beim
+    Sprachwechsel neu gezeichnet, damit auch ältere Einträge die gewählte Sprache zeigen.
 ========================= */
 
 const LOG_STYLES = {
@@ -10,41 +12,83 @@ const LOG_STYLES = {
     system:      { dot: "dot-system",      text: "log-system" }
 };
 
-function addLogEntry(message, type = "status")
+// Neueste Einträge zuerst
+const logEntries = [];
+
+function buildLogEntryElement(entry)
+{
+    const style = LOG_STYLES[entry.type] || LOG_STYLES.status;
+
+    const time = entry.timestamp.toLocaleTimeString(I18N.getLanguageInfo().localeTag, {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    const element = document.createElement("div");
+    element.classList.add("log-entry");
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "log-time";
+    timeSpan.textContent = `[${time}]`;
+
+    const dot = document.createElement("span");
+    dot.className = `dot ${style.dot}`;
+
+    const text = document.createElement("span");
+    text.className = `log-text ${style.text}`;
+    text.textContent = I18N.t(entry.key, entry.params);
+
+    element.append(timeSpan, dot, text);
+
+    return element;
+}
+
+/**
+ * @param {string} key     Übersetzungsschlüssel der Meldung
+ * @param {string} type    status | success | achievement | warning | system
+ * @param {Object} params  Platzhalter für die Übersetzung
+ */
+function addLogEntry(key, type = "status", params = null)
 {
     if (!DOM.logContent)
     {
         return;
     }
 
-    const style = LOG_STYLES[type] || LOG_STYLES.status;
+    const entry = { timestamp: new Date(), type, key, params };
 
-    const time = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    });
+    logEntries.unshift(entry);
+    DOM.logContent.prepend(buildLogEntryElement(entry));
 
-    const entry = document.createElement("div");
-    entry.classList.add("log-entry");
-    entry.innerHTML =
-        `<span class="log-time">[${time}]</span>` +
-        `<span class="dot ${style.dot}"></span>` +
-        `<span class="log-text ${style.text}">${message}</span>`;
-
-    DOM.logContent.prepend(entry);
-
-    if (DOM.logContent.children.length > CORE_CONFIG.MAX_LOG_ENTRIES)
+    while (logEntries.length > CORE_CONFIG.MAX_LOG_ENTRIES)
     {
-        DOM.logContent.removeChild(DOM.logContent.lastChild);
+        logEntries.pop();
+
+        if (DOM.logContent.lastChild)
+        {
+            DOM.logContent.removeChild(DOM.logContent.lastChild);
+        }
     }
+}
+
+// Zeichnet das gesamte Logbuch neu (z. B. nach einem Sprachwechsel)
+function renderLog()
+{
+    if (!DOM.logContent)
+    {
+        return;
+    }
+
+    DOM.logContent.replaceChildren(...logEntries.map(buildLogEntryElement));
 }
 
 function clearLog()
 {
     if (DOM.logContent)
     {
-        DOM.logContent.innerHTML = "";
-        updateStatus("Logbuch geleert.", "system");
+        logEntries.length = 0;
+        DOM.logContent.replaceChildren();
+        updateStatus("status.logCleared", "system");
     }
 }

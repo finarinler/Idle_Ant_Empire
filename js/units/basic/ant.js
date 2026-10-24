@@ -6,6 +6,7 @@
 const ANT_DOM = {
     total: null,
     bought: null,
+    desc: null,
     costDisplay: null,
     buyButton: null
 };
@@ -14,6 +15,7 @@ function initAntDOM()
 {
     ANT_DOM.total = getEl("ant-total");
     ANT_DOM.bought = getEl("ant-bought");
+    ANT_DOM.desc = getEl("ant-desc");
     ANT_DOM.costDisplay = getEl("ant-cost-display");
     ANT_DOM.buyButton = getEl("buy-ant-btn");
 
@@ -23,77 +25,59 @@ function initAntDOM()
     }
 }
 
-/* ---------- Futterkosten ---------- */
+/* ---------- Futterkosten ----------
+   Der Preis der nächsten Ameise ist
+       ANT_BASE_COST_FOOD * Produkt aller Faktoren factor(i) für i = 2 .. (gekaufte Ameisen + 1)
+   Der Faktor hängt von der Ameisennummer i ab (Abschnitte unten). */
 
-function getAntCostScaling(antNumber)
-{
-    if (antNumber <= 10)    return 1.125;
-    if (antNumber <= 20)    return 1.1125;
-    if (antNumber <= 40)    return 1.10;
-    if (antNumber <= 50)    return 1.075;
-    if (antNumber <= 70)    return 1.05;
-    if (antNumber <= 80)    return 1.025;
-    if (antNumber <= 100)   return 1.0125;
-    if (antNumber <= 250)   return 1.01;
-    if (antNumber <= 300)   return 1.0075;
-    if (antNumber <= 500)   return 1.005;
-    if (antNumber <= 1000)  return 1.0025;
-    if (antNumber <= 2500)  return 1.00125;
-    if (antNumber <= 5000)  return 1.001;
-    if (antNumber <= 7500)  return 1.00075;
-    if (antNumber <= 10000) return 1.0001;
-
-    return 1.00005;
-}
+const ANT_FOOD_COST_SEGMENTS = [
+    { from: 1,     to: 10,       factor: 1.125 },
+    { from: 11,    to: 20,       factor: 1.1125 },
+    { from: 21,    to: 40,       factor: 1.10 },
+    { from: 41,    to: 50,       factor: 1.075 },
+    { from: 51,    to: 70,       factor: 1.05 },
+    { from: 71,    to: 80,       factor: 1.025 },
+    { from: 81,    to: 100,      factor: 1.0125 },
+    { from: 101,   to: 250,      factor: 1.01 },
+    { from: 251,   to: 300,      factor: 1.0075 },
+    { from: 301,   to: 500,      factor: 1.005 },
+    { from: 501,   to: 1000,     factor: 1.0025 },
+    { from: 1001,  to: 2500,     factor: 1.00125 },
+    { from: 2501,  to: 5000,     factor: 1.001 },
+    { from: 5001,  to: 7500,     factor: 1.00075 },
+    { from: 7501,  to: 10000,    factor: 1.0001 },
+    { from: 10001, to: Infinity, factor: 1.00005 }
+];
 
 function getCurrentAntFoodCost()
 {
-    let cost = CORE_CONFIG.ANT_BASE_COST_FOOD;
+    const nextAntNumber = GameState.resources.ants.add(1);
 
-    for (
-        let antNumber = 2;
-        antNumber <= GameState.resources.ants + 1;
-        antNumber++
-    )
-    {
-        cost *= getAntCostScaling(antNumber);
-    }
-
-    return cost;
+    return Big(CORE_CONFIG.ANT_BASE_COST_FOOD)
+        .mul(getSegmentedProduct(ANT_FOOD_COST_SEGMENTS, 2, nextAntNumber));
 }
 
-/* ---------- Larvenkosten ---------- */
+/* ---------- Larvenkosten ----------
+   Ameise 1-100: 1 Larve pro 10 Ameisen (1, 2, ... 10).
+   Ab Ameise 101: 10 * Produkt der Faktoren (Abschnitte unten). */
+
+const ANT_LARVAE_COST_SEGMENTS = [
+    { from: 101,  to: 200,      factor: 1.001 },
+    { from: 201,  to: 500,      factor: 1.0005 },
+    { from: 501,  to: 1000,     factor: 1.00025 },
+    { from: 1001, to: Infinity, factor: 1.0001 }
+];
 
 function getCurrentAntLarvaeCost()
 {
-    const antNumber = GameState.resources.ants + 1;
+    const antNumber = GameState.resources.ants.add(1);
 
-    if (antNumber <= 10)  return 1;
-    if (antNumber <= 20)  return 2;
-    if (antNumber <= 30)  return 3;
-    if (antNumber <= 40)  return 4;
-    if (antNumber <= 50)  return 5;
-    if (antNumber <= 60)  return 6;
-    if (antNumber <= 70)  return 7;
-    if (antNumber <= 80)  return 8;
-    if (antNumber <= 90)  return 9;
-    if (antNumber <= 100) return 10;
-
-    let cost = 10;
-
-    for (let i = 101; i <= antNumber; i++)
+    if (antNumber.lte(100))
     {
-        if (i <= 200)
-            cost *= 1.001;
-        else if (i <= 500)
-            cost *= 1.0005;
-        else if (i <= 1000)
-            cost *= 1.00025;
-        else
-            cost *= 1.0001;
+        return Big(Math.ceil(antNumber.toNumber() / 10));
     }
 
-    return cost;
+    return Big(10).mul(getSegmentedProduct(ANT_LARVAE_COST_SEGMENTS, 101, antNumber));
 }
 
 /* ---------- Kauf ---------- */
@@ -102,36 +86,36 @@ function buyAnt()
 {
     const foodCost = getCurrentAntFoodCost();
     const larvaeCost = getCurrentAntLarvaeCost();
+    const resources = GameState.resources;
 
-    if (
-        GameState.resources.larvae >= larvaeCost
-        && GameState.resources.food >= foodCost
-    )
+    if (resources.larvae.lt(larvaeCost) || resources.food.lt(foodCost))
     {
-        GameState.resources.larvae -= larvaeCost;
-        GameState.resources.food -= foodCost;
-        GameState.resources.ants += 1;
-
-        updateResources();
-        saveGame();
+        return;
     }
+
+    resources.larvae = resources.larvae.sub(larvaeCost);
+    resources.food = resources.food.sub(foodCost);
+    resources.ants = resources.ants.add(1);
+
+    updateResources();
+    saveGame();
 }
 
 /* ---------- Produktion / Verbrauch (pro Sekunde) ---------- */
 
 function getAntFoodProduction()
 {
-    return getTotalAnts() * CORE_CONFIG.ANT_FOOD_PRODUCTION;
+    return getTotalAnts().mul(CORE_CONFIG.ANT_FOOD_PRODUCTION);
 }
 
 function getAntFoodConsumption()
 {
     if (GameState.achievements.goldenAge)
     {
-        return 0;
+        return BigNum.ZERO;
     }
 
-    return getTotalAnts() * CORE_CONFIG.ANT_FOOD_CONSUMPTION;
+    return getTotalAnts().mul(CORE_CONFIG.ANT_FOOD_CONSUMPTION);
 }
 
 /* ---------- UI ---------- */
@@ -152,17 +136,18 @@ function updateAntUI()
         ANT_DOM.bought.textContent = formatGameNumber(resources.ants);
     }
 
-    if (ANT_DOM.costDisplay)
-    {
-        ANT_DOM.costDisplay.textContent =
-            `${formatGameNumber(larvaeCost)} L, ${formatGameNumber(foodCost)} F`;
-    }
+    I18N.setText(ANT_DOM.desc, "unit.ant.desc", {
+        production: formatDecimal(CORE_CONFIG.ANT_FOOD_PRODUCTION, 0),
+        consumption: formatDecimal(CORE_CONFIG.ANT_FOOD_CONSUMPTION, 2)
+    });
+
+    renderCostLine(ANT_DOM.costDisplay, { larvae: larvaeCost, food: foodCost }, ["larvae", "food"]);
 
     if (ANT_DOM.buyButton)
     {
         ANT_DOM.buyButton.disabled =
-            resources.larvae < larvaeCost
-            || resources.food < foodCost;
+            resources.larvae.lt(larvaeCost)
+            || resources.food.lt(foodCost);
     }
 }
 

@@ -24,6 +24,52 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    /* Anzeige der gewählten Sprache (Button, aktive Option) */
+
+    const buttonFlag = document.getElementById("language-button-flag");
+    const buttonName = document.getElementById("language-button-name");
+    const languageOptions = languageMenu.querySelectorAll(".language-option[data-lang]");
+
+    function updateLanguageDisplay() {
+        const current = I18N.getLanguage();
+        const info = I18N.getLanguageInfo(current);
+
+        if (buttonFlag) {
+            buttonFlag.textContent = info.flag;
+        }
+
+        if (buttonName) {
+            buttonName.textContent = info.name;
+        }
+
+        languageOptions.forEach(option => {
+            const isActive = option.dataset.lang === current;
+            const status = option.querySelector(".language-status");
+
+            option.classList.toggle("active", isActive);
+
+            if (isActive) {
+                option.setAttribute("aria-current", "true");
+            } else {
+                option.removeAttribute("aria-current");
+            }
+
+            if (status) {
+                status.hidden = !isActive;
+            }
+        });
+    }
+
+    languageOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            I18N.setLanguage(option.dataset.lang);
+            closeLanguageMenu();
+        });
+    });
+
+    I18N.onChange(updateLanguageDisplay);
+    updateLanguageDisplay();
+
     function openLanguageMenu() {
         languageMenu.hidden = false;
         languageButton.setAttribute("aria-expanded", "true");

@@ -1,8 +1,15 @@
 /* =========================
     Erfolge: Karte in der Erfolgsliste zeichnen
+    Die Karte wird per DOM-API (textContent) aufgebaut und bei Sprachwechsel neu gezeichnet.
 ========================= */
 
-function renderAchievementCard(id, title, desc, rewardText, isUnlocked = false, progressPercent = 0, progressText = "")
+/**
+ * @param {string} id               Erfolg-ID
+ * @param {Object} content          { title, desc, rewardText, progressText } (bereits übersetzt)
+ * @param {boolean} isUnlocked
+ * @param {number} progressPercent
+ */
+function renderAchievementCard(id, content, isUnlocked = false, progressPercent = 0)
 {
     if (!DOM.achievementList)
     {
@@ -36,19 +43,34 @@ function renderAchievementCard(id, title, desc, rewardText, isUnlocked = false, 
     }
 
     // Inhalt nur neu zeichnen, wenn er sich geändert hat (die Prüfung läuft jeden Tick)
-    const signature = [title, desc, rewardText, isUnlocked, progressText].join("|");
+    const progressText = isUnlocked ? I18N.t("achievement.reached") : content.progressText;
+    const signature = [content.title, content.desc, content.rewardText, isUnlocked, progressText].join("|");
 
     if (card.dataset.signature !== signature)
     {
         card.dataset.signature = signature;
-        card.innerHTML = `
-            <div class="ach-title">
-                <span>${title}</span>
-                <span class="ach-progress-text">${isUnlocked ? "Erreicht" : progressText}</span>
-            </div>
-            <p class="ach-desc">${desc}</p>
-            <p class="ach-reward">${rewardText}</p>
-        `;
+
+        const titleRow = document.createElement("div");
+        titleRow.className = "ach-title";
+
+        const title = document.createElement("span");
+        title.textContent = content.title;
+
+        const progress = document.createElement("span");
+        progress.className = "ach-progress-text";
+        progress.textContent = progressText;
+
+        titleRow.append(title, progress);
+
+        const desc = document.createElement("p");
+        desc.className = "ach-desc";
+        desc.textContent = content.desc;
+
+        const reward = document.createElement("p");
+        reward.className = "ach-reward";
+        reward.textContent = content.rewardText;
+
+        card.replaceChildren(titleRow, desc, reward);
     }
 }
 

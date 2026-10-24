@@ -15,8 +15,11 @@ function injectVersion()
 function initGame()
 {
     initDOM();
+    I18N.applyStatic();
     injectVersion();
     setDefaultStatus();
+    initLanguageUI();
+    initOptionsMenu();
 
     // Gespeicherten Spielstand laden
     loadGame();
@@ -29,6 +32,7 @@ function initGame()
 
     attachEventListeners();
     updateResources();
+    refreshAchievementButtonTitle();
 
     saveGame();
     startGameLoop();

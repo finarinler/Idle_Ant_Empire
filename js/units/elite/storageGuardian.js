@@ -12,6 +12,7 @@ const STORAGE_GUARDIAN_CONFIG = {
 
 const STORAGE_GUARDIAN_DOM = {
     count: null,
+    desc: null,
     costDisplay: null,
     buyButton: null
 };
@@ -19,6 +20,7 @@ const STORAGE_GUARDIAN_DOM = {
 function initStorageGuardianDOM()
 {
     STORAGE_GUARDIAN_DOM.count = getEl("guardian-count");
+    STORAGE_GUARDIAN_DOM.desc = getEl("guardian-desc");
     STORAGE_GUARDIAN_DOM.costDisplay = getEl("guardian-cost-display");
     STORAGE_GUARDIAN_DOM.buyButton = getEl("buy-guardian-btn");
 
@@ -47,13 +49,13 @@ function buyStorageGuardian()
 
     if (!hasEliteRequirements())
     {
-        updateStatus(ELITE_REQUIREMENT_MESSAGE, "warning");
+        updateStatus("status.elite.requirements", "warning");
         return;
     }
 
     if (count >= STORAGE_GUARDIAN_CONFIG.maxCount)
     {
-        updateStatus("Du hast bereits die maximale Anzahl dieser Elite-Einheit ausgebildet.", "warning");
+        updateStatus("status.elite.maxReached", "warning");
         return;
     }
 
@@ -61,14 +63,14 @@ function buyStorageGuardian()
 
     if (!canAffordCost(cost))
     {
-        updateStatus("Ressourcen für diese Elite-Einheit reichen nicht aus.", "warning");
+        updateStatus("status.elite.cannotAfford", "warning");
         return;
     }
 
     payCost(cost);
     GameState.eliteUnits.storageGuardianCount = count + 1;
 
-    updateStatus("Vorrats-Hüterin ausgebildet! Deine Nahrungslagerkapazität wird erhöht.", "success");
+    updateStatus("status.storageGuardian.trained", "success");
 
     updateResources();
     saveGame();
@@ -78,7 +80,7 @@ function buyStorageGuardian()
 
 function getStorageGuardianFoodConsumption()
 {
-    return (GameState.eliteUnits.storageGuardianCount || 0) * STORAGE_GUARDIAN_CONFIG.upkeep;
+    return Big(GameState.eliteUnits.storageGuardianCount || 0).mul(STORAGE_GUARDIAN_CONFIG.upkeep);
 }
 
 /* ---------- UI ---------- */
@@ -93,10 +95,11 @@ function updateStorageGuardianUI()
         STORAGE_GUARDIAN_DOM.count.textContent = formatGameNumber(count);
     }
 
-    if (STORAGE_GUARDIAN_DOM.costDisplay)
-    {
-        STORAGE_GUARDIAN_DOM.costDisplay.textContent = formatCostLine(cost);
-    }
+    I18N.setText(STORAGE_GUARDIAN_DOM.desc, "unit.storageGuardian.desc", {
+        upkeep: formatDecimal(STORAGE_GUARDIAN_CONFIG.upkeep, 2)
+    });
+
+    renderCostLine(STORAGE_GUARDIAN_DOM.costDisplay, cost);
 
     setTrainButtonState(STORAGE_GUARDIAN_DOM.buyButton, {
         unlocked: hasEliteRequirements(),

@@ -5,13 +5,20 @@
 
 function completeExpedition()
 {
+    // Nur eine tatsächlich laufende Expedition kann abgeschlossen werden.
+    // Verhindert doppelte Belohnungen bei mehrfachen / direkten Aufrufen.
+    if (!GameState.expedition.isActive)
+    {
+        return false;
+    }
+
     GameState.expedition.isActive = false;
     GameState.expedition.progress = 0;
     GameState.expedition.startTime = 0;
     GameState.stats.expeditionsCount++;
 
     // Kundschafterin braucht nach jeder Expedition Erholung
-    if (GameState.eliteUnits.scoutCount > 0)
+    if (hasScout())
     {
         GameState.expedition.scoutRestUntil = Date.now() + CORE_CONFIG.SCOUT_REST_MS;
     }
@@ -22,6 +29,8 @@ function completeExpedition()
     setExpeditionIdleUI();
     updateResources();   // Prüft auch die Erfolge
     saveGame();
+
+    return true;
 }
 
 /**
@@ -44,7 +53,7 @@ function rollFoodReward()
 
         triggerExpeditionFailureGlow();
 
-        updateStatus("Expedition erfolglos: Nichts gefunden.", "warning");
+        updateStatus("status.expedition.failed", "warning");
         return false;
     }
 
@@ -68,14 +77,16 @@ function rollFoodReward()
             amount = Math.ceil(amount * 1.5);
         }
 
-        GameState.resources.food += amount;
+        GameState.resources.food = GameState.resources.food.add(amount);
 
         // Goldener Glow bei kritischem Erfolg
         triggerExpeditionGlow();
 
         updateStatus(
-            `Expedition sehr erfolgreich: ${amount} Nahrung gefunden.`,
-            "success"
+            "status.expedition.criticalSuccess",
+            "success",
+            false,
+            { amount }
         );
 
         return true;
@@ -83,11 +94,13 @@ function rollFoodReward()
 
     // Normaler Erfolg
     const amount = getNormalReward();
-    GameState.resources.food += amount;
+    GameState.resources.food = GameState.resources.food.add(amount);
 
     updateStatus(
-        `Expedition erfolgreich: ${amount} Nahrung gefunden.`,
-        "success"
+        "status.expedition.success",
+        "success",
+        false,
+        { amount }
     );
 
     return false;
@@ -101,9 +114,7 @@ function rollStrayAnt(criticalSuccess)
     if (criticalSuccess && GameState.achievements.criticalMastery)
     {
         // Garantierter Ameisenfund bei kritischem Erfolg
-        addFoundAnt(
-            "Kritischer Erfolg! Eine Ameise hat sich deiner Kolonie angeschlossen!"
-        );
+        addFoundAnt("status.ant.foundCritical");
 
         return;
     }
@@ -114,9 +125,7 @@ function rollStrayAnt(criticalSuccess)
 
         if (Math.random() * 100 < antChance)
         {
-            addFoundAnt(
-                "Eine verirrte Ameise hat sich deiner Kolonie angeschlossen!"
-            );
+            addFoundAnt("status.ant.foundStray");
         }
     }
 }
@@ -124,10 +133,10 @@ function rollStrayAnt(criticalSuccess)
 /**
  * Fügt eine gefundene Ameise hinzu.
  */
-function addFoundAnt(message)
+function addFoundAnt(messageKey)
 {
-    GameState.resources.antsFound++;
+    GameState.resources.antsFound = GameState.resources.antsFound.add(1);
     GameState.stats.expeditionAntsFound++;
 
-    updateStatus(message, "success");
+    updateStatus(messageKey, "success");
 }

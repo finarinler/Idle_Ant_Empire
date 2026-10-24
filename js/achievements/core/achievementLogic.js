@@ -2,10 +2,25 @@
     Erfolge: Prüfen, freischalten, wiederherstellen
 ========================= */
 
+function getAchievementTitleKey(id)
+{
+    return `achievement.${id}.title`;
+}
+
 // Jeden Tick aus updateResources() aufgerufen
 function checkAchievements()
 {
     ACHIEVEMENTS.forEach(checkAchievement);
+}
+
+function getAchievementProgressText(definition, progress, current, goal)
+{
+    if (progress.textKey)
+    {
+        return I18N.t(progress.textKey, progress.textParams);
+    }
+
+    return `${formatGameNumber(current)}/${formatGameNumber(goal)}`;
 }
 
 function checkAchievement(definition)
@@ -16,30 +31,46 @@ function checkAchievement(definition)
     }
 
     const progress = definition.getProgress();
+    const current = Big(progress.current);
+    const goal = Big(progress.goal);
 
-    if (progress.current >= progress.goal)
+    if (current.gte(goal))
     {
         unlockAchievement(definition);
         return;
     }
 
+    const percent = goal.isPositive()
+        ? Math.min(current.div(goal).mul(100).toNumber(), 100)
+        : 0;
+
     renderAchievementCard(
         definition.id,
-        definition.title,
-        definition.locked.description,
-        ACHIEVEMENT_HIDDEN_REWARD,
+        {
+            title: I18N.t(getAchievementTitleKey(definition.id)),
+            desc: I18N.t(`achievement.${definition.id}.locked`, { goal }),
+            rewardText: I18N.t(ACHIEVEMENT_HIDDEN_REWARD_KEY),
+            progressText: getAchievementProgressText(definition, progress, current, goal)
+        },
         false,
-        Math.min((progress.current / progress.goal) * 100, 100),
-        progress.text || `${Math.floor(progress.current)}/${progress.goal}`
+        percent
     );
 }
 
 function unlockAchievement(definition)
 {
+    // Doppelte Freischaltung ausschließen
+    if (GameState.achievements[definition.id])
+    {
+        return;
+    }
+
     GameState.achievements[definition.id] = true;
 
-    addLogEntry(`Erfolg freigeschaltet: ${definition.title}`, "achievement");
-    updateStatus(`Erfolg: ${definition.title}`, "success");
+    const params = { title: { key: getAchievementTitleKey(definition.id) } };
+
+    addLogEntry("log.achievementUnlocked", "achievement", params);
+    updateStatus("status.achievementUnlocked", "success", false, params);
     triggerTrophy();
     triggerFlash();
     triggerConfetti(1000);
@@ -54,13 +85,30 @@ function unlockAchievement(definition)
 
 function renderUnlockedAchievement(definition)
 {
+    const goal = Big(definition.getProgress().goal);
+
     renderAchievementCard(
         definition.id,
-        definition.title,
-        definition.unlocked.description,
-        definition.unlocked.reward,
+        {
+            title: I18N.t(getAchievementTitleKey(definition.id)),
+            desc: I18N.t(`achievement.${definition.id}.unlocked`, { goal }),
+            rewardText: I18N.t(`achievement.${definition.id}.reward`),
+            progressText: ""
+        },
         true
     );
+}
+
+// Zeichnet alle freigeschalteten Karten neu (ohne onUnlock), z. B. nach einem Sprachwechsel
+function renderUnlockedAchievements()
+{
+    ACHIEVEMENTS.forEach(definition =>
+    {
+        if (GameState.achievements[definition.id])
+        {
+            renderUnlockedAchievement(definition);
+        }
+    });
 }
 
 // Nach dem Laden: Karten und freigeschaltete Bereiche wiederherstellen (ohne Meldungen)

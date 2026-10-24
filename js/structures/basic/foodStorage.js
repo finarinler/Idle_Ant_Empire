@@ -10,14 +10,19 @@ const FOOD_STORAGE_COST = {
     food: 1000
 };
 
+// Reihenfolge der Kosten in der Anzeige
+const FOOD_STORAGE_COST_ORDER = ["larvae", "ants", "queens", "food"];
+
 const FOOD_STORAGE_DOM = {
     card: null,
+    costDisplay: null,
     buyButton: null
 };
 
 function initFoodStorageDOM()
 {
     FOOD_STORAGE_DOM.card = getEl("card-storage");
+    FOOD_STORAGE_DOM.costDisplay = getEl("storage-cost-display");
     FOOD_STORAGE_DOM.buyButton = getEl("buy-storage-btn");
 
     if (FOOD_STORAGE_DOM.buyButton)
@@ -28,10 +33,7 @@ function initFoodStorageDOM()
 
 function canAffordFoodStorage()
 {
-    return GameState.resources.larvae >= FOOD_STORAGE_COST.larvae
-        && getTotalAnts() >= FOOD_STORAGE_COST.ants
-        && GameState.resources.queens >= FOOD_STORAGE_COST.queens
-        && GameState.resources.food >= FOOD_STORAGE_COST.food;
+    return canAffordCost(FOOD_STORAGE_COST);
 }
 
 /* ---------- Bau ---------- */
@@ -43,10 +45,10 @@ function buyStorage()
         return;
     }
 
-    GameState.resources.larvae -= FOOD_STORAGE_COST.larvae;
-    spendAnts(FOOD_STORAGE_COST.ants);
-    GameState.resources.queens -= FOOD_STORAGE_COST.queens;
-    GameState.resources.food -= FOOD_STORAGE_COST.food;
+    if (!payCost(FOOD_STORAGE_COST))
+    {
+        return;
+    }
 
     GameState.structures.storageCount = 1;
     GameState.structures.hasStorage = true;
@@ -54,8 +56,8 @@ function buyStorage()
     updateResources();
     saveGame();
 
-    addLogEntry("Vorratskammer gebaut!", "success");
-    updateStatus("Maximale Nahrungskapazität deutlich erhöht!");
+    addLogEntry("status.storage.built", "success");
+    updateStatus("status.storage.effect");
 }
 
 /* ---------- UI ---------- */
@@ -67,10 +69,12 @@ function updateFoodStorageUI()
         return;
     }
 
+    renderCostLine(FOOD_STORAGE_DOM.costDisplay, FOOD_STORAGE_COST, FOOD_STORAGE_COST_ORDER);
+
     if (GameState.structures.storageCount > 0)
     {
         FOOD_STORAGE_DOM.buyButton.disabled = true;
-        FOOD_STORAGE_DOM.buyButton.textContent = "Errichtet";
+        I18N.setText(FOOD_STORAGE_DOM.buyButton, "button.built");
 
         if (FOOD_STORAGE_DOM.card)
         {
@@ -79,6 +83,8 @@ function updateFoodStorageUI()
     }
     else
     {
+        I18N.setText(FOOD_STORAGE_DOM.buyButton, "button.build");
+
         FOOD_STORAGE_DOM.buyButton.disabled =
             !GameState.achievements.smallColony || !canAffordFoodStorage();
     }

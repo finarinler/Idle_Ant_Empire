@@ -5,13 +5,13 @@
 function getNetFoodRate()
 {
     return getAntFoodProduction()
-        - getAntFoodConsumption()
-        - getQueenFoodConsumption()
-        - getStorageGuardianFoodConsumption()
-        - getGrandNurseFoodConsumption();
+        .sub(getAntFoodConsumption())
+        .sub(getQueenFoodConsumption())
+        .sub(getStorageGuardianFoodConsumption())
+        .sub(getGrandNurseFoodConsumption());
 }
 
 function getNetLarvaeRate()
 {
-    return getQueenLarvaeProduction() - getBroodExpertLarvaeConsumption();
+    return getQueenLarvaeProduction().sub(getBroodExpertLarvaeConsumption());
 }

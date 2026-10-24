@@ -3,14 +3,6 @@
 registerAchievement({
     id: "speedExpeditions",
     order: 301,
-    title: "Schnelle Pfoten",
-    locked: {
-        description: "500 Expeditionen abschließen"
-    },
-    unlocked: {
-        description: "500 Expeditionen abgeschlossen",
-        reward: "Belohnung: Expeditionsdauer dauerhaft auf 5 Sekunden reduziert"
-    },
     getProgress: () => ({
         current: GameState.stats.expeditionsCount,
         goal: 500

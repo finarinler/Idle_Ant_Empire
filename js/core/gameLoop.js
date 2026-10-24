@@ -2,6 +2,9 @@
     Game Loop
 ========================= */
 
+let gameTickTimer = null;
+let autoSaveTimer = null;
+
 function gameTick()
 {
     GameState.time.ticks++;
@@ -20,6 +23,12 @@ function gameTick()
 
 function startGameLoop()
 {
-    setInterval(gameTick, CORE_CONFIG.TICK_INTERVAL_MS);
-    setInterval(saveGame, CORE_CONFIG.SAVE_INTERVAL_MS);
+    // Nie zwei Timer parallel laufen lassen (sonst doppelte Produktion / Expeditionen)
+    if (gameTickTimer !== null || autoSaveTimer !== null)
+    {
+        return;
+    }
+
+    gameTickTimer = setInterval(gameTick, CORE_CONFIG.TICK_INTERVAL_MS);
+    autoSaveTimer = setInterval(saveGame, CORE_CONFIG.SAVE_INTERVAL_MS);
 }

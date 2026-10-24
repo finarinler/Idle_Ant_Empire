@@ -12,6 +12,7 @@ const GRAND_NURSE_CONFIG = {
 
 const GRAND_NURSE_DOM = {
     count: null,
+    desc: null,
     costDisplay: null,
     buyButton: null
 };
@@ -19,6 +20,7 @@ const GRAND_NURSE_DOM = {
 function initGrandNurseDOM()
 {
     GRAND_NURSE_DOM.count = getEl("nurse-matriarch-count");
+    GRAND_NURSE_DOM.desc = getEl("nurse-matriarch-desc");
     GRAND_NURSE_DOM.costDisplay = getEl("nurse-matriarch-cost-display");
     GRAND_NURSE_DOM.buyButton = getEl("buy-nurse-matriarch-btn");
 
@@ -47,13 +49,13 @@ function buyGrandNurse()
 
     if (!hasEliteRequirements())
     {
-        updateStatus(ELITE_REQUIREMENT_MESSAGE, "warning");
+        updateStatus("status.elite.requirements", "warning");
         return;
     }
 
     if (count >= GRAND_NURSE_CONFIG.maxCount)
     {
-        updateStatus("Du hast bereits die maximale Anzahl dieser Elite-Einheit ausgebildet.", "warning");
+        updateStatus("status.elite.maxReached", "warning");
         return;
     }
 
@@ -61,14 +63,14 @@ function buyGrandNurse()
 
     if (!canAffordCost(cost))
     {
-        updateStatus("Ressourcen für diese Elite-Einheit reichen nicht aus.", "warning");
+        updateStatus("status.elite.cannotAfford", "warning");
         return;
     }
 
     payCost(cost);
     GameState.eliteUnits.grandNurseCount = count + 1;
 
-    updateStatus("Groß-Amme ausgebildet! Deine Larvenlagerkapazität wird erhöht.", "success");
+    updateStatus("status.grandNurse.trained", "success");
 
     updateResources();
     saveGame();
@@ -78,7 +80,7 @@ function buyGrandNurse()
 
 function getGrandNurseFoodConsumption()
 {
-    return (GameState.eliteUnits.grandNurseCount || 0) * GRAND_NURSE_CONFIG.upkeep;
+    return Big(GameState.eliteUnits.grandNurseCount || 0).mul(GRAND_NURSE_CONFIG.upkeep);
 }
 
 /* ---------- UI ---------- */
@@ -93,10 +95,11 @@ function updateGrandNurseUI()
         GRAND_NURSE_DOM.count.textContent = formatGameNumber(count);
     }
 
-    if (GRAND_NURSE_DOM.costDisplay)
-    {
-        GRAND_NURSE_DOM.costDisplay.textContent = formatCostLine(cost);
-    }
+    I18N.setText(GRAND_NURSE_DOM.desc, "unit.grandNurse.desc", {
+        upkeep: formatDecimal(GRAND_NURSE_CONFIG.upkeep, 2)
+    });
+
+    renderCostLine(GRAND_NURSE_DOM.costDisplay, cost);
 
     setTrainButtonState(GRAND_NURSE_DOM.buyButton, {
         unlocked: hasEliteRequirements(),

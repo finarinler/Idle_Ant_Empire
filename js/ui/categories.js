@@ -26,7 +26,7 @@ function unlockStructuresUI(silent = false)
 
     if (!silent)
     {
-        updateStatus("Basis-Strukturen freigeschaltet!", "success");
+        updateStatus("status.structuresUnlocked", "success");
     }
 }
 
@@ -42,7 +42,7 @@ function unlockEliteUI(silent = false)
 
     if (!silent)
     {
-        updateStatus("Spezial-Einheiten freigeschaltet!", "success");
+        updateStatus("status.eliteUnlocked", "success");
     }
 }
 
@@ -60,6 +60,6 @@ function unlockScoutUI(silent = false)
 
     if (!silent)
     {
-        updateStatus("Kundschafterin freigeschaltet!", "success");
+        updateStatus("status.scout.unlocked", "success");
     }
 }

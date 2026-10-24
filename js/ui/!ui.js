@@ -10,7 +10,9 @@ const UI_MODULES = [
     "js/ui/categories.js",
     "js/ui/unitButton.js",
     "js/ui/visualEffects.js",
-    "js/ui/resourceUI.js"
+    "js/ui/resourceUI.js",
+    "js/ui/languageUI.js",
+    "js/ui/optionsMenu.js"
 ];
 
 async function loadUIModules()

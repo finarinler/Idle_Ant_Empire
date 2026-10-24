@@ -7,11 +7,11 @@ function setRateDisplay(element, rate, text)
 {
     element.textContent = text;
 
-    if (rate > 0)
+    if (rate.isPositive())
     {
         element.style.color = "#66bb6a";
     }
-    else if (rate < 0)
+    else if (rate.isNegative())
     {
         element.style.color = "#ff4444";
     }
@@ -23,13 +23,14 @@ function setRateDisplay(element, rate, text)
 
 function updateResources()
 {
+    const resources = GameState.resources;
     const currentFoodMax = getMaxFoodCapacity();
     const currentLarvaeMax = getMaxLarvaeCapacity();
 
     /* 1. Ressourcen */
     if (DOM.foodCount)
     {
-        DOM.foodCount.textContent = formatGameNumber(GameState.resources.food);
+        DOM.foodCount.textContent = formatGameNumber(resources.food);
     }
 
     if (DOM.foodMax)
@@ -39,7 +40,7 @@ function updateResources()
 
     if (DOM.larvaeCount)
     {
-        DOM.larvaeCount.textContent = formatGameNumber(GameState.resources.larvae);
+        DOM.larvaeCount.textContent = formatGameNumber(resources.larvae);
     }
 
     if (DOM.larvaeMax)
@@ -52,17 +53,17 @@ function updateResources()
     {
         let netRate = getNetFoodRate();
 
-        if (GameState.resources.food >= currentFoodMax && netRate > 0)
+        if (resources.food.gte(currentFoodMax) && netRate.isPositive())
         {
-            netRate = 0;
+            netRate = BigNum.ZERO;
         }
 
-        const displayRate = Math.round(netRate) || 0;   // "|| 0" verhindert "-0"
+        const displayRate = netRate.round();   // BigNum kennt kein "-0"
 
         setRateDisplay(
             DOM.foodRate,
             displayRate,
-            `${displayRate >= 0 ? "+" : ""}${formatGameNumber(displayRate)}/s`
+            `${displayRate.isNegative() ? "" : "+"}${formatGameNumber(displayRate)}/s`
         );
     }
 
@@ -71,17 +72,17 @@ function updateResources()
     {
         let netRate = getNetLarvaeRate();
 
-        if (GameState.resources.larvae >= currentLarvaeMax && netRate > 0)
+        if (resources.larvae.gte(currentLarvaeMax) && netRate.isPositive())
         {
-            netRate = 0;
+            netRate = BigNum.ZERO;
         }
 
-        const displayRate = (Math.round(netRate * 10) / 10) || 0;
+        const displayRate = netRate.roundTo(1);
 
         setRateDisplay(
             DOM.larvaeRate,
             displayRate,
-            `${displayRate > 0 ? "+" : ""}${formatRate(displayRate)}/s`
+            `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
         );
     }
 
@@ -97,6 +98,9 @@ function updateResources()
     updateFoodStorageUI();
     updateLarvaeStorageUI();
 
-    /* 6. Erfolge */
+    /* 6. Expeditionsbutton (Zustand wird jeden Tick aus dem Spielzustand abgeleitet) */
+    updateExpeditionButtonState();
+
+    /* 7. Erfolge */
     checkAchievements();
 }

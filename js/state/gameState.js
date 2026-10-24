@@ -3,19 +3,23 @@
     Game State
 ========================= */
 
+// Namen der Ressourcen im GameState, die als BigNum gespeichert werden
+const BIG_RESOURCE_KEYS = ["food", "larvae", "ants", "antsFound", "bredAnts", "queens"];
+
 const GameState = {
     time: {
         ticks: 0,
         lastSaveTimestamp: 0
     },
 
+    // Alle Ressourcen sind BigNum (siehe js/bignum/bigNumber.js).
     resources: {
-        food: 0,
-        larvae: 0,
-        ants: 0,
-        antsFound: 0,
-        bredAnts: 0,
-        queens: 0
+        food: Big(0),
+        larvae: Big(0),
+        ants: Big(0),
+        antsFound: Big(0),
+        bredAnts: Big(0),
+        queens: Big(0)
     },
 
     structures: {
@@ -66,7 +70,8 @@ const GameState = {
 
     ui: {
         statusTimeout: null,
-        defaultStatus: "Deine Kolonie ist bereit und wartet",
+        // Aktuelle Statusmeldung als { key, params }, damit sie bei einem Sprachwechsel neu übersetzt werden kann
+        status: { key: "status.default", params: null },
         lastLogMessage: "",
         isResetting: false
     }

@@ -1,0 +1,247 @@
+/* =========================
+    Çeviriler: Türkçe
+    Eksik anahtarlar için Almanca yedek olarak kullanılır (bkz. i18n.js). Anahtar kümesi de.js ile aynı kalmalıdır.
+    Yer tutucular: {name}   Kaynak kısaltmaları: [[F]]   Satır sonu: \n
+========================= */
+
+I18N.register("tr", {
+
+    /* ---------- Yükleme ekranı ---------- */
+    "loading.subtitle": "Kolonin hazırlanıyor ...",
+    "loading.initial": "Karıncalar toplanıyor ...",
+    "loading.progressLabel": "Oyun yükleniyor",
+    "loading.gathering": "Karıncaların toplanıyor ...",
+    "loading.modules": "Oyun modülleri yükleniyor ... ({current}/{total})",
+    "loading.awakening": "Kolonin uyanıyor ...",
+    "loading.ready": "Kolonin hazır!",
+    "loading.failedStatus": "Yükleme başarısız oldu. Lütfen hata mesajını kontrol et.",
+    "loading.failedTitle": "Eyvah! Bir şeyler ters gitti.",
+    "loading.unknownError": "Bilinmeyen yükleme hatası.",
+    "loading.scriptError": "Yüklenemedi: {path}",
+
+    /* ---------- Kaynaklar ---------- */
+    "resource.food": "Yiyecek",
+    "resource.larvae": "Larva",
+    "resource.ant": "Karınca",
+    "resource.queen": "Kraliçe",
+    "resource.soldier": "Elit Asker",
+
+    /* ---------- Genel arayüz ---------- */
+    "ui.total": "Toplam:",
+    "ui.bought": "Satın alınan:",
+    "ui.count": "Adet:",
+    "ui.language": "Dil",
+    "ui.legend": "Açıklamalar",
+    "ui.log": "Günlük",
+    "ui.achievements": "Başarımlar",
+    "ui.achievementsLocked": "Başarımlar henüz kilitli",
+    "status.label": "Durum:",
+    "status.init": "Başlatılıyor...",
+    "status.default": "Kolonin hazır ve bekliyor",
+
+    "button.build": "İnşa et",
+    "button.built": "İnşa edildi",
+    "button.locked": "Kilitli",
+    "button.maxReached": "Üst sınıra ulaşıldı",
+    "button.missingResources": "Kaynaklar yetersiz",
+    "button.train": "Eğit",
+
+    /* ---------- Kategoriler ---------- */
+    "category.basisUnits": "Temel Birimler",
+    "category.eliteUnits": "Elit Birimler",
+    "category.basisStructures": "Temel Yapılar",
+
+    /* ---------- Keşif ---------- */
+    "expedition.start": "Keşfe çık ({seconds} sn)",
+    "expedition.running": "Keşifte",
+    "expedition.scoutLockedTitle": "Kaşif, keşifleri otomatik olarak yapar.",
+
+    /* ---------- Birimler ---------- */
+    "unit.ant.name": "Karınca",
+    "unit.ant.desc": "Saniyede {production} [[F]] toplar\nSaniyede {consumption} [[F]] tüketir",
+    "unit.ant.buy": "Karınca satın al",
+    "unit.queen.name": "Kraliçe",
+    "unit.queen.desc": "Saniyede {production} [[L]] üretir\nSaniyede {consumption} [[F]] tüketir",
+    "unit.queen.buy": "Kraliçe satın al",
+    "unit.scout.name": "Kaşif",
+    "unit.scout.desc": "Keşifleri otomatikleştirir.\nAncak dinlenme molalarına ihtiyaç duyar",
+    "unit.storageGuardian.name": "Depo Bekçisi",
+    "unit.storageGuardian.desc": "Yiyecek deposunu ikiye katlar.\nSaniyede {upkeep} [[F]] tüketir.",
+    "unit.grandNurse.name": "Baş Dadı",
+    "unit.grandNurse.desc": "Larva deposunu ikiye katlar.\nSaniyede {upkeep} [[F]] tüketir.",
+    "unit.broodExpert.name": "Kuluçka Uzmanı",
+    "unit.broodExpert.desc": "Larvalardan yeni karıncalar yetiştirir.\nHer {interval} saniyede: +{ants} [[A]], -{larvae} [[L]].",
+    "unit.soldier.name": "Elit Asker",
+    "unit.soldier.desc": "Keşiflerde toprakları güvence altına alır.\nGenişleme için gereklidir.",
+
+    /* ---------- Yapılar ---------- */
+    "structure.storage.name": "Erzak Odası",
+    "structure.storage.desc": "Depolamayı mükemmelleştirir\nYiyecek sınırını artırır",
+    "structure.nursery.name": "Kuluçka Odası",
+    "structure.nursery.desc": "Depolamayı mükemmelleştirir\nLarva sınırını artırır",
+    "structure.royalChamber.name": "Kraliçe Odası",
+    "structure.royalChamber.desc": "Gücün merkezi.\nKraliçe üretir",
+
+    /* ---------- Paneller ---------- */
+    "panel.achievements.title": "Başarımlar",
+    "panel.achievements.empty": "Henüz hiçbir başarım açılmadı.",
+    "panel.legend.title": "Açıklamalar",
+    "panel.log.title": "Günlük",
+    "log.clear": "Günlüğü temizle",
+    "log.resetGame": "Kaydı sil",
+    "log.type.status": "Durum",
+    "log.type.success": "Keşif bulgusu",
+    "log.type.achievement": "Başarım kazanıldı",
+    "log.type.warning": "Uyarı",
+    "log.type.system": "Sistem",
+
+    /* ---------- Başarımlar: genel ---------- */
+    "achievement.reached": "Tamamlandı",
+    "achievement.hiddenReward": "Ödül: ???",
+    "status.achievementUnlocked": "Başarım: {title}",
+    "log.achievementUnlocked": "Başarım açıldı: {title}",
+
+    /* ---------- Mesajlar ---------- */
+    "status.production.queensStarved": "Üretim durdu: Kraliçeler için yeterli yiyecek yok!",
+    "status.production.starving": "Kritik yiyecek kıtlığı: Koloni açlık çekiyor!",
+    "status.expeditionStarted": "Kolonin keşfe çıktı",
+    "status.expeditionLockedByScout": "Elle keşif kilitli: Kaşif keşifleri otomatik olarak yapıyor.",
+    "status.expedition.failed": "Keşif başarısız: Hiçbir şey bulunamadı.",
+    "status.expedition.criticalSuccess": "Keşif çok başarılı: {amount} yiyecek bulundu.",
+    "status.expedition.success": "Keşif başarılı: {amount} yiyecek bulundu.",
+    "status.ant.foundCritical": "Kritik başarı! Bir karınca kolonine katıldı!",
+    "status.ant.foundStray": "Yolunu kaybetmiş bir karınca kolonine katıldı!",
+    "status.scout.needAchievement": "Önce {achievement} başarımını aç.",
+    "status.scout.alreadyTrained": "Zaten bir kaşif eğittin.",
+    "status.scout.cannotAfford": "Kaşif için kaynaklar yetmiyor.",
+    "status.scout.trained": "Kaşif eğitildi!",
+    "status.scout.unlocked": "Kaşif açıldı!",
+    "status.elite.requirements": "Önce bir Erzak Odası ve bir Kuluçka Odası gerekiyor.",
+    "status.elite.maxReached": "Bu elit birimden izin verilen en yüksek sayıda zaten eğittin.",
+    "status.elite.cannotAfford": "Bu elit birim için kaynaklar yetmiyor.",
+    "status.broodExpert.trained": "Kuluçka Uzmanı eğitildi!",
+    "status.grandNurse.trained": "Baş Dadı eğitildi! Larva depo kapasiten artıyor.",
+    "status.storageGuardian.trained": "Depo Bekçisi eğitildi! Yiyecek depo kapasiten artıyor.",
+    "status.storage.built": "Erzak Odası inşa edildi!",
+    "status.storage.effect": "Azami yiyecek kapasitesi belirgin şekilde arttı!",
+    "status.nursery.built": "Kuluçka Odası inşa edildi!",
+    "status.nursery.effect": "Azami larva kapasitesi belirgin şekilde arttı!",
+    "status.structuresUnlocked": "Temel yapılar açıldı!",
+    "status.eliteUnlocked": "Özel birimler açıldı!",
+    "status.logCleared": "Günlük temizlendi.",
+    "status.loadSuccess": "Kayıt başarıyla yüklendi.",
+    "status.loadMigrated": "Eski bir kayıt yeni biçime dönüştürüldü.",
+    "status.loadFailed": "Kayıt yüklenemedi.",
+    "error.invalidSaveFormat": "Geçersiz kayıt biçimi.",
+    "confirm.resetGame": "Tüm kaydı gerçekten silmek istiyor musun? Bu işlem geri alınamaz!",
+
+    /* ---------- Başarımlar: metinler ---------- */
+    "achievement.firstSteps.title": "İlk Adımlar",
+    "achievement.firstSteps.locked": "{goal} keşif tamamlandı",
+    "achievement.firstSteps.unlocked": "{goal} keşif tamamlandı",
+    "achievement.firstSteps.reward": "Ödül: Başarım menüsü açıldı",
+
+    "achievement.smallCollector.title": "Küçük Toplayıcı",
+    "achievement.smallCollector.locked": "{goal} yiyecek toplandı",
+    "achievement.smallCollector.unlocked": "{goal} yiyecek toplandı",
+    "achievement.smallCollector.reward": "Ödül: Keşiflerde yolunu kaybetmiş bir karınca bulma şansı",
+
+    "achievement.smallColony.title": "Küçük Karınca Devleti",
+    "achievement.smallColony.locked": "{goal} kraliçe satın alındı",
+    "achievement.smallColony.unlocked": "{goal} kraliçe satın alındı",
+    "achievement.smallColony.reward": "Ödül: Temel yapılar açıldı",
+
+    "achievement.buildColony.title": "Kolonin İnşası",
+    "achievement.buildColony.locked": "Erzak Odası ve Kuluçka Odası inşa edildi",
+    "achievement.buildColony.unlocked": "Erzak Odası ve Kuluçka Odası inşa edildi",
+    "achievement.buildColony.reward": "Ödül: Özel birimler açıldı",
+
+    "achievement.knowledgeIsPower.title": "Bilgi Güçtür",
+    "achievement.knowledgeIsPower.locked": "Bir Depo Bekçisi ve bir Baş Dadı eğit",
+    "achievement.knowledgeIsPower.unlocked": "Bir Depo Bekçisi ve bir Baş Dadı eğitildi",
+    "achievement.knowledgeIsPower.reward": "Ödül: Araştırma açıldı",
+    "achievement.knowledgeIsPower.progress": "{guardians}/1 Bekçi · {nurses}/1 Dadı",
+
+    "achievement.foundTenAnts.title": "Karınca Kurtarıcı",
+    "achievement.foundTenAnts.locked": "Keşiflerde yolunu kaybetmiş {goal} karınca bul",
+    "achievement.foundTenAnts.unlocked": "Keşiflerde yolunu kaybetmiş {goal} karınca bulundu",
+    "achievement.foundTenAnts.reward": "Ödül: Yolunu kaybetmiş karınca bulma şansı ikiye katlandı",
+
+    "achievement.expeditionVeteran.title": "Keşif Gazisi",
+    "achievement.expeditionVeteran.locked": "{goal} keşfi tamamla",
+    "achievement.expeditionVeteran.unlocked": "{goal} keşif tamamlandı",
+    "achievement.expeditionVeteran.reward": "Ödül: Çok başarılı keşif şansı ikiye katlandı",
+
+    "achievement.speedExpeditions.title": "Çevik Patiler",
+    "achievement.speedExpeditions.locked": "{goal} keşfi tamamla",
+    "achievement.speedExpeditions.unlocked": "{goal} keşif tamamlandı",
+    "achievement.speedExpeditions.reward": "Ödül: Keşif süresi kalıcı olarak 5 saniyeye düştü",
+
+    "achievement.expeditionCommander.title": "Keşif Komutanlığı",
+    "achievement.expeditionCommander.locked": "{goal} keşfi tamamla",
+    "achievement.expeditionCommander.unlocked": "{goal} keşif tamamlandı",
+    "achievement.expeditionCommander.reward": "Ödül: Kaşif açıldı",
+
+    "achievement.criticalMastery.title": "Keşif Ustası",
+    "achievement.criticalMastery.locked": "{goal} çok başarılı keşfi tamamla",
+    "achievement.criticalMastery.unlocked": "{goal} çok başarılı keşif tamamlandı",
+    "achievement.criticalMastery.reward": "Ödül: Çok başarılı keşifler kesinlikle bir karınca bulur ve %50 daha fazla yiyecek getirir",
+
+    "achievement.goldenAge.title": "Altın Çağ",
+    "achievement.goldenAge.locked": "250 çok başarılı keşif, 300 bulunan karınca ve 25 kraliçe",
+    "achievement.goldenAge.unlocked": "250 çok başarılı keşif, 300 bulunan karınca ve 25 kraliçe",
+    "achievement.goldenAge.reward": "Ödül: Normal karıncalar artık yiyecek tüketmez",
+    "achievement.goldenAge.progress": "{critical}/250 çok başarılı keşif · {ants}/300 bulunan karınca · {queens}/25 kraliçe",
+
+    "achievement.expeditionMisfortune.title": "Şanssız Kuş",
+    "achievement.expeditionMisfortune.locked": "{goal} başarısız keşif yaşa",
+    "achievement.expeditionMisfortune.unlocked": "{goal} başarısız keşif yaşandı",
+    "achievement.expeditionMisfortune.reward": "Ödül: Başarısızlık ihtimali %50 azalır",
+
+    "achievement.expeditionMisfortuneMaster.title": "Talihsizlik Ustası",
+    "achievement.expeditionMisfortuneMaster.locked": "{goal} başarısız keşif yaşa",
+    "achievement.expeditionMisfortuneMaster.unlocked": "{goal} başarısız keşif yaşandı",
+    "achievement.expeditionMisfortuneMaster.reward": "Ödül: Başarısızlık ihtimali daha da azalır",
+
+    "achievement.expeditionMisfortuneLegend.title": "Talihsizlik Efsanesi",
+    "achievement.expeditionMisfortuneLegend.locked": "{goal} başarısız keşif yaşa",
+    "achievement.expeditionMisfortuneLegend.unlocked": "{goal} başarısız keşif yaşandı",
+    "achievement.expeditionMisfortuneLegend.reward": "Ödül: Keşifler artık başarısız olmaz ve kritik başarı şansı %50 artar",
+
+    /* ---------- Ana sayfa (index.html) ---------- */
+    "landing.pageTitle": "Idle Ant Empire",
+    "landing.metaDescription": "Karınca krallığını kur, kaynak topla ve Idle Ant Empire'da güçlü bir karınca imparatorluğu yarat.",
+    "landing.brandLabel": "Idle Ant Empire – Ana sayfa",
+    "landing.navLabel": "Ana gezinme",
+    "landing.languageMenuLabel": "Dil seç",
+    "landing.languageActive": "Etkin",
+    "landing.play": "Oyna",
+    "landing.eyebrow": "Senin kolonin. Senin imparatorluğun.",
+    "landing.heroDescription": "Küçük bir kolonuyla başla, kaynak topla ve güçlü bir karınca imparatorluğu yarat.",
+    "landing.cta": "Kolonini kur",
+    "landing.note": "Karınca krallığın seni bekliyor.",
+    "landing.pillarsLabel": "Oyun prensibi",
+    "landing.pillar.build": "İnşa et",
+    "landing.pillar.improve": "Geliştir",
+    "landing.pillar.discover": "Keşfet",
+
+    /* ---------- Seçenekler menüsü ve müzik çalar ---------- */
+    "options.button": "Seçenekler",
+    "options.title": "Seçenekler",
+    "options.close": "Kapat",
+    "options.language": "Dil",
+    "options.music": "Müzik",
+    "options.volume": "Ses düzeyi",
+    "music.enabled": "Müzik açık",
+    "music.play": "Oynat",
+    "music.pause": "Duraklat",
+    "music.volumeValue": "%{value}",
+    "music.status.off": "Müzik kapalı.",
+    "music.status.ready": "Hazır.",
+    "music.status.loading": "Müzik yükleniyor ...",
+    "music.status.playing": "Çalıyor: {track}. parça",
+    "music.status.gap": "Parçalar arasında ara – sıradaki: {track}. parça",
+    "music.status.paused": "Duraklatıldı.",
+    "music.status.blocked": "Tarayıcı otomatik oynatmayı engelledi. Müziği başlatmak için Oynat'a tıkla.",
+    "music.status.error": "Müzik dosyası yüklenemedi."
+});

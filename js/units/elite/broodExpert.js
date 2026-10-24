@@ -14,6 +14,7 @@ const BROOD_EXPERT_CONFIG = {
 
 const BROOD_EXPERT_DOM = {
     count: null,
+    desc: null,
     costDisplay: null,
     card: null,
     progress: null,
@@ -30,6 +31,7 @@ let broodExpertAnimationCycle = 0;
 function initBroodExpertDOM()
 {
     BROOD_EXPERT_DOM.count = getEl("brood-expert-count");
+    BROOD_EXPERT_DOM.desc = getEl("brood-expert-desc");
     BROOD_EXPERT_DOM.costDisplay = getEl("brood-expert-cost-display");
     BROOD_EXPERT_DOM.card = getEl("card-brood-expert");
     BROOD_EXPERT_DOM.progress = getEl("brood-expert-progress");
@@ -62,16 +64,13 @@ function buyBroodExpert()
 
     if (!hasEliteRequirements())
     {
-        updateStatus(ELITE_REQUIREMENT_MESSAGE, "warning");
+        updateStatus("status.elite.requirements", "warning");
         return;
     }
 
     if (count >= BROOD_EXPERT_CONFIG.maxCount)
     {
-        updateStatus(
-            "Du hast bereits die maximale Anzahl dieser Elite-Einheit ausgebildet.",
-            "warning"
-        );
+        updateStatus("status.elite.maxReached", "warning");
         return;
     }
 
@@ -79,17 +78,14 @@ function buyBroodExpert()
 
     if (!canAffordCost(cost))
     {
-        updateStatus(
-            "Ressourcen für diese Elite-Einheit reichen nicht aus.",
-            "warning"
-        );
+        updateStatus("status.elite.cannotAfford", "warning");
         return;
     }
 
     payCost(cost);
     GameState.eliteUnits.broodExpertCount = count + 1;
 
-    updateStatus("Brut-Expertin ausgebildet!", "success");
+    updateStatus("status.broodExpert.trained", "success");
 
     updateResources();
     updateBroodExpertUI();
@@ -110,9 +106,9 @@ function updateBroodExpertProduction()
         return;
     }
 
-    const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+    const larvaeRequired = Big(count).mul(BROOD_EXPERT_CONFIG.larvaePerUnit);
 
-    if (GameState.resources.larvae < larvaeRequired)
+    if (GameState.resources.larvae.lt(larvaeRequired))
     {
         stopBroodExpertProgressAnimation();
         updateBroodExpertProgressUI();
@@ -136,8 +132,8 @@ function updateBroodExpertProduction()
     // Produktionszyklus abschließen und einen Pausentick setzen.
     if (progress === interval)
     {
-        GameState.resources.larvae -= larvaeRequired;
-        GameState.resources.bredAnts += count;
+        GameState.resources.larvae = GameState.resources.larvae.sub(larvaeRequired);
+        GameState.resources.bredAnts = GameState.resources.bredAnts.add(count);
 
         // interval + 1 kennzeichnet den Pausentick.
         GameState.eliteUnits.broodExpertProgress = interval + 1;
@@ -162,9 +158,8 @@ function updateBroodExpertProduction()
 
 function getBroodExpertLarvaeConsumption()
 {
-    return (
-        GameState.eliteUnits.broodExpertCount || 0
-    ) * BROOD_EXPERT_CONFIG.larvaeConsumption;
+    return Big(GameState.eliteUnits.broodExpertCount || 0)
+        .mul(BROOD_EXPERT_CONFIG.larvaeConsumption);
 }
 
 /* ---------- UI ---------- */
@@ -180,10 +175,13 @@ function updateBroodExpertUI()
         BROOD_EXPERT_DOM.count.textContent = formatGameNumber(count);
     }
 
-    if (BROOD_EXPERT_DOM.costDisplay)
-    {
-        BROOD_EXPERT_DOM.costDisplay.textContent = formatCostLine(cost);
-    }
+    I18N.setText(BROOD_EXPERT_DOM.desc, "unit.broodExpert.desc", {
+        interval: BROOD_EXPERT_CONFIG.productionInterval,
+        ants: 1,
+        larvae: BROOD_EXPERT_CONFIG.larvaePerUnit
+    });
+
+    renderCostLine(BROOD_EXPERT_DOM.costDisplay, cost);
 
     if (BROOD_EXPERT_DOM.card)
     {
@@ -212,12 +210,12 @@ function updateBroodExpertProgressUI()
 
     const count = GameState.eliteUnits.broodExpertCount || 0;
     const progress = GameState.eliteUnits.broodExpertProgress || 0;
-    const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+    const larvaeRequired = Big(count).mul(BROOD_EXPERT_CONFIG.larvaePerUnit);
     const interval = BROOD_EXPERT_CONFIG.productionInterval;
 
     if (
         count <= 0 ||
-        GameState.resources.larvae < larvaeRequired
+        GameState.resources.larvae.lt(larvaeRequired)
     )
     {
         stopBroodExpertProgressAnimation();
@@ -275,12 +273,12 @@ function startBroodExpertProgressAnimation(progress, interval)
         }
 
         const count = GameState.eliteUnits.broodExpertCount || 0;
-        const larvaeRequired = count * BROOD_EXPERT_CONFIG.larvaePerUnit;
+        const larvaeRequired = Big(count).mul(BROOD_EXPERT_CONFIG.larvaePerUnit);
 
         if (
             !bar.isConnected ||
             count <= 0 ||
-            GameState.resources.larvae < larvaeRequired
+            GameState.resources.larvae.lt(larvaeRequired)
         )
         {
             stopBroodExpertProgressAnimation();

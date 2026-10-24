@@ -5,20 +5,22 @@
     {
         id:        Schlüssel in GameState.achievements,
         order:     Reihenfolge in der Erfolgsliste,
-        title:     Titel,
-        locked:    { description }           // Beschreibung solange gesperrt (Belohnung ist immer ???)
-        unlocked:  { description, reward }   // Texte nach der Freischaltung
-        getProgress: () => ({ current, goal, text? })
+        getProgress: () => ({ current, goal, textKey?, textParams? })
+                     // current / goal: Zahl oder BigNum
                      // freigeschaltet, sobald current >= goal
-                     // text ist optional (Standard: "current/goal")
+                     // textKey/textParams: optionaler Fortschrittstext (Übersetzungsschlüssel)
         onUnlock:  (restored) => {}          // optional
                      // restored = true, wenn der Erfolg nur aus dem Spielstand
                      // wiederhergestellt wird (dann keine Meldungen ausgeben)
     }
+
+    Alle Texte stehen in js/i18n/de.js und en.js unter
+        achievement.<id>.title / .locked / .unlocked / .reward
+    Platzhalter {goal} wird automatisch mit dem Ziel aus getProgress() gefüllt.
 ========================= */
 
-// Solange ein Erfolg nicht freigeschaltet ist, wird die Belohnung nicht verraten
-const ACHIEVEMENT_HIDDEN_REWARD = "Belohnung: ???";
+// Solange ein Erfolg nicht freigeschaltet ist, wird die Belohnung nicht verraten ("???")
+const ACHIEVEMENT_HIDDEN_REWARD_KEY = "achievement.hiddenReward";
 
 const ACHIEVEMENTS = [];
 

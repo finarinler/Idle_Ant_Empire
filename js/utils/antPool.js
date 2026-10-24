@@ -6,25 +6,39 @@
 function getTotalAnts()
 {
     return GameState.resources.ants
-        + GameState.resources.antsFound
-        + GameState.resources.bredAnts;
+        .add(GameState.resources.antsFound)
+        .add(GameState.resources.bredAnts);
 }
 
 /**
  * Zieht Ameisen ab: erst gekaufte, dann gefundene, dann gezüchtete.
- * Prüft vorher NICHT, ob genug da sind (canAfford vorher aufrufen).
+ * Prüft vorher, ob genug da sind. Gibt es nicht genug, wird NICHTS abgezogen
+ * und false zurückgegeben (kein negativer Bestand, keine Teilabzüge).
+ *
+ * @param {BigNum|number} amount
+ * @returns {boolean}
  */
 function spendAnts(amount)
 {
-    let remaining = amount;
+    const needed = Big(amount);
 
-    const fromBought = Math.min(GameState.resources.ants, remaining);
-    GameState.resources.ants -= fromBought;
-    remaining -= fromBought;
+    if (needed.isNegative() || getTotalAnts().lt(needed))
+    {
+        return false;
+    }
 
-    const fromFound = Math.min(GameState.resources.antsFound, remaining);
-    GameState.resources.antsFound -= fromFound;
-    remaining -= fromFound;
+    const resources = GameState.resources;
+    let remaining = needed;
 
-    GameState.resources.bredAnts -= remaining;
+    const fromBought = BigNum.min(resources.ants, remaining);
+    resources.ants = resources.ants.sub(fromBought);
+    remaining = remaining.sub(fromBought);
+
+    const fromFound = BigNum.min(resources.antsFound, remaining);
+    resources.antsFound = resources.antsFound.sub(fromFound);
+    remaining = remaining.sub(fromFound);
+
+    resources.bredAnts = resources.bredAnts.sub(remaining);
+
+    return true;
 }

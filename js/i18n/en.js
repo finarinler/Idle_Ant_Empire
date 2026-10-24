@@ -1,0 +1,246 @@
+/* =========================
+    Translations: English
+    Missing keys fall back to German (see i18n.js). Keep the key set identical to de.js.
+    Placeholders: {name}   Resource abbreviations: [[F]]   Line break: \n
+========================= */
+
+I18N.register("en", {
+
+    /* ---------- Loading screen ---------- */
+    "loading.subtitle": "Preparing your colony ...",
+    "loading.initial": "Gathering the ants ...",
+    "loading.progressLabel": "Loading game",
+    "loading.gathering": "Gathering your ants ...",
+    "loading.modules": "Loading game modules ... ({current}/{total})",
+    "loading.awakening": "Your colony is awakening ...",
+    "loading.ready": "Your colony is ready!",
+    "loading.failedStatus": "Loading failed. Please check the error message.",
+    "loading.failedTitle": "Oops! Something went wrong.",
+    "loading.unknownError": "Unknown loading error.",
+    "loading.scriptError": "Failed to load: {path}",
+
+    /* ---------- Resources ---------- */
+    "resource.food": "Food",
+    "resource.larvae": "Larvae",
+    "resource.ant": "Ant",
+    "resource.queen": "Queen",
+    "resource.soldier": "Elite Soldier",
+
+    /* ---------- General UI ---------- */
+    "ui.total": "Total:",
+    "ui.bought": "Bought:",
+    "ui.count": "Count:",
+    "ui.language": "Language",
+    "ui.legend": "Legend",
+    "ui.log": "Log",
+    "ui.achievements": "Achievements",
+    "ui.achievementsLocked": "Achievements still locked",
+    "status.label": "Status:",
+    "status.init": "Initializing...",
+    "status.default": "Your colony is ready and waiting",
+
+    "button.build": "Build",
+    "button.built": "Built",
+    "button.locked": "Locked",
+    "button.maxReached": "Maximum reached",
+    "button.missingResources": "Not enough resources",
+    "button.train": "Train",
+
+    /* ---------- Categories ---------- */
+    "category.basisUnits": "Basic Units",
+    "category.eliteUnits": "Elite Units",
+    "category.basisStructures": "Basic Structures",
+
+    /* ---------- Expedition ---------- */
+    "expedition.start": "Go on expedition ({seconds}s)",
+    "expedition.running": "On expedition",
+    "expedition.scoutLockedTitle": "The scout runs expeditions automatically.",
+
+    /* ---------- Units ---------- */
+    "unit.ant.name": "Ant",
+    "unit.ant.desc": "Gathers {production} [[F]] /s\nRequires {consumption} [[F]] /s",
+    "unit.ant.buy": "Buy ant",
+    "unit.queen.name": "Queen",
+    "unit.queen.desc": "Produces {production} [[L]] /s\nRequires {consumption} [[F]] /s",
+    "unit.queen.buy": "Buy queen",
+    "unit.scout.name": "Scout",
+    "unit.scout.desc": "Automates expeditions.\nBut needs rest breaks",
+    "unit.storageGuardian.name": "Storage Guardian",
+    "unit.storageGuardian.desc": "Doubles the food storage.\nConsumes {upkeep} [[F]]/s.",
+    "unit.grandNurse.name": "Grand Nurse",
+    "unit.grandNurse.desc": "Doubles the larvae storage.\nConsumes {upkeep} [[F]]/s.",
+    "unit.broodExpert.name": "Brood Expert",
+    "unit.broodExpert.desc": "Breeds new ants from larvae.\nEvery {interval} seconds: +{ants} [[A]], -{larvae} [[L]].",
+    "unit.soldier.name": "Elite Soldier",
+    "unit.soldier.desc": "Secures land on expeditions.\nRequired for expansion.",
+
+    /* ---------- Structures ---------- */
+    "structure.storage.name": "Storage Chamber",
+    "structure.storage.desc": "Perfects storage\nRaises the food limit",
+    "structure.nursery.name": "Nursery",
+    "structure.nursery.desc": "Perfects storage\nRaises the larvae limit",
+    "structure.royalChamber.name": "Royal Chamber",
+    "structure.royalChamber.desc": "Center of power.\nProduces queens",
+
+    /* ---------- Panels ---------- */
+    "panel.achievements.title": "Achievements",
+    "panel.achievements.empty": "No achievements unlocked yet.",
+    "panel.legend.title": "Legend",
+    "panel.log.title": "Log",
+    "log.clear": "Clear log",
+    "log.resetGame": "Delete save",
+    "log.type.status": "Status",
+    "log.type.success": "Expedition find",
+    "log.type.achievement": "Achievement earned",
+    "log.type.warning": "Warning",
+    "log.type.system": "System",
+
+    /* ---------- Achievements: general ---------- */
+    "achievement.reached": "Reached",
+    "achievement.hiddenReward": "Reward: ???",
+    "status.achievementUnlocked": "Achievement: {title}",
+    "log.achievementUnlocked": "Achievement unlocked: {title}",
+
+    /* ---------- Messages ---------- */
+    "status.production.queensStarved": "Production halted: Not enough food for the queens!",
+    "status.production.starving": "Critical food shortage: The colony is starving!",
+    "status.expeditionStarted": "Your colony is on an expedition",
+    "status.expeditionLockedByScout": "Manual expeditions are locked: The scout runs them automatically.",
+    "status.expedition.failed": "Expedition failed: Nothing found.",
+    "status.expedition.criticalSuccess": "Expedition very successful: {amount} food found.",
+    "status.expedition.success": "Expedition successful: {amount} food found.",
+    "status.ant.foundCritical": "Critical success! An ant has joined your colony!",
+    "status.ant.foundStray": "A stray ant has joined your colony!",
+    "status.scout.needAchievement": "Unlock the achievement {achievement} first.",
+    "status.scout.alreadyTrained": "You have already trained a scout.",
+    "status.scout.cannotAfford": "Not enough resources for the scout.",
+    "status.scout.trained": "Scout trained!",
+    "status.scout.unlocked": "Scout unlocked!",
+    "status.elite.requirements": "You first need a Storage Chamber and a Nursery.",
+    "status.elite.maxReached": "You have already trained the maximum number of this elite unit.",
+    "status.elite.cannotAfford": "Not enough resources for this elite unit.",
+    "status.broodExpert.trained": "Brood Expert trained!",
+    "status.grandNurse.trained": "Grand Nurse trained! Your larvae storage capacity is increased.",
+    "status.storageGuardian.trained": "Storage Guardian trained! Your food storage capacity is increased.",
+    "status.storage.built": "Storage Chamber built!",
+    "status.storage.effect": "Maximum food capacity greatly increased!",
+    "status.nursery.built": "Nursery built!",
+    "status.nursery.effect": "Maximum larvae capacity greatly increased!",
+    "status.structuresUnlocked": "Basic structures unlocked!",
+    "status.eliteUnlocked": "Special units unlocked!",
+    "status.logCleared": "Log cleared.",
+    "status.loadSuccess": "Save loaded successfully.",
+    "status.loadMigrated": "An older save was converted to the new format.",
+    "status.loadFailed": "The save could not be loaded.",
+    "error.invalidSaveFormat": "Invalid save format.",
+    "confirm.resetGame": "Do you really want to delete the entire save? This cannot be undone!",
+
+    /* ---------- Achievements: texts ---------- */
+    "achievement.firstSteps.title": "First Steps",
+    "achievement.firstSteps.locked": "{goal} expeditions completed",
+    "achievement.firstSteps.unlocked": "{goal} expeditions completed",
+    "achievement.firstSteps.reward": "Reward: Achievements menu unlocked",
+
+    "achievement.smallCollector.title": "Small Collector",
+    "achievement.smallCollector.locked": "{goal} food collected",
+    "achievement.smallCollector.unlocked": "{goal} food collected",
+    "achievement.smallCollector.reward": "Reward: Chance to find a stray ant on expeditions",
+
+    "achievement.smallColony.title": "Small Ant State",
+    "achievement.smallColony.locked": "{goal} queens bought",
+    "achievement.smallColony.unlocked": "{goal} queens bought",
+    "achievement.smallColony.reward": "Reward: Basic structures unlocked",
+
+    "achievement.buildColony.title": "Building the Colony",
+    "achievement.buildColony.locked": "Storage Chamber and Nursery built",
+    "achievement.buildColony.unlocked": "Storage Chamber and Nursery built",
+    "achievement.buildColony.reward": "Reward: Special units unlocked",
+
+    "achievement.knowledgeIsPower.title": "Knowledge Is Power",
+    "achievement.knowledgeIsPower.locked": "Train a Storage Guardian and a Grand Nurse",
+    "achievement.knowledgeIsPower.unlocked": "Trained a Storage Guardian and a Grand Nurse",
+    "achievement.knowledgeIsPower.reward": "Reward: Research unlocked",
+    "achievement.knowledgeIsPower.progress": "{guardians}/1 Guardian · {nurses}/1 Nurse",
+
+    "achievement.foundTenAnts.title": "Ant Rescuer",
+    "achievement.foundTenAnts.locked": "Find {goal} stray ants on expeditions",
+    "achievement.foundTenAnts.unlocked": "Found {goal} stray ants on expeditions",
+    "achievement.foundTenAnts.reward": "Reward: Stray ant find chance doubled",
+
+    "achievement.expeditionVeteran.title": "Expedition Veteran",
+    "achievement.expeditionVeteran.locked": "Complete {goal} expeditions",
+    "achievement.expeditionVeteran.unlocked": "Completed {goal} expeditions",
+    "achievement.expeditionVeteran.reward": "Reward: Chance of very successful expeditions doubled",
+
+    "achievement.speedExpeditions.title": "Swift Paws",
+    "achievement.speedExpeditions.locked": "Complete {goal} expeditions",
+    "achievement.speedExpeditions.unlocked": "Completed {goal} expeditions",
+    "achievement.speedExpeditions.reward": "Reward: Expedition duration permanently reduced to 5 seconds",
+
+    "achievement.expeditionCommander.title": "Expedition Command",
+    "achievement.expeditionCommander.locked": "Complete {goal} expeditions",
+    "achievement.expeditionCommander.unlocked": "Completed {goal} expeditions",
+    "achievement.expeditionCommander.reward": "Reward: Scout unlocked",
+
+    "achievement.criticalMastery.title": "Expedition Master",
+    "achievement.criticalMastery.locked": "Complete {goal} very successful expeditions",
+    "achievement.criticalMastery.unlocked": "Completed {goal} very successful expeditions",
+    "achievement.criticalMastery.reward": "Reward: Very successful expeditions are guaranteed to find an ant and bring 50 % more food",
+
+    "achievement.goldenAge.title": "The Golden Age",
+    "achievement.goldenAge.locked": "250 very successful expeditions, 300 found ants and 25 queens",
+    "achievement.goldenAge.unlocked": "250 very successful expeditions, 300 found ants and 25 queens",
+    "achievement.goldenAge.reward": "Reward: Regular ants no longer consume food",
+    "achievement.goldenAge.progress": "{critical}/250 very successful expeditions · {ants}/300 found ants · {queens}/25 queens",
+
+    "achievement.expeditionMisfortune.title": "Unlucky Bird",
+    "achievement.expeditionMisfortune.locked": "Experience {goal} failed expeditions",
+    "achievement.expeditionMisfortune.unlocked": "Experienced {goal} failed expeditions",
+    "achievement.expeditionMisfortune.reward": "Reward: Failure chance reduced by 50 %",
+
+    "achievement.expeditionMisfortuneMaster.title": "Master of Misfortune",
+    "achievement.expeditionMisfortuneMaster.locked": "Experience {goal} failed expeditions",
+    "achievement.expeditionMisfortuneMaster.unlocked": "Experienced {goal} failed expeditions",
+    "achievement.expeditionMisfortuneMaster.reward": "Reward: Failure chance reduced further",
+
+    "achievement.expeditionMisfortuneLegend.title": "Unlucky Legend",
+    "achievement.expeditionMisfortuneLegend.locked": "Experience {goal} failed expeditions",
+    "achievement.expeditionMisfortuneLegend.unlocked": "Experienced {goal} failed expeditions",
+    "achievement.expeditionMisfortuneLegend.reward": "Reward: Expeditions no longer fail and the chance of critical successes increases by 50%",
+
+    /* ---------- Landing page (index.html) ---------- */
+    "landing.pageTitle": "Idle Ant Empire",
+    "landing.metaDescription": "Build your ant kingdom, gather resources and create a mighty ant empire in Idle Ant Empire.",
+    "landing.brandLabel": "Idle Ant Empire – Home",
+    "landing.navLabel": "Main navigation",
+    "landing.languageMenuLabel": "Select language",
+    "landing.languageActive": "Active",
+    "landing.play": "Play",
+    "landing.eyebrow": "Your colony. Your empire.",
+    "landing.heroDescription": "Start with a small colony, gather resources and create a mighty ant empire.",
+    "landing.cta": "Build your colony",
+    "landing.note": "Your ant kingdom is waiting for you.",
+    "landing.pillarsLabel": "Game principle",
+    "landing.pillar.build": "Build",
+    "landing.pillar.improve": "Improve",
+    "landing.pillar.discover": "Discover",
+    /* ---------- Options menu and music player ---------- */
+    "options.button": "Options",
+    "options.title": "Options",
+    "options.close": "Close",
+    "options.language": "Language",
+    "options.music": "Music",
+    "options.volume": "Volume",
+    "music.enabled": "Music enabled",
+    "music.play": "Play",
+    "music.pause": "Pause",
+    "music.volumeValue": "{value}%",
+    "music.status.off": "Music is turned off.",
+    "music.status.ready": "Ready.",
+    "music.status.loading": "Loading music ...",
+    "music.status.playing": "Now playing: Track {track}",
+    "music.status.gap": "Pause between tracks – up next: Track {track}",
+    "music.status.paused": "Paused.",
+    "music.status.blocked": "Your browser blocked automatic playback. Click Play to start the music.",
+    "music.status.error": "The music file could not be loaded."
+});

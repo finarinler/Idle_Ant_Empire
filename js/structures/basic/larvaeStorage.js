@@ -10,14 +10,19 @@ const LARVAE_STORAGE_COST = {
     queens: 10
 };
 
+// Reihenfolge der Kosten in der Anzeige
+const LARVAE_STORAGE_COST_ORDER = ["larvae", "ants", "queens", "food"];
+
 const LARVAE_STORAGE_DOM = {
     card: null,
+    costDisplay: null,
     buyButton: null
 };
 
 function initLarvaeStorageDOM()
 {
     LARVAE_STORAGE_DOM.card = getEl("card-nursery");
+    LARVAE_STORAGE_DOM.costDisplay = getEl("nursery-cost-display");
     LARVAE_STORAGE_DOM.buyButton = getEl("buy-nursery-btn");
 
     if (LARVAE_STORAGE_DOM.buyButton)
@@ -28,10 +33,7 @@ function initLarvaeStorageDOM()
 
 function canAffordLarvaeStorage()
 {
-    return GameState.resources.food >= LARVAE_STORAGE_COST.food
-        && GameState.resources.larvae >= LARVAE_STORAGE_COST.larvae
-        && getTotalAnts() >= LARVAE_STORAGE_COST.ants
-        && GameState.resources.queens >= LARVAE_STORAGE_COST.queens;
+    return canAffordCost(LARVAE_STORAGE_COST);
 }
 
 /* ---------- Bau ---------- */
@@ -43,10 +45,10 @@ function buyNursery()
         return;
     }
 
-    GameState.resources.food -= LARVAE_STORAGE_COST.food;
-    GameState.resources.larvae -= LARVAE_STORAGE_COST.larvae;
-    spendAnts(LARVAE_STORAGE_COST.ants);
-    GameState.resources.queens -= LARVAE_STORAGE_COST.queens;
+    if (!payCost(LARVAE_STORAGE_COST))
+    {
+        return;
+    }
 
     GameState.structures.nurseryCount = 1;
     GameState.structures.hasNursery = true;
@@ -54,8 +56,8 @@ function buyNursery()
     updateResources();
     saveGame();
 
-    addLogEntry("Brutkammer gebaut!", "success");
-    updateStatus("Maximale Larvenkapazität deutlich erhöht!");
+    addLogEntry("status.nursery.built", "success");
+    updateStatus("status.nursery.effect");
 }
 
 /* ---------- UI ---------- */
@@ -67,10 +69,12 @@ function updateLarvaeStorageUI()
         return;
     }
 
+    renderCostLine(LARVAE_STORAGE_DOM.costDisplay, LARVAE_STORAGE_COST, LARVAE_STORAGE_COST_ORDER);
+
     if (GameState.structures.nurseryCount > 0)
     {
         LARVAE_STORAGE_DOM.buyButton.disabled = true;
-        LARVAE_STORAGE_DOM.buyButton.textContent = "Errichtet";
+        I18N.setText(LARVAE_STORAGE_DOM.buyButton, "button.built");
 
         if (LARVAE_STORAGE_DOM.card)
         {
@@ -79,6 +83,8 @@ function updateLarvaeStorageUI()
     }
     else
     {
+        I18N.setText(LARVAE_STORAGE_DOM.buyButton, "button.build");
+
         LARVAE_STORAGE_DOM.buyButton.disabled =
             !GameState.achievements.smallColony || !canAffordLarvaeStorage();
     }

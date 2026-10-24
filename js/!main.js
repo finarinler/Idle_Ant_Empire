@@ -3,6 +3,9 @@
 ========================= */
 
 const APP_MODULES = [
+    // Big-Number-System: muss vor GameState und allen Berechnungen geladen sein.
+    // (Die Übersetzungen js/i18n/*.js werden direkt in game.html eingebunden.)
+    { script: "js/bignum/bigNumber.js" },
     { script: "js/core/!core.js", loader: "loadCoreModules" },
     { script: "js/state/gameState.js" },
     { script: "js/utils/!utils.js", loader: "loadUtilModules" },
@@ -93,21 +96,19 @@ function hideLoadingScreen() {
 function showFatalError(error) {
     console.error(error);
 
-    updateLoadingStatus(
-        "Das Laden ist fehlgeschlagen. Bitte überprüfe die Fehlermeldung."
-    );
+    updateLoadingStatus(I18N.t("loading.failedStatus"));
 
     const title = document.querySelector(".loading-title");
 
     if (title) {
-        title.textContent = "Ups! Da ist etwas schiefgelaufen.";
+        title.textContent = I18N.t("loading.failedTitle");
     }
 
     const subtitle = document.querySelector(".loading-subtitle");
 
     if (subtitle) {
         subtitle.textContent =
-            error.message || "Unbekannter Ladefehler.";
+            error.message || I18N.t("loading.unknownError");
     }
 
     const bar = document.querySelector(".loading-bar");
@@ -132,7 +133,7 @@ function loadScript(path) {
 
         script.onerror = () => {
             reject(
-                new Error(`Fehler beim Laden von: ${path}`)
+                new Error(I18N.t("loading.scriptError", { path }))
             );
         };
 
@@ -160,9 +161,7 @@ async function loadModules() {
     loadingStartTime = Date.now();
 
     try {
-        updateLoadingStatus(
-            "Deine Ameisen werden versammelt ..."
-        );
+        updateLoadingStatus(I18N.t("loading.gathering"));
 
         updateLoadingProgress(0);
 
@@ -170,7 +169,7 @@ async function loadModules() {
             const entry = APP_MODULES[i];
 
             updateLoadingStatus(
-                `Lade Spielmodule ... (${i + 1}/${APP_MODULES.length})`
+                I18N.t("loading.modules", { current: i + 1, total: APP_MODULES.length })
             );
 
             await loadScript(entry.script);
@@ -187,9 +186,7 @@ async function loadModules() {
             updateLoadingProgress(progress);
         }
 
-        updateLoadingStatus(
-            "Deine Kolonie erwacht ..."
-        );
+        updateLoadingStatus(I18N.t("loading.awakening"));
 
         await initGame();
 
@@ -199,9 +196,7 @@ async function loadModules() {
 
         updateLoadingProgress(100);
 
-        updateLoadingStatus(
-            "Deine Kolonie ist bereit!"
-        );
+        updateLoadingStatus(I18N.t("loading.ready"));
 
         // Den vollständig gefüllten Balken kurz anzeigen.
         await new Promise(resolve => {

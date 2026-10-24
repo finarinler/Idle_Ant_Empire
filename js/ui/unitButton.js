@@ -4,7 +4,7 @@
 
 /**
  * @param {HTMLButtonElement} button
- * @param {{unlocked:boolean, maxReached:boolean, canAfford:boolean, maxText?:string}} state
+ * @param {{unlocked:boolean, maxReached:boolean, canAfford:boolean}} state
  */
 function setTrainButtonState(button, state)
 {
@@ -17,18 +17,18 @@ function setTrainButtonState(button, state)
 
     if (!state.unlocked)
     {
-        button.textContent = "Gesperrt";
+        I18N.setText(button, "button.locked");
     }
     else if (state.maxReached)
     {
-        button.textContent = state.maxText || "Maximum erreicht";
+        I18N.setText(button, "button.maxReached");
     }
     else if (!state.canAfford)
     {
-        button.textContent = "Ressourcen fehlen";
+        I18N.setText(button, "button.missingResources");
     }
     else
     {
-        button.textContent = "Ausbilden";
+        I18N.setText(button, "button.train");
     }
 }

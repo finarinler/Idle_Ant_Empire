@@ -7,7 +7,7 @@ function attachEventListeners()
 {
     if (DOM.expeditionBtn)
     {
-        DOM.expeditionBtn.onclick = startExpedition;
+        DOM.expeditionBtn.onclick = handleExpeditionButtonClick;
     }
 
     if (DOM.logToggleBtn)
