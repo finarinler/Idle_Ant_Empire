@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10160f">
+  <meta name="robots" content="noindex, nofollow">
+  <title data-i18n="maintenance.pageTitle">Wartungsarbeiten | Idle Ant Empire</title>
+  <link rel="icon" type="image/png" href="../!game/assets/images/header.png">
+
+  <script src="../!game/js/i18n/i18n.js"></script>
+  <script src="../!game/js/i18n/de.js"></script>
+  <script src="../!game/js/i18n/en.js"></script>
+  <script src="../!game/js/i18n/es.js"></script>
+  <script src="../!game/js/i18n/fr.js"></script>
+  <script src="../!game/js/i18n/it.js"></script>
+  <script src="../!game/js/i18n/tr.js"></script>
+  <script src="maintenance.js"></script>
+
+  <style>
+    :root {
+      --gold: #f6c45b;
+      --gold-light: #ffe8a3;
+      --cream: #fff5df;
+      --muted: #c7c5b4;
+      --green: #263b25;
+      --dark: #10160f;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--cream);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(ellipse at 50% 35%, rgba(88, 99, 48, .36), transparent 55%),
+        radial-gradient(ellipse at 10% 100%, rgba(129, 79, 31, .25), transparent 40%),
+        linear-gradient(145deg, #202d1b, #10160f 55%, #20180f);
+      display: grid; place-items: center; padding: 82px 18px 28px; overflow-x: hidden; position: relative;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .17;
+      background-image: radial-gradient(circle, #f6c45b 1px, transparent 1.5px);
+      background-size: 53px 61px; mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .maintenance-header {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 18px clamp(14px, 4vw, 44px);
+    }
+    .maintenance-brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--cream); text-decoration: none; font-weight: 750;
+      letter-spacing: .01em; white-space: nowrap;
+    }
+    .maintenance-brand img { width: 34px; height: 34px; object-fit: contain; }
+    .language-selector { position: relative; z-index: 20; }
+    .language-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px;
+      padding: 0 12px; color: var(--cream); background: rgba(16, 22, 15, .82);
+      border: 1px solid rgba(246,196,91,.35); border-radius: 8px; cursor: pointer;
+      font: inherit; backdrop-filter: blur(10px); transition: border-color 160ms ease;
+    }
+    .language-button:hover, .language-button[aria-expanded="true"] { border-color: var(--gold); }
+    .language-flag { display: inline-block; flex-shrink: 0; font-size: 1.15rem; line-height: 1; }
+    .dropdown-arrow { color: var(--muted); font-size: .8rem; transition: transform 160ms ease; }
+    .language-button[aria-expanded="true"] .dropdown-arrow { transform: rotate(180deg); }
+    .language-menu {
+      position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; display: flex; flex-direction: column; gap: 2px;
+      width: max-content; min-width: 245px; padding: 6px; background: #20271c;
+      border: 1px solid rgba(246,196,91,.3); border-radius: 10px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .language-menu[hidden] { display: none; }
+    .language-option {
+      display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 10px;
+      color: var(--cream); background: transparent; border: 0; border-radius: 6px; text-align: left; white-space: nowrap; cursor: pointer; font: inherit;
+    }
+    .language-option:hover, .language-option:focus-visible { background: rgba(246,196,91,.1); outline: none; }
+    .language-option.active { background: rgba(246,196,91,.12); }
+    .language-status { margin-left: auto; padding-left: 12px; color: var(--gold); font-size: .72rem; }
+    .language-status[hidden] { display: none; }
+    .fireflies { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+    .firefly { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 12px 3px rgba(246,196,91,.45); animation: drift 8s ease-in-out infinite alternate; }
+    .firefly:nth-child(1) { left: 12%; top: 24%; }
+    .firefly:nth-child(2) { left: 83%; top: 17%; animation-delay: -3s; }
+    .firefly:nth-child(3) { left: 72%; top: 78%; animation-delay: -5s; }
+    .firefly:nth-child(4) { left: 20%; top: 75%; animation-delay: -2s; }
+    .firefly:nth-child(5) { left: 91%; top: 48%; animation-delay: -6s; }
+    @keyframes drift { from { transform: translate(0, 0); opacity: .25; } to { transform: translate(18px, -28px); opacity: 1; } }
+    .page {
+      width: min(100%, 760px); position: relative; text-align: center; padding: clamp(28px, 6vw, 60px);
+      border: 1px solid rgba(246,196,91,.25); border-radius: 28px;
+      background: linear-gradient(145deg, rgba(34, 43, 29, .94), rgba(17, 22, 15, .97));
+      box-shadow: 0 30px 100px rgba(0,0,0,.45), inset 0 1px rgba(255,255,255,.05); animation: appear .8s ease-out both;
+    }
+    @keyframes appear { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .emblem {
+      width: 104px; height: 104px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 30px;
+      border: 1px solid rgba(246,196,91,.5); background: linear-gradient(145deg, #55401c, #252b19);
+      box-shadow: 0 0 45px rgba(246,196,91,.12); font-size: 54px; animation: bob 3s ease-in-out infinite;
+    }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .eyebrow { color: var(--gold); font-size: .75rem; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; }
+    h1 { margin: 10px 0 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1; letter-spacing: -.045em; color: var(--gold-light); text-shadow: 0 4px 25px rgba(246,196,91,.15); }
+    .subtitle { margin: 16px 0 0; color: #e6d5ae; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.1rem, 3vw, 1.5rem); font-style: italic; }
+    .description { max-width: 510px; margin: 18px auto 0; color: var(--muted); font-size: .98rem; line-height: 1.8; }
+    .divider { width: 100%; display: flex; align-items: center; gap: 16px; margin: 34px 0; color: var(--gold); }
+    .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(246,196,91,.55)); }
+    .divider::after { background: linear-gradient(90deg, rgba(246,196,91,.55), transparent); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .feature { padding: 18px 8px; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; background: rgba(255,255,255,.025); }
+    .feature-icon { display: block; margin-bottom: 10px; font-size: 27px; }
+    .feature strong { display: block; color: #f4d998; font-size: .88rem; margin-bottom: 6px; }
+    .feature span:last-child { display: block; color: #aaa997; font-size: .78rem; line-height: 1.5; }
+    .footer { margin-top: 28px; color: #858a77; font-size: .8rem; line-height: 1.8; }
+    .footer .ant { display: inline-block; margin-top: 7px; font-size: 23px; }
+    @media (max-width: 520px) {
+      body { padding: 76px 10px 14px; }
+      .maintenance-header { padding: 12px 10px; gap: 8px; }
+      .maintenance-brand { gap: 6px; font-size: .88rem; }
+      .maintenance-brand img { width: 28px; height: 28px; }
+      .page { padding: 32px 18px; border-radius: 22px; }
+      .emblem { width: 82px; height: 82px; border-radius: 24px; font-size: 43px; }
+      .features { gap: 7px; }
+      .feature { padding: 14px 5px; }
+      .feature strong { font-size: .78rem; }
+      .feature span:last-child { font-size: .7rem; }
+      .language-button { min-height: 38px; gap: 6px; padding: 0 8px; font-size: .8rem; }
+      .language-flag { font-size: 1rem; }
+      .language-menu { min-width: 230px; }
+      .language-option { gap: 8px; padding: 11px 8px; font-size: .85rem; }
+      .language-status { padding-left: 6px; font-size: .65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
+    /* Kompakte Wartungsansicht: Karte und Sprachwahl starten auf gleicher Höhe. */
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      height: 100vh;
+      height: 100svh;
+      padding: 12px 18px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .maintenance-header {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      right: auto;
+      width: auto;
+      padding: 0;
+      gap: 0;
+      transform: translateX(-50%);
+    }
+    .page {
+      margin: 0 auto;
+      padding: clamp(62px, 7vh, 74px) clamp(24px, 4vw, 42px) clamp(22px, 3.5vh, 34px);
+      animation: none;
+    }
+    .emblem {
+      width: 82px;
+      height: 82px;
+      margin-bottom: 12px;
+      border-radius: 24px;
+      font-size: 43px;
+    }
+    .subtitle { margin-top: 10px; }
+    .divider { margin: 20px 0; }
+    .description { margin-top: 12px; line-height: 1.6; }
+    .feature { padding: 13px 8px; }
+    .feature-icon { margin-bottom: 7px; }
+    .footer { margin-top: 18px; line-height: 1.6; }
+    .footer .ant { margin-top: 4px; }
+    @media (max-height: 820px) and (min-width: 521px) {
+      body { padding-top: 10px; padding-bottom: 10px; }
+      .maintenance-header { top: 10px; }
+      .page { padding-top: 62px; padding-bottom: 20px; }
+      .emblem { width: 72px; height: 72px; font-size: 38px; margin-bottom: 9px; }
+      .divider { margin: 15px 0; }
+      .description { margin-top: 9px; font-size: .92rem; }
+      .features { gap: 9px; }
+      .feature { padding: 10px 7px; }
+      .feature-icon { font-size: 23px; margin-bottom: 5px; }
+      .footer { margin-top: 12px; font-size: .75rem; }
+    }
+    @media (max-width: 520px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 12px 10px 14px;
+      }
+      .maintenance-header {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+      .page { margin-top: 50px; padding: 62px 18px 26px; }
+      .divider { margin: 22px 0; }
+      .footer { margin-top: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .page { animation: none; }
+    }
+
+    /* Finale Anordnung: Karte mittig, Sprachauswahl innerhalb der Karte rechts. */
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      height: auto;
+      padding: 24px 18px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .maintenance-header {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      left: auto;
+      width: auto;
+      padding: 0;
+      margin: 0;
+      transform: none;
+      z-index: 20;
+    }
+    .page {
+      width: min(100%, 760px);
+      height: 690px;
+      margin: 0 auto;
+      padding: 76px clamp(24px, 4vw, 42px) clamp(22px, 3.5vh, 34px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .page::-webkit-scrollbar { display: none; }
+
+    /* Alle Sprachen passen in dieselbe feste Karte; kompakt genug für längere Übersetzungen. */
+    .page {
+      padding: 70px clamp(24px, 4vw, 42px) 16px;
+    }
+    .emblem {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 8px;
+      border-radius: 22px;
+      font-size: 38px;
+    }
+    .eyebrow { font-size: .7rem; letter-spacing: .24em; }
+    h1 { font-size: clamp(2.4rem, 7.4vw, 4.15rem); }
+    .subtitle { margin-top: 7px; }
+    .divider { margin: 13px 0; }
+    .description { margin-top: 8px; font-size: .92rem; line-height: 1.45; }
+    .features { gap: 8px; }
+    .feature { padding: 10px 6px; }
+    .feature-icon { margin-bottom: 4px; font-size: 24px; }
+    .feature strong { margin-bottom: 4px; }
+    .feature span:last-child { line-height: 1.35; }
+    .footer { margin-top: 10px; font-size: .76rem; line-height: 1.45; }
+    .footer .ant { margin-top: 2px; font-size: 21px; }
+
+    @media (max-width: 520px) {
+      body { padding: 14px 10px; }
+      .maintenance-header {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        left: auto;
+        transform: none;
+      }
+      .page {
+        height: 820px;
+        margin: 0 auto;
+        padding: 68px 18px 26px;
+      }
+    }
+
+    /* Sprachstabile Anordnung: feste Bereiche verhindern, dass Übersetzungen
+       andere Elemente verschieben. Die Markenzeile sitzt knapp über der Rahmenkante. */
+    .maintenance-header {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      left: auto;
+      width: auto;
+      padding: 0;
+      margin: 0;
+      transform: none;
+      z-index: 20;
+    }
+    .maintenance-header .language-selector { flex: none; }
+
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: 690px;
+      padding: 70px clamp(24px, 4vw, 42px) 100px;
+      overflow: hidden;
+    }
+    .emblem { flex: 0 0 72px; margin: 0 auto 8px; }
+    .page > .eyebrow:first-of-type {
+      flex: 0 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    h1 {
+      flex: 0 0 67px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .subtitle {
+      flex: 0 0 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      overflow: hidden;
+    }
+    .divider { flex: 0 0 20px; margin: 13px 0; }
+    .page > .eyebrow:nth-of-type(2) {
+      flex: 0 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .description {
+      flex: 0 0 90px;
+      height: 90px;
+      margin: 8px auto 10px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      line-height: 1.45;
+    }
+    .description::-webkit-scrollbar { display: none; }
+    .features {
+      flex: 0 0 132px;
+      height: 132px;
+      gap: 8px;
+    }
+    .feature {
+      min-width: 0;
+      height: 132px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding: 10px 6px;
+    }
+    .feature::-webkit-scrollbar { display: none; }
+    .feature-icon { margin-bottom: 4px; font-size: 24px; }
+    .feature strong { min-height: 2.4em; display: flex; align-items: center; justify-content: center; }
+    .feature span:last-child { line-height: 1.35; }
+    .footer {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 36px;
+      height: 44px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: .76rem;
+      line-height: 1.3;
+    }
+    .footer-thanks { max-height: 2.6em; overflow: hidden; }
+    .footer .ant { margin-top: 0; font-size: 19px; line-height: 1.1; }
+    .footer-brand {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #858a77;
+      font-size: .72rem;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 520px) {
+      .page {
+        height: 820px;
+        padding: 68px 18px 100px;
+      }
+      .emblem { flex-basis: 72px; }
+      h1 { flex-basis: 58px; font-size: clamp(2rem, 8vw, 3rem); }
+      .subtitle { flex-basis: 38px; }
+      .description { flex-basis: 110px; height: 110px; }
+      .features { flex-basis: 150px; height: 150px; }
+      .feature { height: 150px; padding: 9px 4px; }
+      .feature strong { font-size: .74rem; }
+      .feature span:last-child { font-size: .67rem; }
+      .footer { left: 16px; right: 16px; bottom: 36px; }
+      .footer-brand { bottom: 10px; font-size: .68rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="fireflies" aria-hidden="true"><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span></div>
+  <main class="page">
+  <header class="maintenance-header">
+    <div class="language-selector">
+    <button class="language-button" id="language-button" type="button" aria-expanded="false" aria-controls="language-menu">
+      <span class="language-flag" id="language-button-flag" aria-hidden="true">🇩🇪</span>
+      <span id="language-button-name">Deutsch</span><span class="dropdown-arrow" aria-hidden="true">▾</span>
+    </button>
+    <div class="language-menu" id="language-menu" data-i18n-aria-label="landing.languageMenuLabel" aria-label="Sprache auswählen" hidden>
+      <button class="language-option active" type="button" data-lang="de" lang="de"><span class="language-flag" aria-hidden="true">🇩🇪</span><span>Deutsch</span><span class="language-status" data-i18n="landing.languageActive">Aktiv</span></button>
+      <button class="language-option" type="button" data-lang="en" lang="en"><span class="language-flag" aria-hidden="true">🇬🇧</span><span>English</span><span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span></button>
+      <button class="language-option" type="button" data-lang="es" lang="es"><span class="language-flag" aria-hidden="true">🇪🇸</span><span>Español</span><span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span></button>
+      <button class="language-option" type="button" data-lang="fr" lang="fr"><span class="language-flag" aria-hidden="true">🇫🇷</span><span>Français</span><span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span></button>
+      <button class="language-option" type="button" data-lang="it" lang="it"><span class="language-flag" aria-hidden="true">🇮🇹</span><span>Italiano</span><span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span></button>
+      <button class="language-option" type="button" data-lang="tr" lang="tr"><span class="language-flag" aria-hidden="true">🇹🇷</span><span>Türkçe</span><span class="language-status" data-i18n="landing.languageActive" hidden>Aktiv</span></button>
+    </div>
+    </div>
+  </header>
+    <div class="emblem" aria-hidden="true">🐜</div>
+    <div class="eyebrow" data-i18n="maintenance.eyebrow">Ein kleines Reich im Umbau</div>
+    <h1>Idle Ant Empire</h1>
+    <p class="subtitle" data-i18n="maintenance.subtitle">Unsere Kolonie wächst weiter.</p>
+    <div class="divider" aria-hidden="true">✦</div>
+    <div class="eyebrow" data-i18n="maintenance.heading">Wartungsarbeiten</div>
+    <p class="description" data-i18n="maintenance.description">Unsere fleißigen Ameisen sind gerade schwer beschäftigt! Wir bringen die Kolonie auf Vordermann, verbessern das Spiel und bereiten den nächsten Entwicklungsschritt vor. Währenddessen bleibt das Reich vorübergehend geschlossen.</p>
+    <section class="features" aria-label="Was gerade passiert" data-i18n-aria-label="maintenance.featuresLabel">
+      <div class="feature"><span class="feature-icon" aria-hidden="true">⚙️</span><strong data-i18n="maintenance.optimization">Optimierung</strong><span data-i18n="maintenance.optimizationText">Wir bringen die Technik auf Trab.</span></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🌱</span><strong data-i18n="maintenance.development">Weiterentwicklung</strong><span data-i18n="maintenance.developmentText">Das Reich wird Stück für Stück größer.</span></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🏗️</span><strong data-i18n="maintenance.rebuild">Umbau</strong><span data-i18n="maintenance.rebuildText">Unsere Ameisen bauen fleißig weiter.</span></div>
+    </section>
+    <footer class="footer"><span class="footer-thanks" data-i18n="maintenance.thanks">Danke für deine Geduld und dafür, dass du Teil unseres Ameisenreichs bist.</span><br><span class="ant" aria-hidden="true">🐜 ✦ 🐜</span></footer><div class="footer-brand" data-i18n="maintenance.footer">Idle Ant Empire · In Entwicklung</div>
+  </main>
+  <script>
+    (() => {
+      const button = document.getElementById('language-button');
+      const menu = document.getElementById('language-menu');
+      const flag = document.getElementById('language-button-flag');
+      const name = document.getElementById('language-button-name');
+      const options = [...document.querySelectorAll('.language-option')];
+      const closeMenu = () => { menu.hidden = true; button.setAttribute('aria-expanded', 'false'); };
+      function refreshLanguagePicker(language) {
+        const info = I18N.getLanguageInfo(language);
+        flag.textContent = info.flag;
+        name.textContent = info.name;
+        options.forEach(option => {
+          const active = option.dataset.lang === language;
+          option.classList.toggle('active', active);
+          option.setAttribute('aria-current', active ? 'true' : 'false');
+          const status = option.querySelector('.language-status');
+          if (status) status.hidden = !active;
+        });
+      }
+      button.addEventListener('click', () => {
+        const opening = menu.hidden;
+        menu.hidden = !opening;
+        button.setAttribute('aria-expanded', String(opening));
+      });
+      options.forEach(option => option.addEventListener('click', () => {
+        I18N.setLanguage(option.dataset.lang);
+        refreshLanguagePicker(I18N.getLanguage());
+        closeMenu();
+      }));
+      document.addEventListener('click', event => {
+        if (!event.target.closest('.language-selector')) closeMenu();
+      });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+      I18N.init();
+      refreshLanguagePicker(I18N.getLanguage());
+    })();
+  </script>
+</body>
+</html>
