@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forschung — Idle Ant Empire</title>
+</head>
+<body>
+    <!-- Forschungszentrum: Die Karten werden vom CardBuilder aus research/js/researchPanel.js erzeugt. -->
+    <section class="game-view research-view" id="game-view-research" data-game-view-panel="research" hidden aria-label="Forschung" data-i18n-aria-label="nav.research">
+        <div class="view-intro">
+                        <p class="view-eyebrow" data-i18n="research.eyebrow">WISSEN & EVOLUTION</p>
+                        <h2 data-i18n="research.centerTitle">Forschungszentrum</h2>
+                        <p data-i18n="research.intro">Entwickle dein Ameisenreich weiter und erschließe neue Möglichkeiten.</p>
+                    </div>
+        <div class="research-main">
+            <section class="research-resource-panel" aria-labelledby="research-resources-title">
+                <div class="section-heading resource-heading">
+                    <div>
+                        <p class="eyebrow">DIE KOLONIE</p>
+                        <h2 id="research-resources-title">Ressourcen</h2>
+                    </div>
+                    <p class="section-note">Gemeinsamer Bestand deiner Kolonie</p>
+                </div>
+
+                <div class="resource-grid">
+                    <article class="resource-tile resource-tile-primary" aria-label="Forschungspunkte">
+                        <span class="resource-icon" aria-hidden="true">✧</span>
+                        <div class="resource-copy">
+                            <span class="resource-name">Forschungspunkte (FP)</span>
+                            <strong class="resource-amount" id="research-fp-count">0</strong>
+                            <span class="resource-rate" id="research-fp-rate">+0,00 FP/s</span>
+                        </div>
+                    </article>
+                    <article class="resource-tile" aria-label="Nahrung">
+                        <span class="resource-icon" aria-hidden="true">❖</span>
+                        <div class="resource-copy">
+                            <span class="resource-name">Nahrung</span>
+                            <strong class="resource-amount" id="research-food-count">—</strong>
+                            <span class="resource-rate" id="research-food-rate">Bestand der Kolonie</span>
+                        </div>
+                    </article>
+                    <article class="resource-tile" aria-label="Larven">
+                        <span class="resource-icon" aria-hidden="true">◉</span>
+                        <div class="resource-copy">
+                            <span class="resource-name">Larven</span>
+                            <strong class="resource-amount" id="research-larvae-count">—</strong>
+                            <span class="resource-rate">Bestand der Kolonie</span>
+                        </div>
+                    </article>
+                    <article class="resource-tile" aria-label="Ameisen">
+                        <span class="resource-icon" aria-hidden="true">♟</span>
+                        <div class="resource-copy">
+                            <span class="resource-name">Ameisen</span>
+                            <strong class="resource-amount" id="research-ants-count">—</strong>
+                            <span class="resource-rate">Verfügbare Arbeitskräfte</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="rs-overview-grid" aria-label="Wissenschaftlicher Überblick">
+                <article class="rs-overview-card">
+                    <div class="rs-overview-icon" aria-hidden="true">⌂</div>
+                    <div class="rs-overview-copy">
+                        <span class="rs-overview-label">Wissenschaftliche Gebäude</span>
+                        <strong id="research-building-total">0 / 35</strong>
+                        <span class="rs-overview-detail">Schulen, Universitäten und Labore</span>
+                    </div>
+                </article>
+                <article class="rs-overview-card">
+                    <div class="rs-overview-icon" aria-hidden="true">♙</div>
+                    <div class="rs-overview-copy">
+                        <span class="rs-overview-label">Wissenschaftliches Personal</span>
+                        <strong id="research-scientist-total">0</strong>
+                        <span class="rs-overview-detail">Schüler, Studenten und Professoren</span>
+                    </div>
+                </article>
+                <article class="rs-overview-card">
+                    <div class="rs-overview-icon" aria-hidden="true">◷</div>
+                    <div class="rs-overview-copy">
+                        <span class="rs-overview-label">Laufende Ausbildungen</span>
+                        <strong id="research-training-total">0</strong>
+                        <span class="rs-overview-detail">Abgeschlossene Ausbildung schaltet Produktion frei</span>
+                    </div>
+                </article>
+            </section>
+
+            <nav class="research-section-nav" aria-label="Forschungsbereiche">
+                <a class="research-nav-item is-active" href="#science-buildings" aria-current="page">
+                    <span aria-hidden="true">⌂</span> Wissenschaft
+                </a>
+                <a class="research-nav-item" href="#research-outlook">
+                    <span aria-hidden="true">✧</span> Forschungsbaum
+                    <span class="nav-soon">Später</span>
+                </a>
+            </nav>
+
+            <section class="science-section" id="science-buildings" aria-labelledby="science-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">AUFBAU & AUSBILDUNG</p>
+                        <h2 id="science-title">Wissenschaft</h2>
+                    </div>
+                    <p class="section-note">Baue deine wissenschaftliche Produktionskette aus.</p>
+                </div>
+
+                <div class="science-chain" aria-label="Reihenfolge der wissenschaftlichen Produktionskette">
+                    <span>Schule</span><span class="chain-arrow" aria-hidden="true">→</span>
+                    <span>Schüler</span><span class="chain-arrow" aria-hidden="true">→</span>
+                    <span>Universität</span><span class="chain-arrow" aria-hidden="true">→</span>
+                    <span>Studenten</span><span class="chain-arrow" aria-hidden="true">→</span>
+                    <span>Labor</span><span class="chain-arrow" aria-hidden="true">→</span>
+                    <span>Professoren</span>
+                </div>
+
+                <div class="iae-card-grid" data-card-group="research-science"></div>
+            </section>
+
+            <section class="training-section" id="research-training" aria-labelledby="training-title">
+                <div class="section-heading">
+                    <div><p class="eyebrow">FORTSCHRITT</p><h2 id="training-title">Laufende Ausbildungen</h2></div>
+                    <span class="section-counter" id="training-queue-count">0 Prozesse</span>
+                </div>
+                <div class="training-empty-state" id="training-empty-state">
+                    <span class="empty-state-icon" aria-hidden="true">◷</span>
+                    <div><h3>Noch keine Ausbildung im Gange</h3><p>Hier erscheinen später deine laufenden Ausbildungsprozesse samt Fortschritt und verbleibender Zeit.</p></div>
+                </div>
+                <div class="training-queue" id="research-training-queue" aria-live="polite"></div>
+            </section>
+
+            <section class="research-outlook" id="research-outlook" aria-labelledby="outlook-title">
+                <div class="outlook-mark" aria-hidden="true">✧</div>
+                <div class="outlook-copy"><p class="eyebrow">IN VORBEREITUNG</p><h2 id="outlook-title">Der Forschungsbaum</h2><p>Neue Erkenntnisse, Spezialisierungen und Verbesserungen werden in einer späteren Ausbaustufe ergänzt.</p></div>
+                <span class="outlook-status">Noch nicht verfügbar</span>
+            </section>
+        </div>
+    </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="research"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'research', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'research', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

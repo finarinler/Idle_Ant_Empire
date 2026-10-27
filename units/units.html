@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einheiten — Idle Ant Empire</title>
+</head>
+<body>
+    <!-- Die Karten werden vom CardBuilder aus units/js/unitCatalog.js erzeugt. -->
+    <section class="game-view is-active" id="game-view-units" data-game-view-panel="units">
+        <section class="category-wrapper" id="cat-basis-units">
+            <div class="category-header" onclick="toggleCategory('basis-units')">
+                <span class="category-title" data-i18n="category.basisUnits">Basis-Einheiten</span>
+                <div class="category-divider"></div>
+                <div class="mandible-icon" id="mandible-basis-units"><span></span><span></span></div>
+            </div>
+            <div id="basis-units-content" class="category-content iae-card-grid" data-card-group="units-basic"></div>
+        </section>
+
+        <section class="category-wrapper locked" id="cat-elite-units" style="display: none;">
+            <div class="category-header" onclick="toggleCategory('elite-units')">
+                <span class="category-title" data-i18n="category.eliteUnits">Elite-Einheiten</span>
+                <div class="category-divider"></div>
+                <div class="mandible-icon" id="mandible-elite-units"><span></span><span></span></div>
+            </div>
+            <div id="elite-units-content" class="category-content iae-card-grid" data-card-group="units-elite"></div>
+        </section>
+    </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="units"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'units', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'units', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

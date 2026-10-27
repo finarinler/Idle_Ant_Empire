@@ -399,7 +399,24 @@
         height: 820px;
         padding: 68px 18px 100px;
       }
-      .emblem { flex-basis: 72px; }
+
+    .emblem {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+  .emblem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
       h1 { flex-basis: 58px; font-size: clamp(2rem, 8vw, 3rem); }
       .subtitle { flex-basis: 38px; }
       .description { flex-basis: 110px; height: 110px; }
@@ -411,6 +428,29 @@
       .footer-brand { bottom: 10px; font-size: .68rem; }
     }
 
+    .page .emblem {
+    box-sizing: border-box !important;
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    max-height: 72px !important;
+    flex: 0 0 72px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: grid !important;
+    place-items: center !important;
+    margin: 0 auto 8px !important;
+}
+
+.page .emblem img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
   </style>
 </head>
 <body>
@@ -433,7 +473,12 @@
     </div>
     </div>
   </header>
-    <div class="emblem" aria-hidden="true">🐜</div>
+    <div class="emblem">
+      <img
+        src="../!game/assets/images/header.png"
+        alt="Idle Ant Empire"
+        style="display:block !important; width:100% !important; height:100% !important; max-width:100% !important; max-height:100% !important; object-fit:contain !important;">
+    </div>
     <div class="eyebrow" data-i18n="maintenance.eyebrow">Ein kleines Reich im Umbau</div>
     <h1>Idle Ant Empire</h1>
     <p class="subtitle" data-i18n="maintenance.subtitle">Unsere Kolonie wächst weiter.</p>
