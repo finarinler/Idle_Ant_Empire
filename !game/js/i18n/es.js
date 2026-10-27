@@ -338,5 +338,18 @@ I18N.register("es", {
     "maintenance.rebuild": "Reforma",
     "maintenance.rebuildText": "Nuestras hormigas siguen construyendo sin descanso.",
     "maintenance.thanks": "Gracias por tu paciencia y por formar parte de nuestro imperio de hormigas.",
-    "maintenance.footer": "Idle Ant Empire · En desarrollo"
+    "maintenance.footer": "Idle Ant Empire · En desarrollo",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "¡MANTENIMIENTO EN 5 MINUTOS!",
+    "maintenance.countdown4": "¡MANTENIMIENTO EN 4 MINUTOS!",
+    "maintenance.countdown3": "¡MANTENIMIENTO EN 3 MINUTOS!",
+    "maintenance.countdown2": "¡MANTENIMIENTO EN 2 MINUTOS!",
+    "maintenance.countdown1": "¡MANTENIMIENTO EN 1 MINUTO!",
+    "maintenance.countdown30": "¡MANTENIMIENTO EN 30 SEGUNDOS!",
+    "maintenance.countdown10": "¡MANTENIMIENTO EN 10 SEGUNDOS!",
+    "maintenance.countdownNow": "¡MANTENIMIENTO!",
+    "maintenance.countdownSecond": "¡MANTENIMIENTO EN {seconds} SEGUNDOS!",
+    "maintenance.countdownCustom": "{message}",
+
 });

@@ -338,5 +338,18 @@ I18N.register("fr", {
     "maintenance.rebuild": "Travaux",
     "maintenance.rebuildText": "Nos fourmis continuent de construire avec ardeur.",
     "maintenance.thanks": "Merci pour ta patience et de faire partie de notre empire de fourmis.",
-    "maintenance.footer": "Idle Ant Empire · En développement"
+    "maintenance.footer": "Idle Ant Empire · En développement",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "MAINTENANCE DANS 5 MINUTES !",
+    "maintenance.countdown4": "MAINTENANCE DANS 4 MINUTES !",
+    "maintenance.countdown3": "MAINTENANCE DANS 3 MINUTES !",
+    "maintenance.countdown2": "MAINTENANCE DANS 2 MINUTES !",
+    "maintenance.countdown1": "MAINTENANCE DANS 1 MINUTE !",
+    "maintenance.countdown30": "MAINTENANCE DANS 30 SECONDES !",
+    "maintenance.countdown10": "MAINTENANCE DANS 10 SECONDES !",
+    "maintenance.countdownNow": "MAINTENANCE !",
+    "maintenance.countdownSecond": "MAINTENANCE DANS {seconds} SECONDES !",
+    "maintenance.countdownCustom": "{message}",
+
 });

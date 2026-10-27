@@ -37,6 +37,7 @@ function buildLogEntryElement(entry)
 
     const text = document.createElement("span");
     text.className = `log-text ${style.text}`;
+    if (entry.maintenanceRaw) text.style.fontWeight = "800";
     text.textContent = I18N.t(entry.key, entry.params);
 
     element.append(timeSpan, dot, text);
@@ -100,4 +101,17 @@ function clearLog()
         DOM.logContent.replaceChildren();
         updateStatus("status.logCleared", "system");
     }
+}
+
+
+// Spezielle, bereits lokalisierte Wartungswarnungen: fett und in Großbuchstaben.
+function addMaintenanceLogEntry(message)
+{
+    if (!DOM.logContent) return;
+    const entry = { timestamp: new Date(), type: "warning", key: "maintenance.countdownCustom", params: { message }, maintenanceRaw: true };
+    logEntries.unshift(entry);
+    const emptyState = DOM.logContent.querySelector(".logbook-empty-state");
+    if (emptyState) emptyState.remove();
+    DOM.logContent.prepend(buildLogEntryElement(entry));
+    while (logEntries.length > CORE_CONFIG.MAX_LOG_ENTRIES) { logEntries.pop(); if (DOM.logContent.lastChild) DOM.logContent.removeChild(DOM.logContent.lastChild); }
 }

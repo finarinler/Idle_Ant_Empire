@@ -338,5 +338,18 @@ I18N.register("it", {
     "maintenance.rebuild": "Rinnovamento",
     "maintenance.rebuildText": "Le nostre formiche continuano a costruire alacremente.",
     "maintenance.thanks": "Grazie per la pazienza e per far parte del nostro impero di formiche.",
-    "maintenance.footer": "Idle Ant Empire · In sviluppo"
+    "maintenance.footer": "Idle Ant Empire · In sviluppo",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "MANUTENZIONE TRA 5 MINUTI!",
+    "maintenance.countdown4": "MANUTENZIONE TRA 4 MINUTI!",
+    "maintenance.countdown3": "MANUTENZIONE TRA 3 MINUTI!",
+    "maintenance.countdown2": "MANUTENZIONE TRA 2 MINUTI!",
+    "maintenance.countdown1": "MANUTENZIONE TRA 1 MINUTO!",
+    "maintenance.countdown30": "MANUTENZIONE TRA 30 SECONDI!",
+    "maintenance.countdown10": "MANUTENZIONE TRA 10 SECONDI!",
+    "maintenance.countdownNow": "MANUTENZIONE!",
+    "maintenance.countdownSecond": "MANUTENZIONE TRA {seconds} SECONDI!",
+    "maintenance.countdownCustom": "{message}",
+
 });

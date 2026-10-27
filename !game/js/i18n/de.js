@@ -337,5 +337,18 @@ I18N.register("de", {
     "maintenance.rebuild": "Umbau",
     "maintenance.rebuildText": "Unsere Ameisen bauen fleißig weiter.",
     "maintenance.thanks": "Danke für deine Geduld und dafür, dass du Teil unseres Ameisenreichs bist.",
-    "maintenance.footer": "Idle Ant Empire · In Entwicklung"
+    "maintenance.footer": "Idle Ant Empire · In Entwicklung",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "WARTUNG IN 5 MINUTEN!",
+    "maintenance.countdown4": "WARTUNG IN 4 MINUTEN!",
+    "maintenance.countdown3": "WARTUNG IN 3 MINUTEN!",
+    "maintenance.countdown2": "WARTUNG IN 2 MINUTEN!",
+    "maintenance.countdown1": "WARTUNG IN 1 MINUTE!",
+    "maintenance.countdown30": "WARTUNG IN 30 SEKUNDEN!",
+    "maintenance.countdown10": "WARTUNG IN 10 SEKUNDEN!",
+    "maintenance.countdownNow": "WARTUNG!",
+    "maintenance.countdownSecond": "WARTUNG IN {seconds} SEKUNDEN!",
+    "maintenance.countdownCustom": "{message}",
+
 });

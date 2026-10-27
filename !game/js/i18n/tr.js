@@ -338,5 +338,18 @@ I18N.register("tr", {
     "maintenance.rebuild": "Yenileme",
     "maintenance.rebuildText": "Karıncalarımız çalışmaya ve inşa etmeye devam ediyor.",
     "maintenance.thanks": "Sabrın ve karınca imparatorluğumuzun bir parçası olduğun için teşekkürler.",
-    "maintenance.footer": "Idle Ant Empire · Geliştirme aşamasında"
+    "maintenance.footer": "Idle Ant Empire · Geliştirme aşamasında",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "BAKIMA 5 DAKİKA İÇİNDE!",
+    "maintenance.countdown4": "BAKIMA 4 DAKİKA İÇİNDE!",
+    "maintenance.countdown3": "BAKIMA 3 DAKİKA İÇİNDE!",
+    "maintenance.countdown2": "BAKIMA 2 DAKİKA İÇİNDE!",
+    "maintenance.countdown1": "BAKIMA 1 DAKİKA İÇİNDE!",
+    "maintenance.countdown30": "BAKIMA 30 SANİYE İÇİNDE!",
+    "maintenance.countdown10": "BAKIMA 10 SANİYE İÇİNDE!",
+    "maintenance.countdownNow": "BAKIM!",
+    "maintenance.countdownSecond": "BAKIMA {seconds} SANİYE İÇİNDE!",
+    "maintenance.countdownCustom": "{message}",
+
 });

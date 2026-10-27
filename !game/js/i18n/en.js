@@ -337,5 +337,18 @@ I18N.register("en", {
     "maintenance.rebuild": "Rebuilding",
     "maintenance.rebuildText": "Our ants are hard at work building.",
     "maintenance.thanks": "Thank you for your patience and for being part of our ant empire.",
-    "maintenance.footer": "Idle Ant Empire · In development"
+    "maintenance.footer": "Idle Ant Empire · In development",
+
+    /* Wartungs-Countdown */
+    "maintenance.countdown5": "MAINTENANCE IN 5 MINUTES!",
+    "maintenance.countdown4": "MAINTENANCE IN 4 MINUTES!",
+    "maintenance.countdown3": "MAINTENANCE IN 3 MINUTES!",
+    "maintenance.countdown2": "MAINTENANCE IN 2 MINUTES!",
+    "maintenance.countdown1": "MAINTENANCE IN 1 MINUTE!",
+    "maintenance.countdown30": "MAINTENANCE IN 30 SECONDS!",
+    "maintenance.countdown10": "MAINTENANCE IN 10 SECONDS!",
+    "maintenance.countdownNow": "MAINTENANCE!",
+    "maintenance.countdownSecond": "MAINTENANCE IN {seconds} SECONDS!",
+    "maintenance.countdownCustom": "{message}",
+
 });

@@ -51,19 +51,38 @@
         window.IDLE_ANT_MAINTENANCE_STATUS = { state, endAt, remainingSeconds: state === "COUNTDOWN" ? Math.max(0, Math.ceil((endAt-Date.now())/1000)) : null };
         const activeMaintenance = state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now());
         const countdown = state === "COUNTDOWN" && endAt > Date.now();
-        if (countdown && isGamePage) {
+        if (state === "COUNTDOWN" && isGamePage) {
             const remaining = Math.max(0, Math.ceil((endAt-Date.now())/1000));
-            const mark = milestones.find(s => remaining <= s && (s === 0 || remaining > s-1));
+            // Pick the current milestone range, so polling at e.g. 59 seconds
+            // still emits the 1-minute warning instead of missing it entirely.
+            let mark;
+            for (let i = 0; i < milestones.length; i++) {
+                const milestone = milestones[i];
+                const nextMilestone = i + 1 < milestones.length ? milestones[i + 1] : -1;
+                if (remaining <= milestone && remaining > nextMilestone) {
+                    mark = milestone;
+                    break;
+                }
+            }
             if (mark !== undefined) logMilestone(mark);
         }
         if (isMaintenancePage) {
             if (state === "OFF") { redirecting = true; location.replace(new URL("../index.html", maintenanceDir).href); }
-        } else if (activeMaintenance || countdown) {
-            // Already-open game tabs are allowed to finish the countdown; new loads are redirected.
-            if (!isGamePage || !firstStatusReceived) {
+        } else if (isGamePage) {
+            // Existing game tabs continue during COUNTDOWN, but must be redirected
+            // once the deadline is reached (or immediately for MAINTENANCE).
+            if (state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now())) {
+                redirecting = true;
+                location.replace(new URL("maintenance.html", maintenanceDir).href);
+            } else if (countdown && !firstStatusReceived) {
+                // A fresh/direct game load during countdown is blocked.
                 redirecting = true;
                 location.replace(new URL("maintenance.html", maintenanceDir).href);
             }
+        } else if (activeMaintenance || countdown) {
+            // Landing page and other entry points are blocked during countdown/maintenance.
+            redirecting = true;
+            location.replace(new URL("maintenance.html", maintenanceDir).href);
         }
         firstStatusReceived = true;
     }
