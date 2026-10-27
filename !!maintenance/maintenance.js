@@ -18,6 +18,7 @@
     let redirecting = false, checkInProgress = false, firstStatusReceived = false;
     let currentState = "OFF", endAt = 0;
     let lastLoggedMark = null;
+    let lastObservedState = null;
     const milestones = [300,240,180,120,60,30,10,9,8,7,6,5,4,3,2,1,0];
     const keyFor = seconds => seconds === 300 ? "maintenance.countdown5" : seconds === 240 ? "maintenance.countdown4" : seconds === 180 ? "maintenance.countdown3" : seconds === 120 ? "maintenance.countdown2" : seconds === 60 ? "maintenance.countdown1" : seconds === 30 ? "maintenance.countdown30" : seconds === 10 ? "maintenance.countdown10" : seconds === 0 ? "maintenance.countdownNow" : "maintenance.countdownSecond";
     function getLanguage() {
@@ -37,17 +38,38 @@
         if (!text) return `MAINTENANCE IN ${seconds} SECONDS!`;
         return text[seconds] || (seconds === 0 ? text.now : text.s(seconds));
     }
+    function localizedCountdownStarted() {
+        const lang = getLanguage().slice(0,2);
+        return ({
+            de: "ACHTUNG! WARTUNG STEHT BEVOR!",
+            en: "WARNING! MAINTENANCE IS APPROACHING!",
+            es: "¡ATENCIÓN! ¡EL MANTENIMIENTO SE ACERCA!",
+            fr: "ATTENTION ! LA MAINTENANCE APPROCHE !",
+            it: "ATTENZIONE! LA MANUTENZIONE È IMMINENTE!",
+            tr: "DİKKAT! BAKIM YAKLAŞIYOR!"
+        })[lang] || "WARNING! MAINTENANCE IS APPROACHING!";
+    }
+    function logRawMaintenanceMessage(message) {
+        if (!isGamePage || typeof window.addLogEntry !== "function") return;
+        window.addMaintenanceLogEntry ? window.addMaintenanceLogEntry(message) : window.addLogEntry("maintenance.countdownCustom", "warning", { message });
+    }
     function logMilestone(seconds) {
         if (!isGamePage || typeof window.addLogEntry !== "function") return;
         if (lastLoggedMark === seconds) return;
         lastLoggedMark = seconds;
-        const msg = localizedCountdown(seconds);
-        // Dedicated key-less entry so translated countdown wording is preserved as authored.
-        window.addMaintenanceLogEntry ? window.addMaintenanceLogEntry(msg) : window.addLogEntry("maintenance.countdownCustom", "warning", { message: msg });
+        logRawMaintenanceMessage(localizedCountdown(seconds));
     }
     function handleState(state, timestamp) {
+        const previousObservedState = lastObservedState;
+        lastObservedState = state;
         currentState = state;
         endAt = timestamp;
+        // Show an immediate, localized warning in already-open game tabs when the countdown starts.
+        if (state === "COUNTDOWN" && previousObservedState !== "COUNTDOWN") {
+            lastLoggedMark = null;
+            logRawMaintenanceMessage(localizedCountdownStarted());
+        }
+        if (state !== "COUNTDOWN" && previousObservedState === "COUNTDOWN") lastLoggedMark = null;
         window.IDLE_ANT_MAINTENANCE_STATUS = { state, endAt, remainingSeconds: state === "COUNTDOWN" ? Math.max(0, Math.ceil((endAt-Date.now())/1000)) : null };
         const activeMaintenance = state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now());
         const countdown = state === "COUNTDOWN" && endAt > Date.now();
