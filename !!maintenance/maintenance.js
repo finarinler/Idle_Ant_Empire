@@ -9,6 +9,23 @@
     const isMaintenancePage = path.endsWith("/!!maintenance/maintenance.html");
     const isGamePage = path.endsWith("/!game/game.html");
     const isLandingPage = path.endsWith("/index.html") || path.endsWith("/");
+    const activeGameSessionKey = "idleAntEmpireActiveGameSession";
+
+    // Merkt sich pro Browser-Tab, ob dieses Spiel bereits vor dem Countdown lief.
+    // Ein Reload eines laufenden Spiels bleibt dadurch im Countdown im Spiel;
+    // ein neuer Direktaufruf wird weiterhin auf die Wartungsseite geleitet.
+    function hasExistingGameSession() {
+        try { return sessionStorage.getItem(activeGameSessionKey) === "1"; }
+        catch (_) { return false; }
+    }
+    function markGameSessionActive(active) {
+        try {
+            if (active) sessionStorage.setItem(activeGameSessionKey, "1");
+            else sessionStorage.removeItem(activeGameSessionKey);
+        } catch (_) {}
+    }
+    if (isLandingPage || isMaintenancePage) markGameSessionActive(false);
+
     if (!isMaintenancePage) {
         const style = document.createElement("style");
         style.textContent = "html.maintenance-checking body{visibility:hidden!important}";
@@ -73,6 +90,10 @@
         window.IDLE_ANT_MAINTENANCE_STATUS = { state, endAt, remainingSeconds: state === "COUNTDOWN" ? Math.max(0, Math.ceil((endAt-Date.now())/1000)) : null };
         const activeMaintenance = state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now());
         const countdown = state === "COUNTDOWN" && endAt > Date.now();
+
+        // Ein bereits laufender Spiel-Tab darf während COUNTDOWN weiterlaufen.
+        // Neue Spielaufrufe besitzen diesen Tab-Marker nicht und werden blockiert.
+        if (isGamePage && state === "OFF") markGameSessionActive(true);
         if (state === "COUNTDOWN" && isGamePage) {
             const remaining = Math.max(0, Math.ceil((endAt-Date.now())/1000));
             // Pick the current milestone range, so polling at e.g. 59 seconds
@@ -96,8 +117,9 @@
             if (state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now())) {
                 redirecting = true;
                 location.replace(new URL("maintenance.html", maintenanceDir).href);
-            } else if (countdown && !firstStatusReceived) {
+            } else if (countdown && !firstStatusReceived && !hasExistingGameSession()) {
                 // A fresh/direct game load during countdown is blocked.
+                // A tab that was already playing before COUNTDOWN remains active.
                 redirecting = true;
                 location.replace(new URL("maintenance.html", maintenanceDir).href);
             }
