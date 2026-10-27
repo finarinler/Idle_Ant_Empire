@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Statistik — Idle Ant Empire alpha-v0.00.006c</title></head>
+<body>
+<section class="game-view statistics-page-view" id="game-view-statistics" data-game-view-panel="statistics" hidden aria-label="Statistik" data-i18n-aria-label="nav.statistics">
+  <div class="view-intro"><p class="view-eyebrow" data-i18n="statistics.eyebrow">DIE BILANZ DEINER KOLONIE</p><h2 data-i18n="nav.statistics">Statistik</h2><p data-i18n="statistics.intro">Behalte im Blick, wie sich dein Ameisenreich entwickelt. Diese Werte begleiten deinen Spielstand dauerhaft.</p></div>
+  <div class="statistics-summary">
+    <article class="statistics-hero-card"><span class="statistics-hero-icon">⏱</span><div><span class="statistics-label" data-i18n="statistics.playtime">Gesamte Spielzeit</span><strong id="stat-playtime">0 Sek.</strong><small data-i18n="statistics.playtimeNote">Aktive Spielzeit in diesem Spielstand</small></div></article>
+    <article class="statistics-hero-card"><span class="statistics-hero-icon">🐜</span><div><span class="statistics-label" data-i18n="statistics.antsCurrent">Ameisen aktuell</span><strong id="stat-ants-current">0</strong><small data-i18n="statistics.antsCurrentNote">Derzeitige Koloniegröße</small></div></article>
+  </div>
+  <section class="statistics-section"><header><span class="statistics-section-icon">🌱</span><div><h3 data-i18n="statistics.colonyTitle">Kolonie & Nachwuchs</h3><p data-i18n="statistics.colonyNote">Wie deine Kolonie wächst</p></div></header><div class="statistics-grid">
+    <article class="statistics-card"><span data-i18n="statistics.antsFound">Gefundene Ameisen insgesamt</span><strong id="stat-ants-found">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.antsBred">Ausgebildete Ameisen insgesamt</span><strong id="stat-ants-bred">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.queens">Königinnen</span><strong id="stat-queens">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.buildings">Gebäude errichtet</span><strong id="stat-buildings">0</strong></article>
+  </div></section>
+  <section class="statistics-section"><header><span class="statistics-section-icon">🧭</span><div><h3 data-i18n="statistics.expeditionsTitle">Expeditionen</h3><p data-i18n="statistics.expeditionsNote">Erkundungen und ihre Ergebnisse</p></div></header><div class="statistics-grid">
+    <article class="statistics-card"><span data-i18n="statistics.expeditionsStarted">Expeditionen gestartet</span><strong id="stat-expeditions">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.expeditionAnts">Ameisen auf Expeditionen gefunden</span><strong id="stat-expedition-ants">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.critical">Kritische Expeditionen</span><strong id="stat-critical-expeditions">0</strong></article>
+    <article class="statistics-card"><span data-i18n="statistics.failed">Fehlgeschlagene Expeditionen</span><strong id="stat-failed-expeditions">0</strong></article>
+  </div></section>
+  <p class="statistics-note" data-i18n="statistics.note">Hinweis: Einige Werte werden erst ab dieser Version mitgezählt. Bereits vorhandene Ressourcen und Spielstände bleiben erhalten.</p>
+</section>
+<script>(() => { const root = document.querySelector('[data-game-view-panel="statistics"]'); if (!root) { parent.postMessage({type:'iae-section-error',name:'statistics',message:'Der Ansichtsbereich fehlt.'},'*'); return; } parent.postMessage({type:'iae-section-ready',name:'statistics',html:root.outerHTML},'*'); })();</script>
+</body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forschung — Idle Ant Empire alpha-v0.00.006c</title>
+</head>
+<body>
+    <section class="game-view research-page-view" id="game-view-research" data-game-view-panel="research" hidden aria-label="Forschung" data-i18n-aria-label="nav.research">
+                    <div class="view-intro">
+                        <p class="view-eyebrow" data-i18n="research.eyebrow">WISSEN & EVOLUTION</p>
+                        <h2 data-i18n="research.centerTitle">Forschungszentrum</h2>
+                        <p data-i18n="research.intro">Entwickle dein Ameisenreich weiter und erschließe neue Möglichkeiten.</p>
+                    </div>
+                    <iframe id="research-frame" class="research-inline-frame" src="center.html" title="Forschungszentrum" data-i18n-title="research.centerTitle" loading="lazy"></iframe>
+                </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="research"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'research', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'research', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

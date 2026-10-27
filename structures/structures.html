@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gebäude — Idle Ant Empire alpha-v0.00.006c</title>
+</head>
+<body>
+    <section class="game-view structures-page-view" id="game-view-structures" data-game-view-panel="structures" hidden>
+        <div class="view-intro">
+            <p class="view-eyebrow" data-i18n="structures.eyebrow">AUSBAU & INFRASTRUKTUR</p>
+            <h2 data-i18n="structures.title">Gebäude</h2>
+            <p data-i18n="structures.intro">Baue die Infrastruktur deiner Kolonie aus, erweitere deine Lager und schaffe die Grundlage für weiteres Wachstum.</p>
+        </div>
+            <!-- =========================
+                 Basis-Strukturen
+            ========================= -->
+            <section
+                class="category-wrapper locked"
+                id="cat-basis-structures"
+                style="display: none;"
+            >
+                <div class="category-header" onclick="toggleCategory('basis-structures')">
+                    <span class="category-title" data-i18n="category.basisStructures">
+                        Basis-Strukturen
+                    </span>
+                    <div class="category-divider"></div>
+                    <div class="mandible-icon" id="mandible-basis-structures">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div id="basis-structures-content" class="category-content unit-grid">
+                    <div class="unit-card" id="card-storage">
+                        <div class="unit-header">
+                            <span class="worker-name" data-i18n="structure.storage.name">
+                                Vorratskammer
+                            </span>
+                        </div>
+                        <span class="unit-desc" data-i18n="structure.storage.desc"></span>
+                        <div class="cost-label">
+                            <span id="storage-cost-display"></span>
+                        </div>
+                        <button id="buy-storage-btn" class="btn-buy-clean">Bauen</button>
+                    </div>
+
+                    <div class="unit-card" id="card-nursery">
+                        <div class="unit-header">
+                            <span class="worker-name" data-i18n="structure.nursery.name">
+                                Brutkammer
+                            </span>
+                        </div>
+                        <span class="unit-desc" data-i18n="structure.nursery.desc"></span>
+                        <div class="cost-label">
+                            <span id="nursery-cost-display"></span>
+                        </div>
+                        <button id="buy-nursery-btn" class="btn-buy-clean">Bauen</button>
+                    </div>
+
+                    <div class="unit-card locked" id="card-royal-chamber">
+                        <div class="unit-header">
+                            <span class="worker-name" data-i18n="structure.royalChamber.name">
+                                Königinnenkammer
+                            </span>
+                        </div>
+                        <span class="unit-desc" data-i18n="structure.royalChamber.desc"></span>
+                        <div class="cost-label">
+                            <span>???</span>
+                        </div>
+                        <button
+                            id="buy-royal-chamber-btn"
+                            class="btn-buy-clean"
+                            data-i18n="button.locked"
+                            disabled
+                        >
+                            Gesperrt
+                        </button>
+                    </div>
+                </div>
+            </section>
+            </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="structures"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'structures', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'structures', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>
