@@ -1,0 +1,15 @@
+/* =========================
+   Responsive Anpassungen
+========================= */
+
+@media (max-width: 600px)
+{
+    .main-title-large
+    {
+        font-size: 1.8rem !important;
+    }
+    .res-value
+    {
+        font-size: 1.1rem;
+    }
+}

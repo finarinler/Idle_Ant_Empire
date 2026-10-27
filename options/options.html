@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optionen — Idle Ant Empire</title>
+</head>
+<body>
+    <section class="game-view options-page-view" id="game-view-options" data-game-view-panel="options" hidden aria-label="Optionen" data-i18n-aria-label="nav.options">
+                    <div class="view-intro">
+                        <p class="view-eyebrow" data-i18n="options.eyebrow">SPIELEINSTELLUNGEN</p>
+                        <h2 data-i18n="nav.options">Optionen</h2>
+                        <p data-i18n="options.intro">Sprache, Musik und Lautstärke für deine Kolonie.</p>
+                    </div>
+                    <div
+                id="options-menu"
+                class="options-panel game-options-panel"
+                aria-labelledby="options-title"
+
+            >
+                <div class="options-header">
+                    <h2 id="options-title" class="options-title" data-i18n="options.title">
+                        Optionen
+                    </h2>
+                    <button
+                        id="options-close-btn"
+                        class="options-close-btn"
+                        type="button"
+                        data-i18n-aria-label="options.close"
+                        data-i18n-title="options.close"
+                        aria-label="Schließen"
+                        title="Schließen"
+                    >×</button>
+                </div>
+
+                <section class="options-section options-save-section" aria-labelledby="options-save-title">
+                    <h3 id="options-save-title" class="options-section-title" data-i18n="options.saveSection">Spielstand</h3>
+                    <p class="options-description" data-i18n="options.saveText">Speichere deinen aktuellen Fortschritt oder starte die Kolonie nach einer Bestätigung neu.</p>
+                    <div class="options-save-actions">
+                        <button id="save-game-btn" class="options-action-btn options-save-btn" type="button">
+                            <span aria-hidden="true">💾</span> <span data-i18n="options.save">Spielstand speichern</span>
+                        </button>
+                        <button id="game-reset-btn" class="options-action-btn options-delete-btn" type="button">
+                            <span aria-hidden="true">🗑</span> <span data-i18n="options.delete">Spielstand löschen</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="options-section" aria-labelledby="options-language-title">
+                    <h3
+                        id="options-language-title"
+                        class="options-section-title"
+                        data-i18n="options.language"
+                    >Sprache</h3>
+                    <div
+                        id="options-language-list"
+                        class="options-language-list"
+                        role="group"
+                        aria-labelledby="options-language-title"
+                    ></div>
+                </section>
+
+                <section class="options-section" aria-labelledby="options-music-title">
+                    <h3
+                        id="options-music-title"
+                        class="options-section-title"
+                        data-i18n="options.music"
+                    >Musik</h3>
+
+                    <div class="music-controls-row music-controls-compact">
+                        <button
+                            id="music-play-pause"
+                            class="music-play-btn"
+                            type="button"
+                            data-state="stopped"
+                        >
+                            <span id="music-play-icon" class="music-play-icon" aria-hidden="true">▶</span>
+                            <span id="music-play-label">Play</span>
+                        </button>
+
+                        <button
+                            id="music-toggle"
+                            class="music-toggle-button is-enabled"
+                            type="button"
+                            aria-pressed="true"
+                        >Musik an</button>
+                    </div>
+
+                    <div class="music-volume-row">
+                        <label for="music-volume" data-i18n="options.volume">Lautstärke</label>
+                        <input
+                            type="range"
+                            id="music-volume"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value="25"
+                            data-i18n-aria-label="options.volume"
+                            aria-label="Lautstärke"
+                        >
+                        <output id="music-volume-value" for="music-volume">25 %</output>
+                    </div>
+                    <p id="music-status" class="music-status" role="status" aria-live="polite"></p>
+                </section>
+            </div>
+                </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="options"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'options', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'options', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

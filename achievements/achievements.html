@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erfolge — Idle Ant Empire alpha-v0.00.006c</title>
+</head>
+<body>
+    <section class="game-view achievements-page-view" id="game-view-achievements" data-game-view-panel="achievements" hidden aria-label="Erfolge" data-i18n-aria-label="nav.achievements">
+                    <div class="view-intro">
+                        <p class="view-eyebrow" data-i18n="achievements.eyebrow">MEILENSTEINE</p>
+                        <h2 data-i18n="nav.achievements">Erfolge</h2>
+                        <p data-i18n="achievements.intro">Verfolge die Meilensteine deiner Kolonie und entdecke neue Belohnungen.</p>
+                    </div>
+                    <div id="achievement-container" class="achievement-page-content">
+                <div class="achievement-main-header">
+                    <span class="achievement-main-title" data-i18n="panel.achievements.title">
+                        Erfolge
+                    </span>
+                </div>
+                <hr class="legend-separator">
+                <div id="achievement-list" class="achievement-content-padding">
+                    <p
+                        id="no-achievements-msg"
+                        data-i18n="panel.achievements.empty"
+                        style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px;"
+                    >
+                        Noch keine Erfolge freigeschaltet.
+                    </p>
+                </div>
+            </div>
+                </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="achievements"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'achievements', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'achievements', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

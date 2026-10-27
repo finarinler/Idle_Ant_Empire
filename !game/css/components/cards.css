@@ -1,0 +1,107 @@
+/* =========================================================
+   Karten-Baukasten — gemeinsames Kartenlayout
+   Verbindliche Vorlage: Forschungskarte. Gilt für alle Karten, die der
+   CardBuilder (js/ui/cardBuilder.js) erzeugt: Einheiten, Gebäude, Forschung.
+   Palette: --research-* in core/variables.css
+========================================================= */
+
+.iae-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 17px;
+    align-items: stretch;
+}
+
+.iae-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid var(--research-border);
+    border-radius: 16px;
+    background: linear-gradient(150deg, rgba(29, 29, 29, .98), rgba(19, 19, 19, .98));
+    color: var(--research-text);
+    box-shadow: 0 9px 22px rgba(0, 0, 0, .16);
+    transition: border-color .2s, transform .2s;
+}
+.iae-card:hover { border-color: #51442f; transform: translateY(-2px); }
+
+/* Kopf: Symbolfeld links, Typ rechts */
+.iae-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+.iae-card-symbol {
+    display: grid; width: 45px; height: 45px; place-items: center;
+    border: 1px solid rgba(197, 163, 110, .25); border-radius: 13px;
+    background: #282116; color: var(--research-gold-bright); font-size: 1.6rem;
+}
+.iae-card-symbol.is-scientist { background: #20201d; color: #d0c7b7; }
+.iae-card-type { color: var(--research-dim); font-size: .69rem; font-weight: 650; letter-spacing: .04em; text-align: right; }
+
+/* Titel, Beschreibung, Bestand */
+.iae-card-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 79px; }
+.iae-card-title-block { min-width: 0; }
+.iae-card-name { margin: 0 0 6px; color: #eee5d5; font-size: 1.25rem; font-weight: 650; }
+.iae-card-desc { max-width: 280px; margin: 0; color: var(--research-muted); font-size: .8rem; line-height: 1.5; }
+.iae-card-count {
+    flex: 0 0 auto; padding: 5px 8px; border: 1px solid #39352d; border-radius: 8px;
+    background: #171613; color: var(--research-gold-bright); font-size: .77rem; font-variant-numeric: tabular-nums;
+}
+
+/* Kennzahlen: Bezeichnung links, Wert rechts */
+.iae-card-stats { display: grid; margin: 15px 0; border-top: 1px solid var(--research-border-soft); border-bottom: 1px solid var(--research-border-soft); }
+.iae-card-stat { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.iae-card-stat + .iae-card-stat { border-top: 1px solid #222; }
+.iae-card-stat span { color: var(--research-muted); font-size: .75rem; }
+.iae-card-stat strong { color: var(--research-text); font-size: .8rem; font-weight: 650; text-align: right; }
+.iae-card-stat.tone-positive strong { color: var(--research-green); }
+
+/* Kosten */
+.iae-card-cost { min-height: 58px; margin: 15px 0 14px; }
+.iae-card-stats + .iae-card-cost { margin-top: 0; }
+.iae-card-label { display: block; margin-bottom: 5px; color: var(--research-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+.iae-card-cost-line { color: #c9c1b4; font-size: .78rem; line-height: 1.5; overflow-wrap: anywhere; }
+
+/* Fortschrittsbalken (Brut-Expertin) */
+.iae-card-progress { margin-bottom: 14px; }
+.iae-card-progress-track { position: relative; height: 6px; overflow: hidden; border: 1px solid #3b3123; border-radius: 4px; background: #17140f; }
+.iae-card-progress-fill { position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--research-gold-deep); transition: width 1s linear; }
+
+/* Aktion */
+.iae-card-action {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; margin-top: auto; padding: 12px 14px;
+    border: 1px solid #655033; border-radius: 10px;
+    background: linear-gradient(135deg, #6d5432, #4c3a23);
+    color: #eee0c5; font: inherit; font-size: .84rem; font-weight: 700; text-align: left; cursor: pointer;
+    transition: filter .18s, border-color .18s;
+}
+.iae-card-action:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
+.iae-card-action:focus-visible { outline: 2px solid var(--research-gold-bright); outline-offset: 3px; }
+.iae-card-action:disabled { border-color: #303030; background: #252525; color: #77736c; cursor: not-allowed; }
+.iae-card-action-glyph { font-size: 1.1rem; }
+.iae-card-action-glyph::before { content: "＋"; }
+.iae-card.is-locked .iae-card-action-glyph::before,
+.iae-card.is-soon .iae-card-action-glyph::before,
+.iae-card.is-max .iae-card-action-glyph::before { content: "–"; }
+.iae-card.is-built .iae-card-action-glyph::before { content: "✓"; }
+
+.iae-card-hint { min-height: 30px; margin: 9px 0 0; color: var(--research-dim); font-size: .7rem; line-height: 1.45; }
+
+/* Status: gesperrt / noch nicht verfügbar / Maximum / gebaut */
+.iae-card.is-locked, .iae-card.is-soon { border-color: #2b2925; background: linear-gradient(150deg, rgba(25, 25, 25, .98), rgba(16, 16, 16, .98)); }
+.iae-card.is-locked .iae-card-name, .iae-card.is-soon .iae-card-name { color: #aaa195; }
+.iae-card.is-locked .iae-card-symbol, .iae-card.is-soon .iae-card-symbol { background: #20201d; color: #8d8578; }
+.iae-card.is-soon { border-style: dashed; }
+.iae-card.is-max, .iae-card.is-built { border-color: rgba(143, 191, 139, .35); }
+.iae-card.is-max .iae-card-action:disabled, .iae-card.is-built .iae-card-action:disabled { border-color: rgba(143, 191, 139, .3); background: #1c241b; color: var(--research-green); }
+
+@media (max-width: 600px) {
+    .iae-card-grid { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+    .iae-card { padding: 17px; }
+    .iae-card-title-row { min-height: auto; }
+}
+@media (max-width: 380px) {
+    .iae-card-title-row { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .iae-card, .iae-card-action, .iae-card-progress-fill { transition: none; }
+}
