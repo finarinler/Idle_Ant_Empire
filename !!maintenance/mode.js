@@ -12,6 +12,6 @@
 
    Der alte Schalter bleibt als Rückwärtskompatibilität erhalten.
 */
-window.IDLE_ANT_MAINTENANCE_STATE = "OFF";
-window.IDLE_ANT_MAINTENANCE_END_AT = "2026-10-27T21:35:00Z";
+window.IDLE_ANT_MAINTENANCE_STATE = "COUNTDOWN";
+window.IDLE_ANT_MAINTENANCE_END_AT = "2026-10-27T21:15:00Z";
 window.IDLE_ANT_MAINTENANCE_MODE = false; // Legacy: true = sofortige Wartung
