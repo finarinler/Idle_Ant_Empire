@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Logbuch — Idle Ant Empire alpha-v0.00.006c</title></head>
+<body>
+<section class="game-view logbook-page-view" id="game-view-logbook" data-game-view-panel="logbook" hidden aria-label="Logbuch" data-i18n-aria-label="nav.logbook">
+  <div class="view-intro">
+    <p class="view-eyebrow" data-i18n="logbook.eyebrow">CHRONIK DER KOLONIE</p>
+    <h2 data-i18n="nav.logbook">Logbuch</h2>
+    <p data-i18n="logbook.intro">Alle wichtigen Ereignisse deiner Kolonie – übersichtlich, chronologisch und nach Ereignistyp erkennbar.</p>
+  </div>
+  <section id="log-container" class="logbook-panel">
+    <header class="logbook-toolbar">
+      <div><span class="logbook-kicker" data-i18n="logbook.kicker">KOLONIE-AUFZEICHNUNGEN</span><h3 class="log-title-styled" data-i18n="panel.log.title">Ereignisprotokoll</h3></div>
+      <button id="log-reset-btn" class="log-reset-btn" type="button" data-i18n="log.clear">Logbuch leeren</button>
+    </header>
+    <div id="log-legend" class="logbook-legend" aria-label="Legende" data-i18n-aria-label="logbook.legend">
+      <div class="legend-item"><span class="dot dot-status"></span><span class="legend-label" data-i18n="log.type.status">Status</span></div>
+      <div class="legend-item"><span class="dot dot-success"></span><span class="legend-label" data-i18n="log.type.success">Expeditionsfund</span></div>
+      <div class="legend-item"><span class="dot dot-achievement"></span><span class="legend-label" data-i18n="log.type.achievement">Erfolg errungen</span></div>
+      <div class="legend-item"><span class="dot dot-warning"></span><span class="legend-label" data-i18n="log.type.warning">Warnung</span></div>
+      <div class="legend-item"><span class="dot dot-system"></span><span class="legend-label" data-i18n="log.type.system">System</span></div>
+    </div>
+    <div class="logbook-feed-wrap"><div id="log-content" aria-live="polite"><div class="logbook-empty-state" data-i18n="logbook.empty">Noch keine Ereignisse aufgezeichnet.</div></div></div>
+    <footer class="logbook-footer"><span class="logbook-live-dot"></span><span data-i18n="logbook.newestFirst">Neueste Ereignisse stehen oben</span></footer>
+  </section>
+</section>
+<script>(() => { const root = document.querySelector('[data-game-view-panel="logbook"]'); if (!root) { parent.postMessage({type:'iae-section-error',name:'logbook',message:'Der Ansichtsbereich fehlt.'},'*'); return; } parent.postMessage({type:'iae-section-ready',name:'logbook',html:root.outerHTML},'*'); })();</script>
+</body></html>
