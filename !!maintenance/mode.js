@@ -19,5 +19,5 @@
    perfekte Synchronisierung aller Browser ist bei einer statischen Seite nicht möglich.
 */
 window.IDLE_ANT_MAINTENANCE_STATE = "OFF";
-window.IDLE_ANT_MAINTENANCE_END_AT = "2026-10-27T17:10:00Z"; // nur bei COUNTDOWN relevant (UTC)
+window.IDLE_ANT_MAINTENANCE_END_AT = "2026-10-28T17:15:00Z"; // nur bei COUNTDOWN relevant (UTC)
 window.IDLE_ANT_MAINTENANCE_MODE = false; // Legacy: true = sofortige Wartung (nur ohne STATE)
