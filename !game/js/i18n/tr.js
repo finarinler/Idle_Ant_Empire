@@ -341,15 +341,17 @@ I18N.register("tr", {
     "maintenance.footer": "Idle Ant Empire · Geliştirme aşamasında",
 
     /* Wartungs-Countdown */
-    "maintenance.countdown5": "BAKIMA 5 DAKİKA İÇİNDE!",
-    "maintenance.countdown4": "BAKIMA 4 DAKİKA İÇİNDE!",
-    "maintenance.countdown3": "BAKIMA 3 DAKİKA İÇİNDE!",
-    "maintenance.countdown2": "BAKIMA 2 DAKİKA İÇİNDE!",
-    "maintenance.countdown1": "BAKIMA 1 DAKİKA İÇİNDE!",
-    "maintenance.countdown30": "BAKIMA 30 SANİYE İÇİNDE!",
-    "maintenance.countdown10": "BAKIMA 10 SANİYE İÇİNDE!",
+    "maintenance.countdown5": "BAKIM 5 DAKİKA İÇİNDE!",
+    "maintenance.countdown4": "BAKIM 4 DAKİKA İÇİNDE!",
+    "maintenance.countdown3": "BAKIM 3 DAKİKA İÇİNDE!",
+    "maintenance.countdown2": "BAKIM 2 DAKİKA İÇİNDE!",
+    "maintenance.countdown1": "BAKIM 1 DAKİKA İÇİNDE!",
+    "maintenance.countdown30": "BAKIM 30 SANİYE İÇİNDE!",
+    "maintenance.countdown10": "BAKIM 10 SANİYE İÇİNDE!",
     "maintenance.countdownNow": "BAKIM!",
-    "maintenance.countdownSecond": "BAKIMA {seconds} SANİYE İÇİNDE!",
+    "maintenance.countdownSecond": "BAKIM {seconds} SANİYE İÇİNDE!",
+    "maintenance.countdownStarted": "DİKKAT! BAKIM YAKLAŞIYOR!",
+    "maintenance.countdownOneSecond": "BAKIM 1 SANİYE İÇİNDE!",
     "maintenance.countdownCustom": "{message}",
 
 });
