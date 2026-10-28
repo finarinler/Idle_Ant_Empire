@@ -18,6 +18,6 @@
    Die Uhr wird, soweit der Server ein Date-Header liefert, am Server ausgerichtet; eine
    perfekte Synchronisierung aller Browser ist bei einer statischen Seite nicht möglich.
 */
-window.IDLE_ANT_MAINTENANCE_STATE = "COUNTDOWN";
+window.IDLE_ANT_MAINTENANCE_STATE = "OFF";
 window.IDLE_ANT_MAINTENANCE_END_AT = "2026-10-27T17:10:00Z"; // nur bei COUNTDOWN relevant (UTC)
 window.IDLE_ANT_MAINTENANCE_MODE = false; // Legacy: true = sofortige Wartung (nur ohne STATE)
