@@ -115,7 +115,7 @@ function isLogReady()
 function addMaintenanceLogEntry(key, params = null)
 {
     if (!DOM.logContent) return;
-    const entry = { timestamp: new Date(), type: "warning", key, params, maintenanceRaw: true };
+    const entry = { timestamp: new Date(), type: "system", key, params, maintenanceRaw: true };
     logEntries.unshift(entry);
     const emptyState = DOM.logContent.querySelector(".logbook-empty-state");
     if (emptyState) emptyState.remove();
