@@ -1,19 +1,50 @@
-/* Idle Ant Empire – gemeinsamer Wartungsstatus + Countdown-Log */
+/* Idle Ant Empire – gemeinsamer Wartungsstatus + Countdown-Log
+
+   Ablauf (statisch, ohne Server): mode.js wird jede Sekunde mit no-store neu geladen und als
+   Text ausgewertet (kein eval). Jede Seite (Startseite, Spiel, Wartungsseite) entscheidet
+   daraus selbst. Der lokale Takt (TICK_MS) zählt den Countdown herunter, ohne dass dafür
+   jede Sekunde ein erfolgreicher Netzabruf nötig ist.
+
+   Zustände:
+   OFF          Normalbetrieb, keine Warnungen, keine Weiterleitungen.
+   COUNTDOWN    Endzeitpunkt in der Zukunft: laufende Spiele (Tab-Marker) bleiben spielbar und
+                loggen Warnungen; neue Besucher gehen direkt zur Wartungsseite. Ab dem
+                Endzeitpunkt gehen ALLE zur Wartungsseite.
+   MAINTENANCE  Wartungsseite für alle ("ON" ist ein Alias).
+   INVALID      (nur intern) Konfiguration unlesbar/ungültig: keine Weiterleitung, Fehler in der
+                Konsole, letzter gültiger Zustand bleibt erhalten. */
 (() => {
     "use strict";
     const isHttp = location.protocol === "http:" || location.protocol === "https:";
     if (!isHttp) return; // file:// bleibt für lokale Tests unverändert
-    const scriptUrl = document.currentScript && document.currentScript.src ? new URL(document.currentScript.src) : new URL("maintenance.js", location.href);
-    const maintenanceDir = new URL("./", scriptUrl);
+    // Mehrfaches Einbinden/Ausführen darf keine zweiten Timer, Warnungen oder Redirects erzeugen.
+    if (window.__IDLE_ANT_MAINTENANCE_STARTED__) return;
+    window.__IDLE_ANT_MAINTENANCE_STARTED__ = true;
+
+    const POLL_MS = 1000, TICK_MS = 250, FETCH_TIMEOUT_MS = 8000;
+    const MILESTONES = [300,240,180,120,60,30,10,9,8,7,6,5,4,3,2,1,0]; // absteigend
+    const MINUTE_KEYS = {300:"maintenance.countdown5",240:"maintenance.countdown4",180:"maintenance.countdown3",120:"maintenance.countdown2",60:"maintenance.countdown1",30:"maintenance.countdown30",10:"maintenance.countdown10",0:"maintenance.countdownNow",1:"maintenance.countdownOneSecond"};
+    const activeGameSessionKey = "idleAntEmpireActiveGameSession";
+    const ISO_WITH_ZONE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})$/;
+
     const path = location.pathname.toLowerCase();
     const isMaintenancePage = path.endsWith("/!!maintenance/maintenance.html");
     const isGamePage = path.endsWith("/!game/game.html");
     const isLandingPage = path.endsWith("/index.html") || path.endsWith("/");
-    const activeGameSessionKey = "idleAntEmpireActiveGameSession";
 
-    // Merkt sich pro Browser-Tab, ob dieses Spiel bereits vor dem Countdown lief.
-    // Ein Reload eines laufenden Spiels bleibt dadurch im Countdown im Spiel;
-    // ein neuer Direktaufruf wird weiterhin auf die Wartungsseite geleitet.
+    function resolveMaintenanceDir() {
+        try {
+            const cs = document.currentScript;
+            if (cs && cs.src) return new URL("./", new URL(cs.src));
+        } catch (_) {}
+        const root = location.pathname.replace(/\/(!game\/game\.html|!!maintenance\/maintenance\.html|index\.html)$/i, "/").replace(/([^/])$/, "$1/");
+        return new URL(root + "!!maintenance/", location.origin);
+    }
+    const maintenanceDir = resolveMaintenanceDir();
+    const maintenanceUrl = () => new URL("maintenance.html", maintenanceDir).href;
+    const indexUrl = () => new URL("../index.html", maintenanceDir).href;
+
+    /* ---------- Tab-Marker: lief dieses Spiel schon vor dem Countdown? ---------- */
     function hasExistingGameSession() {
         try { return sessionStorage.getItem(activeGameSessionKey) === "1"; }
         catch (_) { return false; }
@@ -24,6 +55,7 @@
             else sessionStorage.removeItem(activeGameSessionKey);
         } catch (_) {}
     }
+    // Startseite/Wartungsseite = neuer Besuch. Das Spiel (iframe der Startseite) setzt den Marker erneut.
     if (isLandingPage || isMaintenancePage) markGameSessionActive(false);
 
     if (!isMaintenancePage) {
@@ -32,126 +64,207 @@
         document.head.appendChild(style);
         document.documentElement.classList.add("maintenance-checking");
     }
-    let redirecting = false, checkInProgress = false, firstStatusReceived = false;
-    let currentState = "OFF", endAt = 0;
-    let lastLoggedMark = null;
-    let lastObservedState = null;
-    const milestones = [300,240,180,120,60,30,10,9,8,7,6,5,4,3,2,1,0];
-    const keyFor = seconds => seconds === 300 ? "maintenance.countdown5" : seconds === 240 ? "maintenance.countdown4" : seconds === 180 ? "maintenance.countdown3" : seconds === 120 ? "maintenance.countdown2" : seconds === 60 ? "maintenance.countdown1" : seconds === 30 ? "maintenance.countdown30" : seconds === 10 ? "maintenance.countdown10" : seconds === 0 ? "maintenance.countdownNow" : "maintenance.countdownSecond";
-    function getLanguage() {
-        try { return window.I18N && I18N.getLanguageInfo ? I18N.getLanguageInfo().htmlLang : document.documentElement.lang || "de"; }
-        catch (_) { return document.documentElement.lang || "de"; }
-    }
-    function localizedCountdown(seconds) {
-        const lang = getLanguage().slice(0,2);
-        const text = {
-            de: {300:"WARTUNG IN 5 MINUTEN!",240:"WARTUNG IN 4 MINUTEN!",180:"WARTUNG IN 3 MINUTEN!",120:"WARTUNG IN 2 MINUTEN!",60:"WARTUNG IN 1 MINUTE!",30:"WARTUNG IN 30 SEKUNDEN!",10:"WARTUNG IN 10 SEKUNDEN!",now:"WARTUNG!",s:n=>`WARTUNG IN ${n} SEKUNDEN!`},
-            en: {300:"MAINTENANCE IN 5 MINUTES!",240:"MAINTENANCE IN 4 MINUTES!",180:"MAINTENANCE IN 3 MINUTES!",120:"MAINTENANCE IN 2 MINUTES!",60:"MAINTENANCE IN 1 MINUTE!",30:"MAINTENANCE IN 30 SECONDS!",10:"MAINTENANCE IN 10 SECONDS!",now:"MAINTENANCE!",s:n=>`MAINTENANCE IN ${n} SECONDS!`},
-            es: {300:"¡MANTENIMIENTO EN 5 MINUTOS!",240:"¡MANTENIMIENTO EN 4 MINUTOS!",180:"¡MANTENIMIENTO EN 3 MINUTOS!",120:"¡MANTENIMIENTO EN 2 MINUTOS!",60:"¡MANTENIMIENTO EN 1 MINUTO!",30:"¡MANTENIMIENTO EN 30 SEGUNDOS!",10:"¡MANTENIMIENTO EN 10 SEGUNDOS!",now:"¡MANTENIMIENTO!",s:n=>`¡MANTENIMIENTO EN ${n} SEGUNDOS!`},
-            fr: {300:"MAINTENANCE DANS 5 MINUTES !",240:"MAINTENANCE DANS 4 MINUTES !",180:"MAINTENANCE DANS 3 MINUTES !",120:"MAINTENANCE DANS 2 MINUTES !",60:"MAINTENANCE DANS 1 MINUTE !",30:"MAINTENANCE DANS 30 SECONDES !",10:"MAINTENANCE DANS 10 SECONDES !",now:"MAINTENANCE !",s:n=>`MAINTENANCE DANS ${n} SECONDES !`},
-            it: {300:"MANUTENZIONE TRA 5 MINUTI!",240:"MANUTENZIONE TRA 4 MINUTI!",180:"MANUTENZIONE TRA 3 MINUTI!",120:"MANUTENZIONE TRA 2 MINUTI!",60:"MANUTENZIONE TRA 1 MINUTO!",30:"MANUTENZIONE TRA 30 SECONDI!",10:"MANUTENZIONE TRA 10 SECONDI!",now:"MANUTENZIONE!",s:n=>`MANUTENZIONE TRA ${n} SECONDI!`},
-            tr: {300:"BAKIM 5 DAKİKA İÇİNDE!",240:"BAKIM 4 DAKİKA İÇİNDE!",180:"BAKIM 3 DAKİKA İÇİNDE!",120:"BAKIM 2 DAKİKA İÇİNDE!",60:"BAKIM 1 DAKİKA İÇİNDE!",30:"BAKIM 30 SANİYE İÇİNDE!",10:"BAKIM 10 SANİYE İÇİNDE!",now:"BAKIM!",s:n=>`BAKIM ${n} SANİYE İÇİNDE!`}
-        }[lang] || null;
-        if (!text) return `MAINTENANCE IN ${seconds} SECONDS!`;
-        return text[seconds] || (seconds === 0 ? text.now : text.s(seconds));
-    }
-    function localizedCountdownStarted() {
-        const lang = getLanguage().slice(0,2);
-        return ({
-            de: "ACHTUNG! WARTUNG STEHT BEVOR!",
-            en: "WARNING! MAINTENANCE IS APPROACHING!",
-            es: "¡ATENCIÓN! ¡EL MANTENIMIENTO SE ACERCA!",
-            fr: "ATTENTION ! LA MAINTENANCE APPROCHE !",
-            it: "ATTENZIONE! LA MANUTENZIONE È IMMINENTE!",
-            tr: "DİKKAT! BAKIM YAKLAŞIYOR!"
-        })[lang] || "WARNING! MAINTENANCE IS APPROACHING!";
-    }
-    function logRawMaintenanceMessage(message) {
-        if (!isGamePage || typeof window.addLogEntry !== "function") return;
-        window.addMaintenanceLogEntry ? window.addMaintenanceLogEntry(message) : window.addLogEntry("maintenance.countdownCustom", "warning", { message });
-    }
-    function logMilestone(seconds) {
-        if (!isGamePage || typeof window.addLogEntry !== "function") return;
-        if (lastLoggedMark === seconds) return;
-        lastLoggedMark = seconds;
-        logRawMaintenanceMessage(localizedCountdown(seconds));
-    }
-    function handleState(state, timestamp) {
-        const previousObservedState = lastObservedState;
-        lastObservedState = state;
-        currentState = state;
-        endAt = timestamp;
-        // Show an immediate, localized warning in already-open game tabs when the countdown starts.
-        if (state === "COUNTDOWN" && previousObservedState !== "COUNTDOWN") {
-            lastLoggedMark = null;
-            logRawMaintenanceMessage(localizedCountdownStarted());
-        }
-        if (state !== "COUNTDOWN" && previousObservedState === "COUNTDOWN") lastLoggedMark = null;
-        window.IDLE_ANT_MAINTENANCE_STATUS = { state, endAt, remainingSeconds: state === "COUNTDOWN" ? Math.max(0, Math.ceil((endAt-Date.now())/1000)) : null };
-        const activeMaintenance = state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now());
-        const countdown = state === "COUNTDOWN" && endAt > Date.now();
 
-        // Ein bereits laufender Spiel-Tab darf während COUNTDOWN weiterlaufen.
-        // Neue Spielaufrufe besitzen diesen Tab-Marker nicht und werden blockiert.
-        if (isGamePage && state === "OFF") markGameSessionActive(true);
-        if (state === "COUNTDOWN" && isGamePage) {
-            const remaining = Math.max(0, Math.ceil((endAt-Date.now())/1000));
-            // Pick the current milestone range, so polling at e.g. 59 seconds
-            // still emits the 1-minute warning instead of missing it entirely.
-            let mark;
-            for (let i = 0; i < milestones.length; i++) {
-                const milestone = milestones[i];
-                const nextMilestone = i + 1 < milestones.length ? milestones[i + 1] : -1;
-                if (remaining <= milestone && remaining > nextMilestone) {
-                    mark = milestone;
-                    break;
-                }
-            }
-            if (mark !== undefined) logMilestone(mark);
+    /* ---------- Konfiguration auslesen (rein, ohne Seiteneffekte) ---------- */
+    function stripComments(src) {
+        return String(src).replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:"'\\])\/\/.*$/gm, "$1");
+    }
+    function lastCapture(src, regex) {
+        let last = null, m;
+        regex.lastIndex = 0;
+        while ((m = regex.exec(src)) !== null) last = m;
+        return last;
+    }
+    function parseConfig(text) {
+        const src = stripComments(text);
+        const warnings = [];
+        const stateM = lastCapture(src, /IDLE_ANT_MAINTENANCE_STATE\s*=\s*(?:"([^"]*)"|'([^']*)')/g);
+        const endM = lastCapture(src, /IDLE_ANT_MAINTENANCE_END_AT\s*=\s*(?:"([^"]*)"|'([^']*)')/g);
+        const legacyM = lastCapture(src, /IDLE_ANT_MAINTENANCE_MODE\s*=\s*(true|false)\b/g);
+        const legacy = legacyM ? legacyM[1] === "true" : null;
+        let state;
+        if (stateM) {
+            const raw = String(stateM[1] !== undefined ? stateM[1] : stateM[2]).trim().toUpperCase();
+            state = raw === "ON" ? "MAINTENANCE" : raw;
+            if (!["OFF", "COUNTDOWN", "MAINTENANCE"].includes(state))
+                return { state: "INVALID", error: `Unbekannter IDLE_ANT_MAINTENANCE_STATE: "${raw}"`, warnings };
+            if (legacy === true && state !== "MAINTENANCE")
+                warnings.push(`IDLE_ANT_MAINTENANCE_MODE=true widerspricht IDLE_ANT_MAINTENANCE_STATE="${state}". STATE gilt, das alte Boolean wird ignoriert.`);
+        } else if (legacyM) {
+            state = legacy ? "MAINTENANCE" : "OFF";
+        } else {
+            return { state: "INVALID", error: "Keine Wartungskonfiguration in mode.js gefunden.", warnings };
         }
-        if (isMaintenancePage) {
-            if (state === "OFF") { redirecting = true; location.replace(new URL("../index.html", maintenanceDir).href); }
-        } else if (isGamePage) {
-            // Existing game tabs continue during COUNTDOWN, but must be redirected
-            // once the deadline is reached (or immediately for MAINTENANCE).
-            if (state === "MAINTENANCE" || (state === "COUNTDOWN" && endAt <= Date.now())) {
-                redirecting = true;
-                location.replace(new URL("maintenance.html", maintenanceDir).href);
-            } else if (countdown && !firstStatusReceived && !hasExistingGameSession()) {
-                // A fresh/direct game load during countdown is blocked.
-                // A tab that was already playing before COUNTDOWN remains active.
-                redirecting = true;
-                location.replace(new URL("maintenance.html", maintenanceDir).href);
-            }
-        } else if (activeMaintenance || countdown) {
-            // Landing page and other entry points are blocked during countdown/maintenance.
-            redirecting = true;
-            location.replace(new URL("maintenance.html", maintenanceDir).href);
+        let endAt = null;
+        if (state === "COUNTDOWN") {
+            const rawEnd = endM ? String(endM[1] !== undefined ? endM[1] : endM[2]).trim() : "";
+            if (!rawEnd) return { state: "INVALID", error: "COUNTDOWN ohne IDLE_ANT_MAINTENANCE_END_AT.", warnings };
+            if (!ISO_WITH_ZONE.test(rawEnd)) return { state: "INVALID", error: `IDLE_ANT_MAINTENANCE_END_AT braucht ISO-Format mit Zeitzone (z. B. 2026-10-27T21:40:00Z): "${rawEnd}"`, warnings };
+            endAt = Date.parse(rawEnd);
+            if (!Number.isFinite(endAt)) return { state: "INVALID", error: `IDLE_ANT_MAINTENANCE_END_AT ist kein gültiges Datum: "${rawEnd}"`, warnings };
         }
+        return { state, endAt, warnings };
+    }
+
+    /* ---------- Laufzeitzustand ---------- */
+    let cfg = { state: "OFF", endAt: null, valid: false }; // valid=false bis zur ersten erfolgreichen Auswertung
+    let invalidReason = null, conflictReason = null;
+    let redirecting = false, checkInProgress = false, firstStatusReceived = false;
+    let serverOffset = 0, offsetKnown = false;
+    let pollTimer = null, tickTimer = null;
+    const reported = new Set();
+    // Log-Zustand (nur im Spiel)
+    let trackedEnd = null, baseline = false;
+    const consumed = new Set();
+    const pending = { started: false, mark: null };
+
+    const nowMs = () => Date.now() + serverOffset;
+    const remainingSeconds = () => cfg.state === "COUNTDOWN" ? Math.ceil((cfg.endAt - nowMs()) / 1000) : null;
+    function reportOnce(level, message) {
+        if (reported.has(message)) return;
+        reported.add(message);
+        try { console[level](`[Wartung] ${message}`); } catch (_) {}
+    }
+    function publishStatus() {
+        const rem = remainingSeconds();
+        window.IDLE_ANT_MAINTENANCE_STATUS = {
+            state: !cfg.valid && invalidReason ? "INVALID" : cfg.state,
+            endAt: cfg.endAt || 0,
+            remainingSeconds: rem === null ? null : Math.max(0, rem),
+            invalid: !!invalidReason, error: invalidReason, conflict: conflictReason
+        };
+    }
+
+    /* ---------- Weiterleitung (genau ein Entscheider pro Tab) ---------- */
+    function go(url) {
+        if (redirecting) return;
+        redirecting = true;
+        stopTimers();
+        let target = window;
+        try { if (window.top && window.top !== window) { void window.top.location.href; target = window.top; } } catch (_) { target = window; }
+        try {
+            if (target.__IDLE_ANT_MAINTENANCE_NAVIGATING__) return; // anderes Fenster desselben Tabs war schneller
+            target.__IDLE_ANT_MAINTENANCE_NAVIGATING__ = url;
+        } catch (_) {}
+        target.location.replace(url);
+    }
+
+    /* ---------- Log-Warnungen (nur Spielseite) ---------- */
+    function logReady() {
+        return typeof window.addMaintenanceLogEntry === "function" && typeof window.isLogReady === "function" && window.isLogReady();
+    }
+    function milestoneEntry(seconds) {
+        if (MINUTE_KEYS[seconds]) return { key: MINUTE_KEYS[seconds], params: null };
+        return { key: "maintenance.countdownSecond", params: { seconds: String(seconds) } };
+    }
+    function resetLogTracking() { trackedEnd = null; baseline = false; consumed.clear(); pending.started = false; pending.mark = null; }
+    function observeCountdown() {
+        if (!isGamePage) return;
+        if (trackedEnd === null) { resetLogTracking(); pending.started = true; trackedEnd = cfg.endAt; }
+        else if (trackedEnd !== cfg.endAt) { baseline = false; consumed.clear(); pending.mark = null; trackedEnd = cfg.endAt; } // Endzeit geändert
+    }
+    function collectMilestones(rem) {
+        const first = !baseline;
+        baseline = true;
+        const reached = MILESTONES.filter(m => m >= rem && !consumed.has(m));
+        if (!reached.length) return;
+        reached.forEach(m => consumed.add(m));
+        // Beim ersten Erkennen werden bereits verstrichene Marken nicht rückwirkend ausgegeben.
+        if (first) { if (reached.includes(rem)) pending.mark = rem; return; }
+        pending.mark = Math.min(...reached); // nach z. B. gedrosseltem Tab nur die aktuellste Marke
+    }
+    function deliverPending() {
+        if (!isGamePage || (!pending.started && pending.mark === null) || !logReady()) return;
+        const items = [];
+        if (pending.started) items.push({ key: "maintenance.countdownStarted", params: null });
+        if (pending.mark !== null) items.push(milestoneEntry(pending.mark));
+        pending.started = false; pending.mark = null;
+        items.forEach(item => { try { window.addMaintenanceLogEntry(item.key, item.params); } catch (e) { console.error("[Wartung] Log-Eintrag fehlgeschlagen", e); } });
+    }
+
+    /* ---------- Entscheidung ---------- */
+    function enforce() {
+        if (redirecting) return;
+        const now = nowMs();
+        const maintenance = cfg.state === "MAINTENANCE" || (cfg.state === "COUNTDOWN" && cfg.endAt <= now);
+        const countdown = cfg.state === "COUNTDOWN" && cfg.endAt > now;
+        if (isMaintenancePage) { if (cfg.valid && cfg.state === "OFF") go(indexUrl()); return; }
+        if (!cfg.valid) return; // ungültig/unbekannt: nichts erzwingen
+        if (maintenance) { go(maintenanceUrl()); return; }
+        if (countdown && !hasExistingGameSession() && (!isGamePage || !firstStatusReceived)) go(maintenanceUrl());
+    }
+    function tick() {
+        if (redirecting) return;
+        if (cfg.state !== "COUNTDOWN") { stopTick(); return; }
+        const rem = remainingSeconds();
+        if (isGamePage && firstStatusReceived) collectMilestones(Math.max(0, rem));
+        deliverPending();
+        publishStatus();
+        enforce();
+    }
+    function startTick() { if (!tickTimer) tickTimer = window.setInterval(tick, TICK_MS); }
+    function stopTick() { if (tickTimer) { window.clearInterval(tickTimer); tickTimer = null; } }
+    function stopTimers() { stopTick(); if (pollTimer) { window.clearInterval(pollTimer); pollTimer = null; } }
+
+    function applyParsed(parsed) {
+        (parsed.warnings || []).forEach(w => reportOnce("warn", w));
+        conflictReason = parsed.warnings && parsed.warnings.length ? parsed.warnings[0] : null;
+        if (parsed.state === "INVALID") {
+            invalidReason = parsed.error;
+            reportOnce("error", `${parsed.error} Es wird nicht weitergeleitet.`);
+            if (!cfg.valid) { cfg = { state: "OFF", endAt: null, valid: false }; }
+            publishStatus();
+            if (!firstStatusReceived) { // Spiel startet fail-open: zählt als laufende Instanz
+                firstStatusReceived = true;
+                if (isGamePage) markGameSessionActive(true);
+            }
+            return;
+        }
+        invalidReason = null;
+        const wasCountdown = cfg.valid && cfg.state === "COUNTDOWN";
+        cfg = { state: parsed.state, endAt: parsed.endAt, valid: true };
+        if (!(cfg.state === "COUNTDOWN") && wasCountdown) resetLogTracking();
+        publishStatus();
+        enforce();
+        if (redirecting) return;
+        if (isGamePage && !firstStatusReceived) markGameSessionActive(true); // blieb im Spiel -> laufende Instanz
         firstStatusReceived = true;
+        if (cfg.state === "COUNTDOWN") { observeCountdown(); startTick(); tick(); }
+        else stopTick();
+    }
+    function updateOffset(response, startedAt) {
+        try {
+            const dateMs = Date.parse(response.headers.get("date"));
+            if (!Number.isFinite(dateMs)) return;
+            const age = Number(response.headers.get("age")) || 0;
+            const received = Date.now();
+            // Date hat nur Sekundenauflösung (abgeschnitten): +500 ms als Mittelwert; Genauigkeit ca. ±1–2 s.
+            const offset = dateMs + 500 + age * 1000 - (startedAt + received) / 2;
+            if (Math.abs(offset) > 7 * 24 * 3600 * 1000) return;
+            if (!offsetKnown || Math.abs(offset - serverOffset) > 1500) { serverOffset = offset; offsetKnown = true; }
+        } catch (_) {}
     }
     async function checkMaintenanceStatus() {
         if (redirecting || checkInProgress) return;
         checkInProgress = true;
+        const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+        const abortTimer = ctrl ? window.setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS) : null;
         try {
-            const response = await fetch(new URL("mode.js?check=" + Date.now(), maintenanceDir).href, {cache:"no-store", headers:{"Cache-Control":"no-cache"}});
-            if (!response.ok) throw new Error("status unavailable");
-            const config = await response.text();
-            const stateMatch = config.match(/IDLE_ANT_MAINTENANCE_STATE\s*=\s*["'](OFF|COUNTDOWN|MAINTENANCE)["']/i);
-            const endMatch = config.match(/IDLE_ANT_MAINTENANCE_END_AT\s*=\s*["']([^"']+)["']/i);
-            const legacyMatch = config.match(/IDLE_ANT_MAINTENANCE_MODE\s*=\s*(true|false)\s*;/i);
-            let state = stateMatch ? stateMatch[1].toUpperCase() : (legacyMatch && legacyMatch[1].toLowerCase()==="true" ? "MAINTENANCE" : "OFF");
-            let endAt = endMatch ? Date.parse(endMatch[1]) : 0;
-            if (!Number.isFinite(endAt)) endAt = 0;
-            if (state === "COUNTDOWN" && !endAt) throw new Error("Countdown end timestamp missing/invalid");
-            handleState(state, endAt);
-        } catch (_) {
-            // Bei Netzproblemen kein dauerhaftes Aussperren; nächster Check versucht es erneut.
+            const startedAt = Date.now();
+            const response = await fetch(new URL("mode.js?check=" + Date.now(), maintenanceDir).href, { cache: "no-store", headers: { "Cache-Control": "no-cache" }, signal: ctrl ? ctrl.signal : undefined });
+            if (!response.ok) throw new Error("status unavailable (HTTP " + response.status + ")");
+            updateOffset(response, startedAt);
+            applyParsed(parseConfig(await response.text()));
+        } catch (error) {
+            // Netzproblem: letzten Zustand behalten, nie dauerhaft aussperren; nächster Check versucht es erneut.
+            reportOnce("warn", "Wartungsstatus nicht abrufbar: " + (error && error.message ? error.message : error));
         } finally {
+            if (abortTimer) window.clearTimeout(abortTimer);
             checkInProgress = false;
             if (!isMaintenancePage) document.documentElement.classList.remove("maintenance-checking");
         }
     }
+    window.IDLE_ANT_MAINTENANCE_API = Object.freeze({ parseConfig });
     checkMaintenanceStatus();
-    window.setInterval(checkMaintenanceStatus, 1000);
+    pollTimer = window.setInterval(checkMaintenanceStatus, POLL_MS);
 })();

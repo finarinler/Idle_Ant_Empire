@@ -104,11 +104,18 @@ function clearLog()
 }
 
 
-// Spezielle, bereits lokalisierte Wartungswarnungen: fett und in Großbuchstaben.
-function addMaintenanceLogEntry(message)
+// Ist das Logbuch schon im DOM verdrahtet? (Wartungswarnungen warten sonst, statt verloren zu gehen.)
+function isLogReady()
+{
+    return typeof DOM !== "undefined" && !!DOM && !!DOM.logContent;
+}
+
+// Wartungswarnungen: fett, als Schlüssel + Parameter gespeichert, damit sie beim Sprachwechsel
+// (renderLog) in der neuen Sprache neu gezeichnet werden.
+function addMaintenanceLogEntry(key, params = null)
 {
     if (!DOM.logContent) return;
-    const entry = { timestamp: new Date(), type: "warning", key: "maintenance.countdownCustom", params: { message }, maintenanceRaw: true };
+    const entry = { timestamp: new Date(), type: "warning", key, params, maintenanceRaw: true };
     logEntries.unshift(entry);
     const emptyState = DOM.logContent.querySelector(".logbook-empty-state");
     if (emptyState) emptyState.remove();

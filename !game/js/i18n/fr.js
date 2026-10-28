@@ -350,6 +350,8 @@ I18N.register("fr", {
     "maintenance.countdown10": "MAINTENANCE DANS 10 SECONDES !",
     "maintenance.countdownNow": "MAINTENANCE !",
     "maintenance.countdownSecond": "MAINTENANCE DANS {seconds} SECONDES !",
+    "maintenance.countdownStarted": "ATTENTION ! LA MAINTENANCE APPROCHE !",
+    "maintenance.countdownOneSecond": "MAINTENANCE DANS 1 SECONDE !",
     "maintenance.countdownCustom": "{message}",
 
 });
