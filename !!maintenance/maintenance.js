@@ -20,6 +20,10 @@
     // Mehrfaches Einbinden/Ausführen darf keine zweiten Timer, Warnungen oder Redirects erzeugen.
     if (window.__IDLE_ANT_MAINTENANCE_STARTED__) return;
     window.__IDLE_ANT_MAINTENANCE_STARTED__ = true;
+    // Muss mit ?v=... in den <script>-Tags (index.html, game.html, maintenance.html) übereinstimmen,
+    // damit Browser/GitHub-Pages-Cache (ca. 10 Min.) nach einem Update kein altes Skript ausliefern.
+    const SCRIPT_VERSION = "20261028b";
+    window.IDLE_ANT_MAINTENANCE_VERSION = SCRIPT_VERSION;
 
     const POLL_MS = 1000, TICK_MS = 250, FETCH_TIMEOUT_MS = 8000;
     const MILESTONES = [300,240,180,120,60,30,10,9,8,7,6,5,4,3,2,1,0]; // absteigend
@@ -40,6 +44,8 @@
         const root = location.pathname.replace(/\/(!game\/game\.html|!!maintenance\/maintenance\.html|index\.html)$/i, "/").replace(/([^/])$/, "$1/");
         return new URL(root + "!!maintenance/", location.origin);
     }
+    const pageName = isMaintenancePage ? "maintenance" : isGamePage ? "game" : "landing";
+    const lastRedirectKey = "idleAntEmpireLastMaintenanceRedirect";
     const maintenanceDir = resolveMaintenanceDir();
     const maintenanceUrl = () => new URL("maintenance.html", maintenanceDir).href;
     const indexUrl = () => new URL("../index.html", maintenanceDir).href;
@@ -112,6 +118,7 @@
     let redirecting = false, checkInProgress = false, firstStatusReceived = false;
     let serverOffset = 0, offsetKnown = false;
     let pollTimer = null, tickTimer = null;
+    let lastStateLabel = null;
     const reported = new Set();
     // Log-Zustand (nur im Spiel)
     let trackedEnd = null, baseline = false;
@@ -136,10 +143,14 @@
     }
 
     /* ---------- Weiterleitung (genau ein Entscheider pro Tab) ---------- */
-    function go(url) {
+    function go(url, reason) {
         if (redirecting) return;
         redirecting = true;
         stopTimers();
+        try { console.info(`[Wartung v${SCRIPT_VERSION}] Weiterleitung (${pageName}) -> ${url} | Grund: ${reason}`); } catch (_) {}
+        try {
+            sessionStorage.setItem(lastRedirectKey, JSON.stringify({ version: SCRIPT_VERSION, page: pageName, reason, state: cfg.state, endAt: cfg.endAt ? new Date(cfg.endAt).toISOString() : null, at: new Date(nowMs()).toISOString(), url }));
+        } catch (_) {}
         let target = window;
         try { if (window.top && window.top !== window) { void window.top.location.href; target = window.top; } } catch (_) { target = window; }
         try {
@@ -188,10 +199,10 @@
         const now = nowMs();
         const maintenance = cfg.state === "MAINTENANCE" || (cfg.state === "COUNTDOWN" && cfg.endAt <= now);
         const countdown = cfg.state === "COUNTDOWN" && cfg.endAt > now;
-        if (isMaintenancePage) { if (cfg.valid && cfg.state === "OFF") go(indexUrl()); return; }
+        if (isMaintenancePage) { if (cfg.valid && cfg.state === "OFF") go(indexUrl(), "Status OFF"); return; }
         if (!cfg.valid) return; // ungültig/unbekannt: nichts erzwingen
-        if (maintenance) { go(maintenanceUrl()); return; }
-        if (countdown && !hasExistingGameSession() && (!isGamePage || !firstStatusReceived)) go(maintenanceUrl());
+        if (maintenance) { go(maintenanceUrl(), cfg.state === "MAINTENANCE" ? "Status MAINTENANCE" : "Countdown abgelaufen (END_AT erreicht)"); return; }
+        if (countdown && !hasExistingGameSession() && (!isGamePage || !firstStatusReceived)) go(maintenanceUrl(), "neuer Besucher waehrend Countdown (kein laufendes Spiel in diesem Tab)");
     }
     function tick() {
         if (redirecting) return;
@@ -221,6 +232,8 @@
             return;
         }
         invalidReason = null;
+        const stateLabel = parsed.state + (parsed.endAt ? ` (Ende ${new Date(parsed.endAt).toISOString()})` : "");
+        if (stateLabel !== lastStateLabel) { lastStateLabel = stateLabel; try { console.info(`[Wartung v${SCRIPT_VERSION}] Status (${pageName}): ${stateLabel}`); } catch (_) {} }
         const wasCountdown = cfg.valid && cfg.state === "COUNTDOWN";
         cfg = { state: parsed.state, endAt: parsed.endAt, valid: true };
         if (!(cfg.state === "COUNTDOWN") && wasCountdown) resetLogTracking();
@@ -265,6 +278,10 @@
         }
     }
     window.IDLE_ANT_MAINTENANCE_API = Object.freeze({ parseConfig });
+    try {
+        console.info(`[Wartung v${SCRIPT_VERSION}] gestartet (${pageName})`);
+        if (isMaintenancePage) { const last = sessionStorage.getItem(lastRedirectKey); if (last) console.info("[Wartung] letzte Weiterleitung in diesem Tab:", last); }
+    } catch (_) {}
     checkMaintenanceStatus();
     pollTimer = window.setInterval(checkMaintenanceStatus, POLL_MS);
 })();
