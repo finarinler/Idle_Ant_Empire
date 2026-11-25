@@ -49,6 +49,7 @@ const BALANCE = {
             { from: 10001, to: 15000,    percent: 0.025 },
             { from: 15001, to: Infinity, percent: 0.01 }
         ],
+        bonusPerCollector: 0, // bleibt ohne Forschungsstufen zunächst bei 0
         bonusPerCollectorPerResearchLevel: 0.001, // +0,1 Prozentpunkte je Sammler und Forschungsstufe
         maxBonusResearchLevel: 10
         foodPerSecond: 1
