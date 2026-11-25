@@ -13,6 +13,18 @@ const BALANCE = {
 
     /* ---------- VERBINDLICH ---------- */
 
+    // Feste Ausbildungszeiten für alle rekrutierbaren Einheitentypen (Sekunden)
+    trainingSeconds: {
+        "normal-ant": 5,
+        "queen": 15,
+        "collector": 30,
+        "storage-keeper": 150,
+        "grand-nurse": 150,
+        "builder": 300,
+        "brood-expert": 300,
+        "scout": 600
+    },
+
     // Schlupfzeit pro Ameise je Anzahl Brutexpertinnen (Sekunden)
     hatchSecondsByExperts: { 1: 10, 2: 9, 3: 7, 4: 5, 5: 3 },
 
