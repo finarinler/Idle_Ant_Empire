@@ -155,6 +155,13 @@ const Economy = {
             used = used.add(1);
         }
 
+        Object.keys(GameState.economy.trainings || {}).forEach(id =>
+        {
+            if (!UnitRegistry.has(id)) { return; }
+            const housing = UnitRegistry.get(id).housing || 0;
+            if (housing > 0) { used = used.add(housing); }
+        });
+
         return used;
     };
 
