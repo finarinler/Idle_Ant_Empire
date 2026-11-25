@@ -52,7 +52,7 @@ function getCollectorCostForNumber(numberValue)
         return {
             ...collectorCostCache.cost,
             ants: Big(1),
-            food: Big(0),
+            food: Big(100),
             larvae: Big(0)
         };
     }
