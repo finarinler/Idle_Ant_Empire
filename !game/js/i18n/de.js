@@ -433,3 +433,7 @@ I18N.register("de", {
     "status.unit.trainingStarted": "Ausbildung gestartet: {unit}.",
     "status.unit.trainingCompleted": "{unit} ist jetzt ausgebildet!"
 });
+
+I18N.register("de", {
+    "card.stat.trainingTime": "Ausbildungszeit"
+});
