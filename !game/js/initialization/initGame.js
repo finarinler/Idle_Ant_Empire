@@ -42,8 +42,9 @@ function initGame()
     // Gespeicherten Spielstand laden
     loadGame();
 
-    // Offline-Produktion nachholen, bevor der Speicherzeitpunkt neu gesetzt wird
-    applyOfflineProgress();
+    // Offline-Produktion und abgeschlossene Ausbildungen nachholen
+    const offlineResult = applyOfflineProgress();
+    handleEconomyResult(offlineResult);
 
     // Laufende Expedition fortsetzen bzw. Button-Text setzen
     resumeExpedition();
