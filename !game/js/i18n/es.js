@@ -422,3 +422,7 @@ I18N.register("es", {
     "status.unit.trainingStarted": "Entrenamiento iniciado: {unit}.",
     "status.unit.trainingCompleted": "¡{unit} ha terminado su entrenamiento!"
 });
+
+I18N.register("es", {
+    "card.stat.trainingTime": "Tiempo de entrenamiento"
+});
