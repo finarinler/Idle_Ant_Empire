@@ -425,3 +425,11 @@ I18N.register("de", {
     "options.communityText": "Triff andere Spieler, teile deine Kolonie und gib Feedback.",
     "options.communityButton": "Discord-Community besuchen"
 });
+
+/* ---------- Unit training ---------- */
+I18N.register("de", {
+    "button.training": "Ausbildung läuft …",
+    "status.unit.trainingInProgress": "Ausbildung läuft …",
+    "status.unit.trainingStarted": "Ausbildung gestartet: {unit}.",
+    "status.unit.trainingCompleted": "{unit} ist jetzt ausgebildet!"
+});
