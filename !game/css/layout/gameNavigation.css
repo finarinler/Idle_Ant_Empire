@@ -86,6 +86,39 @@
     border-color: #6b512e;
     box-shadow: inset 3px 0 0 var(--game-gold);
 }
+
+/* Eigener Freischalt-Hinweis im Idle-Ant-Empire-Design */
+.game-nav-button.is-locked[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    z-index: 50;
+    left: calc(100% + 12px);
+    top: 50%;
+    width: max-content;
+    max-width: 260px;
+    padding: 10px 13px;
+    border: 1px solid #80602f;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #211b12, #100f0d);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .48), inset 0 1px 0 rgba(220, 180, 110, .08);
+    color: #e5c58c;
+    font-size: .78rem;
+    font-weight: 650;
+    line-height: 1.45;
+    white-space: normal;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(4px, -50%);
+    transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+}
+.game-nav-button.is-locked[data-tooltip]:hover::after,
+.game-nav-button.is-locked[data-tooltip]:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+}
+
 .game-nav-icon { display: inline-grid; place-items: center; width: 22px; flex: 0 0 22px; font-size: 1.1rem; }
 .game-nav-spacer { flex: 1; min-height: 20px; }
 .game-nav-divider { height: 1px; margin: 8px 3px; background: var(--game-border); }
@@ -358,3 +391,17 @@
     line-height: 1.6;
 }
 .changelog-list li::marker { color: var(--game-gold); }
+
+
+@media (max-width: 800px) {
+    .game-nav-button.is-locked[data-tooltip]::after {
+        left: 8px;
+        top: calc(100% + 5px);
+        max-width: min(260px, calc(100vw - 56px));
+        transform: translateY(4px);
+    }
+    .game-nav-button.is-locked[data-tooltip]:hover::after,
+    .game-nav-button.is-locked[data-tooltip]:focus-visible::after {
+        transform: translateY(0);
+    }
+}
