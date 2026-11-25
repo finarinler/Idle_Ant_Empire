@@ -158,14 +158,14 @@
             return { ok: false, reason: state.reason };
         }
 
-        if (!Economy._spend(Economy.getRecruitCost(id)))
+        const duration = BALANCE.trainingSeconds[id];
+
+        if (!Number.isFinite(duration) || duration <= 0)
         {
             return { ok: false, reason: { key: "status.elite.cannotAfford" } };
         }
 
-        const duration = BALANCE.trainingSeconds[id];
-
-        if (!Number.isFinite(duration) || duration <= 0)
+        if (!Economy._spend(Economy.getRecruitCost(id)))
         {
             return { ok: false, reason: { key: "status.elite.cannotAfford" } };
         }
