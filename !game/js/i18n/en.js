@@ -433,3 +433,7 @@ I18N.register("en", {
     "status.unit.trainingStarted": "Training started: {unit}.",
     "status.unit.trainingCompleted": "{unit} has finished training!"
 });
+
+I18N.register("en", {
+    "card.stat.trainingTime": "Training time"
+});
