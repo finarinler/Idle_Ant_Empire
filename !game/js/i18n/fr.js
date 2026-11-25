@@ -422,3 +422,7 @@ I18N.register("fr", {
     "status.unit.trainingStarted": "Formation commencée : {unit}.",
     "status.unit.trainingCompleted": "{unit} a terminé sa formation !"
 });
+
+I18N.register("fr", {
+    "card.stat.trainingTime": "Durée de formation"
+});
