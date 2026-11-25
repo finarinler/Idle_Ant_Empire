@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gebäude — Idle Ant Empire</title>
+</head>
+<body>
+    <!-- Die Karten werden vom CardBuilder aus structures/js/structureCatalog.js erzeugt. -->
+    <section class="game-view" id="game-view-structures" data-game-view-panel="structures" hidden>
+        <section class="category-wrapper locked" id="cat-basis-structures" style="display: none;">
+            <div class="category-header" onclick="toggleCategory('basis-structures')">
+                <span class="category-title" data-i18n="category.basisStructures">Basis-Strukturen</span>
+                <div class="category-divider"></div>
+                <div class="mandible-icon" id="mandible-basis-structures"><span></span><span></span></div>
+            </div>
+            <div id="basis-structures-content" class="category-content iae-card-grid" data-card-group="structures-basic"></div>
+        </section>
+    </section>
+    <script>
+    (() => {
+        const root = document.querySelector('[data-game-view-panel="structures"]');
+        if (!root) {
+            parent.postMessage({ type: 'iae-section-error', name: 'structures', message: 'Der Ansichtsbereich fehlt.' }, '*');
+            return;
+        }
+        parent.postMessage({ type: 'iae-section-ready', name: 'structures', html: root.outerHTML }, '*');
+    })();
+    </script>
+</body>
+</html>

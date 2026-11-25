@@ -1,0 +1,81 @@
+/* =========================================================
+   Idle Ant Empire — Forschungszentrum (Seite innerhalb von game.html)
+   Alle Regeln sind auf .research-view beschränkt. Die Karten selbst
+   nutzen den gemeinsamen Karten-Baukasten (components/cards.css).
+========================================================= */
+
+.research-view .research-main { width: 100%; margin: 0; padding: 0; }
+.research-view .research-main > * + * { margin-top: 0; }
+
+.research-view .eyebrow { margin: 0 0 5px; color: var(--research-gold); font-size: .68rem; font-weight: 800; letter-spacing: .19em; }
+.research-view .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+.research-view .section-heading h2, .research-view .outlook-copy h2 { margin: 0; color: #f0e7d7; font-size: clamp(1.45rem, 2vw, 1.85rem); font-weight: 650; letter-spacing: -.035em; }
+.research-view .section-note { max-width: 360px; margin: 0 0 4px; color: var(--research-muted); font-size: .86rem; text-align: right; }
+.research-view .research-resource-panel { padding: 23px; border: 1px solid var(--research-border); border-radius: 19px; background: linear-gradient(135deg, rgba(30, 27, 22, .96), rgba(18, 18, 18, .98) 60%); box-shadow: var(--research-shadow); }
+.research-view .resource-heading { margin-bottom: 20px; }
+.research-view .resource-grid { display: grid; grid-template-columns: 1.25fr repeat(3, 1fr); gap: 13px; }
+.research-view .resource-tile { display: flex; align-items: center; gap: 13px; min-width: 0; padding: 17px 16px; border: 1px solid var(--research-border-soft); border-radius: 13px; background: rgba(9, 9, 9, .48); }
+.research-view .resource-tile-primary { border-color: rgba(197, 163, 110, .45); background: linear-gradient(120deg, rgba(87, 65, 35, .25), rgba(15, 15, 15, .65)); }
+.research-view .resource-icon { display: grid; flex: 0 0 39px; width: 39px; height: 39px; place-items: center; border-radius: 11px; background: #28231a; color: var(--research-gold-bright); font-size: 1.3rem; }
+.research-view .resource-tile:not(.resource-tile-primary) .resource-icon { background: #242424; color: #b9b0a2; }
+.research-view .resource-copy { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
+.research-view .resource-name { color: var(--research-muted); font-size: .77rem; }
+.research-view .resource-amount { overflow: hidden; color: #f0e7d7; font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 700; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.research-view .resource-tile-primary .resource-amount { color: var(--research-gold-bright); }
+.research-view .resource-rate { color: var(--research-green); font-size: .74rem; }
+.research-view .rs-overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 17px 0 36px; }
+.research-view .rs-overview-card { display: flex; align-items: center; gap: 14px; padding: 17px 18px; border: 1px solid var(--research-border-soft); border-radius: 14px; background: #111; }
+.research-view .rs-overview-icon { display: grid; flex: 0 0 42px; width: 42px; height: 42px; place-items: center; border-radius: 12px; background: #252118; color: var(--research-gold); font-size: 1.4rem; }
+.research-view .rs-overview-copy { display: flex; min-width: 0; flex-direction: column; }
+.research-view .rs-overview-label { color: var(--research-muted); font-size: .78rem; }
+.research-view .rs-overview-copy strong { margin: 1px 0 2px; color: var(--research-text); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.research-view .rs-overview-detail { color: var(--research-dim); font-size: .73rem; }
+.research-view .research-section-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 27px; padding-bottom: 13px; border-bottom: 1px solid var(--research-border); }
+.research-view .research-nav-item { display: inline-flex; align-items: center; gap: 9px; padding: 10px 14px; border: 1px solid transparent; border-radius: 10px; color: var(--research-muted); font-size: .88rem; text-decoration: none; transition: background .18s, color .18s, border-color .18s; }
+.research-view .research-nav-item > span:first-child { color: var(--research-gold); }
+.research-view .research-nav-item:hover { color: var(--research-text); background: #171717; }
+.research-view .research-nav-item.is-active { border-color: rgba(197, 163, 110, .28); background: #211d16; color: var(--research-gold-bright); }
+.research-view .nav-soon { padding: 2px 7px; border-radius: 5px; background: #2b2b2b; color: var(--research-dim); font-size: .65rem; }
+.research-view .science-section { scroll-margin-top: 20px; }
+.research-view .science-chain { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 20px 0 23px; padding: 13px; border: 1px solid var(--research-border-soft); border-radius: 12px; background: rgba(18, 18, 18, .75); }
+.research-view .science-chain span:not(.chain-arrow) { padding: 5px 9px; border-radius: 7px; background: #222; color: #c9c0b1; font-size: .78rem; }
+.research-view .science-chain .chain-arrow { color: var(--research-gold-deep); font-size: .95rem; }
+.research-view .training-section { margin-top: 42px; }
+.research-view .section-counter { padding: 6px 10px; border: 1px solid var(--research-border); border-radius: 8px; color: var(--research-muted); font-size: .76rem; }
+.research-view .training-empty-state { display: flex; align-items: center; gap: 16px; padding: 23px; border: 1px dashed #37332b; border-radius: 14px; background: rgba(18, 18, 18, .6); }
+.research-view .empty-state-icon { display: grid; flex: 0 0 46px; width: 46px; height: 46px; place-items: center; border-radius: 13px; background: #262116; color: var(--research-gold); font-size: 1.5rem; }
+.research-view .training-empty-state h3 { margin: 0 0 4px; color: #dcd3c3; font-size: .96rem; }
+.research-view .training-empty-state p { margin: 0; color: var(--research-muted); font-size: .8rem; }
+.research-view .training-queue:empty { display: none; }
+.research-view .research-outlook { display: flex; align-items: center; gap: 17px; margin-top: 31px; padding: 22px; border: 1px solid #393329; border-radius: 15px; background: linear-gradient(110deg, rgba(51, 40, 24, .28), rgba(20, 20, 20, .8)); scroll-margin-top: 20px; }
+.research-view .outlook-mark { display: grid; flex: 0 0 48px; width: 48px; height: 48px; place-items: center; border: 1px solid #4c3e29; border-radius: 13px; color: var(--research-gold-bright); font-size: 1.6rem; }
+.research-view .outlook-copy { flex: 1; }
+.research-view .outlook-copy h2 { font-size: 1.25rem; }
+.research-view .outlook-copy p:last-child { max-width: 720px; margin: 5px 0 0; color: var(--research-muted); font-size: .82rem; }
+.research-view .outlook-status { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3b352b; border-radius: 8px; color: var(--research-muted); font-size: .72rem; }
+@media (max-width: 1100px) {
+    .research-view .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+    .research-view .research-resource-panel { padding: 17px; }
+    .research-view .section-heading { align-items: start; flex-direction: column; gap: 7px; }
+    .research-view .section-note { text-align: left; }
+    .research-view .resource-grid { gap: 9px; }
+    .research-view .resource-tile { gap: 10px; padding: 12px; }
+    .research-view .resource-icon { flex-basis: 32px; width: 32px; height: 32px; font-size: 1.05rem; }
+    .research-view .resource-name { font-size: .7rem; }
+    .research-view .resource-amount { font-size: 1.2rem; }
+    .research-view .resource-rate { font-size: .68rem; }
+    .research-view .rs-overview-grid { grid-template-columns: 1fr; gap: 9px; margin-bottom: 27px; }
+    .research-view .rs-overview-card { padding: 13px 15px; }
+    .research-view .science-chain { justify-content: flex-start; gap: 6px; }
+    .research-view .science-chain span:not(.chain-arrow) { font-size: .72rem; }
+    .research-view .research-outlook { align-items: start; flex-wrap: wrap; padding: 17px; }
+    .research-view .outlook-copy { min-width: calc(100% - 70px); }
+    .research-view .outlook-status { margin-left: 65px; }
+}
+@media (max-width: 380px) {
+    .research-view .resource-grid { grid-template-columns: 1fr; }
+    .research-view .resource-tile { padding: 12px 14px; }
+    .research-view .resource-amount { font-size: 1.35rem; }
+}

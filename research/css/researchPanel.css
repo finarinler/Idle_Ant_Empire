@@ -1,0 +1,157 @@
+
+/* =========================================================
+   Idle Ant Empire — Forschungszentrum-Overlay
+   Wird in game.html verwendet, NICHT im Forschungs-iFrame.
+========================================================= */
+
+.research-panel {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    width: min(1100px, calc(100vw - 32px));
+    height: min(850px, calc(100dvh - 100px));
+    min-height: 0;
+
+    overflow: hidden;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(197, 163, 110, 0.55);
+    border-radius: 16px;
+
+    background: #0a0a0a;
+    color: #e7e2d8;
+
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.65),
+        0 0 0 100vmax rgba(0, 0, 0, 0.48);
+}
+
+/* Das HTML-Attribut hidden muss Vorrang behalten. */
+.research-panel[hidden] {
+    display: none !important;
+}
+
+/* Kopfzeile des äußeren Fensters */
+.research-panel-header {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    min-height: 56px;
+    padding: 10px 16px 10px 20px;
+
+    border-bottom: 1px solid rgba(197, 163, 110, 0.28);
+    background: #141414;
+}
+
+.research-panel-header h2 {
+    min-width: 0;
+    margin: 0;
+
+    color: #e2c48a;
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+/* Schließen-Button */
+.research-close-btn {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+
+    padding: 0;
+    border: 1px solid #393329;
+    border-radius: 9px;
+
+    background: #202020;
+    color: #e7e2d8;
+
+    font: inherit;
+    font-size: 1.65rem;
+    line-height: 1;
+
+    cursor: pointer;
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.research-close-btn:hover {
+    border-color: #8c6d42;
+    background: #302619;
+    color: #e2c48a;
+}
+
+.research-close-btn:focus-visible {
+    outline: 2px solid #e2c48a;
+    outline-offset: 3px;
+}
+
+/* Die Forschungsseite füllt den restlichen Fensterbereich. */
+.research-frame {
+    display: block;
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    border: 0;
+    background: #0a0a0a;
+}
+
+/* Kleine Bildschirme */
+@media (max-width: 600px) {
+    .research-panel {
+        width: calc(100vw - 16px);
+        height: calc(100dvh - 24px);
+        max-height: none;
+
+        border-radius: 12px;
+    }
+
+    .research-panel-header {
+        min-height: 50px;
+        padding: 7px 10px 7px 14px;
+    }
+
+    .research-panel-header h2 {
+        font-size: 0.92rem;
+    }
+
+    .research-close-btn {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* Fallback für Browser ohne dynamische Viewport-Einheit */
+@supports not (height: 100dvh) {
+    .research-panel {
+        height: min(850px, calc(100vh - 100px));
+    }
+
+    @media (max-width: 600px) {
+        .research-panel {
+            height: calc(100vh - 24px);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .research-close-btn {
+        transition: none;
+    }
+}
