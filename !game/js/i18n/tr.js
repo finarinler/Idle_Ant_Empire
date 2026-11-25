@@ -414,3 +414,11 @@ I18N.register("tr", {
     "options.communityText": "Diğer oyuncularla tanış, kolonini paylaş ve geri bildirim ver.",
     "options.communityButton": "Discord topluluğunu ziyaret et"
 });
+
+/* ---------- Unit training ---------- */
+I18N.register("tr", {
+    "button.training": "Eğitim sürüyor …",
+    "status.unit.trainingInProgress": "Eğitim sürüyor …",
+    "status.unit.trainingStarted": "Eğitim başladı: {unit}.",
+    "status.unit.trainingCompleted": "{unit} eğitimini tamamladı!"
+});
