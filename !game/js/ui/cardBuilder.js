@@ -203,6 +203,11 @@ const CardBuilder = (function ()
         const status = entry.status ? entry.status() : { state: "available" };
         const state = status.state || "available";
 
+        if (typeof entry.visible === "function")
+        {
+            nodes.card.style.display = entry.visible() ? "" : "none";
+        }
+
         setText(nodes.type, entry.type);
         setText(nodes.name, entry.name);
         setText(nodes.desc, entry.desc);
