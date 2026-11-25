@@ -72,7 +72,7 @@
                 },
                 achievements: {
                     unlocked: Boolean(achievements.firstSteps),
-                    hint: "Erfolg: Kleiner Sammler (Gehe 5x auf Expedition)."
+                    hint: "Erfolg: Erste Schritte — 5 Expeditionen abgeschlossen."
                 }
             };
 
@@ -88,11 +88,15 @@
                 button.setAttribute("aria-disabled", gate.unlocked ? "false" : "true");
                 if (gate.unlocked)
                 {
-                    button.removeAttribute("title");
+                    button.removeAttribute("data-tooltip");
+                    button.removeAttribute("aria-description");
                 }
                 else
                 {
-                    button.title = gate.hint;
+                    // Eigener Tooltip im Spiel-Design statt des nativen Browser-Titels.
+                    button.dataset.tooltip = gate.hint;
+                    button.setAttribute("aria-description", gate.hint);
+                    button.removeAttribute("title");
                 }
 
                 const activeView = views.find(view => view.dataset.gameViewPanel === name);
