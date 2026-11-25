@@ -68,6 +68,7 @@ const GameState = {
     achievements: {
         firstSteps: false,
         smallCollector: false,
+        smallCollectorAntRewardClaimed: false,
         smallColony: false,
         buildColony: false,
         knowledgeIsPower: false,
