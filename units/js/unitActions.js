@@ -15,11 +15,7 @@ function recruitUnit(id)
     }
 
     const def = UnitRegistry.get(id);
-
-    if (def.recruit.announce)
-    {
-        updateStatus(def.recruit.messageKey, "success");
-    }
+    updateStatus("status.unit.trainingStarted", "status", false, { unit: { key: def.nameKey } });
 
     updateResources();
     return true;
@@ -35,17 +31,7 @@ function buyGrandNurse()      { return recruitUnit("grand-nurse"); }
 
 function buyScout()
 {
-    if (!recruitUnit("scout"))
-    {
-        return false;
-    }
-
-    GameState.expedition.scoutRestUntil = 0;
-    GameState.expedition.scoutEnabled = true;
-
-    updateExpeditionButtonState();
-    updateResources();
-    return true;
+    return recruitUnit("scout");
 }
 
 /* ---------- Späher: Automatik ON/OFF ---------- */
@@ -69,6 +55,23 @@ function toggleScoutAutomation()
 function updateScoutAutomation()
 {
     startScoutExpedition();
+}
+
+/* ---------- Ausbildungsfortschritt (reine Anzeige) ---------- */
+
+function updateTrainingProgressUI()
+{
+    Object.keys(BALANCE.trainingSeconds).forEach(unitId =>
+    {
+        const bar = document.getElementById(`training-${unitId}-progress`);
+        if (!bar) { return; }
+
+        const training = GameState.economy.trainings[unitId];
+        const container = bar.closest(".iae-card-progress");
+        if (container) { container.style.display = training ? "" : "none"; }
+
+        bar.style.width = `${(Economy.getTrainingProgress(unitId) * 100).toFixed(1)}%`;
+    });
 }
 
 /* ---------- Schlupf-Fortschritt der Brutexpertinnen (reine Anzeige) ---------- */
