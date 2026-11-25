@@ -422,3 +422,7 @@ I18N.register("tr", {
     "status.unit.trainingStarted": "Eğitim başladı: {unit}.",
     "status.unit.trainingCompleted": "{unit} eğitimini tamamladı!"
 });
+
+I18N.register("tr", {
+    "card.stat.trainingTime": "Eğitim süresi"
+});
