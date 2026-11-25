@@ -67,6 +67,12 @@ function unlockAchievement(definition)
 
     GameState.achievements[definition.id] = true;
 
+    // Forschungsabhängige Gebäudekarten sofort nach der Freischaltung einblenden.
+    if (typeof CardBuilder !== "undefined")
+    {
+        CardBuilder.updateAll();
+    }
+
     // Die linke Navigation nach jeder Freischaltung aktualisieren
     // (z. B. Forschung nach knowledgeIsPower, Erfolge nach firstSteps).
     if (typeof updateGameNavigationVisibility === "function")
