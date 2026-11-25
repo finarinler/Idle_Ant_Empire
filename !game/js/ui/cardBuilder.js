@@ -37,7 +37,8 @@ const CardBuilder = (function ()
         locked: "button.locked",
         soon: "button.locked",
         max: "button.maxReached",
-        built: "button.built"
+        built: "button.built",
+        training: "button.training"
     };
 
     /* ---------- Hilfsfunktionen ---------- */
@@ -155,11 +156,18 @@ const CardBuilder = (function ()
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
-        if (entry.progressId)
+        if (entry.progressId || entry.trainingProgressId)
         {
             const progress = create("div", "iae-card-progress", card);
             const track = create("div", "iae-card-progress-track", progress);
-            create("div", "iae-card-progress-fill", track, { id: entry.progressId });
+            if (entry.progressId)
+            {
+                create("div", "iae-card-progress-fill", track, { id: entry.progressId });
+            }
+            if (entry.trainingProgressId)
+            {
+                create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
+            }
         }
 
         if (entry.stepper)
@@ -255,7 +263,7 @@ const CardBuilder = (function ()
         nodes.card.dataset.state = state;
     }
 
-    const STATE_CLASSES = ["available", "missing", "locked", "max", "built", "soon"];
+    const STATE_CLASSES = ["available", "missing", "locked", "max", "built", "soon", "training"];
 
     /* ---------- Öffentliche Schnittstelle ---------- */
 
