@@ -163,6 +163,15 @@
                     if (ready !== null) { candidates.push({ t: ready, kind: "hatchReady", id: "hatch" }); }
                 }
 
+                // Laufende Einheitenausbildungen
+                Object.entries(eco.trainings || {}).forEach(([unitId, training]) =>
+                {
+                    if (training && Number.isFinite(training.remaining))
+                    {
+                        candidates.push({ t: training.remaining, kind: "training", id: unitId });
+                    }
+                });
+
                 // Bauprojekte
                 ["free", "builder"].forEach(slot =>
                 {
@@ -226,6 +235,11 @@
 
                 if (eco.hatch.active) { eco.hatch.remaining -= dt; }
 
+                Object.values(eco.trainings || {}).forEach(training =>
+                {
+                    if (training) { training.remaining -= dt; }
+                });
+
                 ["free", "builder"].forEach(slot =>
                 {
                     const project = GameState.construction[slot];
@@ -260,7 +274,25 @@
                     result.completed.push({ type: "hatch", durationSeconds: 0 });
                 }
 
-                // 3. Bauprojekte abgeschlossen
+                // 3. Ausbildungen abgeschlossen
+                fired.filter(candidate => candidate.kind === "training").forEach(candidate =>
+                {
+                    const training = eco.trainings[candidate.id];
+                    if (!training) { return; }
+
+                    delete eco.trainings[candidate.id];
+                    Economy._addUnits(candidate.id, 1);
+
+                    if (candidate.id === "scout")
+                    {
+                        GameState.expedition.scoutRestUntil = 0;
+                        GameState.expedition.scoutEnabled = true;
+                    }
+
+                    result.completed.push({ type: "training", unit: candidate.id, durationSeconds: training.duration });
+                });
+
+                // 4. Bauprojekte abgeschlossen
                 fired.filter(candidate => candidate.kind === "build").forEach(candidate =>
                 {
                     const project = GameState.construction[candidate.id];
