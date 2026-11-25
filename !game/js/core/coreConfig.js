@@ -8,7 +8,7 @@
 /* =========================
     Version  (EINZIGE Stelle, an der die Versionsnummer steht)
 ========================= */
-const GAME_VERSION = "alpha-v0.00.007a";
+const GAME_VERSION = "alpha-v0.00.007b";
 
 /* =========================
     Spielstand-Reset-Marker
