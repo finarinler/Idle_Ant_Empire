@@ -64,15 +64,15 @@
             const gates = {
                 research: {
                     unlocked: Boolean(achievements.knowledgeIsPower),
-                    hint: "Freischaltung: Trainiere eine Vorrats-Hüterin und eine Groß-Amme."
+                    hint: "Kommt bald!"
                 },
                 military: {
                     unlocked: Boolean((state.research && state.research.militaryUnlocked) || (state.unlocks && state.unlocks.military) || achievements.militaryUnlocked),
-                    hint: "Freischaltung: Sobald die Militär-Funktion deiner Kolonie freigeschaltet wurde."
+                    hint: "Kommt bald!"
                 },
                 achievements: {
                     unlocked: Boolean(achievements.firstSteps),
-                    hint: "Freischaltung: Schließe 5 Expeditionen ab."
+                    hint: "Erfolg: Kleiner Sammler (Gehe 5x auf Expedition)."
                 }
             };
 
