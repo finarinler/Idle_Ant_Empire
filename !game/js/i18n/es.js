@@ -406,3 +406,11 @@ I18N.register("es", {
     "card.value.yes": "Sí",
     "button.upgrade": "Mejorar"
 });
+
+
+/* ---------- Discord community ---------- */
+I18N.register("es", {
+    "options.community": "Comunidad",
+    "options.communityText": "Conoce a otros jugadores, comparte tu colonia y envía tus comentarios.",
+    "options.communityButton": "Visitar la comunidad de Discord"
+});
