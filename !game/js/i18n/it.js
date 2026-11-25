@@ -414,3 +414,11 @@ I18N.register("it", {
     "options.communityText": "Incontra altri giocatori, condividi la tua colonia e lascia un feedback.",
     "options.communityButton": "Visita la community Discord"
 });
+
+/* ---------- Unit training ---------- */
+I18N.register("it", {
+    "button.training": "Addestramento …",
+    "status.unit.trainingInProgress": "Addestramento …",
+    "status.unit.trainingStarted": "Addestramento avviato: {unit}.",
+    "status.unit.trainingCompleted": "{unit} ha completato l’addestramento!"
+});
