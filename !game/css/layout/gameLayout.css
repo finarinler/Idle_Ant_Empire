@@ -1,0 +1,219 @@
+/* =========================================================
+   Idle Ant Empire — neues Hauptlayout
+   Visuelle Grundlage: research/research.css
+========================================================= */
+
+:root {
+    --game-bg: #0a0a0a;
+    --game-surface: #111111;
+    --game-surface-raised: #171717;
+    --game-surface-hover: #201c16;
+    --game-border: #30291f;
+    --game-border-strong: #51412a;
+    --game-gold: #c5a36e;
+    --game-gold-bright: #e3be7b;
+    --game-text: #eee7dc;
+    --game-muted: #a69b8a;
+    --game-green: #8fbf8b;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 50% -20%, rgba(150, 111, 48, .11), transparent 48%),
+        var(--game-bg);
+    color: var(--game-text);
+}
+
+#game-container {
+    width: min(1320px, 100%);
+    max-width: 1320px;
+    padding: 0 clamp(14px, 3vw, 38px) 76px;
+}
+
+.sticky-top {
+    padding: 22px 0 18px;
+    border-bottom: 1px solid var(--game-border);
+    background: rgba(10, 10, 10, .94);
+    backdrop-filter: blur(14px);
+}
+
+.header-top {
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-brand { gap: 16px; }
+.header-main-icon {
+    width: 54px;
+    height: 54px;
+    filter: none;
+}
+.main-title-large {
+    font-size: clamp(1.55rem, 3vw, 2.25rem) !important;
+    letter-spacing: -.035em;
+}
+
+.resource-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 12px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.res-item {
+    align-items: flex-start;
+    min-width: 0;
+    padding: 14px 17px;
+    border: 1px solid var(--game-border);
+    border-radius: 12px;
+    background: linear-gradient(145deg, #171717, #101010);
+}
+.res-label { color: var(--game-muted); letter-spacing: .12em; }
+.res-value { color: var(--game-gold-bright) !important; font-size: clamp(1.15rem, 2vw, 1.55rem); }
+.res-max { color: var(--game-muted); }
+.res-rate { margin-top: 4px; color: var(--game-green); }
+
+.action-bar { margin-top: 12px; }
+#expedition-btn {
+    min-height: 46px;
+    border: 1px solid #67502f;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #382b18, #211a12);
+    color: #f1dfbd;
+}
+
+.game-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 9px;
+    border: 1px solid var(--game-border);
+    border-radius: 15px;
+    background: rgba(17, 17, 17, .96);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
+    backdrop-filter: blur(12px);
+}
+
+.game-navigation.research-locked { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.game-nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--game-muted);
+    font: inherit;
+    font-size: .94rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.game-nav-button:hover {
+    color: var(--game-text);
+    background: #1d1a15;
+    border-color: #3c3020;
+}
+.game-nav-button:active { transform: translateY(1px); }
+.game-nav-button.is-active {
+    color: var(--game-gold-bright);
+    background: linear-gradient(135deg, #302516, #1e1912);
+    border-color: #6b512e;
+    box-shadow: inset 0 1px rgba(255, 230, 180, .06);
+}
+.game-nav-icon { font-size: 1.15rem; line-height: 1; }
+
+.game-main { min-height: 420px; padding: 24px 0 100px; }
+.game-view { animation: game-view-enter .22s ease both; }
+.game-view[hidden] { display: none !important; }
+@keyframes game-view-enter {
+    from { opacity: .55; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.view-intro { margin: 4px 0 22px; }
+.view-eyebrow {
+    margin-bottom: 7px;
+    color: var(--game-gold);
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .17em;
+}
+.view-intro h2 {
+    color: var(--game-text);
+    font-size: clamp(1.65rem, 3vw, 2.2rem);
+    letter-spacing: -.035em;
+}
+.view-intro > p:last-child {
+    max-width: 680px;
+    margin-top: 8px;
+    color: var(--game-muted);
+    line-height: 1.6;
+}
+
+.category-wrapper {
+    margin: 0 0 25px;
+    padding: 20px;
+    border: 1px solid var(--game-border);
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(23, 23, 23, .94), rgba(15, 15, 15, .94));
+}
+.category-header { padding: 0 0 8px; }
+.category-title { color: var(--game-gold); font-size: .78rem; letter-spacing: .15em; }
+.category-divider { background: linear-gradient(to right, #59452b, transparent); }
+.category-content { padding-top: 16px; }
+.military-overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.overview-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid var(--game-border);
+    border-radius: 13px;
+    background: linear-gradient(145deg, #191919, #111111);
+}
+.overview-card-icon { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; border: 1px solid #5a4429; border-radius: 11px; background: #2b2115; color: var(--game-gold-bright); font-size: 1.4rem; }
+.overview-label { color: var(--game-muted); font-size: .82rem; }
+.overview-card strong { display: block; margin: 5px 0; color: var(--game-text); font-size: 1.45rem; }
+.overview-note { color: var(--game-muted); font-size: .78rem; line-height: 1.45; }
+.military-feature-card { display: flex; gap: 22px; align-items: flex-start; padding: clamp(20px, 4vw, 32px); border: 1px solid var(--game-border-strong); border-radius: 15px; background: radial-gradient(ellipse at top left, rgba(151, 111, 48, .12), transparent 55%), #131313; }
+.military-feature-emblem { display: grid; place-items: center; width: 76px; height: 76px; flex: 0 0 76px; border: 1px solid #65502f; border-radius: 18px; background: #211a11; color: var(--game-gold-bright); font-size: 2.3rem; }
+.military-feature-copy h3 { margin: 0 0 9px; color: var(--game-text); font-size: 1.3rem; }
+.military-feature-copy > p:not(.view-eyebrow) { max-width: 720px; color: var(--game-muted); line-height: 1.65; }
+.game-secondary-button { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 14px; border: 1px solid #5d482c; border-radius: 8px; background: #241d13; color: var(--game-gold-bright); font: inherit; cursor: pointer; }
+.game-secondary-button:hover { background: #342716; }
+
+/* Footerwerkzeuge bleiben verfügbar und passen zum neuen Rahmen. */
+.sticky-bottom { margin-top: 12px; }
+#status-bar { border-color: var(--game-border); background: rgba(15, 15, 15, .97); }
+
+@media (min-width: 900px) {
+    .resource-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+    #game-container { padding-inline: 12px; }
+    .sticky-top { padding-top: 14px; }
+    .header-main-icon { width: 42px; height: 42px; }
+    .header-brand { gap: 10px; }
+    .resource-bar { gap: 8px; padding: 8px 0; }
+    .res-item { padding: 11px; }
+    .game-navigation { gap: 4px; padding: 6px; margin-top: 12px; }
+    .game-nav-button { flex-direction: column; gap: 5px; min-height: 58px; padding: 7px 3px; font-size: .73rem; }
+    .game-nav-icon { font-size: 1.1rem; }
+    .game-main { padding-top: 16px; }
+    .category-wrapper { padding: 13px; }
+    .military-overview-grid { grid-template-columns: 1fr; }
+    .military-feature-card { flex-direction: column; }
+    .military-feature-emblem { width: 58px; height: 58px; flex-basis: 58px; font-size: 1.8rem; }
+}

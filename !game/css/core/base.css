@@ -1,0 +1,86 @@
+/* =========================
+   Reset, Body, Grundlayout, Scrollbar, Hilfsklassen
+========================= */
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-pure-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#game-container
+{
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+main
+{
+    padding: 20px 0 100px 0;
+    flex: 1;
+}
+
+.brand-gold
+{
+    color: var(--gold-brown) !important;
+}
+
+.resource-gold
+{
+    color: var(--gold-brown) !important;
+}
+
+.fancy-title
+{
+    font-weight: 600;
+}
+
+/* =========================
+   Erweiterungen & Scrollbar
+========================= */
+
+::-webkit-scrollbar
+{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track
+{
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background: var(--gold-brown-dark);
+}
+
+/* =========================
+   Hilfsklassen für Sichtbarkeit
+========================= */
+
+.hidden
+{
+    display: none !important;
+}
