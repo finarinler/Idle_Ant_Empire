@@ -44,9 +44,8 @@ function getCollectorCostForNumber(numberValue)
         collectorCostCache.cost = { ants: next("ants"), food: next("food"), larvae: next("larvae") };
     }
 
-    // Nur der erste Sammler kostet 1 Ameise. Die gespeicherte Kostenreihe
-    // bleibt unverändert, damit Sammler 2 und alle folgenden ihre bisherigen
-    // Kosten behalten.
+    // Die Ameisenkosten entsprechen immer der Sammlerstufe.
+    // Nahrung und Larven behalten ab Sammler 3 ihre bisherige Kostenreihe.
     if (number === 1)
     {
         return {
@@ -57,7 +56,20 @@ function getCollectorCostForNumber(numberValue)
         };
     }
 
-    return collectorCostCache.cost;
+    if (number === 2)
+    {
+        return {
+            ...collectorCostCache.cost,
+            ants: Big(2),
+            food: Big(100),
+            larvae: Big(5)
+        };
+    }
+
+    return {
+        ...collectorCostCache.cost,
+        ants: Big(number)
+    };
 }
 
 UnitRegistry.register({
