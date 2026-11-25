@@ -355,3 +355,45 @@
         transition: none;
     }
 }
+
+
+/* ---------- Discord-Community in den Spieloptionen ---------- */
+.options-community-section .options-description {
+    margin: 0 0 10px;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+.options-community-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+    padding: 9px 12px;
+    color: #fff;
+    background: linear-gradient(135deg, #5865F2, #4752C4);
+    border: 1px solid #7983ff;
+    border-radius: 9px;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: filter 0.2s, transform 0.2s;
+}
+.options-community-link:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+.options-community-link:focus-visible {
+    outline: 2px solid var(--gold-brown-light);
+    outline-offset: 3px;
+}
+.options-community-icon { font-size: 1.05rem; }
+.options-community-external { opacity: 0.8; }
+@media (prefers-reduced-motion: reduce) {
+    .options-community-link { transition: none; }
+}
