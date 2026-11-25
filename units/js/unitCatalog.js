@@ -156,7 +156,7 @@
                     value: () => hasScout()
                         ? { key: isScoutAutomationOn() ? "unit.scout.on" : "unit.scout.off" }
                         : "—"
-                }
+                },
                 trainingStat("scout")
             ],
             cost: () => ({ values: Economy.getRecruitCost("scout") }),
