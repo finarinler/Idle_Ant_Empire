@@ -55,6 +55,8 @@
 }
 
 .game-nav-button[hidden] { display: none !important; }
+.game-nav-button.is-locked { color: #777064; opacity: .68; cursor: not-allowed; border-style: dashed; border-color: rgba(130, 116, 94, .22); }
+.game-nav-button.is-locked:hover { color: #b7a98f; background: rgba(80, 68, 48, .22); border-color: #766044; opacity: 1; }
 .game-nav-button:hover { color: var(--game-text); background: #1d1a15; border-color: #3c3020; }
 .game-nav-button.is-active { color: var(--game-gold-bright); background: linear-gradient(135deg, #302516, #1e1912); border-color: #6b512e; }
 .game-nav-icon { display: inline-grid; place-items: center; width: 22px; flex: 0 0 22px; font-size: 1.1rem; }
