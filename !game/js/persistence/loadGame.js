@@ -96,6 +96,22 @@ function loadSavedEconomy(saved)
         eco.hatch = { active: true, remaining: Math.min(hatch.remaining, hatch.duration), duration: hatch.duration };
     }
 
+    if (saved.trainings && typeof saved.trainings === "object")
+    {
+        Object.entries(saved.trainings).forEach(([unitId, training]) =>
+        {
+            if (!UnitRegistry.has(unitId) || !training || typeof training !== "object") { return; }
+            if (!Number.isFinite(training.duration) || training.duration <= 0) { return; }
+            if (!Number.isFinite(training.remaining) || training.remaining < 0) { return; }
+            if (!Number.isFinite(BALANCE.trainingSeconds[unitId])) { return; }
+
+            eco.trainings[unitId] = {
+                duration: training.duration,
+                remaining: Math.min(training.remaining, training.duration)
+            };
+        });
+    }
+
     if (saved.unmet && typeof saved.unmet === "object")
     {
         Object.keys(eco.unmet).forEach(key =>
