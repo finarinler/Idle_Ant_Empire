@@ -30,6 +30,20 @@
         value: () => String(UnitRegistry.get(id).housing)
     });
 
+    const trainingStat = id => ({
+        label: { key: "card.stat.trainingTime" },
+        value: () =>
+        {
+            const seconds = BALANCE.trainingSeconds[id];
+            if (seconds < 60) { return `${seconds} ${SECOND()}`; }
+            const minutes = Math.floor(seconds / 60);
+            const remainder = seconds % 60;
+            return remainder > 0
+                ? `${minutes} ${I18N.t("statistics.unit.minute")} ${remainder} ${SECOND()}`
+                : `${minutes} ${I18N.t("statistics.unit.minute")}`;
+        }
+    });
+
     const countOf = (id, max) => ({
         value: () => formatGameNumber(Economy.getUnitCount(id)),
         max
@@ -59,7 +73,8 @@
                         : rate("−", UnitRegistry.get("normal-ant").consumption[0].rate, 2, "F")
                 },
                 housingStat("normal-ant"),
-                { label: { key: "card.stat.bought" }, value: () => formatGameNumber(GameState.resources.ants) }
+                { label: { key: "card.stat.bought" }, value: () => formatGameNumber(GameState.resources.ants) },
+                trainingStat("normal-ant")
             ],
             cost: () => ({ values: Economy.getRecruitCost("normal-ant"), order: ["larvae", "food"] }),
             action: { label: { key: "unit.ant.buy" }, missingLabel: { key: "button.missingResources" }, run: buyAnt },
@@ -76,7 +91,8 @@
             stats: [
                 { label: { key: "card.stat.larvaeProduction" }, value: () => rate("+", BALANCE.larvaeProductionPerQueen, 1, "L"), tone: "positive" },
                 { label: { key: "card.stat.foodConsumption" }, value: () => rate("−", BALANCE.upkeep["queen"], 1, "F") },
-                housingStat("queen")
+                housingStat("queen"),
+                trainingStat("queen")
             ],
             cost: () => ({ values: Economy.getRecruitCost("queen"), order: ["ants", "food"] }),
             action: { label: { key: "unit.queen.buy" }, missingLabel: { key: "button.missingResources" }, run: buyQueen },
@@ -93,7 +109,8 @@
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => rate("+", BALANCE.collector.foodPerSecond, 0, "F"), tone: "positive" },
                 { label: { key: "card.stat.mushroomBonus" }, value: () => `+${formatDecimal(BALANCE.collector.bonusPerCollector * 100, 0)} %`, tone: "positive" },
-                housingStat("collector")
+                housingStat("collector"),
+                trainingStat("collector")
             ],
             cost: () => ({ values: Economy.getRecruitCost("collector"), order: ["ants", "food", "larvae"] }),
             action: trainAction(buyCollector),
@@ -110,7 +127,8 @@
             stats: [
                 { label: { key: "card.stat.buildSpeed" }, value: () => `−${formatDecimal(BALANCE.builder.reductionPerBuilder * 100, 0)} %`, tone: "positive" },
                 { label: { key: "card.stat.buildTimeNow" }, value: () => `−${formatDecimal((1 - Economy.getBuildTimeFactor()) * 100, 0)} %` },
-                housingStat("builder")
+                housingStat("builder"),
+                trainingStat("builder")
             ],
             cost: () => ({ values: Economy.getRecruitCost("builder"), order: ["ants", "food", "larvae", "queens"] }),
             action: trainAction(buyBuilder),
@@ -139,6 +157,7 @@
                         ? { key: isScoutAutomationOn() ? "unit.scout.on" : "unit.scout.off" }
                         : "—"
                 }
+                trainingStat("scout")
             ],
             cost: () => ({ values: Economy.getRecruitCost("scout") }),
             action: {
@@ -175,7 +194,8 @@
             count: countOf("storage-keeper", BALANCE.carriedOver.storageKeeper.maxCount),
             stats: [
                 { label: { key: "card.stat.foodLimit" }, value: "×2", tone: "positive" },
-                survivalUpkeep("storage-keeper", 0)
+                survivalUpkeep("storage-keeper", 0),
+                trainingStat("storage-keeper")
             ],
             cost: () => ({ values: Economy.getRecruitCost("storage-keeper") }),
             action: trainAction(buyStorageGuardian),
@@ -191,7 +211,8 @@
             count: countOf("grand-nurse", BALANCE.carriedOver.grandNurse.maxCount),
             stats: [
                 { label: { key: "card.stat.larvaeLimit" }, value: "×2", tone: "positive" },
-                survivalUpkeep("grand-nurse", 0)
+                survivalUpkeep("grand-nurse", 0),
+                trainingStat("grand-nurse")
             ],
             cost: () => ({ values: Economy.getRecruitCost("grand-nurse") }),
             action: trainAction(buyGrandNurse),
@@ -211,7 +232,8 @@
                     value: () => `${UnitRegistry.get("brood-expert").hatch.getSeconds(Math.max(1, GameState.eliteUnits.broodExpertCount))} ${SECOND()}`
                 },
                 { label: { key: "card.stat.hatchCost" }, value: () => `${formatGameNumber(UnitRegistry.get("brood-expert").hatch.cost.larvae)} [[L]]` },
-                housingStat("brood-expert")
+                housingStat("brood-expert"),
+                trainingStat("brood-expert")
             ],
             progressId: "brood-expert-progress",
             cost: () => ({ values: Economy.getRecruitCost("brood-expert") }),
