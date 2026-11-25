@@ -7,7 +7,7 @@
     "use strict";
 
     let initialized = false;
-    let lastSavedSecond = 0;
+    let lastTickMs = 0;
 
     function valueText(value) {
         if (value === undefined || value === null) return "0";
@@ -46,8 +46,10 @@
         const stats = GameState.stats || {};
         const structures = GameState.structures || {};
         const elite = GameState.eliteUnits || {};
+        // Errichtete Gebäude: die Start-Wohnkammer zählt nicht mit
         const buildings = (Number(structures.storageCount) || 0) +
-            (Number(structures.housingCount) || 0) +
+            (Number(structures.nurseryCount) || 0) +
+            Math.max(0, (Number(structures.housingCount) || 0) - 1) +
             (Number(structures.mushroomFarmCount) || 0) +
             (Number(structures.constructionLevel) > 0 ? 1 : 0);
 
@@ -84,8 +86,14 @@
         if (!Number.isFinite(Number(GameState.stats.totalPlayTimeSeconds))) GameState.stats.totalPlayTimeSeconds = 0;
 
         updateStatistics();
+        lastTickMs = Date.now();
         window.setInterval(() => {
-            GameState.stats.totalPlayTimeSeconds = (Number(GameState.stats.totalPlayTimeSeconds) || 0) + 1;
+            // Echte verstrichene Zeit statt "+1 je Aufruf": gedrosselte Hintergrund-Tabs zählen korrekt.
+            // Pro Aufruf höchstens 2 Minuten, damit Ruhezustand/Systemuhr-Sprünge keine Spielzeit erfinden.
+            const now = Date.now();
+            const deltaSeconds = Math.min(120, Math.max(0, (now - lastTickMs) / 1000));
+            lastTickMs = now;
+            GameState.stats.totalPlayTimeSeconds = (Number(GameState.stats.totalPlayTimeSeconds) || 0) + deltaSeconds;
             updateStatistics();
         }, 1000);
         window.addEventListener("pagehide", () => {
