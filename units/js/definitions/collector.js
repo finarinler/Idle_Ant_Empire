@@ -49,7 +49,12 @@ function getCollectorCostForNumber(numberValue)
     // Kosten behalten.
     if (number === 1)
     {
-        return { ...collectorCostCache.cost, ants: Big(1) };
+        return {
+            ...collectorCostCache.cost,
+            ants: Big(1),
+            food: Big(0),
+            larvae: Big(0)
+        };
     }
 
     return collectorCostCache.cost;
