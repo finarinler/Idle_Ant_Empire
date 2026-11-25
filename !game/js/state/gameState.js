@@ -48,6 +48,7 @@ const GameState = {
         lastUpdateMs: 0,
         deathTimers: {},
         hatch: { active: false, remaining: 0, duration: 0 },
+        trainings: {},
         unmet: { food: Big(0), larvae: Big(0) }   // nicht erfüllter Verbrauch (kumuliert)
     },
 
