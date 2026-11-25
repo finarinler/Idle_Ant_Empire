@@ -622,3 +622,39 @@ h1 span {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================
+   Discord Community Link
+========================= */
+
+.header-discord-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    padding: 0 14px;
+    color: var(--gold-brown-light);
+    background: rgba(176, 141, 87, 0.08);
+    border: 1px solid var(--gold-brown-dark);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.header-discord-button:hover {
+    color: var(--bg-pure-dark);
+    background: var(--gold-brown-light);
+    border-color: var(--gold-brown-light);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+    .header-discord-button {
+        min-height: 38px;
+        gap: 5px;
+        padding: 0 9px;
+        font-size: 0.78rem;
+    }
+}
