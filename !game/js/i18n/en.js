@@ -437,3 +437,30 @@ I18N.register("en", {
 I18N.register("en", {
     "card.stat.trainingTime": "Training time"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("en", {
+    "nav.hint.comingSoon": "Coming soon!",
+    "nav.hint.firstSteps": "Achievement: First Steps — complete 5 expeditions.",
+    "changelog.eyebrow": "CHANGELOG",
+    "changelog.title": "Changes",
+    "changelog.intro": "Here you can find the most important additions and adjustments in this game version.",
+    "changelog.release": "Current version",
+    "changelog.group.unitsTraining": "Units & Training",
+    "changelog.group.achievements": "Achievements & Rewards",
+    "changelog.group.balance": "Game balance & economy",
+    "changelog.group.navigation": "Navigation",
+    "changelog.group.community": "Community",
+    "changelog.entry.trainingTimes": "Individual training times introduced for all recruitable unit types.",
+    "changelog.entry.trainingProgress": "Training progress is displayed directly on unit cards.",
+    "changelog.entry.parallelTraining": "Different unit types can be trained in parallel; only one training at a time for each type.",
+    "changelog.entry.offlineTraining": "Ongoing training is saved and continues during offline time.",
+    "changelog.entry.smallCollectorReward": "The “Little Collector” achievement immediately grants one stray ant when unlocked.",
+    "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
+    "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
+    "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
+    "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
+    "changelog.entry.foodProduction": "Core food production settings revised.",
+    "changelog.entry.economy": "Colony costs and economic settings rebalanced."
+});
