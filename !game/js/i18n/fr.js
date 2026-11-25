@@ -426,3 +426,30 @@ I18N.register("fr", {
 I18N.register("fr", {
     "card.stat.trainingTime": "Durée de formation"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("fr", {
+    "nav.hint.comingSoon": "Bientôt disponible !",
+    "nav.hint.firstSteps": "Succès : Premiers pas — terminer 5 expéditions.",
+    "changelog.eyebrow": "JOURNAL DES MODIFICATIONS",
+    "changelog.title": "Modifications",
+    "changelog.intro": "Retrouvez ici les principales nouveautés et modifications de cette version du jeu.",
+    "changelog.release": "Version actuelle",
+    "changelog.group.unitsTraining": "Unités et entraînement",
+    "changelog.group.achievements": "Succès et récompenses",
+    "changelog.group.balance": "Équilibrage et économie",
+    "changelog.group.navigation": "Navigation",
+    "changelog.group.community": "Communauté",
+    "changelog.entry.trainingTimes": "Ajout de durées d’entraînement individuelles pour tous les types d’unités recrutables.",
+    "changelog.entry.trainingProgress": "La progression de l’entraînement s’affiche directement sur les cartes des unités.",
+    "changelog.entry.parallelTraining": "Différents types d’unités peuvent être entraînés en parallèle ; un seul entraînement simultané par type.",
+    "changelog.entry.offlineTraining": "Les entraînements en cours sont sauvegardés et se poursuivent hors ligne.",
+    "changelog.entry.smallCollectorReward": "Le succès « Petit collecteur » offre immédiatement une fourmi errante lors de son déverrouillage.",
+    "changelog.entry.collectorCosts": "Coûts des collectrices révisés : le coût en fourmis correspond désormais au niveau de collectrice ; les augmentations précédentes de nourriture et de larves sont conservées.",
+    "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
+    "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
+    "changelog.entry.foodUpkeep": "Consommation de nourriture des collectrices ajustée.",
+    "changelog.entry.foodProduction": "Les bases de la production de nourriture ont été révisées.",
+    "changelog.entry.economy": "Les coûts et les paramètres économiques de la colonie ont été rééquilibrés."
+});
