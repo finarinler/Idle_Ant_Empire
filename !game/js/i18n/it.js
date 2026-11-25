@@ -426,3 +426,30 @@ I18N.register("it", {
 I18N.register("it", {
     "card.stat.trainingTime": "Tempo di addestramento"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("it", {
+    "nav.hint.comingSoon": "Prossimamente!",
+    "nav.hint.firstSteps": "Obiettivo: Primi passi — completa 5 spedizioni.",
+    "changelog.eyebrow": "CRONOLOGIA MODIFICHE",
+    "changelog.title": "Modifiche",
+    "changelog.intro": "Qui trovi le principali novità e modifiche di questa versione del gioco.",
+    "changelog.release": "Versione attuale",
+    "changelog.group.unitsTraining": "Unità e addestramento",
+    "changelog.group.achievements": "Obiettivi e ricompense",
+    "changelog.group.balance": "Bilanciamento ed economia",
+    "changelog.group.navigation": "Navigazione",
+    "changelog.group.community": "Comunità",
+    "changelog.entry.trainingTimes": "Introdotti tempi di addestramento individuali per tutti i tipi di unità reclutabili.",
+    "changelog.entry.trainingProgress": "L’avanzamento dell’addestramento è mostrato direttamente sulle schede delle unità.",
+    "changelog.entry.parallelTraining": "È possibile addestrare tipi diversi di unità in parallelo; ogni tipo può essere addestrato una sola volta alla volta.",
+    "changelog.entry.offlineTraining": "Gli addestramenti in corso vengono salvati e proseguono anche offline.",
+    "changelog.entry.smallCollectorReward": "L’obiettivo «Piccolo raccoglitore» assegna subito una formica randagia al momento dello sblocco.",
+    "changelog.entry.collectorCosts": "Costi delle raccoglitrici rivisti: il costo in formiche corrisponde al livello della raccoglitrice; restano invariati i precedenti aumenti dei costi in cibo e larve.",
+    "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
+    "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
+    "changelog.entry.foodUpkeep": "Consumo di cibo delle raccoglitrici modificato.",
+    "changelog.entry.foodProduction": "Riviste le basi della produzione di cibo.",
+    "changelog.entry.economy": "Ribilanciati i costi e le condizioni economiche della colonia."
+});
