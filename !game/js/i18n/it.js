@@ -406,3 +406,11 @@ I18N.register("it", {
     "card.value.yes": "Sì",
     "button.upgrade": "Potenzia"
 });
+
+
+/* ---------- Discord community ---------- */
+I18N.register("it", {
+    "options.community": "Community",
+    "options.communityText": "Incontra altri giocatori, condividi la tua colonia e lascia un feedback.",
+    "options.communityButton": "Visita la community Discord"
+});
