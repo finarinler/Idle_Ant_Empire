@@ -417,3 +417,11 @@ I18N.register("de", {
     "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
     "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt."
 });
+
+
+/* ---------- Discord community ---------- */
+I18N.register("de", {
+    "options.community": "Community",
+    "options.communityText": "Triff andere Spieler, teile deine Kolonie und gib Feedback.",
+    "options.communityButton": "Discord-Community besuchen"
+});
