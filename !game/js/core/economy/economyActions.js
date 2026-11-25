@@ -114,6 +114,11 @@
             return { state: "locked", hint: blocked.key ? blocked : undefined, reason: blocked };
         }
 
+        if (GameState.economy.trainings && GameState.economy.trainings[id])
+        {
+            return { state: "training", hint: { key: "status.unit.trainingInProgress" } };
+        }
+
         const count = Economy.getUnitCount(id);
 
         if (count.gte(Economy.getUnitMaxCount(def)))
@@ -158,9 +163,23 @@
             return { ok: false, reason: { key: "status.elite.cannotAfford" } };
         }
 
-        Economy._addUnits(id, 1);
+        const duration = BALANCE.trainingSeconds[id];
 
-        return { ok: true };
+        if (!Number.isFinite(duration) || duration <= 0)
+        {
+            return { ok: false, reason: { key: "status.elite.cannotAfford" } };
+        }
+
+        GameState.economy.trainings[id] = { duration, remaining: duration };
+
+        return { ok: true, durationSeconds: duration };
+    };
+
+    Economy.getTrainingProgress = function (id)
+    {
+        const training = GameState.economy.trainings && GameState.economy.trainings[id];
+        if (!training || training.duration <= 0) { return 0; }
+        return Math.max(0, Math.min(1, 1 - training.remaining / training.duration));
     };
 
     /* ---------- Schlupf (Anzeige) ---------- */
