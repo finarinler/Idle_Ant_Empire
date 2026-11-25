@@ -426,3 +426,30 @@ I18N.register("tr", {
 I18N.register("tr", {
     "card.stat.trainingTime": "Eğitim süresi"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("tr", {
+    "nav.hint.comingSoon": "Çok yakında!",
+    "nav.hint.firstSteps": "Başarım: İlk Adımlar — 5 keşif tamamla.",
+    "changelog.eyebrow": "DEĞİŞİKLİK GÜNLÜĞÜ",
+    "changelog.title": "Değişiklikler",
+    "changelog.intro": "Bu oyun sürümündeki önemli yenilikleri ve düzenlemeleri burada bulabilirsin.",
+    "changelog.release": "Mevcut sürüm",
+    "changelog.group.unitsTraining": "Birimler ve eğitim",
+    "changelog.group.achievements": "Başarımlar ve ödüller",
+    "changelog.group.balance": "Oyun dengesi ve ekonomi",
+    "changelog.group.navigation": "Gezinme",
+    "changelog.group.community": "Topluluk",
+    "changelog.entry.trainingTimes": "İşe alınabilen tüm birim türleri için ayrı eğitim süreleri eklendi.",
+    "changelog.entry.trainingProgress": "Eğitim ilerlemesi doğrudan birim kartlarında gösteriliyor.",
+    "changelog.entry.parallelTraining": "Farklı birim türleri aynı anda eğitilebilir; her türden aynı anda yalnızca bir eğitim yapılabilir.",
+    "changelog.entry.offlineTraining": "Devam eden eğitimler kaydedilir ve çevrimdışıyken de sürer.",
+    "changelog.entry.smallCollectorReward": "«Küçük Toplayıcı» başarımı açıldığında hemen bir başıboş karınca verir.",
+    "changelog.entry.collectorCosts": "Toplayıcı maliyetleri yenilendi: karınca maliyeti toplayıcı seviyesine eşitlendi; yiyecek ve larva maliyetlerindeki önceki artışlar korundu.",
+    "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
+    "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
+    "changelog.entry.foodUpkeep": "Toplayıcıların yiyecek tüketimi ayarlandı.",
+    "changelog.entry.foodProduction": "Temel yiyecek üretimi ayarları yenilendi.",
+    "changelog.entry.economy": "Koloni maliyetleri ve ekonomik koşulları yeniden dengelendi."
+});
