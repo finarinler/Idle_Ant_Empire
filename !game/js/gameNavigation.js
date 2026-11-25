@@ -25,7 +25,8 @@
         function showView(name)
         {
             const target = views.find(view => view.dataset.gameViewPanel === name);
-            if (!target || target.hidden && navButtons.some(button => button.dataset.gameView === name && button.hidden)) return;
+            const targetButton = navButtons.find(button => button.dataset.gameView === name);
+            if (!target || targetButton && targetButton.getAttribute("aria-disabled") === "true") return;
 
             views.forEach(view =>
             {
@@ -61,16 +62,41 @@
             const achievements = typeof GameState !== "undefined" && GameState.achievements ? GameState.achievements : {};
             const state = typeof GameState !== "undefined" ? GameState : {};
             const gates = {
-                research: Boolean(achievements.knowledgeIsPower),
-                military: Boolean((state.research && state.research.militaryUnlocked) || (state.unlocks && state.unlocks.military) || achievements.militaryUnlocked),
-                achievements: Boolean(achievements.firstSteps)
+                research: {
+                    unlocked: Boolean(achievements.knowledgeIsPower),
+                    hint: "Freischaltung: Trainiere eine Vorrats-Hüterin und eine Groß-Amme."
+                },
+                military: {
+                    unlocked: Boolean((state.research && state.research.militaryUnlocked) || (state.unlocks && state.unlocks.military) || achievements.militaryUnlocked),
+                    hint: "Freischaltung: Sobald die Militär-Funktion deiner Kolonie freigeschaltet wurde."
+                },
+                achievements: {
+                    unlocked: Boolean(achievements.firstSteps),
+                    hint: "Freischaltung: Schließe 5 Expeditionen ab."
+                }
             };
-            Object.entries(gates).forEach(([name, unlocked]) =>
+
+            Object.entries(gates).forEach(([name, gate]) =>
             {
                 const button = navButtons.find(item => item.dataset.gameView === name);
-                if (button) button.hidden = !unlocked;
+                if (!button) return;
+
+                // Alle Bereiche bleiben von Beginn an sichtbar. Gesperrte Bereiche
+                // sind nur optisch deaktiviert und erklären ihre Freischaltung per Hover.
+                button.hidden = false;
+                button.classList.toggle("is-locked", !gate.unlocked);
+                button.setAttribute("aria-disabled", gate.unlocked ? "false" : "true");
+                if (gate.unlocked)
+                {
+                    button.removeAttribute("title");
+                }
+                else
+                {
+                    button.title = gate.hint;
+                }
+
                 const activeView = views.find(view => view.dataset.gameViewPanel === name);
-                if (!unlocked && activeView && !activeView.hidden) showView("units");
+                if (!gate.unlocked && activeView && !activeView.hidden) showView("units");
             });
         }
 
@@ -78,6 +104,7 @@
         // kein Reload und keine Änderung der URL. Das funktioniert auch auf GitHub Pages.
         navButtons.forEach(button => button.addEventListener("click", () =>
         {
+            if (button.getAttribute("aria-disabled") === "true") return;
             showView(button.dataset.gameView);
         }));
 
