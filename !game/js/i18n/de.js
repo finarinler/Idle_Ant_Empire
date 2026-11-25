@@ -437,3 +437,30 @@ I18N.register("de", {
 I18N.register("de", {
     "card.stat.trainingTime": "Ausbildungszeit"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("de", {
+    "nav.hint.comingSoon": "Kommt bald!",
+    "nav.hint.firstSteps": "Erfolg: Erste Schritte — 5 Expeditionen abgeschlossen.",
+    "changelog.eyebrow": "ÄNDERUNGSVERLAUF",
+    "changelog.title": "Änderungen",
+    "changelog.intro": "Hier findest du die wichtigsten Neuerungen und Anpassungen dieser Spielversion.",
+    "changelog.release": "Aktuelle Version",
+    "changelog.group.unitsTraining": "Einheiten & Ausbildung",
+    "changelog.group.achievements": "Erfolge & Belohnungen",
+    "changelog.group.balance": "Spielbalance & Wirtschaft",
+    "changelog.group.navigation": "Navigation",
+    "changelog.group.community": "Community",
+    "changelog.entry.trainingTimes": "Einführung individueller Ausbildungszeiten für alle rekrutierbaren Einheitentypen.",
+    "changelog.entry.trainingProgress": "Ausbildungsfortschritt wird direkt auf den Einheitenkarten angezeigt.",
+    "changelog.entry.parallelTraining": "Verschiedene Einheitentypen können parallel ausgebildet werden; derselbe Typ jeweils nur einmal gleichzeitig.",
+    "changelog.entry.offlineTraining": "Laufende Ausbildungen werden gespeichert und während der Offline-Zeit weitergeführt.",
+    "changelog.entry.smallCollectorReward": "Der Erfolg „Kleiner Sammler“ gewährt beim Freischalten sofort eine Streuner-Ameise.",
+    "changelog.entry.collectorCosts": "Sammlerkosten überarbeitet: Die Ameisenkosten entsprechen der Sammlerstufe; die bisherigen Kostensteigerungen für Nahrung und Larven bleiben erhalten.",
+    "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
+    "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
+    "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
+    "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
+    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt."
+});
