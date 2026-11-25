@@ -376,19 +376,27 @@
     color: var(--game-muted);
     font-size: .82rem;
 }
+.changelog-release {
+    padding: 18px 20px;
+    border: 1px solid rgba(181, 138, 72, .3);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(137, 101, 45, .07), rgba(255, 255, 255, .012));
+    box-shadow: inset 0 1px 0 rgba(220, 180, 110, .035);
+}
 .changelog-release + .changelog-release {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--game-border);
+    margin-top: 18px;
 }
 .changelog-release-summary {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 18px;
+    margin: 0;
     color: var(--game-gold-bright);
     cursor: pointer;
     list-style: none;
+}
+.changelog-release[open] > .changelog-release-summary {
+    margin-bottom: 18px;
 }
 .changelog-release-summary::-webkit-details-marker { display: none; }
 .changelog-release-summary::before {
