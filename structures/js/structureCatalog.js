@@ -143,7 +143,7 @@
                 buildTimeStat("storage-room", "build")
             ],
             progressId: "progress-storage",
-            cost: buildCost("storage-room"),
+            cost: buildCost("storage-room", ["larvae", "ants", "food"]),
             action: buildAction("storage-room"),
             status: () => projectStatus("storage-room", "build")
         },
@@ -159,7 +159,7 @@
                 buildTimeStat("brood-chamber", "build")
             ],
             progressId: "progress-nursery",
-            cost: buildCost("brood-chamber"),
+            cost: buildCost("brood-chamber", ["larvae", "ants", "food"]),
             action: buildAction("brood-chamber"),
             status: () => projectStatus("brood-chamber", "build")
         },
