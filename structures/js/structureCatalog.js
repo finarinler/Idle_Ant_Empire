@@ -74,6 +74,8 @@
         },
         {
             id: "housing-upgrade",
+            startsHidden: true,
+            visible: () => Boolean(GameState.achievements.knowledgeIsPower),
             icon: "⇧",
             type: { key: "card.type.structureBasic" },
             name: { key: "structure.housingUpgrade.name" },
