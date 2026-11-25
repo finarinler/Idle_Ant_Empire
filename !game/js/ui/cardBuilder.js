@@ -156,18 +156,18 @@ const CardBuilder = (function ()
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
-        if (entry.progressId || entry.trainingProgressId)
+        if (entry.progressId)
         {
             const progress = create("div", "iae-card-progress", card);
             const track = create("div", "iae-card-progress-track", progress);
-            if (entry.progressId)
-            {
-                create("div", "iae-card-progress-fill", track, { id: entry.progressId });
-            }
-            if (entry.trainingProgressId)
-            {
-                create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
-            }
+            create("div", "iae-card-progress-fill", track, { id: entry.progressId });
+        }
+
+        if (entry.trainingProgressId)
+        {
+            const progress = create("div", "iae-card-progress iae-card-training-progress", card);
+            const track = create("div", "iae-card-progress-track", progress);
+            create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
         }
 
         if (entry.stepper)
@@ -241,6 +241,10 @@ const CardBuilder = (function ()
         if (state === "missing" && action.missingLabel)
         {
             label = action.missingLabel;
+        }
+        else if (state === "training")
+        {
+            label = { key: STATE_LABEL_KEYS.training };
         }
         else if (STATE_LABEL_KEYS[state] && !action.keepLabel)
         {
