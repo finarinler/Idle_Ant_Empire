@@ -67,10 +67,9 @@ function updateTrainingProgressUI()
         if (!bar) { return; }
 
         const training = GameState.economy.trainings[unitId];
-        const container = bar.closest(".iae-card-progress");
-        if (container) { container.style.display = training ? "" : "none"; }
 
-        bar.style.width = `${(Economy.getTrainingProgress(unitId) * 100).toFixed(1)}%`;
+        // Der Balken bleibt dauerhaft sichtbar – im Leerlauf steht er bei 0 %.
+        bar.style.width = `${(training ? Economy.getTrainingProgress(unitId) * 100 : 0).toFixed(1)}%`;
     });
 }
 
