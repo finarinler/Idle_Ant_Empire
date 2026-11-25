@@ -405,3 +405,15 @@ I18N.register("en", {
     "card.value.yes": "Yes",
     "button.upgrade": "Upgrade"
 });
+
+/* ---------- Changelog: alpha-v0.00.007a ---------- */
+I18N.register("en", {
+    "changelog.eyebrow": "CHANGELOG",
+    "changelog.title": "Changes",
+    "changelog.intro": "Here you can find the most important additions and adjustments in this game version.",
+    "changelog.release": "Current version",
+    "changelog.group.balance": "Game balance & economy",
+    "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
+    "changelog.entry.foodProduction": "Core food production settings revised.",
+    "changelog.entry.economy": "Colony costs and economic settings rebalanced."
+});

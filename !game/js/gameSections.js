@@ -16,7 +16,8 @@
         { name: "logbook", path: "log/log.html" },
         { name: "achievements", path: "achievements/achievements.html" },
         { name: "statistics", path: "statistics/statistics.html" },
-        { name: "options", path: "options/options.html" }
+        { name: "options", path: "options/options.html" },
+        { name: "changelog", path: "changelog/changelog.html" }
     ];
 
     const frames = new Map();

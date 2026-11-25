@@ -293,3 +293,39 @@
 .logbook-footer { display:flex; align-items:center; gap:8px; padding:12px 24px; border-top:1px solid #29231b; color:var(--game-muted); font-size:.74rem; }
 .logbook-live-dot { width:7px; height:7px; border-radius:50%; background:#8fbf8b; box-shadow:0 0 8px rgba(143,191,139,.35); }
 @media(max-width:520px) { .logbook-toolbar { align-items:flex-start; flex-direction:column; padding:18px; } .logbook-reset-btn { width:100%; } .logbook-legend { padding:12px 18px; } .logbook-page-view .log-entry { grid-template-columns:1fr; gap:4px; } .logbook-page-view .log-entry .dot { display:none; } .logbook-feed-wrap { padding:8px; } }
+
+
+/* Versions-Changelog */
+.changelog-panel {
+    margin-top: 22px;
+    padding: clamp(18px, 3vw, 28px);
+    border: 1px solid var(--game-border);
+    border-radius: 14px;
+    background: linear-gradient(145deg, #191919, #111111);
+}
+.changelog-version {
+    margin: 0 0 6px;
+    color: var(--game-gold-bright);
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+.changelog-release-label {
+    margin: 0 0 22px;
+    color: var(--game-muted);
+    font-size: .82rem;
+}
+.changelog-group + .changelog-group { margin-top: 22px; }
+.changelog-group h4 {
+    margin: 0 0 10px;
+    color: var(--game-gold);
+    font-size: .95rem;
+}
+.changelog-list {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding-left: 21px;
+    color: var(--game-muted);
+    line-height: 1.6;
+}
+.changelog-list li::marker { color: var(--game-gold); }

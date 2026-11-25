@@ -9,6 +9,18 @@ function injectVersion()
         DOM.versionTag.textContent = GAME_VERSION;
     }
 
+    const changelogNavVersion = document.getElementById("changelog-nav-version");
+    if (changelogNavVersion)
+    {
+        changelogNavVersion.textContent = GAME_VERSION;
+    }
+
+    const changelogCurrentVersion = document.getElementById("changelog-current-version");
+    if (changelogCurrentVersion)
+    {
+        changelogCurrentVersion.textContent = GAME_VERSION;
+    }
+
     document.title = `Idle Ant Empire - ${GAME_VERSION}`;
 }
 

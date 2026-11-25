@@ -49,11 +49,13 @@ const BALANCE = {
             { from: 10001, to: 15000,    percent: 0.025 },
             { from: 15001, to: Infinity, percent: 0.01 }
         ],
-        bonusPerCollector: 0.01,        // +1 % auf die gesamte Pilzfarmproduktion (additiv)
+        bonusPerCollector: 0, // bleibt ohne Forschungsstufen zunächst bei 0
+        bonusPerCollectorPerResearchLevel: 0.001, // +0,1 Prozentpunkte je Sammler und Forschungsstufe
+        maxBonusResearchLevel: 10,
         foodPerSecond: 1
     },
 
-    mushroomFarm: { foodPerSecond: 5 },
+    mushroomFarm: { foodPerSecond: 1, researchPerLevel: 0.5, maxResearchLevel: 8 },
 
     broodExpert: {
         // Kostenfaktor je Brutexpertin Nr. 1..5 (auf die bisherigen Grundkosten)
@@ -72,8 +74,9 @@ const BALANCE = {
     },
 
     upkeep: {   // Nahrungsverbrauch pro Sekunde (Überlebensressource)
-        "normal-ant": 0.25,              // ÜBERNOMMEN
-        "queen": 0.5,                    // ÜBERNOMMEN
+        "normal-ant": 0.5,               // vereinbart
+        "queen": 1.0,                    // vereinbart
+        "collector": 0.25,
         "storage-keeper": 5,
         "grand-nurse": 5
     },
@@ -85,7 +88,7 @@ const BALANCE = {
     carriedOver: {
         queen: {
             baseFood: 500, foodScaling: 1.075,
-            baseAnts: 1,   antsScaling: 1.5
+            baseAnts: 1,   antsScaling: 1.05
         },
         scout: { cost: { ants: 50, food: 5000, larvae: 1000, queens: 1 }, maxCount: 1 },
         broodExpert: { baseCost: { ants: 100, food: 1000, larvae: 250, queens: 1 }, maxCount: 5 },
@@ -99,8 +102,8 @@ const BALANCE = {
             multiplier: { ants: 2, food: 1.75, larvae: 1.5, queens: 2 },
             maxCount: 5
         },
-        storageRoom: { cost: { larvae: 50, ants: 100, queens: 10, food: 1000 }, totalFoodCapacity: 10000 },
-        broodChamber: { cost: { food: 3000, larvae: 150, ants: 150, queens: 10 }, totalLarvaeCapacity: 2500 }
+        storageRoom: { cost: { larvae: 50, ants: 100, queens: 0, food: 1000 }, totalFoodCapacity: 10000 },
+        broodChamber: { cost: { food: 3000, larvae: 150, ants: 150, queens: 0 }, totalLarvaeCapacity: 2500 }
     },
 
     /* ---------- VORLÄUFIG (wartet auf Freigabe) ---------- */
@@ -111,18 +114,18 @@ const BALANCE = {
 
         housing: {
             baseCost: { food: 300 },
-            buildSeconds: 45,
+            buildSeconds: 10,
             capacityBonusPerLevel: 5,                 // Wohnraum je Wohnkammer: 10 + 5 × (Stufe − 1)
             // Nahrungskosten je Upgrade-Stufe 1→2 ... 9→10
             upgradeFood: [500, 1500, 4000, 10000, 25000, 60000, 150000, 400000, 1000000]
         },
 
-        mushroomFarm: { baseCost: { food: 150 }, costGrowth: 1.10, buildSeconds: 20 },
+        mushroomFarm: { baseCost: { food: 150 }, costGrowth: 1.10, buildSeconds: 10 },
 
-        constructionChamber: { cost: { food: 1500, larvae: 50, ants: 75, queens: 5 }, buildSeconds: 90 },
+        constructionChamber: { cost: { food: 1500, larvae: 50, ants: 75, queens: 5 }, buildSeconds: 600 },
 
-        storageRoomBuildSeconds: 120,
-        broodChamberBuildSeconds: 120,
+        storageRoomBuildSeconds: 900,
+        broodChamberBuildSeconds: 900,
 
         builder: {
             baseCost: { ants: 25, food: 1500, larvae: 150, queens: 1 },

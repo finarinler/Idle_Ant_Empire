@@ -53,8 +53,8 @@ UnitRegistry.register({
     store: { kind: "resource", key: "collectors" },
     housing: 1,
 
-    // Kein Überlebensverbrauch festgelegt: Sammler bleiben bei 100 % Effizienz.
-    consumption: [],
+    // Vereinbarter Überlebensverbrauch.
+    consumption: [{ resource: "food", rate: BALANCE.upkeep["collector"], kind: "survival" }],
     production: [{ resource: "food", rate: BALANCE.collector.foodPerSecond }],
     abilities: [{ type: "structureBonus", structure: "mushroom-farm", perUnit: BALANCE.collector.bonusPerCollector }],
     refund: { food: BALANCE.refunds["collector"] },

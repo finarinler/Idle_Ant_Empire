@@ -405,3 +405,15 @@ I18N.register("de", {
     "card.value.yes": "Ja",
     "button.upgrade": "Verbessern"
 });
+
+/* ---------- Changelog: alpha-v0.00.007a ---------- */
+I18N.register("de", {
+    "changelog.eyebrow": "ÄNDERUNGSVERLAUF",
+    "changelog.title": "Änderungen",
+    "changelog.intro": "Hier findest du die wichtigsten Neuerungen und Anpassungen dieser Spielversion.",
+    "changelog.release": "Aktuelle Version",
+    "changelog.group.balance": "Spielbalance & Wirtschaft",
+    "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
+    "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
+    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt."
+});

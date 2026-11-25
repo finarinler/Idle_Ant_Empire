@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Changelog — Idle Ant Empire</title></head>
+<body>
+<section class="game-view changelog-page-view" id="game-view-changelog" data-game-view-panel="changelog" hidden aria-label="Changelog" data-i18n-aria-label="changelog.title">
+  <div class="view-intro">
+    <p class="view-eyebrow" data-i18n="changelog.eyebrow">ÄNDERUNGSVERLAUF</p>
+    <h2 data-i18n="changelog.title">Änderungen</h2>
+    <p data-i18n="changelog.intro">Hier findest du die wichtigsten Neuerungen und Anpassungen dieser Spielversion.</p>
+  </div>
+  <article class="changelog-panel">
+    <details class="changelog-release" open>
+      <summary class="changelog-release-summary">
+        <span class="changelog-release-label" data-i18n="changelog.release">Aktuelle Version</span>
+        <h3 class="changelog-version" id="changelog-current-version"></h3>
+      </summary>
+      <section class="changelog-group">
+      <h4 data-i18n="changelog.group.balance">Spielbalance &amp; Wirtschaft</h4>
+      <ul class="changelog-list">
+        <li data-i18n="changelog.entry.foodUpkeep">Nahrungsverbrauch der Sammler angepasst.</li>
+        <li data-i18n="changelog.entry.foodProduction">Grundlagen der Nahrungsproduktion überarbeitet.</li>
+        <li data-i18n="changelog.entry.economy">Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt.</li>
+      </ul>
+      </section>
+    </details>
+  </article>
+</section>
+<script>(() => { const root = document.querySelector('[data-game-view-panel="changelog"]'); if (!root) { parent.postMessage({type:'iae-section-error',name:'changelog',message:'Der Changelog-Bereich fehlt.'},'*'); return; } parent.postMessage({type:'iae-section-ready',name:'changelog',html:root.outerHTML},'*'); })();</script>
+</body></html>
