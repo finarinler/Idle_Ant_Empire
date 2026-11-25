@@ -426,3 +426,30 @@ I18N.register("es", {
 I18N.register("es", {
     "card.stat.trainingTime": "Tiempo de entrenamiento"
 });
+
+
+/* ---------- Navigation tooltips & changelog (all releases) ---------- */
+I18N.register("es", {
+    "nav.hint.comingSoon": "¡Próximamente!",
+    "nav.hint.firstSteps": "Logro: Primeros pasos — completa 5 expediciones.",
+    "changelog.eyebrow": "HISTORIAL DE CAMBIOS",
+    "changelog.title": "Cambios",
+    "changelog.intro": "Aquí encontrarás las novedades y ajustes más importantes de esta versión del juego.",
+    "changelog.release": "Versión actual",
+    "changelog.group.unitsTraining": "Unidades y entrenamiento",
+    "changelog.group.achievements": "Logros y recompensas",
+    "changelog.group.balance": "Equilibrio y economía",
+    "changelog.group.navigation": "Navegación",
+    "changelog.group.community": "Comunidad",
+    "changelog.entry.trainingTimes": "Se incorporan tiempos de entrenamiento individuales para todos los tipos de unidades reclutables.",
+    "changelog.entry.trainingProgress": "El progreso del entrenamiento se muestra directamente en las tarjetas de unidades.",
+    "changelog.entry.parallelTraining": "Se pueden entrenar distintos tipos de unidades en paralelo; cada tipo solo puede entrenarse una vez a la vez.",
+    "changelog.entry.offlineTraining": "Los entrenamientos en curso se guardan y continúan durante el tiempo sin conexión.",
+    "changelog.entry.smallCollectorReward": "El logro «Pequeño recolector» otorga inmediatamente una hormiga errante al desbloquearse.",
+    "changelog.entry.collectorCosts": "Se revisan los costes de recolectores: el coste en hormigas corresponde al nivel del recolector; se mantienen los aumentos anteriores de comida y larvas.",
+    "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
+    "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
+    "changelog.entry.foodUpkeep": "Se ajustó el consumo de comida de los recolectores.",
+    "changelog.entry.foodProduction": "Se revisaron los fundamentos de la producción de comida.",
+    "changelog.entry.economy": "Se reajustaron los costes y las condiciones económicas de la colonia."
+});
