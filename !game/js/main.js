@@ -132,7 +132,7 @@ function loadScript(path) {
     return new Promise((resolve, reject) => {
         const script = document.createElement("script");
 
-        const cacheVersion = "20261125c";
+        const cacheVersion = "20261125d";
         script.src = path + (path.includes("?") ? "&" : "?") + "v=" + cacheVersion;
 
         script.onload = resolve;
