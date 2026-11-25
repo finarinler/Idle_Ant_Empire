@@ -90,6 +90,7 @@ function updateResources()
     /* 4. Karten (Einheiten, Gebäude, Forschung) */
     CardBuilder.updateAll();
     updateBroodExpertProgressUI();
+    updateTrainingProgressUI();
     updateConstructionProgressUI();
 
     /* 6. Expeditionsbutton (Zustand wird jeden Tick aus dem Spielzustand abgeleitet) */
