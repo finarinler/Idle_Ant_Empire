@@ -406,3 +406,11 @@ I18N.register("tr", {
     "card.value.yes": "Evet",
     "button.upgrade": "Geliştir"
 });
+
+
+/* ---------- Discord community ---------- */
+I18N.register("tr", {
+    "options.community": "Topluluk",
+    "options.communityText": "Diğer oyuncularla tanış, kolonini paylaş ve geri bildirim ver.",
+    "options.communityButton": "Discord topluluğunu ziyaret et"
+});
