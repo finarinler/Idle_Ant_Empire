@@ -68,7 +68,7 @@
                 },
                 military: {
                     unlocked: Boolean((state.research && state.research.militaryUnlocked) || (state.unlocks && state.unlocks.military) || achievements.militaryUnlocked),
-                    hint: "Kommt bald!"
+                    hint: I18N.t("nav.hint.comingSoon")
                 },
                 achievements: {
                     unlocked: Boolean(achievements.firstSteps),
