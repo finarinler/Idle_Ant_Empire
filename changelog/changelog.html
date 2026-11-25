@@ -9,16 +9,20 @@
     <p data-i18n="changelog.intro">Hier findest du die wichtigsten Neuerungen und Anpassungen dieser Spielversion.</p>
   </div>
   <article class="changelog-panel">
-    <p class="changelog-release-label" data-i18n="changelog.release">Aktuelle Version</p>
-    <h3 class="changelog-version">alpha-v0.00.007a</h3>
-    <section class="changelog-group">
+    <details class="changelog-release" open>
+      <summary class="changelog-release-summary">
+        <span class="changelog-release-label" data-i18n="changelog.release">Aktuelle Version</span>
+        <h3 class="changelog-version" id="changelog-current-version"></h3>
+      </summary>
+      <section class="changelog-group">
       <h4 data-i18n="changelog.group.balance">Spielbalance &amp; Wirtschaft</h4>
       <ul class="changelog-list">
         <li data-i18n="changelog.entry.foodUpkeep">Nahrungsverbrauch der Sammler angepasst.</li>
         <li data-i18n="changelog.entry.foodProduction">Grundlagen der Nahrungsproduktion überarbeitet.</li>
         <li data-i18n="changelog.entry.economy">Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt.</li>
       </ul>
-    </section>
+      </section>
+    </details>
   </article>
 </section>
 <script>(() => { const root = document.querySelector('[data-game-view-panel="changelog"]'); if (!root) { parent.postMessage({type:'iae-section-error',name:'changelog',message:'Der Changelog-Bereich fehlt.'},'*'); return; } parent.postMessage({type:'iae-section-ready',name:'changelog',html:root.outerHTML},'*'); })();</script>
