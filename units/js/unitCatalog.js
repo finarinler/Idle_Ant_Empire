@@ -45,6 +45,7 @@
     CardBuilder.register("units-basic", [
         {
             id: "ant",
+            trainingProgressId: "training-normal-ant-progress",
             icon: "♟",
             type: { key: "card.type.unitBasic" },
             name: { key: "unit.ant.name" },
@@ -66,6 +67,7 @@
         },
         {
             id: "queen",
+            trainingProgressId: "training-queen-progress",
             icon: "♛",
             type: { key: "card.type.unitBasic" },
             name: { key: "unit.queen.name" },
@@ -82,6 +84,7 @@
         },
         {
             id: "collector",
+            trainingProgressId: "training-collector-progress",
             icon: "❖",
             type: { key: "card.type.unitBasic" },
             name: { key: "unit.collector.name" },
@@ -98,6 +101,7 @@
         },
         {
             id: "builder",
+            trainingProgressId: "training-builder-progress",
             icon: "⚒",
             type: { key: "card.type.unitBasic" },
             name: { key: "unit.builder.name" },
@@ -119,6 +123,7 @@
     CardBuilder.register("expedition-scout", [
         {
             id: "scout",
+            trainingProgressId: "training-scout-progress",
             icon: "⚲",
             startsHidden: true,
             type: { key: "card.type.unitBasic" },
@@ -162,6 +167,7 @@
     CardBuilder.register("units-elite", [
         {
             id: "guardian",
+            trainingProgressId: "training-storage-keeper-progress",
             icon: "⛨",
             type: { key: "card.type.unitElite" },
             name: { key: "unit.storageGuardian.name" },
@@ -177,6 +183,7 @@
         },
         {
             id: "nurse-matriarch",
+            trainingProgressId: "training-grand-nurse-progress",
             icon: "❦",
             type: { key: "card.type.unitElite" },
             name: { key: "unit.grandNurse.name" },
@@ -192,6 +199,7 @@
         },
         {
             id: "brood-expert",
+            trainingProgressId: "training-brood-expert-progress",
             icon: "✿",
             type: { key: "card.type.unitElite" },
             name: { key: "unit.broodExpert.name" },
