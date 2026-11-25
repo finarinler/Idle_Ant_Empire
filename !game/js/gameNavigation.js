@@ -64,7 +64,7 @@
             const gates = {
                 research: {
                     unlocked: Boolean(achievements.knowledgeIsPower),
-                    hint: "Kommt bald!"
+                    hint: I18N.t("nav.hint.comingSoon")
                 },
                 military: {
                     unlocked: Boolean((state.research && state.research.militaryUnlocked) || (state.unlocks && state.unlocks.military) || achievements.militaryUnlocked),
@@ -72,7 +72,7 @@
                 },
                 achievements: {
                     unlocked: Boolean(achievements.firstSteps),
-                    hint: "Erfolg: Erste Schritte — 5 Expeditionen abgeschlossen."
+                    hint: I18N.t("nav.hint.firstSteps")
                 }
             };
 
