@@ -414,3 +414,11 @@ I18N.register("es", {
     "options.communityText": "Conoce a otros jugadores, comparte tu colonia y envía tus comentarios.",
     "options.communityButton": "Visitar la comunidad de Discord"
 });
+
+/* ---------- Unit training ---------- */
+I18N.register("es", {
+    "button.training": "En entrenamiento …",
+    "status.unit.trainingInProgress": "En entrenamiento …",
+    "status.unit.trainingStarted": "Entrenamiento iniciado: {unit}.",
+    "status.unit.trainingCompleted": "¡{unit} ha terminado su entrenamiento!"
+});
