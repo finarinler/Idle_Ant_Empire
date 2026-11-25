@@ -417,3 +417,11 @@ I18N.register("en", {
     "changelog.entry.foodProduction": "Core food production settings revised.",
     "changelog.entry.economy": "Colony costs and economic settings rebalanced."
 });
+
+
+/* ---------- Discord community ---------- */
+I18N.register("en", {
+    "options.community": "Community",
+    "options.communityText": "Meet other players, share your colony and give feedback.",
+    "options.communityButton": "Visit the Discord community"
+});
