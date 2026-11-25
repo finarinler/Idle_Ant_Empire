@@ -43,6 +43,23 @@ function handleEconomyResult(result)
 
     result.completed.forEach(event =>
     {
+        if (event.type === "training")
+        {
+            const def = UnitRegistry.get(event.unit);
+            updateStatus(
+                def.recruit.announce && def.recruit.messageKey ? def.recruit.messageKey : "status.unit.trainingCompleted",
+                "success",
+                false,
+                { unit: { key: def.nameKey } }
+            );
+
+            if (event.durationSeconds >= CORE_CONFIG.SPECIAL_SAVE_MIN_SECONDS)
+            {
+                needsSpecialSave = true;
+            }
+            return;
+        }
+
         if (event.type !== "build") { return; }
 
         updateStatus("status.build.completed", "success", false, {
