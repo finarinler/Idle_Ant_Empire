@@ -201,7 +201,9 @@
             capacity[id] = Economy.computeCapacity(id, effOf);
         });
 
-        // 6. Todesbedingung: Überlebensressource exakt 0 UND Leistung 0 %
+        // 6. Todesbedingung: leere Überlebensressource UND unvollständige Versorgung.
+        // Auch bei geringer Restproduktion kann die Kolonie unterversorgt sein;
+        // exakt 0 % Effizienz wäre als Auslöser zu streng und könnte Hungertod verhindern.
         const deathCondition = {};
 
         units.forEach(unit =>
@@ -216,7 +218,7 @@
 
                 if ((entry.kind || "survival") === "survival"
                     && stock[entry.resource].isZero()
-                    && effOf(unit.id) === 0)
+                    && ratio[entry.resource] < 1)
                 {
                     deathCondition[unit.id] = true;
                 }
