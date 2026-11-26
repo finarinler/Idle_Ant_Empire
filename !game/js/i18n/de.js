@@ -627,7 +627,7 @@ I18N.register("de", {
     "tooltip.preview.cost": "Gesamtkosten",
     "tooltip.preview.capacity": "Kapazität",
     "changelog.entry.actionPreview": "Dynamische Tooltips zeigen Effekte, Gesamtkosten und Zeiten für Einzelaktionen sowie 10×-, 25×- und MAX-Aufträge.",
-    "changelog.entry.housingCostScaling": "Die zweite Wohnkammer kostet 150 Nahrung. Weitere Wohnkammern werden wie Pilzfarmen jeweils 10 % teurer.",
+    "changelog.entry.housingCostScaling": "Wohnkammer-Kosten angepasst.",
     "changelog.entry.strayAntHousing": "Verirrte Ameisen schließen sich nur an, wenn ausreichend Wohnraum frei ist.",
     "tooltip.preview.production.food": "Nahrungsproduktion",
     "tooltip.preview.production.larvae": "Larvenproduktion",
