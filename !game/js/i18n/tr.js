@@ -565,3 +565,10 @@ I18N.register("tr", {
     "achievements.series.farms": "Mantar çiftlikleri",
     "achievements.series.progress": "{unlocked} / {total} aşama"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("tr", {
+    "achievements.series.expeditions": "Seferler",
+    "achievements.series.failures": "Aksilikler"
+});
