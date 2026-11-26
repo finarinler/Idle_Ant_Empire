@@ -608,5 +608,6 @@ I18N.register("tr", {
     "card.type.structureUpgrade": "Yapı Yükseltmesi",
     "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi.",
     "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
-    "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı; Yaşam Odası Yükseltmesi araştırmadan önce görünür, ancak açılana kadar kilitli kalır."
+    "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı.",
+    "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer."
 });
