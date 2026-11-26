@@ -104,6 +104,12 @@
             });
         }
 
+        const statusLogbookButton = document.getElementById("status-logbook-button");
+        if (statusLogbookButton)
+        {
+            statusLogbookButton.addEventListener("click", () => showView("logbook"));
+        }
+
         // Navigation bleibt eine Single-Page-Ansicht: kein Seitenwechsel,
         // kein Reload und keine Änderung der URL. Das funktioniert auch auf GitHub Pages.
         navButtons.forEach(button => button.addEventListener("click", () =>
