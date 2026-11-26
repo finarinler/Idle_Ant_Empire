@@ -76,7 +76,7 @@
                 trainingStat("normal-ant")
             ],
             cost: () => ({ values: Economy.getRecruitCost("normal-ant"), order: ["larvae", "food"] }),
-            action: { label: { key: "unit.ant.buy" }, missingLabel: { key: "button.missingResources" }, run: buyAnt },
+            action: trainAction(buyAnt),
             status: statusOf("normal-ant")
         },
         {
@@ -94,7 +94,7 @@
                 trainingStat("queen")
             ],
             cost: () => ({ values: Economy.getRecruitCost("queen"), order: ["ants", "food"] }),
-            action: { label: { key: "unit.queen.buy" }, missingLabel: { key: "button.missingResources" }, run: buyQueen },
+            action: trainAction(buyQueen),
             status: statusOf("queen")
         },
         {
