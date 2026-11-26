@@ -489,7 +489,7 @@ I18N.register("tr", {
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
     "changelog.entry.foodUpkeep": "Toplayıcıların yiyecek tüketimi ayarlandı.",
     "changelog.entry.foodProduction": "Temel yiyecek üretimi ayarları yenilendi.",
-    "changelog.entry.economy": "Koloni maliyetleri ve ekonomik koşulları yeniden dengelendi."
+    "changelog.entry.economy": "Koloni maliyetleri ve ekonomik koşulları yeniden dengelendi.",
     "achievement.collector10.title": "Toplayıcı Çırağı",
     "achievement.collector10.locked": "10 toplayıcı topla",
     "achievement.collector10.unlocked": "10 toplayıcı topla",
