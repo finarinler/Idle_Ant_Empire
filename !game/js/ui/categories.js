@@ -46,18 +46,3 @@ function unlockEliteUI(silent = false)
     }
 }
 
-function unlockScoutUI(silent = false)
-{
-    if (!DOM.cardScout)
-    {
-        return;
-    }
-
-    // "" entfernt das inline display:none, die Karte nutzt wieder ihr CSS
-    DOM.cardScout.style.display = "";
-
-    if (!silent)
-    {
-        updateStatus("status.scout.unlocked", "success");
-    }
-}
