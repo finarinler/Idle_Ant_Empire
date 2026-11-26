@@ -97,6 +97,7 @@
         let seconds = 0;
         let factor = amount >= 26 ? 0.80 : amount >= 25 ? 0.85 : amount >= 10 ? 0.90 : 1;
         let completed = 0;
+        let after = before;
 
         if (kind === "unit")
         {
@@ -110,6 +111,7 @@
                     seconds += Economy.getTrainingSeconds(id) * factor;
                     Economy._addUnits(id, 1);
                 }
+                after = Economy.computeFlows();
             }
             finally
             {
@@ -128,6 +130,7 @@
                     seconds += info.seconds * factor;
                     GameState[store.section][store.key]++;
                 }
+                after = Economy.computeFlows();
             }
             finally
             {
@@ -135,7 +138,6 @@
             }
         }
 
-        const after = Economy.computeFlows();
         return {
             quantity: completed,
             costs,
