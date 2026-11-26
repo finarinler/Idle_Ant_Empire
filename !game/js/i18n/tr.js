@@ -430,7 +430,7 @@ I18N.register("tr", {
     "structure.construction.name": "İnşaat Odası",
     "structure.construction.desc": "İnşaatçıları mümkün kılar.\nHer seviye bir tane daha ekler.",
     "card.stat.housing": "Barınak",
-    "card.stat.collectorFarmAchievementBonus": "Mantar toplayıcısı başarı bonusu: mantar çiftliği üretimini artırır",
+    "card.stat.collectorFarmAchievementBonus": "Mantar çiftliği üretim bonusu",
     "card.stat.mushroomFarmTotalBonus": "Mantar çiftliği toplam bonusu",
     "card.stat.hatchTime": "Çıkma süresi",
     "card.stat.hatchCost": "Çıkma maliyeti",
