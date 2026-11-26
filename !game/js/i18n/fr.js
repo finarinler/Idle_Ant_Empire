@@ -491,6 +491,7 @@ I18N.register("fr", {
     "changelog.entry.collectorCosts": "Coûts des collectrices révisés : le coût en fourmis correspond désormais au niveau de collectrice ; les augmentations précédentes de nourriture et de larves sont conservées.",
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
+    "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
