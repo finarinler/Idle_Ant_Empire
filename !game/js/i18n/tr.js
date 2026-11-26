@@ -360,6 +360,7 @@ I18N.register("tr", {
 I18N.register("tr", {
     "status.versionReset": "Yeni sürüm: Kayıt bir kereliğine sıfırlandı. Yeni bir oyun başlıyor!",
     "status.unit.died": "{count}× {unit} açlıktan öldü.",
+    "status.units.starved": "{count} birim açlıktan öldü: {units}",
     "status.build.completed": "{structure} tamamlandı!",
     "status.build.started": "İnşaat başladı: {structure} ({time})",
     "status.build.inProgress": "İnşa ediliyor … {time} kaldı",
