@@ -38,7 +38,18 @@ function buildLogEntryElement(entry)
     const text = document.createElement("span");
     text.className = `log-text ${style.text}`;
     if (entry.maintenanceRaw) text.style.fontWeight = "800";
-    text.textContent = I18N.t(entry.key, entry.params);
+
+    let messageParams = entry.params;
+    if (entry.key === "status.units.starved" && entry.params?.unitCounts)
+    {
+        const breakdown = Object.entries(entry.params.unitCounts).map(([unitId, count]) =>
+        {
+            const unit = UnitRegistry.get(unitId);
+            return unit ? `${count}× ${I18N.t(unit.nameKey)}` : "";
+        }).filter(Boolean).join(" · ");
+        messageParams = { ...entry.params, units: breakdown };
+    }
+    text.textContent = I18N.t(entry.key, messageParams);
 
     element.append(timeSpan, dot, text);
 
@@ -55,6 +66,35 @@ function addLogEntry(key, type = "status", params = null)
     if (!DOM.logContent)
     {
         return;
+    }
+
+    // Hungertode werden über die gesamte Hungerphase in einem Eintrag gesammelt.
+    // So wächst das Log nicht sekündlich um weitere Todesmeldungen.
+    if (key === "status.units.starved")
+    {
+        const existing = logEntries.find(item => item.key === key);
+        if (existing)
+        {
+            existing.timestamp = new Date();
+            existing.params.count += params.count;
+            Object.entries(params.unitCounts || {}).forEach(([unitId, count]) =>
+            {
+                existing.params.unitCounts[unitId] = (existing.params.unitCounts[unitId] || 0) + count;
+            });
+
+            const element = [...DOM.logContent.children].find(node => node.classList.contains("log-entry")
+                && node.querySelector(".log-text")?.textContent === I18N.t(key, {
+                    count: existing.params.count,
+                    units: Object.entries(existing.params.unitCounts).map(([unitId, count]) =>
+                    {
+                        const unit = UnitRegistry.get(unitId);
+                        return unit ? `${count}× ${I18N.t(unit.nameKey)}` : "";
+                    }).filter(Boolean).join(" · ")
+                }));
+            if (element) element.remove();
+            DOM.logContent.prepend(buildLogEntryElement(existing));
+            return;
+        }
     }
 
     const entry = { timestamp: new Date(), type, key, params };
