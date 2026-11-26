@@ -489,7 +489,7 @@ I18N.register("it", {
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
     "changelog.entry.foodUpkeep": "Consumo di cibo delle raccoglitrici modificato.",
     "changelog.entry.foodProduction": "Riviste le basi della produzione di cibo.",
-    "changelog.entry.economy": "Ribilanciati i costi e le condizioni economiche della colonia."
+    "changelog.entry.economy": "Ribilanciati i costi e le condizioni economiche della colonia.",
     "achievement.collector10.title": "Apprendista raccoglitore",
     "achievement.collector10.locked": "Raccogli 10 raccoglitori",
     "achievement.collector10.unlocked": "Raccogli 10 raccoglitori",
