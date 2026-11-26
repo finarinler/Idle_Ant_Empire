@@ -64,7 +64,12 @@
 
     const survivalUpkeep = (id, decimals) => ({
         label: { key: "card.stat.upkeep" },
-        value: () => rate("−", UnitRegistry.get(id).consumption[0].rate, decimals, "F")
+        value: () =>
+        {
+            const consumption = UnitRegistry.get(id).consumption[0].rate;
+            const currentRate = typeof consumption === "function" ? consumption() : consumption;
+            return rate("−", currentRate, decimals, "F");
+        }
     });
 
     /* ---------- Basis-Einheiten ---------- */
@@ -164,6 +169,7 @@
             limitReached: () => hasScout(),
             stats: [
                 { label: { key: "card.stat.recovery" }, value: () => `${CORE_CONFIG.SCOUT_REST_MS / 1000} ${SECOND()}` },
+                survivalUpkeep("scout", 2),
                 housingStat("scout"),
                 {
                     label: { key: "card.stat.automation" },
