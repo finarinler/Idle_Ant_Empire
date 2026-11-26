@@ -134,6 +134,7 @@
 .iae-card-stepper-btn:disabled { opacity: .4; cursor: not-allowed; }
 
 .iae-card-batch-actions { display: flex; gap: 7px; margin-top: 8px; }
+.iae-card-batch-actions[hidden], .iae-card-batch-btn[hidden] { display: none !important; }
 .iae-card-batch-btn { flex: 1; min-width: 0; margin: 0; padding: 10px 8px; font-size: .78rem; }
 .iae-card-batch-btn .iae-card-action-glyph { font-size: .95rem; }
 .iae-card-batch-btn:disabled { opacity: .4; cursor: not-allowed; }
