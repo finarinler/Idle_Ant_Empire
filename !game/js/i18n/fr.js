@@ -430,7 +430,7 @@ I18N.register("fr", {
     "structure.construction.name": "Chambre de construction",
     "structure.construction.desc": "Permet les bâtisseurs.\nChaque niveau en autorise un de plus.",
     "card.stat.housing": "Logement",
-    "card.stat.collectorFarmAchievementBonus": "Bonus des succès des cueilleurs : augmente la production des champignonnières",
+    "card.stat.collectorFarmAchievementBonus": "Bonus de production de la champignonnière",
     "card.stat.mushroomFarmTotalBonus": "Bonus total des champignonnières",
     "card.stat.hatchTime": "Temps d'éclosion",
     "card.stat.hatchCost": "Coût d'éclosion",
