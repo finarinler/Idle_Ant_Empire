@@ -33,6 +33,7 @@ function serializeEconomy()
     Object.keys(eco.unmet).forEach(key => { unmet[key] = eco.unmet[key].toString(); });
 
     return {
+        broodExpertEnabled: eco.broodExpertEnabled !== false,
         deathTimers: Object.assign({}, eco.deathTimers),
         hatch: Object.assign({}, eco.hatch),
         trainings: Object.assign({}, eco.trainings || {}),
