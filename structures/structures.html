@@ -8,14 +8,9 @@
 <body>
     <!-- Die Karten werden vom CardBuilder aus structures/js/structureCatalog.js erzeugt. -->
     <section class="game-view" id="game-view-structures" data-game-view-panel="structures" hidden>
-        <section class="category-wrapper locked" id="cat-basis-structures" style="display: none;">
-            <div class="category-header" onclick="toggleCategory('basis-structures')">
-                <span class="category-title" data-i18n="category.basisStructures">Basis-Strukturen</span>
-                <div class="category-divider"></div>
-                <div class="mandible-icon" id="mandible-basis-structures"><span></span><span></span></div>
-            </div>
-            <div id="basis-structures-content" class="category-content iae-card-grid" data-card-group="structures-basic"></div>
-        </section>
+        <section class="category-wrapper" id="cat-basis-structures"><div class="category-header" onclick="toggleCategory('basis-structures')"><span class="category-title" data-i18n="category.basisStructures">Basis-Strukturen</span><div class="category-divider"></div><div class="mandible-icon" id="mandible-basis-structures"><span></span><span></span></div></div><div id="basis-structures-content" class="category-content iae-card-grid" data-card-group="structures-basic"></div></section>
+        <section class="category-wrapper" id="cat-elite-structures"><div class="category-header" onclick="toggleCategory('elite-structures')"><span class="category-title" data-i18n="category.eliteStructures">Elite-Strukturen</span><div class="category-divider"></div><div class="mandible-icon" id="mandible-elite-structures"><span></span><span></span></div></div><div id="elite-structures-content" class="category-content iae-card-grid" data-card-group="structures-elite"></div></section>
+        <section class="category-wrapper" id="cat-structure-upgrades"><div class="category-header" onclick="toggleCategory('structure-upgrades')"><span class="category-title" data-i18n="category.structureUpgrades">Struktur Upgrades</span><div class="category-divider"></div><div class="mandible-icon" id="mandible-structure-upgrades"><span></span><span></span></div></div><div id="structure-upgrades-content" class="category-content iae-card-grid" data-card-group="structures-upgrades"></div></section>
     </section>
     <script>
     (() => {
