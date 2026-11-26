@@ -1,7 +1,7 @@
 /* Erfolg: Wachsende Königinnenkolonie */
 
 registerAchievement({
-    category: "build",
+    category: "units",
     id: "queenColonyTwentyFive",
     order: 407,
     getProgress: () => ({
