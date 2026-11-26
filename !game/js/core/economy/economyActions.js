@@ -102,6 +102,18 @@
         return UnitRegistry.get(id).recruit.getCost();
     };
 
+    // Ausbildungszeit abhängig von der Nummer des neu ausgebildeten Sammlers.
+    Economy.getTrainingSeconds = function (id)
+    {
+        if (id === "collector")
+        {
+            const nextCollector = Economy.getUnitNumber(id) + 1;
+            return BALANCE.getCountBasedSeconds(nextCollector, BALANCE.collector.trainingSecondsByCount);
+        }
+
+        return BALANCE.trainingSeconds[id];
+    };
+
     // { state: available | missing | locked | max, hint, reason }
     //   hint   = Text für die Karte,   reason = Text für die Fehlermeldung
     Economy.getRecruitState = function (id)
@@ -158,7 +170,7 @@
             return { ok: false, reason: state.reason };
         }
 
-        const duration = BALANCE.trainingSeconds[id];
+        const duration = Economy.getTrainingSeconds(id);
 
         if (!Number.isFinite(duration) || duration <= 0)
         {
