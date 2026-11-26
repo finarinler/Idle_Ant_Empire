@@ -21,7 +21,7 @@ function renderStatus()
 
 function setDefaultStatus()
 {
-    GameState.ui.status = { key: "status.default", params: null };
+    GameState.ui.status = { key: "status.default", params: null, timestamp: new Date() };
     // Der neutrale Wartezustand ist nur eine Statusanzeige und kein Logereignis.
     // Vorhandene Logeinträge bleiben in der Vorschau sichtbar.
     renderStatus();
@@ -40,7 +40,7 @@ function updateStatus(key, type = "status", preventReset = false, params = null)
         return;
     }
 
-    GameState.ui.status = { key, params };
+    GameState.ui.status = { key, params, timestamp: new Date() };
     renderStatus();
 
     // Gleiche Warnung direkt hintereinander (z. B. Hunger jede Sekunde)
