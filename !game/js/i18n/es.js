@@ -555,3 +555,13 @@ I18N.register("es", {
     "achievement.purchasedAnts500.unlocked": "{goal} hormigas normales compradas",
     "achievement.purchasedAnts500.reward": "Descuento total: 25% en los costes de entrenamiento de hormigas normales"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("es", {
+    "achievements.series.ants": "Hormigas",
+    "achievements.series.queens": "Reinas",
+    "achievements.series.collectors": "Recolectoras",
+    "achievements.series.farms": "Granjas de hongos",
+    "achievements.series.progress": "{unlocked} / {total} niveles"
+});
