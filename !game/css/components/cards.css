@@ -40,7 +40,18 @@
 .iae-card-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 79px; }
 .iae-card-title-block { min-width: 0; }
 .iae-card-name { margin: 0 0 6px; color: #eee5d5; font-size: 1.25rem; font-weight: 650; }
-.iae-card-desc { max-width: 280px; margin: 0; color: var(--research-muted); font-size: .8rem; line-height: 1.5; }
+.iae-card-desc {
+    display: -webkit-box;
+    max-width: 280px;
+    height: 2.4em;
+    margin: 0;
+    overflow: hidden;
+    color: var(--research-muted);
+    font-size: .8rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
 .iae-card-count {
     flex: 0 0 auto; padding: 5px 8px; border: 1px solid #39352d; border-radius: 8px;
     background: #171613; color: var(--research-gold-bright); font-size: .77rem; font-variant-numeric: tabular-nums;
@@ -55,13 +66,14 @@
 .iae-card-stat.tone-positive strong { color: var(--research-green); }
 
 /* Kosten */
-.iae-card-cost { min-height: 58px; margin: 15px 0 14px; }
+.iae-card-cost { min-height: 58px; margin: auto 0 14px; }
 .iae-card-stats + .iae-card-cost { margin-top: 0; }
 .iae-card-label { display: block; margin-bottom: 5px; color: var(--research-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
 .iae-card-cost-line { color: #c9c1b4; font-size: .78rem; line-height: 1.5; overflow-wrap: anywhere; }
 
 /* Fortschrittsbalken (Brut-Expertin) */
 .iae-card-progress { margin-bottom: 14px; }
+.iae-card-progress-slot { flex: 0 0 20px; min-height: 20px; }
 .iae-card-progress-track { position: relative; height: 6px; overflow: hidden; border: 1px solid #3b3123; border-radius: 4px; background: #17140f; }
 .iae-card-progress-fill { position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--research-gold-deep); transition: width 1s linear; }
 .iae-card-training-progress-fill { background: var(--research-gold-bright); }
@@ -69,7 +81,7 @@
 /* Aktion */
 .iae-card-action {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    width: 100%; margin-top: auto; padding: 12px 14px;
+    width: 100%; margin-top: 0; padding: 12px 14px;
     border: 1px solid #655033; border-radius: 10px;
     background: linear-gradient(135deg, #6d5432, #4c3a23);
     color: #eee0c5; font: inherit; font-size: .84rem; font-weight: 700; text-align: left; cursor: pointer;
