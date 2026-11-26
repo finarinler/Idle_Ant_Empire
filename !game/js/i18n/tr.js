@@ -99,7 +99,7 @@ I18N.register("tr", {
 
     /* ---------- Kaynaklar ---------- */
     "resource.food": "Yiyecek",
-    "resource.maxRate": "Maks.:",
+    "resource.maxRate": "Maks.",
     "resource.larvae": "Larva",
 
     /* ---------- Genel arayüz ---------- */
