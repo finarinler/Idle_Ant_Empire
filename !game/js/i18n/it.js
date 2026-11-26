@@ -251,7 +251,7 @@ I18N.register("it", {
     "achievement.mushroomFarmTen.title": "Pioniere delle fungaie",
     "achievement.mushroomFarmTen.locked": "Costruisci 10 fungaie",
     "achievement.mushroomFarmTen.unlocked": "Costruisci 10 fungaie",
-    "achievement.mushroomFarmTen.reward": "Ricompensa: +1% alla produzione delle fungaie",
+    "achievement.mushroomFarmTen.reward": "Ricompensa: +5% alla produzione delle fungaie",
 
     "achievement.mushroomFarmTwentyFive.title": "Impero delle fungaie",
     "achievement.mushroomFarmTwentyFive.locked": "Costruisci 25 fungaie",
