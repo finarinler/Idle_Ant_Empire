@@ -157,6 +157,12 @@ I18N.register("it", {
     "unit.grandNurse.desc": "Raddoppia la scorta di larve.",
     "unit.broodExpert.name": "Esperta della covata",
     "unit.broodExpert.desc": "Alleva nuove formiche dalle larve.",
+    "unit.broodExpert.on": "Attiva",
+    "unit.broodExpert.off": "Disattiva",
+    "unit.broodExpert.switchOn": "Attiva le Esperte della covata",
+    "unit.broodExpert.switchOff": "Disattiva le Esperte della covata",
+    "status.broodExpert.on": "Le Esperte della covata sono attive.",
+    "status.broodExpert.off": "Le Esperte della covata sono disattive.",
     "unit.soldier.name": "Soldato d’élite",
     "unit.soldier.desc": "Mette in sicurezza il territorio durante le spedizioni.\nNecessario per l’espansione.",
 
