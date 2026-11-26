@@ -1,7 +1,7 @@
 /* Erfolg: Königinnen-Dynastie */
 
 registerAchievement({
-    category: "build",
+    category: "units",
     id: "queenColonyHundred",
     order: 408,
     getProgress: () => ({
