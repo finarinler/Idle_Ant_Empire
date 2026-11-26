@@ -615,4 +615,10 @@ I18N.register("it", {
     "tooltip.preview.cost": "Costo totale",
     "tooltip.preview.capacity": "di capacità",
     "changelog.entry.actionPreview": "I tooltip dinamici mostrano effetti, costi totali e durata per azioni singole e gruppi 10×, 25× e MAX.",
+    "tooltip.preview.production.food": "Produzione di cibo",
+    "tooltip.preview.production.larvae": "Produzione di larve",
+    "tooltip.preview.consumption.food": "Consumo di cibo",
+    "tooltip.preview.consumption.larvae": "Consumo di larve",
+    "tooltip.preview.ants": "formiche",
+    "tooltip.preview.queens": "regine",
 });
