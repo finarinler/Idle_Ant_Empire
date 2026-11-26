@@ -157,6 +157,12 @@ I18N.register("fr", {
     "unit.grandNurse.desc": "Double le stock de larves.",
     "unit.broodExpert.name": "Experte du couvain",
     "unit.broodExpert.desc": "Élève de nouvelles fourmis à partir des larves.",
+    "unit.broodExpert.on": "Activées",
+    "unit.broodExpert.off": "Désactivées",
+    "unit.broodExpert.switchOn": "Activer les expertes en couvain",
+    "unit.broodExpert.switchOff": "Désactiver les expertes en couvain",
+    "status.broodExpert.on": "Les expertes en couvain sont activées.",
+    "status.broodExpert.off": "Les expertes en couvain sont désactivées.",
     "unit.soldier.name": "Soldat d’élite",
     "unit.soldier.desc": "Sécurise le territoire lors des expéditions.\nIndispensable pour l’expansion.",
 
