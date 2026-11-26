@@ -20,7 +20,9 @@ StructureRegistry.register({
             const config = BALANCE.provisional.mushroomFarm;
             const factor = Big(config.costGrowth).pow(GameState.structures.mushroomFarmCount);
 
-            return { cost: { food: Big(config.baseCost.food).mul(factor) }, seconds: config.buildSeconds };
+            const nextFarm = GameState.structures.mushroomFarmCount + 1;
+            const seconds = BALANCE.getCountBasedSeconds(nextFarm, BALANCE.provisional.structureBuildSecondsByCount);
+            return { cost: { food: Big(config.baseCost.food).mul(factor) }, seconds };
         }
     }
 });
