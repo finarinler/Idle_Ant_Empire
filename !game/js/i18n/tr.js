@@ -592,3 +592,8 @@ I18N.register("tr", {
     "changelog.entry.unitTrainingTerminology": "Birimler, başarımlarda ve oyun metinlerinde tutarlı biçimde eğitilmiş olarak tanımlanır.",
     "changelog.entry.buildingTerminology": "Binalar, başarımlarda ve oyun metinlerinde tutarlı biçimde inşa edilmiş olarak tanımlanır."
 });
+
+I18N.register("tr", {
+    "status.unit.trainingQueued": "{count}× {unit} eğitim kuyruğuna eklendi.",
+    "changelog.entry.batchTraining": "Tüm birim türleri için kuyruk ve süre bonuslarıyla toplu eğitim eklendi."
+});
