@@ -555,3 +555,13 @@ I18N.register("tr", {
     "achievement.purchasedAnts500.unlocked": "{goal} normal karınca satın alındı",
     "achievement.purchasedAnts500.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %25"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("tr", {
+    "achievements.series.ants": "Karıncalar",
+    "achievements.series.queens": "Kraliçeler",
+    "achievements.series.collectors": "Toplayıcılar",
+    "achievements.series.farms": "Mantar çiftlikleri",
+    "achievements.series.progress": "{unlocked} / {total} aşama"
+});
