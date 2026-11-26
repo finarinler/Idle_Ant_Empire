@@ -235,7 +235,7 @@ I18N.register("tr", {
     "achievement.queenColonyTwentyFive.title": "Büyüyen Kraliçe Kolonisi",
     "achievement.queenColonyTwentyFive.locked": "{goal} kraliçe eğitildi",
     "achievement.queenColonyTwentyFive.unlocked": "{goal} kraliçe eğitildi",
-    "achievement.queenColonyTwentyFive.reward": "Ödül: Larva üretimine +%10",
+    "achievement.queenColonyTwentyFive.reward": "Ödül: Larva üretimine +%50",
 
     "achievement.queenColonyHundred.title": "Kraliçe Hanedanı",
     "achievement.queenColonyHundred.locked": "{goal} kraliçe eğitildi",
