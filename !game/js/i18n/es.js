@@ -611,4 +611,7 @@ I18N.register("es", {
     "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
     "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor.",
     "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo."
+        "tooltip.preview.effect": "Efecto adicional",
+    "tooltip.preview.cost": "Coste total",
+    "tooltip.preview.capacity": "de capacidad",
 });
