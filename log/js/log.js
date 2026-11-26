@@ -93,6 +93,7 @@ function addLogEntry(key, type = "status", params = null)
     const emptyState = DOM.logContent.querySelector(".logbook-empty-state");
     if (emptyState) emptyState.remove();
     DOM.logContent.prepend(buildLogEntryElement(entry));
+    renderStatusPreview();
 
     while (logEntries.length > CORE_CONFIG.MAX_LOG_ENTRIES)
     {
@@ -105,6 +106,18 @@ function addLogEntry(key, type = "status", params = null)
     }
 }
 
+// Zeigt die letzten zwei Logbucheinträge (mobil drei) in der Statusleiste.
+function renderStatusPreview()
+{
+    const preview = DOM.statusText;
+    if (!preview) return;
+
+    preview.replaceChildren();
+    logEntries.slice(0, 3).forEach(entry => {
+        preview.appendChild(buildLogEntryElement(entry));
+    });
+}
+
 // Zeichnet das gesamte Logbuch neu (z. B. nach einem Sprachwechsel)
 function renderLog()
 {
@@ -114,6 +127,7 @@ function renderLog()
     }
 
     DOM.logContent.replaceChildren(...logEntries.map(buildLogEntryElement));
+    renderStatusPreview();
     if (logEntries.length === 0) {
         const empty = document.createElement("div");
         empty.className = "logbook-empty-state";
@@ -150,5 +164,6 @@ function addMaintenanceLogEntry(key, params = null)
     const emptyState = DOM.logContent.querySelector(".logbook-empty-state");
     if (emptyState) emptyState.remove();
     DOM.logContent.prepend(buildLogEntryElement(entry));
+    renderStatusPreview();
     while (logEntries.length > CORE_CONFIG.MAX_LOG_ENTRIES) { logEntries.pop(); if (DOM.logContent.lastChild) DOM.logContent.removeChild(DOM.logContent.lastChild); }
 }
