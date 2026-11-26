@@ -3,6 +3,18 @@
     App Module Loader
 ========================= */
 
+// Die Cache-Version muss beim Ausführen des Hauptskripts erfasst werden.
+// Innerhalb späterer asynchroner Loader-Aufrufe ist document.currentScript bereits null.
+const MAIN_SCRIPT_CACHE_VERSION = (() => {
+    const scriptUrl = document.currentScript?.src
+        || document.querySelector('script[src*="!game/js/main.js"]')?.src;
+
+    return scriptUrl
+        ? new URL(scriptUrl, document.baseURI).searchParams.get("v") || "dev"
+        : "dev";
+})();
+
+
 const APP_MODULES = [
     // Big-Number-System: muss vor GameState und allen Berechnungen geladen sein.
     // Die Übersetzungen !game/js/i18n/*.js werden direkt in game.html eingebunden.
@@ -132,7 +144,7 @@ function loadScript(path) {
     return new Promise((resolve, reject) => {
         const script = document.createElement("script");
 
-        const cacheVersion = new URL(document.currentScript.src).searchParams.get("v") || "dev";
+        const cacheVersion = MAIN_SCRIPT_CACHE_VERSION;
         script.src = path + (path.includes("?") ? "&" : "?") + "v=" + cacheVersion;
 
         script.onload = resolve;
