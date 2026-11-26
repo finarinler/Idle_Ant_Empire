@@ -609,5 +609,6 @@ I18N.register("es", {
     "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad.",
     "changelog.entry.batchConstruction": "Se añadieron colas de construcción por lotes para los edificios.",
     "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
-    "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor."
+    "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor.",
+    "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo."
 });
