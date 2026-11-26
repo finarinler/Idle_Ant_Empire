@@ -69,10 +69,10 @@ const GameState = {
     achievements: {
         firstSteps: false,
         smallCollector: false,
-        collectorTen: false,
+        collector10: false,
         collector25: false,
-        collectorFifty: false,
-        collectorHundred: false,
+        collector50: false,
+        collector100: false,
         collector250: false,
         smallCollectorAntRewardClaimed: false,
         smallColony: false,
