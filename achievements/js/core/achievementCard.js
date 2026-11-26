@@ -6,6 +6,7 @@ const ACHIEVEMENT_CATEGORY_ORDER = [
     { id: "basic", label: "Basis", icon: "✦" },
     { id: "collect", label: "Sammeln", icon: "📦" },
     { id: "build", label: "Bauen", icon: "🏗" },
+    { id: "units", label: "Einheiten", icon: "🐜" },
     { id: "expedition", label: "Expeditionen", icon: "🧭" },
     { id: "research", label: "Forschung", icon: "⚗" },
     { id: "military", label: "Militär", icon: "⚔" },
