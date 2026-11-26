@@ -359,6 +359,7 @@ I18N.register("de", {
 I18N.register("de", {
     "status.versionReset": "Neue Version: Der Spielstand wurde einmalig zurückgesetzt. Ein neues Spiel beginnt!",
     "status.unit.died": "{count}× {unit} verhungert.",
+    "status.units.starved": "{count} Einheiten verhungert: {units}",
     "status.build.completed": "{structure} fertiggestellt!",
     "status.build.started": "Bau gestartet: {structure} ({time})",
     "status.build.inProgress": "Wird gebaut … noch {time}",
