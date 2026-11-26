@@ -596,3 +596,10 @@ I18N.register("en", {
     "achievements.series.completedExpeditions": "Completed Expeditions",
     "achievements.series.expeditionFailures": "Expedition Setbacks"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("en", {
+    "changelog.entry.unitTrainingTerminology": "Units are consistently described as trained in achievements and game text.",
+    "changelog.entry.buildingTerminology": "Buildings are consistently described as constructed in achievements and game text."
+});

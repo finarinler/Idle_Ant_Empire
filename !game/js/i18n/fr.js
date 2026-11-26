@@ -585,3 +585,10 @@ I18N.register("fr", {
     "achievements.series.completedExpeditions": "Expéditions terminées",
     "achievements.series.expeditionFailures": "Revers d’expédition"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("fr", {
+    "changelog.entry.unitTrainingTerminology": "Les unités sont désignées de manière cohérente comme entraînées dans les succès et les textes du jeu.",
+    "changelog.entry.buildingTerminology": "Les bâtiments sont désignés de manière cohérente comme construits dans les succès et les textes du jeu."
+});

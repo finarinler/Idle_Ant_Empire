@@ -596,3 +596,10 @@ I18N.register("de", {
     "achievements.series.completedExpeditions": "Abgeschlossene Expeditionen",
     "achievements.series.expeditionFailures": "Expeditions-Rückschläge"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("de", {
+    "changelog.entry.unitTrainingTerminology": "Einheiten werden in Erfolgen und Texten einheitlich als ausgebildet bezeichnet.",
+    "changelog.entry.buildingTerminology": "Gebäude werden in Erfolgen und Texten einheitlich als errichtet bezeichnet."
+});

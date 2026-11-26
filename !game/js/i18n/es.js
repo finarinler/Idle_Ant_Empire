@@ -585,3 +585,10 @@ I18N.register("es", {
     "achievements.series.completedExpeditions": "Expediciones completadas",
     "achievements.series.expeditionFailures": "Contratiempos de expedición"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("es", {
+    "changelog.entry.unitTrainingTerminology": "Las unidades se describen de forma uniforme como entrenadas en los logros y los textos del juego.",
+    "changelog.entry.buildingTerminology": "Los edificios se describen de forma uniforme como construidos en los logros y los textos del juego."
+});

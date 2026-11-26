@@ -585,3 +585,10 @@ I18N.register("tr", {
     "achievements.series.completedExpeditions": "Tamamlanan Seferler",
     "achievements.series.expeditionFailures": "Sefer Aksilikleri"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("tr", {
+    "changelog.entry.unitTrainingTerminology": "Birimler, başarımlarda ve oyun metinlerinde tutarlı biçimde eğitilmiş olarak tanımlanır.",
+    "changelog.entry.buildingTerminology": "Binalar, başarımlarda ve oyun metinlerinde tutarlı biçimde inşa edilmiş olarak tanımlanır."
+});

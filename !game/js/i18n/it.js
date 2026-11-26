@@ -585,3 +585,10 @@ I18N.register("it", {
     "achievements.series.completedExpeditions": "Spedizioni completate",
     "achievements.series.expeditionFailures": "Battute d’arresto delle spedizioni"
 });
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("it", {
+    "changelog.entry.unitTrainingTerminology": "Le unità sono indicate in modo uniforme come addestrate negli obiettivi e nei testi di gioco.",
+    "changelog.entry.buildingTerminology": "Gli edifici sono indicati in modo uniforme come costruiti negli obiettivi e nei testi di gioco."
+});
