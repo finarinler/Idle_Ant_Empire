@@ -566,3 +566,13 @@ I18N.register("de", {
     "achievement.purchasedAnts500.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts500.reward": "Gesamtrabatt: −25 % auf die Ausbildungskosten normaler Ameisen"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("de", {
+    "achievements.series.ants": "Ameisen",
+    "achievements.series.queens": "Königinnen",
+    "achievements.series.collectors": "Sammler",
+    "achievements.series.farms": "Pilzfarmen",
+    "achievements.series.progress": "{unlocked} / {total} Stufen"
+});
