@@ -452,7 +452,7 @@ I18N.register("en", {
     "changelog.group.balance": "Game balance & economy",
     "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
     "changelog.entry.foodProduction": "Core food production settings revised.",
-    "changelog.entry.economy": "Colony costs and economic settings rebalanced."
+    "changelog.entry.economy": "Colony costs and economic settings rebalanced.",
 });
 
 
