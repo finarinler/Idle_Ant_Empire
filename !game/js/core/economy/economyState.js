@@ -26,6 +26,11 @@ const Economy = {
             }
 
             if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
+            if (achievements.collectorTwoFifty) { return 0.10; }
+            if (achievements.collectorHundred) { return 0.075; }
+            if (achievements.collectorFifty) { return 0.05; }
+            if (achievements.collectorTwentyFive) { return 0.025; }
+            if (achievements.collectorTen) { return 0.01; }
             if (achievements.mushroomFarmTwoFifty) { return 0.25; }
             if (achievements.mushroomFarmHundred) { return 0.20; }
             if (achievements.mushroomFarmFifty) { return 0.15; }
