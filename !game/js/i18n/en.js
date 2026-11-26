@@ -572,7 +572,7 @@ I18N.register("en", {
 I18N.register("en", {
     "achievements.series.ants": "Ants",
     "achievements.series.queens": "Queens",
-    "achievements.series.collectors": "Collectors",
+    "achievements.series.collectors": "Mushroom Collectors",
     "achievements.series.farms": "Mushroom Farms",
     "achievements.series.colonyMilestones": "Colony Milestones",
     "achievements.series.gatheringAchievements": "Gathering Achievements",

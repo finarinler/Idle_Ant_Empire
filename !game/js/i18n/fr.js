@@ -561,7 +561,7 @@ I18N.register("fr", {
 I18N.register("fr", {
     "achievements.series.ants": "Fourmis",
     "achievements.series.queens": "Reines",
-    "achievements.series.collectors": "Collectrices",
+    "achievements.series.collectors": "Collecteurs de champignons",
     "achievements.series.farms": "Champignonnières",
     "achievements.series.colonyMilestones": "Étapes de la colonie",
     "achievements.series.gatheringAchievements": "Succès de collecte",

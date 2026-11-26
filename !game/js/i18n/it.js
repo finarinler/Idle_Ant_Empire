@@ -561,7 +561,7 @@ I18N.register("it", {
 I18N.register("it", {
     "achievements.series.ants": "Formiche",
     "achievements.series.queens": "Regine",
-    "achievements.series.collectors": "Raccoglitrici",
+    "achievements.series.collectors": "Raccoglitori di funghi",
     "achievements.series.farms": "Fungaie",
     "achievements.series.colonyMilestones": "Traguardi della colonia",
     "achievements.series.gatheringAchievements": "Obiettivi di raccolta",

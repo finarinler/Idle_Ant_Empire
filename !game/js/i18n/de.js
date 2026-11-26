@@ -572,7 +572,7 @@ I18N.register("de", {
 I18N.register("de", {
     "achievements.series.ants": "Ameisen",
     "achievements.series.queens": "Königinnen",
-    "achievements.series.collectors": "Sammler",
+    "achievements.series.collectors": "Pilzsammler",
     "achievements.series.farms": "Pilzfarmen",
     "achievements.series.colonyMilestones": "Kolonie-Meilensteine",
     "achievements.series.gatheringAchievements": "Sammel-Erfolge",

@@ -561,7 +561,7 @@ I18N.register("tr", {
 I18N.register("tr", {
     "achievements.series.ants": "Karıncalar",
     "achievements.series.queens": "Kraliçeler",
-    "achievements.series.collectors": "Toplayıcılar",
+    "achievements.series.collectors": "Mantar Toplayıcıları",
     "achievements.series.farms": "Mantar çiftlikleri",
     "achievements.series.colonyMilestones": "Koloni Kilometre Taşları",
     "achievements.series.gatheringAchievements": "Toplama Başarımları",

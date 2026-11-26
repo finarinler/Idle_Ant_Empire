@@ -561,7 +561,7 @@ I18N.register("es", {
 I18N.register("es", {
     "achievements.series.ants": "Hormigas",
     "achievements.series.queens": "Reinas",
-    "achievements.series.collectors": "Recolectoras",
+    "achievements.series.collectors": "Recolectores de hongos",
     "achievements.series.farms": "Granjas de hongos",
     "achievements.series.colonyMilestones": "Hitos de la colonia",
     "achievements.series.gatheringAchievements": "Logros de recolección",
