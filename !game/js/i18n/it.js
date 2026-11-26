@@ -482,7 +482,7 @@ I18N.register("it", {
     "changelog.entry.parallelTraining": "È possibile addestrare tipi diversi di unità in parallelo; ogni tipo può essere addestrato una sola volta alla volta.",
     "changelog.entry.offlineTraining": "Gli addestramenti in corso vengono salvati e proseguono anche offline.",
     "changelog.entry.smallCollectorReward": "L’obiettivo «Piccolo raccoglitore» assegna subito una formica randagia al momento dello sblocco.",
-    "changelog.entry.newAchievements": "Aggiunti nuovi obiettivi per le tappe delle regine, con bonus alla produzione di larve.",
+    "changelog.entry.newAchievements": "Nuovi obiettivi aggiunti",
     "changelog.entry.collectorCosts": "Costi delle raccoglitrici rivisti: il costo in formiche corrisponde al livello della raccoglitrice; restano invariati i precedenti aumenti dei costi in cibo e larve.",
     "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
