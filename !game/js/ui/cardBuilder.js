@@ -292,6 +292,8 @@ const CardBuilder = (function ()
             nodes.toggleButtonLabel = create("span", "iae-card-action-label", nodes.toggleButton);
             create("span", "iae-card-action-glyph", nodes.toggleButton, { "aria-hidden": "true" });
             nodes.toggleButton.addEventListener("click", () => entry.toggleAction.run());
+            // Brut-Expertin: An/Aus-Schalter oberhalb des Ausbildungsbuttons platzieren.
+            card.insertBefore(nodes.toggleButton, nodes.button);
         }
         if (entry.action && entry.action.preview)
         {
