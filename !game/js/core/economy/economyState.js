@@ -18,8 +18,12 @@ const Economy = {
         getProductionBonus(targetId, resource) {
             if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
             const achievements = GameState.achievements || {};
-            return (achievements.mushroomFarmTen ? 0.01 : 0)
-                + (achievements.mushroomFarmTwentyFive ? 0.09 : 0);
+            if (achievements.mushroomFarmTwoFifty) { return 0.25; }
+            if (achievements.mushroomFarmHundred) { return 0.20; }
+            if (achievements.mushroomFarmFifty) { return 0.15; }
+            if (achievements.mushroomFarmTwentyFive) { return 0.10; }
+            if (achievements.mushroomFarmTen) { return 0.01; }
+            return 0;
         },
         getCapacityBonus(resource) { return { absolute: 0, percent: 0 }; }
     }
