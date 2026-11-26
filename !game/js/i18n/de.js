@@ -493,7 +493,7 @@ I18N.register("de", {
     "changelog.entry.parallelTraining": "Verschiedene Einheitentypen können parallel ausgebildet werden; derselbe Typ jeweils nur einmal gleichzeitig.",
     "changelog.entry.offlineTraining": "Laufende Ausbildungen werden gespeichert und während der Offline-Zeit weitergeführt.",
     "changelog.entry.smallCollectorReward": "Der Erfolg „Kleiner Sammler“ gewährt beim Freischalten sofort eine Streuner-Ameise.",
-    "changelog.entry.newAchievements": "Neue Erfolge für Königinnen-Meilensteine mit Boni auf die Larvenproduktion hinzugefügt.",
+    "changelog.entry.newAchievements": "Neue Erfolge hinzugefügt",
     "changelog.entry.collectorCosts": "Sammlerkosten überarbeitet: Die Ameisenkosten entsprechen der Sammlerstufe; die bisherigen Kostensteigerungen für Nahrung und Larven bleiben erhalten.",
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
