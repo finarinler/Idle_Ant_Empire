@@ -522,5 +522,5 @@ I18N.register("tr", {
     "achievement.purchasedAnts1000.title": "Bin satın alınan karınca",
     "achievement.purchasedAnts1000.locked": "Toplam {goal} normal karınca satın alındı",
     "achievement.purchasedAnts1000.unlocked": "Toplam {goal} normal karınca satın alındı",
-    "achievement.purchasedAnts1000.reward": "Ödül: Şu anda mevcut olan her satın alınmış karınca +0,1 Y/s üretir"
+    "achievement.purchasedAnts1000.reward": "Ödül: Şu anda mevcut olan her satın alınmış karınca +0,1 F/s üretir"
 });
