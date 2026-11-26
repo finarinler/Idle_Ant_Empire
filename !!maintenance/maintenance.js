@@ -22,7 +22,7 @@
     window.__IDLE_ANT_MAINTENANCE_STARTED__ = true;
     // Muss mit ?v=... in den <script>-Tags (index.html, game.html, maintenance.html) übereinstimmen,
     // damit Browser/GitHub-Pages-Cache (ca. 10 Min.) nach einem Update kein altes Skript ausliefern.
-    const SCRIPT_VERSION = "20261028b";
+    const SCRIPT_VERSION = "20261126c";
     window.IDLE_ANT_MAINTENANCE_VERSION = SCRIPT_VERSION;
 
     const POLL_MS = 1000, TICK_MS = 250, FETCH_TIMEOUT_MS = 8000;
@@ -132,6 +132,43 @@
         reported.add(message);
         try { console[level](`[Wartung] ${message}`); } catch (_) {}
     }
+
+    /* ---------- Sichtbare zweite Statusleiste im laufenden Spiel ---------- */
+    let maintenanceBar = null;
+    function ensureMaintenanceBar() {
+        if (!isGamePage || maintenanceBar || !document.body) return;
+        const header = document.querySelector(".sticky-top");
+        const anchor = header && header.querySelector("#status-logbook-button");
+        if (!header || !anchor) return;
+        const style = document.createElement("style");
+        style.textContent = ".header-maintenance-line{display:none;margin:8px auto 0;padding:9px 14px;max-width:100%;text-align:center;border:1px solid rgba(246,196,91,.55);border-radius:9px;background:rgba(104,67,18,.28);color:#ffe8a3;font-size:.82rem;font-weight:800;letter-spacing:.04em;box-shadow:0 2px 12px rgba(0,0,0,.18)}.header-maintenance-line.is-visible{display:block}.header-maintenance-line.is-urgent{border-color:rgba(255,111,91,.7);background:rgba(110,35,25,.32);color:#ffd0c5}";
+        document.head.appendChild(style);
+        maintenanceBar = document.createElement("div");
+        maintenanceBar.className = "header-maintenance-line";
+        maintenanceBar.setAttribute("role", "status");
+        maintenanceBar.setAttribute("aria-live", "polite");
+        anchor.insertAdjacentElement("afterend", maintenanceBar);
+    }
+    function renderMaintenanceBar(status) {
+        if (!isGamePage) return;
+        ensureMaintenanceBar();
+        if (!maintenanceBar) return;
+        if (status.state !== "COUNTDOWN" || status.remainingSeconds === null) {
+            maintenanceBar.classList.remove("is-visible", "is-urgent");
+            return;
+        }
+        const seconds = Math.max(0, status.remainingSeconds);
+        let message;
+        try {
+            message = window.I18N && typeof window.I18N.t === "function"
+                ? window.I18N.t("maintenance.countdownSecond", { seconds: String(seconds) })
+                : "ACHTUNG! WARTUNG IN " + seconds + " SEKUNDEN!";
+        } catch (_) { message = "ACHTUNG! WARTUNG IN " + seconds + " SEKUNDEN!"; }
+        maintenanceBar.textContent = message;
+        maintenanceBar.classList.add("is-visible");
+        maintenanceBar.classList.toggle("is-urgent", seconds <= 60);
+    }
+
     function publishStatus() {
         const rem = remainingSeconds();
         window.IDLE_ANT_MAINTENANCE_STATUS = {
@@ -140,6 +177,7 @@
             remainingSeconds: rem === null ? null : Math.max(0, rem),
             invalid: !!invalidReason, error: invalidReason, conflict: conflictReason
         };
+        renderMaintenanceBar(window.IDLE_ANT_MAINTENANCE_STATUS);
     }
 
     /* ---------- Weiterleitung (genau ein Entscheider pro Tab) ---------- */
