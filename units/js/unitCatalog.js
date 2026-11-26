@@ -142,7 +142,7 @@
             count: countOf("builder", () => formatGameNumber(Economy.getUnitMaxCount(UnitRegistry.get("builder")))),
             stats: [
                 { label: { key: "card.stat.buildSpeed" }, value: () => `−${formatDecimal(BALANCE.builder.reductionPerBuilder * 100, 0)} %`, tone: "positive" },
-                { label: { key: "card.stat.buildTimeNow" }, value: () => `−${formatDecimal((1 - Economy.getBuildTimeFactor()) * 100, 0)} %` },
+                { label: { key: "card.stat.buildTimeNow" }, value: () => `−${formatDecimal((1 - Economy.getBuildTimeFactor()) * 100, 0)} %`, tone: "positive" },
                 housingStat("builder"),
                 trainingStat("builder")
             ],
