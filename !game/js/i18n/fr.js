@@ -526,3 +526,32 @@ I18N.register("fr", {
     "achievement.purchasedAnts1000.unlocked": "{goal} fourmis normales achetées au total",
     "achievement.purchasedAnts1000.reward": "Récompense : chaque fourmi achetée actuellement présente produit +0,1 F/s"
 });
+
+
+/* ---------- Purchased ant training cost achievements ---------- */
+I18N.register("fr", {
+    "achievement.purchasedAnts1.title": "Premier achat de fourmi",
+    "achievement.purchasedAnts1.locked": "{goal} fourmi normale achetée",
+    "achievement.purchasedAnts1.unlocked": "{goal} fourmi normale achetée",
+    "achievement.purchasedAnts1.reward": "Réduction totale : 2 % sur le coût d’entraînement des fourmis normales",
+    "achievement.purchasedAnts10.title": "Dix fourmis achetées",
+    "achievement.purchasedAnts10.locked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts10.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts10.reward": "Réduction totale : 5 % sur le coût d’entraînement des fourmis normales",
+    "achievement.purchasedAnts50.title": "Cinquante fourmis achetées",
+    "achievement.purchasedAnts50.locked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts50.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts50.reward": "Réduction totale : 7,5 % sur le coût d’entraînement des fourmis normales",
+    "achievement.purchasedAnts100.title": "Cent fourmis achetées",
+    "achievement.purchasedAnts100.locked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts100.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts100.reward": "Réduction totale : 10 % sur le coût d’entraînement des fourmis normales",
+    "achievement.purchasedAnts250.title": "Deux cent cinquante fourmis achetées",
+    "achievement.purchasedAnts250.locked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts250.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts250.reward": "Réduction totale : 15 % sur le coût d’entraînement des fourmis normales",
+    "achievement.purchasedAnts500.title": "Cinq cents fourmis achetées",
+    "achievement.purchasedAnts500.locked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts500.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts500.reward": "Réduction totale : 25 % sur le coût d’entraînement des fourmis normales"
+});
