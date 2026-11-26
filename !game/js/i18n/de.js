@@ -632,4 +632,8 @@ I18N.register("de", {
     "tooltip.preview.consumption.larvae": "Larvenverbrauch",
     "tooltip.preview.ants": "Ameisen",
     "tooltip.preview.queens": "Königinnen",
+    "tooltip.preview.production.food": "Nahrungsproduktion",
+    "tooltip.preview.production.larvae": "Larvenproduktion",
+    "tooltip.preview.consumption.food": "Nahrungsverbrauch",
+    "tooltip.preview.consumption.larvae": "Larvenverbrauch",
 });
