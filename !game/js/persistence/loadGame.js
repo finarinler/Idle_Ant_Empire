@@ -290,6 +290,12 @@ function loadGame()
         mergeSavedSection(GameState.structures, parsed.structures);
         mergeSavedSection(GameState.eliteUnits, parsed.eliteUnits);
         mergeSavedSection(GameState.stats, parsed.stats);
+        // Ältere Spielstände kennen den Lebenszeit-Zähler noch nicht.
+        // Der aktuell vorhandene gekaufte Bestand ist die verlässlichste Untergrenze.
+        if (!parsed.stats || !Number.isFinite(parsed.stats.totalPurchasedAnts))
+        {
+            GameState.stats.totalPurchasedAnts = GameState.resources.ants.toNumber();
+        }
         mergeSavedSection(GameState.achievements, parsed.achievements);
         mergeSavedSection(GameState.expedition, parsed.expedition);
         mergeSavedSection(GameState.time, parsed.time);
