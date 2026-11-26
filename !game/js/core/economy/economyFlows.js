@@ -175,6 +175,8 @@
         // 5. Tatsächliche Produktion und Verbrauch
         const produced = zeros();
         const consumed = zeros();
+        const unitProduced = {};
+        units.forEach(unit => { unitProduced[unit.id] = zeros(); });
 
         production.forEach(entry =>
         {
@@ -183,7 +185,9 @@
             const factor = effOf(entry.unit.id) * Economy.modifiers.getEfficiencyFactor(entry.unit.id)
                 * (1 + Economy.modifiers.getProductionBonus(entry.unit.id, entry.resource));
 
-            produced[entry.resource] = produced[entry.resource].add(entry.n.mul(entry.rate).mul(factor));
+            const amount = entry.n.mul(entry.rate).mul(factor);
+            produced[entry.resource] = produced[entry.resource].add(amount);
+            unitProduced[entry.unit.id][entry.resource] = unitProduced[entry.unit.id][entry.resource].add(amount);
             entry.work.forEach(req => { consumed[req.resource] = consumed[req.resource].add(entry.n.mul(req.rate)); });
         });
 
@@ -193,7 +197,9 @@
             RESOURCE_IDS.forEach(id => { produced[id] = produced[id].add(out[id]); });
         });
 
-        produced.food = produced.food.add(Economy.modifiers.getPurchasedAntFoodProduction());
+        const purchasedAntProduction = Economy.modifiers.getPurchasedAntFoodProduction();
+        produced.food = produced.food.add(purchasedAntProduction);
+        unitProduced["normal-ant"].food = unitProduced["normal-ant"].food.add(purchasedAntProduction);
 
         consumption.forEach(entry =>
         {
@@ -241,7 +247,7 @@
         });
 
         return {
-            counts, stock, ratio, efficiency, produced, consumed, net, maxNet, capacity,
+            counts, stock, ratio, efficiency, produced, unitProduced, consumed, net, maxNet, capacity,
             nominal, survivalDemand, workBlocked, deathCondition,
             consumptionEntries: consumption
         };
