@@ -643,5 +643,6 @@ I18N.register("fr", {
     "options.tooltips": "Info-bulles d’action",
     "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
     "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
-    "changelog.entry.scoutElite": "L’éclaireuse figure désormais parmi les unités d’élite."
+    "changelog.entry.scoutElite": "L’éclaireuse figure désormais parmi les unités d’élite.",
+    "changelog.entry.builderTimeSaving": "Le gain de temps actuel du bâtisseur est désormais affiché en vert comme effet positif."
 });
