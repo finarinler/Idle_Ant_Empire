@@ -429,7 +429,7 @@ I18N.register("en", {
     "structure.construction.name": "Construction Chamber",
     "structure.construction.desc": "Enables builders.\nEach level allows one more.",
     "card.stat.housing": "Housing",
-    "card.stat.collectorFarmAchievementBonus": "Achievement bonus to mushroom farm production",
+    "card.stat.collectorFarmAchievementBonus": "Mushroom collector achievement bonus to farm production",
     "card.stat.mushroomFarmTotalBonus": "Total mushroom farm bonus",
     "card.stat.hatchTime": "Hatch time",
     "card.stat.hatchCost": "Hatch cost",
