@@ -629,6 +629,7 @@ I18N.register("en", {
     "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
     "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder.",
     "changelog.entry.broodExpertRebalance": "Brood Expert rebalanced: 1 larva becomes 1 ant; each Brood Expert continuously consumes 5 food/s.",
+    "changelog.entry.broodExpertToggle": "Brood Experts can be switched on and off. When switched off, hatching pauses and food upkeep stops.",
     "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum.",
     "tooltip.preview.expectedProduction": "Expected production increase",
     "tooltip.preview.expectedCosts": "Expected costs",
