@@ -643,5 +643,6 @@ I18N.register("es", {
     "options.tooltips": "Tooltips de acción",
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
     "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
-    "changelog.entry.scoutElite": "La exploradora ahora figura entre las unidades de élite."
+    "changelog.entry.scoutElite": "La exploradora ahora figura entre las unidades de élite.",
+    "changelog.entry.builderTimeSaving": "El ahorro de tiempo actual del constructor ahora se muestra en verde como efecto positivo."
 });
