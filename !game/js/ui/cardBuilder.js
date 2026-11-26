@@ -112,7 +112,7 @@ const CardBuilder = (function ()
 
     function showPreview(entry, nodes, requested)
     {
-        if (!nodes.preview || !entry.action.preview) { return; }
+        if (!nodes.preview || !entry.action.preview || (entry.id === "scout" && hasScout())) { return; }
         let quantity = requested === "max" ? entry.action.batchOptions().max : Number(requested);
         if (!Number.isFinite(quantity) || quantity < 1) { hidePreview(nodes); return; }
         const preview = Economy.getActionPreview(entry.action.preview.kind, entry.action.preview.id, quantity);
@@ -126,8 +126,8 @@ const CardBuilder = (function ()
         {
             const produced = preview.produced[resource];
             const consumed = preview.consumed[resource];
-            if (produced && produced.isPositive()) { lines.push(`+${formatRate(produced)} ${resourceNames[resource]}/s`); }
-            if (consumed && consumed.isPositive()) { lines.push(`−${formatRate(consumed)} ${resourceNames[resource]}/s`); }
+            if (produced && produced.isPositive()) { lines.push(`${I18N.t("tooltip.preview.production." + resource)}: +${formatRate(produced)} ${resourceNames[resource]}/s`); }
+            if (consumed && consumed.isPositive()) { lines.push(`${I18N.t("tooltip.preview.consumption." + resource)}: −${formatRate(consumed)} ${resourceNames[resource]}/s`); }
             const capacity = preview.capacity[resource];
             if (capacity && capacity.isPositive()) { lines.push(`+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}`); }
         });
@@ -136,7 +136,12 @@ const CardBuilder = (function ()
         Object.keys(resourceNames).forEach(resource =>
         {
             const value = preview.costs[resource];
-            if (value && value.isPositive()) { lines.push(`${formatGameNumber(value)} ${resourceNames[resource]}`); }
+            if (!value || !value.isPositive()) { return; }
+            const label = resource === "food" ? I18N.t("resource.food")
+                : resource === "larvae" ? I18N.t("resource.larvae")
+                : resource === "ants" ? I18N.t("tooltip.preview.ants")
+                : I18N.t("tooltip.preview.queens");
+            lines.push(`${formatGameNumber(value)} ${label}`);
         });
         lines.push(`${I18N.t(entry.action.preview.kind === "unit" ? "card.stat.trainingTime" : "card.stat.buildTime")}: ${formatDuration(preview.seconds)}`);
         nodes.preview.textContent = "";
