@@ -652,6 +652,6 @@ I18N.register("tr", {
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
     "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
     "changelog.entry.scoutElite": "Kaşif artık elit birimler arasında listeleniyor.",
-    "changelog.entry.scoutUpkeep": "Kaşif: 6 yiyecek/dk (0,1 yiyecek/sn); otomasyon kapalıyken tüketim %50 azalır.",
+"changelog.entry.scoutUpkeep": "Kaşif: 18 yiyecek/dk (0,3 yiyecek/sn); otomasyon kapalıyken 0,1 yiyecek/sn.",
     "changelog.entry.builderTimeSaving": "İnşaatçının mevcut zaman tasarrufu artık olumlu bir etki olarak yeşil gösteriliyor."
 });
