@@ -237,6 +237,16 @@ I18N.register("tr", {
     "achievement.buildColony.unlocked": "Erzak Odası ve Kuluçka Odası inşa edildi",
     "achievement.buildColony.reward": "Ödül: Özel birimler açıldı",
 
+    "achievement.mushroomFarmTen.title": "Mantar Çiftliği Öncüsü",
+    "achievement.mushroomFarmTen.locked": "10 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTen.unlocked": "10 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTen.reward": "Ödül: Mantar çiftliği üretimine +%1",
+
+    "achievement.mushroomFarmTwentyFive.title": "Mantar Çiftliği İmparatorluğu",
+    "achievement.mushroomFarmTwentyFive.locked": "25 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTwentyFive.unlocked": "25 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTwentyFive.reward": "Ödül: Mantar çiftliği toplam üretimine +%10",
+
     "achievement.knowledgeIsPower.title": "Bilgi Güçtür",
     "achievement.knowledgeIsPower.locked": "Bir Depo Bekçisi ve bir Baş Dadı eğit",
     "achievement.knowledgeIsPower.unlocked": "Bir Depo Bekçisi ve bir Baş Dadı eğitildi",
