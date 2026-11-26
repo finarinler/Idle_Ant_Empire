@@ -629,6 +629,7 @@ I18N.register("de", {
     "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert",
     "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit.",
     "changelog.entry.broodExpertRebalance": "Brut-Expertin angepasst: 1 Larve wird zu 1 Ameise; jede Brut-Expertin verbraucht dauerhaft 5 Nahrung/s.",
+    "changelog.entry.broodExpertToggle": "Die Brut-Expertinnen lassen sich ein- und ausschalten. Im ausgeschalteten Zustand pausieren Schlupf und Nahrungskosten.",
     "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet.",
     "tooltip.preview.expectedProduction": "Erwartete Mehrproduktion",
     "tooltip.preview.expectedCosts": "Erwartete Kosten",
