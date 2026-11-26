@@ -603,3 +603,8 @@ I18N.register("de", {
     "changelog.entry.unitTrainingTerminology": "Einheiten werden in Erfolgen und Texten einheitlich als ausgebildet bezeichnet.",
     "changelog.entry.buildingTerminology": "Gebäude werden in Erfolgen und Texten einheitlich als errichtet bezeichnet."
 });
+
+I18N.register("de", {
+    "status.unit.trainingQueued": "{count}× {unit} zur Ausbildungswarteschlange hinzugefügt.",
+    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange und Zeitbonus für alle Einheitentypen ergänzt."
+});
