@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="!game/css/core/loading-screen.css">
     <link rel="icon" type="image/png" href="!game/assets/images/header.png">
 
-    <script src="!game/js/stylesLoader.js?v=20261126d"></script>
+    <script src="!game/js/stylesLoader.js?v=20261126e"></script>
 
     <!-- Mehrsprachigkeit: klassische Skripte für file:// -->
     <script src="!game/js/i18n/i18n.js"></script>
@@ -26,7 +26,7 @@
     <!-- Musik wird vor dem Modul-Loader geladen. -->
     <script src="!game/js/musicController.js"></script>
     <script src="!game/js/gameSections.js"></script>
-    <script src="!game/js/main.js?v=20261126c"></script>
+    <script src="!game/js/main.js?v=20261126d"></script>
 </head>
 
 <body data-initial-view="expeditions">
@@ -101,10 +101,10 @@
                     <div id="larvae-rate" class="res-rate rate-neutral">0.00/s</div>
                 </div>
             </div>
-            <div class="header-status-line" role="status" aria-live="polite">
+            <button id="status-logbook-button" class="header-status-line" type="button" aria-label="Statusmeldung – Logbuch öffnen">
                 <span class="status-label" data-i18n="status.label">Status:</span>
                 <span id="status-text" data-i18n="status.init">Initialisierung...</span>
-            </div>
+            </button>
         </header>
 
         <div class="game-shell">
