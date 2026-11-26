@@ -489,7 +489,7 @@ I18N.register("fr", {
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
     "changelog.entry.foodUpkeep": "Consommation de nourriture des collectrices ajustée.",
     "changelog.entry.foodProduction": "Les bases de la production de nourriture ont été révisées.",
-    "changelog.entry.economy": "Les coûts et les paramètres économiques de la colonie ont été rééquilibrés."
+    "changelog.entry.economy": "Les coûts et les paramètres économiques de la colonie ont été rééquilibrés.",
     "achievement.collector10.title": "Apprenti collecteur",
     "achievement.collector10.locked": "Réunir 10 collecteurs",
     "achievement.collector10.unlocked": "Réunir 10 collecteurs",
