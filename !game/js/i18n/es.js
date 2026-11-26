@@ -491,6 +491,7 @@ I18N.register("es", {
     "changelog.entry.collectorCosts": "Se revisan los costes de recolectores: el coste en hormigas corresponde al nivel del recolector; se mantienen los aumentos anteriores de comida y larvas.",
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",
+    "changelog.entry.scrollToTop": "La página se desplaza automáticamente hacia arriba al cambiar de sección del juego.",
     "changelog.group.performance": "Rendimiento",
     "changelog.entry.performance": "Rendimiento mejorado",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
