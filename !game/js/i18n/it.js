@@ -237,6 +237,16 @@ I18N.register("it", {
     "achievement.buildColony.unlocked": "Dispensa e camera della covata costruite",
     "achievement.buildColony.reward": "Ricompensa: unità speciali sbloccate",
 
+    "achievement.mushroomFarmTen.title": "Pioniere delle fungaie",
+    "achievement.mushroomFarmTen.locked": "Costruisci 10 fungaie",
+    "achievement.mushroomFarmTen.unlocked": "Costruisci 10 fungaie",
+    "achievement.mushroomFarmTen.reward": "Ricompensa: +1% alla produzione delle fungaie",
+
+    "achievement.mushroomFarmTwentyFive.title": "Impero delle fungaie",
+    "achievement.mushroomFarmTwentyFive.locked": "Costruisci 25 fungaie",
+    "achievement.mushroomFarmTwentyFive.unlocked": "Costruisci 25 fungaie",
+    "achievement.mushroomFarmTwentyFive.reward": "Ricompensa: +10% alla produzione totale delle fungaie",
+
     "achievement.knowledgeIsPower.title": "Sapere è potere",
     "achievement.knowledgeIsPower.locked": "Addestrare una guardiana delle scorte e una grande balia",
     "achievement.knowledgeIsPower.unlocked": "Una guardiana delle scorte e una grande balia addestrate",
