@@ -598,7 +598,8 @@ window.MusicController = window.MusicController || (() =>
 
         if (Object.values(controls).some(element => !element))
         {
-            console.warn("Musikbedienelemente wurden nicht gefunden.");
+            // Die Optionssektion wird dynamisch nachgeladen. main.js ruft initControls()
+            // nach GameSections.loadAll() erneut auf; das frühe Fehlen ist daher normal.
             return;
         }
 
