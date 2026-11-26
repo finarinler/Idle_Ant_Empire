@@ -230,7 +230,17 @@ I18N.register("es", {
     "achievement.smallColony.title": "Pequeño hormiguero",
     "achievement.smallColony.locked": "{goal} reinas compradas",
     "achievement.smallColony.unlocked": "{goal} reinas compradas",
-    "achievement.smallColony.reward": "Recompensa: estructuras básicas desbloqueadas",
+    "achievement.smallColony.reward": "Recompensa: +5% de producción de larvas",
+    "achievement.queenColonyTwentyFive.title": "Colonia de reinas en crecimiento",
+    "achievement.queenColonyTwentyFive.locked": "{goal} reinas compradas",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} reinas compradas",
+    "achievement.queenColonyTwentyFive.reward": "Recompensa: +10% de producción de larvas",
+
+    "achievement.queenColonyHundred.title": "Dinastía de reinas",
+    "achievement.queenColonyHundred.locked": "{goal} reinas compradas",
+    "achievement.queenColonyHundred.unlocked": "{goal} reinas compradas",
+    "achievement.queenColonyHundred.reward": "Recompensa: +25% de producción de larvas",
+
 
     "achievement.buildColony.title": "Construcción de la colonia",
     "achievement.buildColony.locked": "Despensa y sala de cría construidas",
