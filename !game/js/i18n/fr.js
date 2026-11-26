@@ -109,6 +109,7 @@ I18N.register("fr", {
     "card.label.cost": "Coût",
     "card.stat.bought": "Achetées",
     "card.stat.foodProduction": "Production de nourriture",
+    "card.stat.totalProduction": "Production totale",
     "card.stat.foodConsumption": "Consommation de nourriture",
     "card.stat.larvaeProduction": "Production de larves",
     "card.stat.upkeep": "Entretien",
