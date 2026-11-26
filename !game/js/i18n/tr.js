@@ -609,5 +609,6 @@ I18N.register("tr", {
     "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi.",
     "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
     "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı.",
-    "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer."
+    "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer.",
+    "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir."
 });
