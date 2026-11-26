@@ -493,6 +493,8 @@ I18N.register("fr", {
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
     "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
     "changelog.entry.resourceAbbreviations": "Les abréviations F (nourriture) et L (larves) figurent désormais à côté des ressources ; A (fourmi) et Q (reine) sont ajoutées aux noms des cartes d’unités.",
+    "changelog.group.design": "Présentation",
+    "changelog.entry.cardColors": "Couleurs des cartes d’unités et de bâtiments mises à jour : les bonus positifs sont verts, les effets négatifs jaune d’avertissement et les autres valeurs gris de statut ; les abréviations des ressources restent dorées.",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
