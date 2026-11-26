@@ -84,7 +84,8 @@
             const state = typeof GameState !== "undefined" ? GameState : {};
             const gates = {
                 research: {
-                    unlocked: Boolean(achievements.knowledgeIsPower),
+                    // Forschungsbereich bleibt bis zur vollständigen Implementierung dauerhaft gesperrt.
+                    unlocked: false,
                     hint: I18N.t("nav.hint.comingSoon")
                 },
                 military: {
