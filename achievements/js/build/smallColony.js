@@ -1,7 +1,7 @@
 /* Erfolg: Kleiner Ameisenstaat */
 
 registerAchievement({
-    category: "build",
+    category: "units",
     id: "smallColony",
     order: 400,
     getProgress: () => ({
