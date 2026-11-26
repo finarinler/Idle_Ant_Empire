@@ -522,5 +522,5 @@ I18N.register("it", {
     "achievement.purchasedAnts1000.title": "Mille formiche acquistate",
     "achievement.purchasedAnts1000.locked": "{goal} formiche normali acquistate in totale",
     "achievement.purchasedAnts1000.unlocked": "{goal} formiche normali acquistate in totale",
-    "achievement.purchasedAnts1000.reward": "Ricompensa: ogni formica acquistata attualmente presente produce +0,1 C/s"
+    "achievement.purchasedAnts1000.reward": "Ricompensa: ogni formica acquistata attualmente presente produce +0,1 F/s"
 });
