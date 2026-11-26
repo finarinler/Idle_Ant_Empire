@@ -617,8 +617,7 @@ I18N.register("it", {
     "changelog.entry.batchConstruction": "Aggiunte code di costruzione multipla per gli edifici.",
     "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate.",
     "changelog.entry.storageBroodBuildTime": "La camera di stoccaggio e la camera della covata richiedono ciascuna esattamente 15 minuti di costruzione con un Costruttore.",
-    "changelog.entry.broodExpertRebalance": "Esperta della covata ribilanciata: 1 larva diventa 1 formica; ogni Esperta della covata consuma continuamente 5 cibo/s.",
-    "changelog.entry.broodExpertToggle": "Le esperte della covata possono essere attivate e disattivate. Da spente, la schiusa si ferma e il consumo di cibo si riduce del 50 %.",
+    "changelog.entry.broodExpertRebalance": "Esperta della covata modificata.",
     "changelog.entry.hideCappedCostProgress": "Il costo e la barra di avanzamento vengono nascosti per le unità e gli edifici che hanno raggiunto il limite massimo.",
     "tooltip.preview.expectedProduction": "Aumento della produzione previsto",
     "tooltip.preview.expectedCosts": "Costi previsti",
@@ -651,7 +650,4 @@ I18N.register("it", {
     "options.tooltips": "Tooltip azioni",
     "options.tooltipsDescription": "Mostra i tooltip delle azioni con effetti, variazioni di produzione e costi",
     "changelog.entry.actionPreview": "I tooltip delle azioni mostrano ora le variazioni di produzione previste e possono essere attivati o disattivati nelle Opzioni.",
-    "changelog.entry.scoutElite": "L’esploratrice è ora elencata tra le unità d’élite.",
-"changelog.entry.scoutUpkeep": "Esploratrice: 18 cibo/min (0,3 cibo/s); 0,1 cibo/s con automazione disattivata.",
-    "changelog.entry.builderTimeSaving": "Il risparmio di tempo attuale del costruttore è ora mostrato in verde come effetto positivo."
 });
