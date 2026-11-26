@@ -526,3 +526,12 @@ I18N.register("de", {
     "achievement.collector250.unlocked": "250 Pilzsammler ausgebildet",
     "achievement.collector250.reward": "Gesamtbonus: +10 % Pilzfarm-Produktion",
 });
+
+
+/* ---------- Purchased ant food production achievement ---------- */
+I18N.register("de", {
+    "achievement.purchasedAnts1000.title": "Tausend gekaufte Ameisen",
+    "achievement.purchasedAnts1000.locked": "{goal} normale Ameisen insgesamt gekauft",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normale Ameisen insgesamt gekauft",
+    "achievement.purchasedAnts1000.reward": "Belohnung: Jede aktuell vorhandene gekaufte Ameise produziert +0,1 F/s"
+});
