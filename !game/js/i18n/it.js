@@ -491,6 +491,7 @@ I18N.register("it", {
     "changelog.entry.collectorCosts": "Costi delle raccoglitrici rivisti: il costo in formiche corrisponde al livello della raccoglitrice; restano invariati i precedenti aumenti dei costi in cibo e larve.",
     "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
+    "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
     "changelog.group.performance": "Prestazioni",
     "changelog.entry.performance": "Prestazioni migliorate",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
