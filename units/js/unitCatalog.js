@@ -161,6 +161,7 @@
             name: { key: "unit.scout.name" },
             desc: { key: "unit.scout.desc" },
             count: countOf("scout", 1),
+            limitReached: () => hasScout(),
             stats: [
                 { label: { key: "card.stat.recovery" }, value: () => `${CORE_CONFIG.SCOUT_REST_MS / 1000} ${SECOND()}` },
                 housingStat("scout"),
