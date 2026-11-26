@@ -38,6 +38,16 @@ const Economy = {
                 : achievements.mushroomFarmTen ? 0.05
                 : 0;
         },
+        getPurchasedAntTrainingDiscount() {
+            const achievements = GameState.achievements || {};
+            return achievements.purchasedAnts500 ? 0.25
+                : achievements.purchasedAnts250 ? 0.15
+                : achievements.purchasedAnts100 ? 0.10
+                : achievements.purchasedAnts50 ? 0.075
+                : achievements.purchasedAnts10 ? 0.05
+                : achievements.purchasedAnts1 ? 0.02
+                : 0;
+        },
         getPurchasedAntFoodProduction() {
             return GameState.achievements.purchasedAnts1000
                 ? GameState.resources.ants.mul(0.1)
