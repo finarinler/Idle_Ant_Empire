@@ -642,5 +642,6 @@ I18N.register("tr", {
 I18N.register("tr", {
     "options.tooltips": "İşlem ipuçları",
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
-    "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir."
+    "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
+    "changelog.entry.scoutElite": "Kaşif artık elit birimler arasında listeleniyor."
 });
