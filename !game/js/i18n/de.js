@@ -237,6 +237,16 @@ I18N.register("de", {
     "achievement.buildColony.unlocked": "Vorratskammer und Brutkammer errichtet",
     "achievement.buildColony.reward": "Belohnung: Spezialeinheiten freigeschaltet",
 
+    "achievement.mushroomFarmTen.title": "Pilzfarm-Pionier",
+    "achievement.mushroomFarmTen.locked": "10 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTen.unlocked": "10 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTen.reward": "Belohnung: +1 % Pilzfarm-Produktion",
+
+    "achievement.mushroomFarmTwentyFive.title": "Pilzfarm-Imperium",
+    "achievement.mushroomFarmTwentyFive.locked": "25 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTwentyFive.unlocked": "25 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTwentyFive.reward": "Belohnung: +10 % Pilzfarm-Produktion insgesamt",
+
     "achievement.knowledgeIsPower.title": "Wissen ist Macht",
     "achievement.knowledgeIsPower.locked": "Eine Vorrats-Hüterin und eine Groß-Amme ausbilden",
     "achievement.knowledgeIsPower.unlocked": "Eine Vorrats-Hüterin und eine Groß-Amme ausgebildet",
