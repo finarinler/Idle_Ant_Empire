@@ -321,9 +321,7 @@
     color: #ffe4e2;
 }
 .options-page-view .game-options-panel { max-height: none; overflow: visible; }
-@media (max-width: 520px) {
-    .options-save-actions { flex-direction: column; }
-    .options-action-btn { width: 100%; }
+@media (max-width: 800px) {
     .header-status-line {
         min-height: 44px;
         padding: 8px 12px;
@@ -333,6 +331,11 @@
     }
     #status-text { gap: 0; }
     #status-text .log-entry:nth-child(n+2) { display: none; }
+}
+
+@media (max-width: 520px) {
+    .options-save-actions { flex-direction: column; }
+    .options-action-btn { width: 100%; }
 }
 
 
