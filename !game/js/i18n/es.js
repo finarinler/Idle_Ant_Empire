@@ -482,6 +482,7 @@ I18N.register("es", {
     "changelog.entry.parallelTraining": "Se pueden entrenar distintos tipos de unidades en paralelo; cada tipo solo puede entrenarse una vez a la vez.",
     "changelog.entry.offlineTraining": "Los entrenamientos en curso se guardan y continúan durante el tiempo sin conexión.",
     "changelog.entry.smallCollectorReward": "El logro «Pequeño recolector» otorga inmediatamente una hormiga errante al desbloquearse.",
+    "changelog.entry.newAchievements": "Se añadieron nuevos logros por hitos de reinas con bonificaciones a la producción de larvas.",
     "changelog.entry.collectorCosts": "Se revisan los costes de recolectores: el coste en hormigas corresponde al nivel del recolector; se mantienen los aumentos anteriores de comida y larvas.",
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
