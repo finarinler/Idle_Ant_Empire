@@ -71,6 +71,8 @@ const GameState = {
         smallCollector: false,
         smallCollectorAntRewardClaimed: false,
         smallColony: false,
+        queenColonyTwentyFive: false,
+        queenColonyHundred: false,
         buildColony: false,
         mushroomFarmTen: false,
         mushroomFarmTwentyFive: false,
