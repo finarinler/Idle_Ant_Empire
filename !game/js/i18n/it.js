@@ -592,3 +592,8 @@ I18N.register("it", {
     "changelog.entry.unitTrainingTerminology": "Le unità sono indicate in modo uniforme come addestrate negli obiettivi e nei testi di gioco.",
     "changelog.entry.buildingTerminology": "Gli edifici sono indicati in modo uniforme come costruiti negli obiettivi e nei testi di gioco."
 });
+
+I18N.register("it", {
+    "status.unit.trainingQueued": "{count}× {unit} aggiunto/i alla coda di addestramento.",
+    "changelog.entry.batchTraining": "Aggiunto l’addestramento multiplo con coda e bonus di tempo per tutti i tipi di unità."
+});
