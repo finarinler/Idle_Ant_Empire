@@ -268,13 +268,20 @@
     color: var(--game-text);
 }
 #status-text .status-preview-current {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
     min-width: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     font-size: .82rem;
     line-height: 1.35;
     color: var(--game-text);
+}
+#status-text .status-preview-message {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #status-text .log-entry {
     display: flex;
