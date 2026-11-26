@@ -32,6 +32,24 @@ const CardBuilder = (function ()
 
     const groups = new Map();   // Gruppen-ID -> Einträge
     const mounted = [];         // { entry, nodes }
+    const PREVIEW_ENABLED_KEY = "iae_action_tooltips_enabled";
+    let previewsEnabled = (() => { try { return localStorage.getItem(PREVIEW_ENABLED_KEY) !== "false"; } catch (_) { return true; } })();
+
+    function statPriority(stat)
+    {
+        const key = stat && stat.label && stat.label.key;
+        if (key === "card.stat.foodProduction" || key === "card.stat.larvaeProduction") { return 0; }
+        if (key === "card.stat.foodConsumption" || key === "card.stat.upkeep") { return 1; }
+        if (key === "card.stat.totalProduction") { return 2; }
+        return 3;
+    }
+
+    function orderedStats(stats)
+    {
+        return (stats || []).map((stat, index) => ({ stat, index }))
+            .sort((a, b) => statPriority(a.stat) - statPriority(b.stat) || a.index - b.index)
+            .map(item => item.stat);
+    }
 
     const STATE_LABEL_KEYS = {
         locked: "button.locked",
@@ -112,7 +130,7 @@ const CardBuilder = (function ()
 
     function showPreview(entry, nodes, requested)
     {
-        if (!nodes.preview || !entry.action.preview || (entry.id === "scout" && hasScout())) { return; }
+        if (!previewsEnabled || !nodes.preview || !entry.action.preview || (entry.id === "scout" && hasScout())) { return; }
         let quantity = requested === "max" ? entry.action.batchOptions().max : Number(requested);
         if (!Number.isFinite(quantity) || quantity < 1) { hidePreview(nodes); return; }
         const preview = Economy.getActionPreview(entry.action.preview.kind, entry.action.preview.id, quantity);
@@ -132,17 +150,6 @@ const CardBuilder = (function ()
             if (capacity && capacity.isPositive()) { lines.push(`+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}`); }
         });
 
-        lines.push(I18N.t("tooltip.preview.cost"));
-        Object.keys(resourceNames).forEach(resource =>
-        {
-            const value = preview.costs[resource];
-            if (!value || !value.isPositive()) { return; }
-            const label = resource === "food" ? I18N.t("resource.food")
-                : resource === "larvae" ? I18N.t("resource.larvae")
-                : resource === "ants" ? I18N.t("tooltip.preview.ants")
-                : I18N.t("tooltip.preview.queens");
-            lines.push(`${formatGameNumber(value)} ${label}`);
-        });
         if (entry.action.preview.kind === "unit")
         {
             const unitDef = UnitRegistry.get(entry.action.preview.id);
@@ -159,6 +166,19 @@ const CardBuilder = (function ()
         else if (entry.action.preview.id === "construction-chamber") { lines.push(I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity)); }
 
         lines.push(`${I18N.t(entry.action.preview.kind === "unit" ? "card.stat.trainingTime" : "card.stat.buildTime")}: ${formatDuration(preview.seconds)}`);
+
+        // Kosten stehen bewusst am Ende: oben Effekte und erwartete Produktionsänderungen.
+        lines.push(I18N.t("tooltip.preview.cost"));
+        Object.keys(resourceNames).forEach(resource =>
+        {
+            const value = preview.costs[resource];
+            if (!value || !value.isPositive()) { return; }
+            const label = resource === "food" ? I18N.t("resource.food")
+                : resource === "larvae" ? I18N.t("resource.larvae")
+                : resource === "ants" ? I18N.t("tooltip.preview.ants")
+                : I18N.t("tooltip.preview.queens");
+            lines.push(`${formatGameNumber(value)} ${label}`);
+        });
         nodes.preview.textContent = "";
         lines.forEach((line, index) =>
         {
@@ -207,7 +227,7 @@ const CardBuilder = (function ()
         {
             const stats = create("div", "iae-card-stats", card);
 
-            entry.stats.forEach(stat =>
+            orderedStats(entry.stats).forEach(stat =>
             {
                 const row = create("div", `iae-card-stat${stat.tone ? " tone-" + stat.tone : ""}`, stats);
                 nodes.stats.push({
@@ -323,7 +343,7 @@ const CardBuilder = (function ()
             setText(nodes.countMax, max === "" ? "" : ` / ${max}`);
         }
 
-        (entry.stats || []).forEach((stat, index) =>
+        orderedStats(entry.stats).forEach((stat, index) =>
         {
             setText(nodes.stats[index].label, stat.label);
             setText(nodes.stats[index].value, stat.value);
@@ -445,5 +465,14 @@ const CardBuilder = (function ()
         });
     }
 
-    return { register, mountAll, updateAll };
+    function setPreviewsEnabled(enabled)
+    {
+        previewsEnabled = Boolean(enabled);
+        try { localStorage.setItem(PREVIEW_ENABLED_KEY, String(previewsEnabled)); } catch (_) {}
+        if (!previewsEnabled) { mounted.forEach(({ nodes }) => hidePreview(nodes)); }
+    }
+
+    function arePreviewsEnabled() { return previewsEnabled; }
+
+    return { register, mountAll, updateAll, setPreviewsEnabled, arePreviewsEnabled };
 })();
