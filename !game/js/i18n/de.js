@@ -480,6 +480,7 @@ I18N.register("de", {
 /* ---------- Navigation tooltips & changelog (all releases) ---------- */
 I18N.register("de", {
     "nav.hint.comingSoon": "Kommt bald!",
+    "nav.hint.underRevision": "Wird überarbeitet",
     "nav.hint.firstSteps": "Erfolg: Erste Schritte — 5 Expeditionen abgeschlossen.",
     "changelog.eyebrow": "ÄNDERUNGSVERLAUF",
     "changelog.title": "Änderungen",
@@ -498,6 +499,7 @@ I18N.register("de", {
     "changelog.entry.newAchievements": "Neue Erfolge hinzugefügt",
     "changelog.entry.collectorCosts": "Sammlerkosten überarbeitet: Die Ameisenkosten entsprechen der Sammlerstufe; die bisherigen Kostensteigerungen für Nahrung und Larven bleiben erhalten.",
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
+    "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
     "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
     "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
