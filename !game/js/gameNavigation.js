@@ -10,6 +10,27 @@
     function initGameNavigation()
     {
         const nav = document.querySelector(".game-navigation");
+        const header = document.querySelector(".sticky-top");
+
+        // Die Navigation bleibt direkt unter dem tatsächlich sichtbaren Header.
+        // Ein fixer Pixelwert war wegen der variablen Statusmeldung zu ungenau.
+        function syncNavigationOffset()
+        {
+            if (!header || !nav) return;
+            const headerHeight = Math.ceil(header.getBoundingClientRect().height);
+            nav.style.setProperty("--game-navigation-sticky-top", (headerHeight + 12) + "px");
+        }
+
+        syncNavigationOffset();
+        if (header && nav && typeof ResizeObserver !== "undefined")
+        {
+            const headerResizeObserver = new ResizeObserver(syncNavigationOffset);
+            headerResizeObserver.observe(header);
+        }
+        else
+        {
+            window.addEventListener("resize", syncNavigationOffset, { passive: true });
+        }
         const navButtons = Array.from(document.querySelectorAll(".game-nav-button[data-game-view]"));
         const views = Array.from(document.querySelectorAll("[data-game-view-panel]"));
         const optionsPanel = document.getElementById("options-menu");
