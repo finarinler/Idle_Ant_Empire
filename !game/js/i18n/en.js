@@ -636,4 +636,8 @@ I18N.register("en", {
     "tooltip.preview.production.larvae": "Larvae production",
     "tooltip.preview.consumption.food": "Food consumption",
     "tooltip.preview.consumption.larvae": "Larvae consumption",
+    "tooltip.preview.housingUsed": "Housing required",
+    "tooltip.preview.buildSpeed": "Build time reduction",
+    "tooltip.preview.housingCapacity": "Additional housing",
+    "tooltip.preview.builderLimit": "Builder limit",
 });
