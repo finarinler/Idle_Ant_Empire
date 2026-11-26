@@ -642,5 +642,6 @@ I18N.register("es", {
 I18N.register("es", {
     "options.tooltips": "Tooltips de acción",
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
-    "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones."
+    "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
+    "changelog.entry.scoutElite": "La exploradora ahora figura entre las unidades de élite."
 });
