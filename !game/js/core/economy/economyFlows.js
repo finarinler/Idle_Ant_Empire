@@ -99,7 +99,7 @@
 
         production.forEach(entry =>
         {
-            nominal[entry.resource] = nominal[entry.resource].add(entry.n.mul(entry.rate));
+            nominal[entry.resource] = nominal[entry.resource].add(entry.n.mul(entry.rate).mul(1 + Economy.modifiers.getProductionBonus(entry.unit.id, entry.resource)));
             entry.work.forEach(req => { workDemand[req.resource] = workDemand[req.resource].add(entry.n.mul(req.rate)); });
         });
 
@@ -193,11 +193,14 @@
         });
 
         const net = {};
+        const maxNet = {};
         const capacity = {};
 
         RESOURCE_IDS.forEach(id =>
         {
             net[id] = produced[id].sub(consumed[id]);
+            // Theoretical net rate at full unit efficiency, independent of current stock caps.
+            maxNet[id] = nominal[id].sub(survivalDemand[id]).sub(workDemand[id]);
             capacity[id] = Economy.computeCapacity(id, effOf);
         });
 
@@ -226,7 +229,7 @@
         });
 
         return {
-            counts, stock, ratio, efficiency, produced, consumed, net, capacity,
+            counts, stock, ratio, efficiency, produced, consumed, net, maxNet, capacity,
             nominal, survivalDemand, workBlocked, deathCondition,
             consumptionEntries: consumption
         };
