@@ -130,5 +130,22 @@ function renderAchievementCard(id, content, isUnlocked = false, progressPercent 
         reward.textContent = content.rewardText;
         card.replaceChildren(titleRow, desc, reward);
     }
+    // Innerhalb der Einheiten thematisch gruppieren und erledigte Erfolge
+    // innerhalb jeder Gruppe nach oben sortieren.
+    if (categoryId === "units")
+    {
+        const cards = [...categoryCards.querySelectorAll(":scope > .achievement-card")];
+        cards.sort((a, b) => {
+            const da = getAchievementDefinition(a.dataset.achievementId) || {};
+            const db = getAchievementDefinition(b.dataset.achievementId) || {};
+            const groupDiff = (da.unitGroupOrder || 99) - (db.unitGroupOrder || 99);
+            if (groupDiff) return groupDiff;
+            const unlockedDiff = Number(b.classList.contains("unlocked")) - Number(a.classList.contains("unlocked"));
+            if (unlockedDiff) return unlockedDiff;
+            return (da.order || 0) - (db.order || 0);
+        });
+        cards.forEach(card => categoryCards.appendChild(card));
+    }
+
     refreshAchievementCategoryCounts();
 }
