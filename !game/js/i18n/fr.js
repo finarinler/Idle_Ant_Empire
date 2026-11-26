@@ -230,7 +230,17 @@ I18N.register("fr", {
     "achievement.smallColony.title": "Petite fourmilière",
     "achievement.smallColony.locked": "{goal} reines achetées",
     "achievement.smallColony.unlocked": "{goal} reines achetées",
-    "achievement.smallColony.reward": "Récompense\u00a0: structures de base débloquées",
+    "achievement.smallColony.reward": "Récompense : +5 % de production de larves",
+    "achievement.queenColonyTwentyFive.title": "Colonie de reines grandissante",
+    "achievement.queenColonyTwentyFive.locked": "{goal} reines achetées",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} reines achetées",
+    "achievement.queenColonyTwentyFive.reward": "Récompense : +10 % de production de larves",
+
+    "achievement.queenColonyHundred.title": "Dynastie des reines",
+    "achievement.queenColonyHundred.locked": "{goal} reines achetées",
+    "achievement.queenColonyHundred.unlocked": "{goal} reines achetées",
+    "achievement.queenColonyHundred.reward": "Récompense : +25 % de production de larves",
+
 
     "achievement.buildColony.title": "Construction de la colonie",
     "achievement.buildColony.locked": "Garde-manger et nurserie construits",
