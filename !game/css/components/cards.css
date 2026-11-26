@@ -134,10 +134,9 @@
 .iae-card-stepper-btn:disabled { opacity: .4; cursor: not-allowed; }
 
 .iae-card-batch-actions { display: flex; gap: 7px; margin-top: 8px; }
-.iae-card-batch-btn { flex: 1; min-width: 0; padding: 8px 6px; border: 1px solid #5b4529; border-radius: 8px; background: #241c12; color: var(--research-gold-bright); font: inherit; font-size: .75rem; font-weight: 750; cursor: pointer; }
-.iae-card-batch-btn:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
+.iae-card-batch-btn { flex: 1; min-width: 0; margin: 0; padding: 10px 8px; font-size: .78rem; }
+.iae-card-batch-btn .iae-card-action-glyph { font-size: .95rem; }
 .iae-card-batch-btn:disabled { opacity: .4; cursor: not-allowed; }
-.iae-card-batch-btn[hidden] { display: none; }
 
 
 /* Dynamische Vorschau für Bau- und Ausbildungsaktionen */
