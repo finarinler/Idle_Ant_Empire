@@ -68,7 +68,7 @@
             requiresBuilder: BALANCE.provisional.requiresBuilder.housingUpgrade,
             levelKey: "housingLevel",
             maxLevel: BALANCE.housing.maxLevel,
-            getUnlockedLevel: () => BALANCE.housing.maxLevel,
+            getUnlockedLevel: () => GameState.research.housingUpgrade ? BALANCE.housing.maxLevel : 1,
             getInfo: getUpgradeInfo
         }
     });

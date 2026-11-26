@@ -41,7 +41,7 @@ const BALANCE = {
 
     housing: {
         baseCapacityPerChamber: 10,
-        costGrowth: 1.005,                                            // +0,5 % je weiterer Wohnkammer
+        costGrowth: 1.10,                                             // +10 % je weiterer Wohnkammer
         maxLevel: 10,
         // Zeit je Upgrade-Stufe in Sekunden: 1→2 ... 9→10
         upgradeSeconds: [120, 300, 600, 900, 1200, 1800, 2700, 3600, 7200],
@@ -99,6 +99,7 @@ const BALANCE = {
     },
 
     upkeep: {   // Nahrungsverbrauch pro Sekunde (Überlebensressource)
+        "brood-expert": 5,
         "normal-ant": 0.5,               // vereinbart
         "queen": 1.0,                    // vereinbart
         "collector": 0.25,
@@ -134,11 +135,11 @@ const BALANCE = {
     /* ---------- VORLÄUFIG (wartet auf Freigabe) ---------- */
 
     provisional: {
-        // Schlupfkosten je Ameise (aus dem bisherigen Code: 2 Larven pro Ameise)
-        hatchCost: { larvae: 2 },
+        // Eine Larve wird zu genau einer Ameise.
+        hatchCost: { larvae: 1 },
 
         housing: {
-            baseCost: { food: 300 },
+            baseCost: { food: 150 },
             buildSeconds: 10,
             capacityBonusPerLevel: 5,                 // Wohnraum je Wohnkammer: 10 + 5 × (Stufe − 1)
             // Nahrungskosten je Upgrade-Stufe 1→2 ... 9→10

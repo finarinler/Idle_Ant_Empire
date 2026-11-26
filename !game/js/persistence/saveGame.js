@@ -33,9 +33,11 @@ function serializeEconomy()
     Object.keys(eco.unmet).forEach(key => { unmet[key] = eco.unmet[key].toString(); });
 
     return {
+        broodExpertEnabled: eco.broodExpertEnabled !== false,
         deathTimers: Object.assign({}, eco.deathTimers),
         hatch: Object.assign({}, eco.hatch),
         trainings: Object.assign({}, eco.trainings || {}),
+        trainingQueues: JSON.parse(JSON.stringify(eco.trainingQueues || {})),
         unmet
     };
 }
@@ -65,6 +67,7 @@ function saveGame()
         eliteUnits: GameState.eliteUnits,
         stats: GameState.stats,
         achievements: GameState.achievements,
+        research: GameState.research,
         expedition: GameState.expedition,
         economy: serializeEconomy(),
         construction: GameState.construction

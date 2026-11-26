@@ -15,6 +15,7 @@ const OPTIONS_MENU = {
     closeButton: null,
     languageList: null,
     languageButtons: [],
+    tooltipsToggle: null,
     initialized: false
 };
 
@@ -149,6 +150,7 @@ function initOptionsMenu()
     OPTIONS_MENU.panel = getEl("options-menu");
     OPTIONS_MENU.closeButton = getEl("options-close-btn");
     OPTIONS_MENU.languageList = getEl("options-language-list");
+    OPTIONS_MENU.tooltipsToggle = getEl("action-tooltips-toggle");
 
     if (!OPTIONS_MENU.panel || !OPTIONS_MENU.closeButton || !OPTIONS_MENU.languageList)
     {
@@ -158,6 +160,15 @@ function initOptionsMenu()
     OPTIONS_MENU.initialized = true;
     buildLanguageButtons();
     updateLanguageButtons();
+
+    if (OPTIONS_MENU.tooltipsToggle)
+    {
+        OPTIONS_MENU.tooltipsToggle.checked = CardBuilder.arePreviewsEnabled();
+        OPTIONS_MENU.tooltipsToggle.addEventListener("change", () =>
+        {
+            CardBuilder.setPreviewsEnabled(OPTIONS_MENU.tooltipsToggle.checked);
+        });
+    }
     I18N.onChange(updateLanguageButtons);
 
     // Optionen sind eine normale Seite in der Hauptnavigation, kein Overlay.

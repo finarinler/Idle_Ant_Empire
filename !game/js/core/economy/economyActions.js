@@ -72,12 +72,81 @@
         return Economy._store(resource, amount);
     };
 
-    // Von Expeditionen gefundene Ameisen werden weiterhin direkt hinzugefügt (vorläufige Regel:
-    // eine Überschreitung des Wohnraums ist dadurch möglich).
+    // Gefundene Ameisen können nur aufgenommen werden, wenn ausreichend Wohnraum frei ist.
     Economy.addFoundAnt = function (amount = 1)
     {
         Economy.update();
-        GameState.resources.antsFound = GameState.resources.antsFound.add(amount);
+
+        const count = Math.max(0, Math.floor(Number(amount) || 0));
+        if (count === 0 || Economy.getHousingFree().lt(count))
+        {
+            return false;
+        }
+
+        GameState.resources.antsFound = GameState.resources.antsFound.add(count);
+        return true;
+    };
+
+    /* ---------- Vorschau für Bau- und Ausbildungsaktionen ---------- */
+
+    Economy.getActionPreview = function (kind, id, quantity = 1)
+    {
+        const amount = Math.max(1, Math.min(1000, Math.floor(Number(quantity) || 1)));
+        const costs = { ants: Big(0), food: Big(0), larvae: Big(0), queens: Big(0) };
+        const before = Economy.computeFlows();
+        let seconds = 0;
+        let factor = amount >= 26 ? 0.80 : amount >= 25 ? 0.85 : amount >= 10 ? 0.90 : 1;
+        let completed = 0;
+        let after = before;
+
+        if (kind === "unit")
+        {
+            const def = UnitRegistry.get(id);
+            try
+            {
+                for (; completed < amount; completed++)
+                {
+                    const cost = Economy.getRecruitCost(id);
+                    COST_KEYS.forEach(key => { costs[key] = costs[key].add(amountOf(cost, key)); });
+                    seconds += Economy.getTrainingSeconds(id) * factor;
+                    Economy._addUnits(id, 1);
+                }
+                after = Economy.computeFlows();
+            }
+            finally
+            {
+                if (completed) { Economy._removeUnits(id, completed); }
+            }
+        }
+        else
+        {
+            const def = StructureRegistry.get(id), store = def.store;
+            try
+            {
+                for (; completed < amount; completed++)
+                {
+                    const info = Economy.getProjectInfo(id, "build");
+                    COST_KEYS.forEach(key => { costs[key] = costs[key].add(amountOf(info.cost, key)); });
+                    seconds += info.seconds * factor;
+                    GameState[store.section][store.key]++;
+                }
+                after = Economy.computeFlows();
+            }
+            finally
+            {
+                GameState[store.section][store.key] -= completed;
+            }
+        }
+
+        return {
+            quantity: completed,
+            costs,
+            seconds,
+            factor,
+            produced: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.produced[key].sub(before.produced[key])])),
+            consumed: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.consumed[key].sub(before.consumed[key])])),
+            capacity: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.capacity[key].sub(before.capacity[key])]))
+        };
     };
 
     /* ---------- Rekrutierung ---------- */
@@ -135,7 +204,7 @@
 
         if (count.gte(Economy.getUnitMaxCount(def)))
         {
-            const info = { key: "status.elite.maxReached" };
+            const info = { key: id === "builder" ? "status.basic.maxReached" : "status.elite.maxReached" };
             return { state: "max", hint: info, reason: info };
         }
 
@@ -157,6 +226,98 @@
         }
 
         return { state: "available" };
+    };
+
+    Economy.getTrainingBatchOptions = function (id)
+    {
+        const def = UnitRegistry.get(id);
+        const current = Economy.getUnitCount(id).toNumber();
+        const queue = GameState.economy.trainingQueues[id] || [];
+        const queued = queue.reduce((sum, job) => sum + (Number(job.count) || 0), 0);
+        const active = GameState.economy.trainings[id] ? 1 : 0;
+        const pending = active + queued;
+        const max = Economy.getUnitMaxCount(def);
+        const unlocked = Economy.getUnitUnlockedCount(def);
+
+        // Laufende Ausbildungen sind in getHousingFree() bereits reserviert.
+        // Vorgemerkte Aufträge müssen zusätzlich berücksichtigt werden.
+        const housingLimit = def.housing > 0
+            ? Math.max(0, Math.floor((Economy.getHousingFree().toNumber() - queued * def.housing) / def.housing))
+            : 1000;
+        const limit = Math.max(0, Math.min(
+            1000,
+            Math.floor(max - current - pending),
+            Math.floor(unlocked - current - pending),
+            housingLimit
+        ));
+        if (limit < 1) { return { ten: false, twentyFive: false, max: 0 }; }
+
+        // Dynamische Preise (z. B. Ameisen und Sammler) für jede geplante Einheit
+        // einzeln berechnen, ohne Ressourcen tatsächlich auszugeben.
+        const stock = {
+            ants: getTotalAnts(),
+            food: GameState.resources.food,
+            larvae: GameState.resources.larvae,
+            queens: GameState.resources.queens
+        };
+        let affordable = 0;
+        try
+        {
+            for (; affordable < limit; affordable++)
+            {
+                const cost = Economy.getRecruitCost(id);
+                let canPay = true;
+                for (const key of COST_KEYS)
+                {
+                    if (stock[key].lt(amountOf(cost, key))) { canPay = false; break; }
+                }
+                if (!canPay) { break; }
+                COST_KEYS.forEach(key => { stock[key] = stock[key].sub(amountOf(cost, key)); });
+                Economy._addUnits(id, 1);
+            }
+        }
+        finally
+        {
+            if (affordable > 0) { Economy._removeUnits(id, affordable); }
+        }
+
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
+    };
+
+    Economy.recruitBatch = function (id, amount, factorOverride)
+    {
+        Economy.update();
+        const quantity = Math.floor(Number(amount));
+        const factor = Number.isFinite(factorOverride) ? factorOverride : quantity >= 26 ? 0.80 : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
+        if (!Number.isFinite(quantity) || quantity < 1 || quantity > 1000 || factor <= 0 || factor > 1 || (factor <= 0.80 && quantity < 26)) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
+        const options = Economy.getTrainingBatchOptions(id);
+        if (quantity > options.max) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
+        const queue = GameState.economy.trainingQueues[id] || [];
+        const last = queue[queue.length - 1];
+        if (last && last.factor === factor) { last.count += quantity; }
+        else { queue.push({ count: quantity, factor }); }
+        GameState.economy.trainingQueues[id] = queue;
+        Economy._startQueuedTraining(id);
+        return { ok: true, queued: quantity };
+    };
+
+    Economy._startQueuedTraining = function (id)
+    {
+        const eco = GameState.economy;
+        if (eco.trainings[id]) { return false; }
+        const queue = eco.trainingQueues[id];
+        if (!queue || !queue.length) { delete eco.trainingQueues[id]; return false; }
+        const job = queue[0];
+        const state = Economy.getRecruitState(id);
+        if (state.state !== "available") { return false; }
+        const duration = Economy.getTrainingSeconds(id) * job.factor;
+        if (!Number.isFinite(duration) || duration <= 0 || !Economy._spend(Economy.getRecruitCost(id))) { return false; }
+        eco.trainings[id] = { duration, remaining: duration, batchFactor: job.factor };
+        job.count--;
+        if (job.count <= 0) { queue.shift(); }
+        if (!queue.length) { delete eco.trainingQueues[id]; }
+        if (id === "normal-ant") { GameState.stats.totalPurchasedAnts = (GameState.stats.totalPurchasedAnts || 0) + 1; }
+        return true;
     };
 
     Economy.recruit = function (id)
@@ -304,6 +465,7 @@
         }
         else
         {
+            if (structureId === "housing-chamber" && kind === "upgrade" && !GameState.achievements.knowledgeIsPower) { const info = { key: "status.requires.research" }; return { state: "locked", hint: info, reason: info }; }
             const level = GameState.structures[operation.levelKey];
 
             if (level >= operation.maxLevel) { return { state: "max", hint: { key: "status.elite.maxReached" } }; }
@@ -341,6 +503,60 @@
         }
 
         return { state: "available" };
+    };
+
+    Economy.getProjectBatchOptions = function (id)
+    {
+        const def = StructureRegistry.get(id), store = def.store;
+        if (!def.build) { return { ten: false, twentyFive: false, max: 0 }; }
+        const current = Economy.getStructureNumber(id), queue = (GameState.construction.queues || {})[id] || [];
+        const active = ["free", "builder"].filter(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build").length;
+        const pending = active + queue.reduce((n, job) => n + (Number(job.count) || 0), 0);
+        const limit = Math.max(0, Math.min(1000, Math.floor((def.maxCount === undefined ? Infinity : def.maxCount) - current - pending)));
+        const stock = { ants: getTotalAnts(), food: GameState.resources.food, larvae: GameState.resources.larvae, queens: GameState.resources.queens };
+        let affordable = 0;
+        // Aktive und bereits vorgemerkte Bauaufträge bei dynamischen Folgekosten berücksichtigen.
+        GameState[store.section][store.key] += pending;
+        try {
+            for (; affordable < limit; affordable++) {
+                const cost = Economy.getProjectInfo(id, "build").cost;
+                if (COST_KEYS.some(key => stock[key].lt(amountOf(cost, key)))) { break; }
+                COST_KEYS.forEach(key => { stock[key] = stock[key].sub(amountOf(cost, key)); });
+                GameState[store.section][store.key]++;
+            }
+        } finally { GameState[store.section][store.key] -= pending + affordable; }
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
+    };
+
+    Economy.queueProjectBatch = function (id, amount)
+    {
+        Economy.update();
+        const quantity = Math.floor(Number(amount)), factor = quantity >= 26 ? 0.80 : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
+        if (!Number.isFinite(quantity) || quantity < 1 || quantity > 1000 || (factor === 0.80 && quantity < 26)) return { ok: false, reason: { key: "status.elite.cannotAfford" } };
+        const options = Economy.getProjectBatchOptions(id);
+        if (quantity > options.max) return { ok: false, reason: { key: "status.elite.cannotAfford" } };
+        GameState.construction.queues = GameState.construction.queues || {};
+        const queue = GameState.construction.queues[id] || [], last = queue[queue.length - 1];
+        if (last && last.factor === factor) last.count += quantity; else queue.push({ count: quantity, factor });
+        GameState.construction.queues[id] = queue;
+        Economy._startQueuedProject(id);
+        return { ok: true, queued: quantity };
+    };
+
+    Economy._startQueuedProject = function (id)
+    {
+        const queues = GameState.construction.queues || {}, queue = queues[id];
+        if (!queue || !queue.length) { delete queues[id]; return false; }
+        if (["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build")) return false;
+        const def = StructureRegistry.get(id);
+        if ((def.requirement && def.requirement()) || Economy.getStructureNumber(id) >= (def.maxCount === undefined ? Infinity : def.maxCount)) return false;
+        const job = queue[0], info = Economy.getProjectInfo(id, "build"), slot = info.requiresBuilder ? "builder" : "free";
+        if (GameState.construction[slot] || (info.requiresBuilder && Economy.getUnitNumber("builder") < 1) || !Economy._spend(info.cost)) return false;
+        const duration = info.seconds * job.factor;
+        GameState.construction[slot] = { structureId: id, kind: "build", targetLevel: 0, duration, remaining: duration, batchFactor: job.factor };
+        if (--job.count <= 0) queue.shift();
+        if (!queue.length) delete queues[id];
+        return true;
     };
 
     Economy.startProject = function (structureId, kind, targetLevel)

@@ -98,9 +98,9 @@ I18N.register("en", {
     "loading.scriptError": "Failed to load: {path}",
 
     /* ---------- Resources ---------- */
-    "resource.food": "Food",
+    "resource.food": "Food (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larvae",
+    "resource.larvae": "Larvae (L)",
 
     /* ---------- General UI ---------- */
     "card.type.unitBasic": "Unit · Basic",
@@ -108,9 +108,10 @@ I18N.register("en", {
     "card.type.structureBasic": "Building · Basic",
     "card.label.cost": "Cost",
     "card.stat.bought": "Bought",
-    "card.stat.foodProduction": "Food production",
-    "card.stat.foodConsumption": "Food consumption",
-    "card.stat.larvaeProduction": "Larvae production",
+    "card.stat.foodProduction": "Production",
+    "card.stat.totalProduction": "Total production",
+    "card.stat.foodConsumption": "Consumption",
+    "card.stat.larvaeProduction": "Production",
     "card.stat.upkeep": "Upkeep",
     "card.stat.recovery": "Recovery break",
     "card.stat.foodLimit": "Food limit",
@@ -142,10 +143,10 @@ I18N.register("en", {
     "expedition.scoutLockedTitle": "The scout runs expeditions automatically.",
 
     /* ---------- Units ---------- */
-    "unit.ant.name": "Ant",
+    "unit.ant.name": "Ant (A)",
     "unit.ant.desc": "Gathers food for your colony.",
     "unit.ant.buy": "Buy ant",
-    "unit.queen.name": "Queen",
+    "unit.queen.name": "Queen (Q)",
     "unit.queen.desc": "Lays the larvae from which new ants emerge.",
     "unit.queen.buy": "Buy queen",
     "unit.scout.name": "Scout",
@@ -156,6 +157,12 @@ I18N.register("en", {
     "unit.grandNurse.desc": "Doubles the larvae storage.",
     "unit.broodExpert.name": "Brood Expert",
     "unit.broodExpert.desc": "Breeds new ants from larvae.",
+    "unit.broodExpert.on": "On",
+    "unit.broodExpert.off": "Off",
+    "unit.broodExpert.switchOn": "Turn Brood Experts on",
+    "unit.broodExpert.switchOff": "Turn Brood Experts off",
+    "status.broodExpert.on": "Brood Experts are enabled.",
+    "status.broodExpert.off": "Brood Experts are disabled.",
     "unit.soldier.name": "Elite Soldier",
     "unit.soldier.desc": "Secures land on expeditions.\nRequired for expansion.",
 
@@ -194,6 +201,7 @@ I18N.register("en", {
     "status.expedition.success": "Expedition successful: {amount} food found.",
     "status.ant.foundCritical": "Critical success! An ant has joined your colony!",
     "status.ant.foundStray": "A stray ant has joined your colony!",
+    "status.ant.noHousing": "There is no space to sleep – the stray ant moves on.",
     "status.scout.needAchievement": "Unlock the achievement {achievement} first.",
     "status.scout.alreadyTrained": "You have already trained a scout.",
     "status.scout.cannotAfford": "Not enough resources for the scout.",
@@ -414,7 +422,7 @@ I18N.register("en", {
     "unit.builder.name": "Builder",
     "unit.builder.desc": "Shortens construction times.\nRequires the construction chamber.",
     "unit.ant.desc": "Consumes food for your colony.",
-    "unit.broodExpert.desc": "Hatches larvae into ants.",
+    "unit.broodExpert.desc": "Turns 1 larva into 1 ant. Continuously consumes 5 food/s.",
     "unit.scout.on": "ON",
     "unit.scout.off": "OFF",
     "unit.scout.switchOn": "Switch automation on",
@@ -497,13 +505,19 @@ I18N.register("en", {
     "changelog.entry.parallelTraining": "Different unit types can be trained in parallel; only one training at a time for each type.",
     "changelog.entry.offlineTraining": "Ongoing training is saved and continues during offline time.",
     "changelog.entry.smallCollectorReward": "The “Little Collector” achievement immediately grants one stray ant when unlocked.",
-    "changelog.entry.newAchievements": "New achievements added",
-    "changelog.entry.achievementOverview": "Achievement overview revised",
+    "changelog.entry.newAchievements": "New achievements added.",
+    "changelog.entry.achievementOverview": "Achievement overview revised.",
     "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
+    "changelog.entry.scrollToTop": "The page automatically scrolls to the top when switching game sections.",
+    "changelog.entry.resourceAbbreviations": "Resource and unit abbreviations added.",
+    "changelog.entry.totalProduction": "The “Total production” display now shows the contribution of the respective unit type.",
+    "changelog.entry.productionLabels": "Production and consumption labels standardized.",
+    "changelog.entry.unitBuildingTerminology": "Units are now trained consistently throughout the game, and buildings are constructed.",
+    "changelog.group.design": "Visual design",
     "changelog.group.performance": "Performance",
-    "changelog.entry.performance": "Performance improvements",
+    "changelog.entry.performance": "Performance improvements.",
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
     "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
     "changelog.entry.foodProduction": "Core food production settings revised.",
@@ -533,38 +547,38 @@ I18N.register("en", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("en", {
-    "achievement.purchasedAnts1000.title": "A Thousand Purchased Ants",
-    "achievement.purchasedAnts1000.locked": "{goal} normal ants purchased in total",
-    "achievement.purchasedAnts1000.unlocked": "{goal} normal ants purchased in total",
+    "achievement.purchasedAnts1000.title": "A Thousand Trained Ants",
+    "achievement.purchasedAnts1000.locked": "{goal} normal ants trained in total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normal ants trained in total",
     "achievement.purchasedAnts1000.reward": "Reward: Each currently owned purchased ant produces +0.1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("en", {
-    "achievement.purchasedAnts1.title": "First Ant Purchase",
-    "achievement.purchasedAnts1.locked": "{goal} normal ant purchased",
-    "achievement.purchasedAnts1.unlocked": "{goal} normal ant purchased",
+    "achievement.purchasedAnts1.title": "First Ant Trained",
+    "achievement.purchasedAnts1.locked": "{goal} normal ant trained",
+    "achievement.purchasedAnts1.unlocked": "{goal} normal ant trained",
     "achievement.purchasedAnts1.reward": "Total discount: 2% off normal ant training costs",
-    "achievement.purchasedAnts10.title": "Ten Purchased Ants",
-    "achievement.purchasedAnts10.locked": "{goal} normal ants purchased",
-    "achievement.purchasedAnts10.unlocked": "{goal} normal ants purchased",
+    "achievement.purchasedAnts10.title": "Ten Trained Ants",
+    "achievement.purchasedAnts10.locked": "{goal} normal ants trained",
+    "achievement.purchasedAnts10.unlocked": "{goal} normal ants trained",
     "achievement.purchasedAnts10.reward": "Total discount: 5% off normal ant training costs",
-    "achievement.purchasedAnts50.title": "Fifty Purchased Ants",
-    "achievement.purchasedAnts50.locked": "{goal} normal ants purchased",
-    "achievement.purchasedAnts50.unlocked": "{goal} normal ants purchased",
+    "achievement.purchasedAnts50.title": "Fifty Trained Ants",
+    "achievement.purchasedAnts50.locked": "{goal} normal ants trained",
+    "achievement.purchasedAnts50.unlocked": "{goal} normal ants trained",
     "achievement.purchasedAnts50.reward": "Total discount: 7.5% off normal ant training costs",
-    "achievement.purchasedAnts100.title": "One Hundred Purchased Ants",
-    "achievement.purchasedAnts100.locked": "{goal} normal ants purchased",
-    "achievement.purchasedAnts100.unlocked": "{goal} normal ants purchased",
+    "achievement.purchasedAnts100.title": "One Hundred Trained Ants",
+    "achievement.purchasedAnts100.locked": "{goal} normal ants trained",
+    "achievement.purchasedAnts100.unlocked": "{goal} normal ants trained",
     "achievement.purchasedAnts100.reward": "Total discount: 10% off normal ant training costs",
-    "achievement.purchasedAnts250.title": "Two Hundred Fifty Purchased Ants",
-    "achievement.purchasedAnts250.locked": "{goal} normal ants purchased",
-    "achievement.purchasedAnts250.unlocked": "{goal} normal ants purchased",
+    "achievement.purchasedAnts250.title": "Two Hundred Fifty Trained Ants",
+    "achievement.purchasedAnts250.locked": "{goal} normal ants trained",
+    "achievement.purchasedAnts250.unlocked": "{goal} normal ants trained",
     "achievement.purchasedAnts250.reward": "Total discount: 15% off normal ant training costs",
-    "achievement.purchasedAnts500.title": "Five Hundred Purchased Ants",
-    "achievement.purchasedAnts500.locked": "{goal} normal ants purchased",
-    "achievement.purchasedAnts500.unlocked": "{goal} normal ants purchased",
+    "achievement.purchasedAnts500.title": "Five Hundred Trained Ants",
+    "achievement.purchasedAnts500.locked": "{goal} normal ants trained",
+    "achievement.purchasedAnts500.unlocked": "{goal} normal ants trained",
     "achievement.purchasedAnts500.reward": "Total discount: 25% off normal ant training costs"
 });
 
@@ -588,4 +602,67 @@ I18N.register("en", {
 I18N.register("en", {
     "achievements.series.completedExpeditions": "Completed Expeditions",
     "achievements.series.expeditionFailures": "Expedition Setbacks"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("en", {
+    "changelog.entry.unitTrainingTerminology": "Units are consistently described as trained in achievements and game text.",
+    "changelog.entry.buildingTerminology": "Buildings are consistently described as constructed in achievements and game text."
+});
+
+I18N.register("en", {
+    "status.unit.trainingQueued": "{count}× {unit} added to the training queue.",
+    "changelog.entry.batchTraining": "Added batch training queues for all unit types."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("en", {
+    "status.basic.maxReached": "You have already trained the maximum number of this basic unit.",
+    "status.build.queued": "{count}× {structure} added to the construction queue.",
+    "category.eliteStructures": "Elite Structures",
+    "category.structureUpgrades": "Structure Upgrades",
+    "card.type.structureUpgrade": "Structure Upgrade",
+    "changelog.entry.batchTraining": "Added batch training queues for all unit types.",
+    "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
+    "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
+    "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder.",
+    "changelog.entry.broodExpertRebalance": "Brood Expert adjusted.",
+    "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum.",
+    "tooltip.preview.expectedProduction": "Expected production increase",
+    "tooltip.preview.expectedCosts": "Expected costs",
+    "tooltip.preview.expectedDuration": "Expected duration",
+    "tooltip.preview.effect": "Additional effect",
+    "tooltip.preview.cost": "Total costs",
+    "tooltip.preview.capacity": "capacity",
+    "changelog.entry.actionPreview": "Dynamic tooltips show effects, total costs and durations for single actions and 10×, 25× and MAX batches.",
+    "changelog.entry.housingCostScaling": "Housing Chamber costs adjusted.",
+    "changelog.entry.strayAntHousing": "Stray ants only join when enough housing space is available.",
+    "tooltip.preview.production.food": "Food production",
+    "tooltip.preview.production.larvae": "Larvae production",
+    "tooltip.preview.consumption.food": "Food consumption",
+    "tooltip.preview.consumption.larvae": "Larvae consumption",
+    "tooltip.preview.ants": "ants",
+    "tooltip.preview.queens": "queens",
+    "tooltip.preview.production.food": "Food production",
+    "tooltip.preview.production.larvae": "Larvae production",
+    "tooltip.preview.consumption.food": "Food consumption",
+    "tooltip.preview.consumption.larvae": "Larvae consumption",
+    "tooltip.preview.housingUsed": "Housing required",
+    "tooltip.preview.buildSpeed": "Build time reduction",
+    "tooltip.preview.housingCapacity": "Additional housing",
+    "tooltip.preview.builderLimit": "Builder limit",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("en", {
+    "status.versionUpdateAvailable": "New version available! Enjoy the latest improvements!"
+});
+
+I18N.register("en", {
+    "options.tooltips": "Action tooltips",
+    "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
+    "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
 });

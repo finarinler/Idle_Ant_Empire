@@ -98,9 +98,9 @@ I18N.register("de", {
     "loading.scriptError": "Fehler beim Laden von: {path}",
 
     /* ---------- Ressourcen ---------- */
-    "resource.food": "Nahrung",
+    "resource.food": "Nahrung (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larven",
+    "resource.larvae": "Larven (L)",
 
     /* ---------- Allgemeine UI ---------- */
     "card.type.unitBasic": "Einheit · Basis",
@@ -108,9 +108,10 @@ I18N.register("de", {
     "card.type.structureBasic": "Gebäude · Basis",
     "card.label.cost": "Kosten",
     "card.stat.bought": "Gekauft",
-    "card.stat.foodProduction": "Nahrungsproduktion",
-    "card.stat.foodConsumption": "Nahrungsverbrauch",
-    "card.stat.larvaeProduction": "Larvenproduktion",
+    "card.stat.foodProduction": "Produktion",
+    "card.stat.totalProduction": "Gesamte Produktion",
+    "card.stat.foodConsumption": "Verbrauch",
+    "card.stat.larvaeProduction": "Produktion",
     "card.stat.upkeep": "Unterhalt",
     "card.stat.recovery": "Erholungspause",
     "card.stat.foodLimit": "Nahrungslimit",
@@ -142,10 +143,10 @@ I18N.register("de", {
     "expedition.scoutLockedTitle": "Die Kundschafterin führt Expeditionen automatisch durch.",
 
     /* ---------- Einheiten ---------- */
-    "unit.ant.name": "Ameise",
+    "unit.ant.name": "Ameise (A)",
     "unit.ant.desc": "Sammelt Nahrung für deine Kolonie.",
     "unit.ant.buy": "Ameise kaufen",
-    "unit.queen.name": "Königin",
+    "unit.queen.name": "Königin (Q)",
     "unit.queen.desc": "Legt die Larven, aus denen neue Ameisen entstehen.",
     "unit.queen.buy": "Königin kaufen",
     "unit.scout.name": "Kundschafterin",
@@ -156,6 +157,12 @@ I18N.register("de", {
     "unit.grandNurse.desc": "Verdoppelt das Larvenlager.",
     "unit.broodExpert.name": "Brut-Expertin",
     "unit.broodExpert.desc": "Züchtet neue Ameisen aus Larven.",
+    "unit.broodExpert.on": "An",
+    "unit.broodExpert.off": "Aus",
+    "unit.broodExpert.switchOn": "Brut-Expertin einschalten",
+    "unit.broodExpert.switchOff": "Brut-Expertin ausschalten",
+    "status.broodExpert.on": "Die Brut-Expertinnen sind eingeschaltet.",
+    "status.broodExpert.off": "Die Brut-Expertinnen sind ausgeschaltet.",
     "unit.soldier.name": "Elite-Soldat",
     "unit.soldier.desc": "Sichert Land bei Expeditionen.\nBenötigt für Expansion.",
 
@@ -194,6 +201,7 @@ I18N.register("de", {
     "status.expedition.success": "Expedition erfolgreich: {amount} Nahrung gefunden.",
     "status.ant.foundCritical": "Kritischer Erfolg! Eine Ameise hat sich deiner Kolonie angeschlossen!",
     "status.ant.foundStray": "Eine verirrte Ameise hat sich deiner Kolonie angeschlossen!",
+    "status.ant.noHousing": "Kein Schlafplatz frei – die verirrte Ameise zieht weiter.",
     "status.scout.needAchievement": "Schalte zuerst den Erfolg {achievement} frei.",
     "status.scout.alreadyTrained": "Du hast bereits eine Kundschafterin ausgebildet.",
     "status.scout.cannotAfford": "Ressourcen für die Kundschafterin reichen nicht aus.",
@@ -414,7 +422,7 @@ I18N.register("de", {
     "unit.builder.name": "Baumeister",
     "unit.builder.desc": "Verkürzt Bauzeiten.\nBenötigt die Baukammer.",
     "unit.ant.desc": "Verbraucht Nahrung für deine Kolonie.",
-    "unit.broodExpert.desc": "Lässt Larven zu Ameisen schlüpfen.",
+    "unit.broodExpert.desc": "Verwandelt 1 Larve in 1 Ameise. Verbraucht dauerhaft 5 Nahrung/s.",
     "unit.scout.on": "AN",
     "unit.scout.off": "AUS",
     "unit.scout.switchOn": "Automatik einschalten",
@@ -497,13 +505,19 @@ I18N.register("de", {
     "changelog.entry.parallelTraining": "Verschiedene Einheitentypen können parallel ausgebildet werden; derselbe Typ jeweils nur einmal gleichzeitig.",
     "changelog.entry.offlineTraining": "Laufende Ausbildungen werden gespeichert und während der Offline-Zeit weitergeführt.",
     "changelog.entry.smallCollectorReward": "Der Erfolg „Kleiner Sammler“ gewährt beim Freischalten sofort eine Streuner-Ameise.",
-    "changelog.entry.newAchievements": "Neue Erfolge hinzugefügt",
-    "changelog.entry.achievementOverview": "Erfolgsübersicht überarbeitet",
+    "changelog.entry.newAchievements": "Neue Erfolge hinzugefügt.",
+    "changelog.entry.achievementOverview": "Erfolgsübersicht überarbeitet.",
     "changelog.entry.collectorCosts": "Sammlerkosten überarbeitet: Die Ameisenkosten entsprechen der Sammlerstufe; die bisherigen Kostensteigerungen für Nahrung und Larven bleiben erhalten.",
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
+    "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
+    "changelog.entry.resourceAbbreviations": "Ressourcen- und Einheiten-Kürzel ergänzt.",
+    "changelog.entry.totalProduction": "Die Anzeige „Gesamte Produktion“ zeigt jetzt den Beitrag des jeweiligen Einheitentyps an.",
+    "changelog.entry.productionLabels": "Produktions- und Verbrauchsbezeichnungen vereinheitlicht.",
+    "changelog.entry.unitBuildingTerminology": "Einheiten werden jetzt überall ausgebildet und Gebäude errichtet.",
+    "changelog.group.design": "Darstellung",
     "changelog.group.performance": "Performance",
-    "changelog.entry.performance": "Performance verbessert",
+    "changelog.entry.performance": "Performance verbessert.",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
     "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
     "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
@@ -533,38 +547,38 @@ I18N.register("de", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("de", {
-    "achievement.purchasedAnts1000.title": "Tausend gekaufte Ameisen",
-    "achievement.purchasedAnts1000.locked": "{goal} normale Ameisen insgesamt gekauft",
-    "achievement.purchasedAnts1000.unlocked": "{goal} normale Ameisen insgesamt gekauft",
+    "achievement.purchasedAnts1000.title": "Tausend ausgebildete Ameisen",
+    "achievement.purchasedAnts1000.locked": "{goal} normale Ameisen insgesamt ausgebildet",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normale Ameisen insgesamt ausgebildet",
     "achievement.purchasedAnts1000.reward": "Belohnung: Jede aktuell vorhandene gekaufte Ameise produziert +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("de", {
-    "achievement.purchasedAnts1.title": "Erster Ameisenkauf",
-    "achievement.purchasedAnts1.locked": "{goal} normale Ameise gekauft",
-    "achievement.purchasedAnts1.unlocked": "{goal} normale Ameise gekauft",
+    "achievement.purchasedAnts1.title": "Erste ausgebildete Ameise",
+    "achievement.purchasedAnts1.locked": "{goal} normale Ameise ausgebildet",
+    "achievement.purchasedAnts1.unlocked": "{goal} normale Ameise ausgebildet",
     "achievement.purchasedAnts1.reward": "Belohnung: −2 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts10.title": "Zehn gekaufte Ameisen",
-    "achievement.purchasedAnts10.locked": "{goal} normale Ameisen gekauft",
-    "achievement.purchasedAnts10.unlocked": "{goal} normale Ameisen gekauft",
+    "achievement.purchasedAnts10.title": "Zehn ausgebildete Ameisen",
+    "achievement.purchasedAnts10.locked": "{goal} normale Ameisen ausgebildet",
+    "achievement.purchasedAnts10.unlocked": "{goal} normale Ameisen ausgebildet",
     "achievement.purchasedAnts10.reward": "Belohnung: −5 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts50.title": "Fünfzig gekaufte Ameisen",
-    "achievement.purchasedAnts50.locked": "{goal} normale Ameisen gekauft",
-    "achievement.purchasedAnts50.unlocked": "{goal} normale Ameisen gekauft",
+    "achievement.purchasedAnts50.title": "Fünfzig ausgebildete Ameisen",
+    "achievement.purchasedAnts50.locked": "{goal} normale Ameisen ausgebildet",
+    "achievement.purchasedAnts50.unlocked": "{goal} normale Ameisen ausgebildet",
     "achievement.purchasedAnts50.reward": "Belohnung: −7,5 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts100.title": "Hundert gekaufte Ameisen",
-    "achievement.purchasedAnts100.locked": "{goal} normale Ameisen gekauft",
-    "achievement.purchasedAnts100.unlocked": "{goal} normale Ameisen gekauft",
+    "achievement.purchasedAnts100.title": "Hundert ausgebildete Ameisen",
+    "achievement.purchasedAnts100.locked": "{goal} normale Ameisen ausgebildet",
+    "achievement.purchasedAnts100.unlocked": "{goal} normale Ameisen ausgebildet",
     "achievement.purchasedAnts100.reward": "Belohnung: −10 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts250.title": "Zweihundertfünfzig gekaufte Ameisen",
-    "achievement.purchasedAnts250.locked": "{goal} normale Ameisen gekauft",
-    "achievement.purchasedAnts250.unlocked": "{goal} normale Ameisen gekauft",
+    "achievement.purchasedAnts250.title": "Zweihundertfünfzig ausgebildete Ameisen",
+    "achievement.purchasedAnts250.locked": "{goal} normale Ameisen ausgebildet",
+    "achievement.purchasedAnts250.unlocked": "{goal} normale Ameisen ausgebildet",
     "achievement.purchasedAnts250.reward": "Belohnung: −15 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts500.title": "Fünfhundert gekaufte Ameisen",
-    "achievement.purchasedAnts500.locked": "{goal} normale Ameisen gekauft",
-    "achievement.purchasedAnts500.unlocked": "{goal} normale Ameisen gekauft",
+    "achievement.purchasedAnts500.title": "Fünfhundert ausgebildete Ameisen",
+    "achievement.purchasedAnts500.locked": "{goal} normale Ameisen ausgebildet",
+    "achievement.purchasedAnts500.unlocked": "{goal} normale Ameisen ausgebildet",
     "achievement.purchasedAnts500.reward": "Belohnung: −25 % auf die Ausbildungskosten normaler Ameisen"
 });
 
@@ -588,4 +602,67 @@ I18N.register("de", {
 I18N.register("de", {
     "achievements.series.completedExpeditions": "Abgeschlossene Expeditionen",
     "achievements.series.expeditionFailures": "Expeditions-Rückschläge"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("de", {
+    "changelog.entry.unitTrainingTerminology": "Einheiten werden in Erfolgen und Texten einheitlich als ausgebildet bezeichnet.",
+    "changelog.entry.buildingTerminology": "Gebäude werden in Erfolgen und Texten einheitlich als errichtet bezeichnet."
+});
+
+I18N.register("de", {
+    "status.unit.trainingQueued": "{count}× {unit} zur Ausbildungswarteschlange hinzugefügt.",
+    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("de", {
+    "status.basic.maxReached": "Du hast bereits die maximale Anzahl dieser Basis-Einheit ausgebildet.",
+    "status.build.queued": "{count}× {structure} zur Bauwarteschlange hinzugefügt.",
+    "category.eliteStructures": "Elite-Strukturen",
+    "category.structureUpgrades": "Struktur Upgrades",
+    "card.type.structureUpgrade": "Struktur-Upgrade",
+    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt.",
+    "changelog.entry.batchConstruction": "Mehrfachbau mit Warteschlange für Gebäude ergänzt.",
+    "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert.",
+    "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit.",
+    "changelog.entry.broodExpertRebalance": "Brut-Expertin angepasst.",
+    "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet.",
+    "tooltip.preview.expectedProduction": "Erwartete Mehrproduktion",
+    "tooltip.preview.expectedCosts": "Erwartete Kosten",
+    "tooltip.preview.expectedDuration": "Erwartete Dauer",
+    "tooltip.preview.effect": "Zusätzlicher Effekt",
+    "tooltip.preview.cost": "Gesamtkosten",
+    "tooltip.preview.capacity": "Kapazität",
+    "changelog.entry.actionPreview": "Dynamische Tooltips zeigen Effekte, Gesamtkosten und Zeiten für Einzelaktionen sowie 10×-, 25×- und MAX-Aufträge.",
+    "changelog.entry.housingCostScaling": "Wohnkammerkosten angepasst.",
+    "changelog.entry.strayAntHousing": "Verirrte Ameisen schließen sich nur an, wenn ausreichend Wohnraum frei ist.",
+    "tooltip.preview.production.food": "Nahrungsproduktion",
+    "tooltip.preview.production.larvae": "Larvenproduktion",
+    "tooltip.preview.consumption.food": "Nahrungsverbrauch",
+    "tooltip.preview.consumption.larvae": "Larvenverbrauch",
+    "tooltip.preview.ants": "Ameisen",
+    "tooltip.preview.queens": "Königinnen",
+    "tooltip.preview.production.food": "Nahrungsproduktion",
+    "tooltip.preview.production.larvae": "Larvenproduktion",
+    "tooltip.preview.consumption.food": "Nahrungsverbrauch",
+    "tooltip.preview.consumption.larvae": "Larvenverbrauch",
+    "tooltip.preview.housingUsed": "Wohnraum benötigt",
+    "tooltip.preview.buildSpeed": "Bauzeitersparnis",
+    "tooltip.preview.housingCapacity": "Zusätzlicher Wohnraum",
+    "tooltip.preview.builderLimit": "Baumeisterlimit",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("de", {
+    "status.versionUpdateAvailable": "Neue Version verfügbar! Viel Spaß mit den Neuerungen!"
+});
+
+I18N.register("de", {
+    "options.tooltips": "Aktions-Tooltips",
+    "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
+    "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
 });

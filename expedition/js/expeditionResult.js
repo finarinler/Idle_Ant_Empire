@@ -134,9 +134,13 @@ function rollStrayAnt(criticalSuccess)
  */
 function addFoundAnt(messageKey)
 {
-    // Gefundene Ameisen werden weiterhin direkt hinzugefügt (vorläufig auch bei vollem Wohnraum)
-    Economy.addFoundAnt(1);
-    GameState.stats.expeditionAntsFound++;
+    if (!Economy.addFoundAnt(1))
+    {
+        updateStatus("status.ant.noHousing", "warning");
+        return false;
+    }
 
+    GameState.stats.expeditionAntsFound++;
     updateStatus(messageKey, "success");
+    return true;
 }

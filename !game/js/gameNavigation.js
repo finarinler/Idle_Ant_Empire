@@ -48,6 +48,7 @@
             const target = views.find(view => view.dataset.gameViewPanel === name);
             const targetButton = navButtons.find(button => button.dataset.gameView === name);
             if (!target || targetButton && targetButton.getAttribute("aria-disabled") === "true") return;
+            const viewChanged = !target.classList.contains("is-active");
 
             views.forEach(view =>
             {
@@ -67,6 +68,9 @@
             if (optionsPanel) optionsPanel.hidden = name !== "options";
             if (achievementPanel) achievementPanel.classList.toggle("collapsed", name !== "achievements");
             if (logPanel) logPanel.classList.toggle("collapsed", name !== "logbook");
+
+            // Beim Wechsel des Spielbereichs zurück zum Seitenanfang scrollen.
+            if (viewChanged) window.scrollTo({ top: 0, behavior: "smooth" });
 
             if (name === "military") updateMilitaryOverview();
         }

@@ -98,9 +98,9 @@ I18N.register("it", {
     "loading.scriptError": "Errore durante il caricamento di: {path}",
 
     /* ---------- Risorse ---------- */
-    "resource.food": "Cibo",
+    "resource.food": "Cibo (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larve",
+    "resource.larvae": "Larve (L)",
 
     /* ---------- Interfaccia generale ---------- */
     "card.type.unitBasic": "Unità · Base",
@@ -108,9 +108,10 @@ I18N.register("it", {
     "card.type.structureBasic": "Edificio · Base",
     "card.label.cost": "Costo",
     "card.stat.bought": "Acquistate",
-    "card.stat.foodProduction": "Produzione di cibo",
-    "card.stat.foodConsumption": "Consumo di cibo",
-    "card.stat.larvaeProduction": "Produzione di larve",
+    "card.stat.foodProduction": "Produzione",
+    "card.stat.totalProduction": "Produzione totale",
+    "card.stat.foodConsumption": "Consumo",
+    "card.stat.larvaeProduction": "Produzione",
     "card.stat.upkeep": "Mantenimento",
     "card.stat.recovery": "Pausa di recupero",
     "card.stat.foodLimit": "Limite di cibo",
@@ -142,10 +143,10 @@ I18N.register("it", {
     "expedition.scoutLockedTitle": "L’esploratrice conduce le spedizioni automaticamente.",
 
     /* ---------- Unità ---------- */
-    "unit.ant.name": "Formica",
+    "unit.ant.name": "Formica (A)",
     "unit.ant.desc": "Raccoglie cibo per la tua colonia.",
     "unit.ant.buy": "Compra formica",
-    "unit.queen.name": "Regina",
+    "unit.queen.name": "Regina (Q)",
     "unit.queen.desc": "Depone le larve da cui nascono nuove formiche.",
     "unit.queen.buy": "Compra regina",
     "unit.scout.name": "Esploratrice",
@@ -156,6 +157,12 @@ I18N.register("it", {
     "unit.grandNurse.desc": "Raddoppia la scorta di larve.",
     "unit.broodExpert.name": "Esperta della covata",
     "unit.broodExpert.desc": "Alleva nuove formiche dalle larve.",
+    "unit.broodExpert.on": "Attiva",
+    "unit.broodExpert.off": "Disattiva",
+    "unit.broodExpert.switchOn": "Attiva le Esperte della covata",
+    "unit.broodExpert.switchOff": "Disattiva le Esperte della covata",
+    "status.broodExpert.on": "Le Esperte della covata sono attive.",
+    "status.broodExpert.off": "Le Esperte della covata sono disattive.",
     "unit.soldier.name": "Soldato d’élite",
     "unit.soldier.desc": "Mette in sicurezza il territorio durante le spedizioni.\nNecessario per l’espansione.",
 
@@ -194,6 +201,7 @@ I18N.register("it", {
     "status.expedition.success": "Spedizione riuscita: trovate {amount} unità di cibo.",
     "status.ant.foundCritical": "Successo critico! Una formica si è unita alla tua colonia!",
     "status.ant.foundStray": "Una formica smarrita si è unita alla tua colonia!",
+    "status.ant.noHousing": "Non c’è posto per dormire: la formica smarrita prosegue il suo cammino.",
     "status.scout.needAchievement": "Sblocca prima l’obiettivo {achievement}.",
     "status.scout.alreadyTrained": "Hai già addestrato un’esploratrice.",
     "status.scout.cannotAfford": "Le risorse non bastano per l’esploratrice.",
@@ -415,7 +423,7 @@ I18N.register("it", {
     "unit.builder.name": "Costruttore",
     "unit.builder.desc": "Riduce i tempi di costruzione.\nRichiede la camera di costruzione.",
     "unit.ant.desc": "Consuma cibo della tua colonia.",
-    "unit.broodExpert.desc": "Fa schiudere le larve in formiche.",
+    "unit.broodExpert.desc": "Trasforma 1 larva in 1 formica. Consuma continuamente 5 cibo/s.",
     "unit.scout.on": "ON",
     "unit.scout.off": "OFF",
     "unit.scout.switchOn": "Attiva automazione",
@@ -486,13 +494,19 @@ I18N.register("it", {
     "changelog.entry.parallelTraining": "È possibile addestrare tipi diversi di unità in parallelo; ogni tipo può essere addestrato una sola volta alla volta.",
     "changelog.entry.offlineTraining": "Gli addestramenti in corso vengono salvati e proseguono anche offline.",
     "changelog.entry.smallCollectorReward": "L’obiettivo «Piccolo raccoglitore» assegna subito una formica randagia al momento dello sblocco.",
-    "changelog.entry.newAchievements": "Nuovi obiettivi aggiunti",
-    "changelog.entry.achievementOverview": "Panoramica degli obiettivi aggiornata",
+    "changelog.entry.newAchievements": "Nuovi obiettivi aggiunti.",
+    "changelog.entry.achievementOverview": "Panoramica degli obiettivi aggiornata.",
     "changelog.entry.collectorCosts": "Costi delle raccoglitrici rivisti: il costo in formiche corrisponde al livello della raccoglitrice; restano invariati i precedenti aumenti dei costi in cibo e larve.",
     "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
+    "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
+    "changelog.entry.resourceAbbreviations": "Aggiunte abbreviazioni per risorse e unità.",
+    "changelog.entry.totalProduction": "La visualizzazione «Produzione totale» mostra ora il contributo del rispettivo tipo di unità.",
+    "changelog.entry.productionLabels": "Le etichette di produzione e consumo sono state uniformate.",
+    "changelog.entry.unitBuildingTerminology": "Ora le unità vengono addestrate in modo uniforme in tutto il gioco e gli edifici vengono costruiti.",
+    "changelog.group.design": "Aspetto",
     "changelog.group.performance": "Prestazioni",
-    "changelog.entry.performance": "Prestazioni migliorate",
+    "changelog.entry.performance": "Prestazioni migliorate.",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
     "changelog.entry.foodUpkeep": "Consumo di cibo delle raccoglitrici modificato.",
     "changelog.entry.foodProduction": "Riviste le basi della produzione di cibo.",
@@ -522,38 +536,38 @@ I18N.register("it", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("it", {
-    "achievement.purchasedAnts1000.title": "Mille formiche acquistate",
-    "achievement.purchasedAnts1000.locked": "{goal} formiche normali acquistate in totale",
-    "achievement.purchasedAnts1000.unlocked": "{goal} formiche normali acquistate in totale",
+    "achievement.purchasedAnts1000.title": "Mille formiche addestrate",
+    "achievement.purchasedAnts1000.locked": "{goal} formiche normali addestrate in totale",
+    "achievement.purchasedAnts1000.unlocked": "{goal} formiche normali addestrate in totale",
     "achievement.purchasedAnts1000.reward": "Ricompensa: ogni formica acquistata attualmente presente produce +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("it", {
-    "achievement.purchasedAnts1.title": "Primo acquisto di formica",
-    "achievement.purchasedAnts1.locked": "{goal} formica normale acquistata",
-    "achievement.purchasedAnts1.unlocked": "{goal} formica normale acquistata",
+    "achievement.purchasedAnts1.title": "Prima formica addestrata",
+    "achievement.purchasedAnts1.locked": "{goal} formica normale addestrata",
+    "achievement.purchasedAnts1.unlocked": "{goal} formica normale addestrata",
     "achievement.purchasedAnts1.reward": "Sconto totale: 2% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts10.title": "Dieci formiche acquistate",
-    "achievement.purchasedAnts10.locked": "{goal} formiche normali acquistate",
-    "achievement.purchasedAnts10.unlocked": "{goal} formiche normali acquistate",
+    "achievement.purchasedAnts10.title": "Dieci formiche addestrate",
+    "achievement.purchasedAnts10.locked": "{goal} formiche normali addestrate",
+    "achievement.purchasedAnts10.unlocked": "{goal} formiche normali addestrate",
     "achievement.purchasedAnts10.reward": "Sconto totale: 5% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts50.title": "Cinquanta formiche acquistate",
-    "achievement.purchasedAnts50.locked": "{goal} formiche normali acquistate",
-    "achievement.purchasedAnts50.unlocked": "{goal} formiche normali acquistate",
+    "achievement.purchasedAnts50.title": "Cinquanta formiche addestrate",
+    "achievement.purchasedAnts50.locked": "{goal} formiche normali addestrate",
+    "achievement.purchasedAnts50.unlocked": "{goal} formiche normali addestrate",
     "achievement.purchasedAnts50.reward": "Sconto totale: 7,5% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts100.title": "Cento formiche acquistate",
-    "achievement.purchasedAnts100.locked": "{goal} formiche normali acquistate",
-    "achievement.purchasedAnts100.unlocked": "{goal} formiche normali acquistate",
+    "achievement.purchasedAnts100.title": "Cento formiche addestrate",
+    "achievement.purchasedAnts100.locked": "{goal} formiche normali addestrate",
+    "achievement.purchasedAnts100.unlocked": "{goal} formiche normali addestrate",
     "achievement.purchasedAnts100.reward": "Sconto totale: 10% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts250.title": "Duecentocinquanta formiche acquistate",
-    "achievement.purchasedAnts250.locked": "{goal} formiche normali acquistate",
-    "achievement.purchasedAnts250.unlocked": "{goal} formiche normali acquistate",
+    "achievement.purchasedAnts250.title": "Duecentocinquanta formiche addestrate",
+    "achievement.purchasedAnts250.locked": "{goal} formiche normali addestrate",
+    "achievement.purchasedAnts250.unlocked": "{goal} formiche normali addestrate",
     "achievement.purchasedAnts250.reward": "Sconto totale: 15% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts500.title": "Cinquecento formiche acquistate",
-    "achievement.purchasedAnts500.locked": "{goal} formiche normali acquistate",
-    "achievement.purchasedAnts500.unlocked": "{goal} formiche normali acquistate",
+    "achievement.purchasedAnts500.title": "Cinquecento formiche addestrate",
+    "achievement.purchasedAnts500.locked": "{goal} formiche normali addestrate",
+    "achievement.purchasedAnts500.unlocked": "{goal} formiche normali addestrate",
     "achievement.purchasedAnts500.reward": "Sconto totale: 25% sui costi di addestramento delle formiche normali"
 });
 
@@ -577,4 +591,67 @@ I18N.register("it", {
 I18N.register("it", {
     "achievements.series.completedExpeditions": "Spedizioni completate",
     "achievements.series.expeditionFailures": "Battute d’arresto delle spedizioni"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("it", {
+    "changelog.entry.unitTrainingTerminology": "Le unità sono indicate in modo uniforme come addestrate negli obiettivi e nei testi di gioco.",
+    "changelog.entry.buildingTerminology": "Gli edifici sono indicati in modo uniforme come costruiti negli obiettivi e nei testi di gioco."
+});
+
+I18N.register("it", {
+    "status.unit.trainingQueued": "{count}× {unit} aggiunto/i alla coda di addestramento.",
+    "changelog.entry.batchTraining": "Aggiunte code di addestramento multiplo per tutti i tipi di unità."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("it", {
+    "status.basic.maxReached": "Hai già addestrato il numero massimo di questa unità base.",
+    "status.build.queued": "{count}× {structure} aggiunto/i alla coda di costruzione.",
+    "category.eliteStructures": "Strutture élite",
+    "category.structureUpgrades": "Miglioramenti delle strutture",
+    "card.type.structureUpgrade": "Miglioramento struttura",
+    "changelog.entry.batchTraining": "Aggiunte code di addestramento multiplo per tutti i tipi di unità.",
+    "changelog.entry.batchConstruction": "Aggiunte code di costruzione multipla per gli edifici.",
+    "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate.",
+    "changelog.entry.storageBroodBuildTime": "La camera di stoccaggio e la camera della covata richiedono ciascuna esattamente 15 minuti di costruzione con un Costruttore.",
+    "changelog.entry.broodExpertRebalance": "Esperta della covata modificata.",
+    "changelog.entry.hideCappedCostProgress": "Il costo e la barra di avanzamento vengono nascosti per le unità e gli edifici che hanno raggiunto il limite massimo.",
+    "tooltip.preview.expectedProduction": "Aumento della produzione previsto",
+    "tooltip.preview.expectedCosts": "Costi previsti",
+    "tooltip.preview.expectedDuration": "Durata prevista",
+    "tooltip.preview.effect": "Effetto aggiuntivo",
+    "tooltip.preview.cost": "Costo totale",
+    "tooltip.preview.capacity": "di capacità",
+    "changelog.entry.actionPreview": "I tooltip dinamici mostrano effetti, costi totali e durata per azioni singole e gruppi 10×, 25× e MAX.",
+    "changelog.entry.housingCostScaling": "Costi della Camera Abitativa modificati.",
+    "changelog.entry.strayAntHousing": "Le formiche smarrite si uniscono alla colonia solo se c’è spazio abitativo sufficiente.",
+    "tooltip.preview.production.food": "Produzione di cibo",
+    "tooltip.preview.production.larvae": "Produzione di larve",
+    "tooltip.preview.consumption.food": "Consumo di cibo",
+    "tooltip.preview.consumption.larvae": "Consumo di larve",
+    "tooltip.preview.ants": "formiche",
+    "tooltip.preview.queens": "regine",
+    "tooltip.preview.production.food": "Produzione di cibo",
+    "tooltip.preview.production.larvae": "Produzione di larve",
+    "tooltip.preview.consumption.food": "Consumo di cibo",
+    "tooltip.preview.consumption.larvae": "Consumo di larve",
+    "tooltip.preview.housingUsed": "Spazio abitativo richiesto",
+    "tooltip.preview.buildSpeed": "Riduzione del tempo di costruzione",
+    "tooltip.preview.housingCapacity": "Spazio abitativo aggiuntivo",
+    "tooltip.preview.builderLimit": "Limite di costruttori",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("it", {
+    "status.versionUpdateAvailable": "Nuova versione disponibile! Buon divertimento con le novità!"
+});
+
+I18N.register("it", {
+    "options.tooltips": "Tooltip azioni",
+    "options.tooltipsDescription": "Mostra i tooltip delle azioni con effetti, variazioni di produzione e costi",
+    "changelog.entry.actionPreview": "I tooltip delle azioni mostrano ora le variazioni di produzione previste e possono essere attivati o disattivati nelle Opzioni.",
 });

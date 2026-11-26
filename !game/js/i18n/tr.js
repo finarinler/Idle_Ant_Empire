@@ -98,9 +98,9 @@ I18N.register("tr", {
     "loading.scriptError": "Yüklenemedi: {path}",
 
     /* ---------- Kaynaklar ---------- */
-    "resource.food": "Yiyecek",
+    "resource.food": "Yiyecek (F)",
     "resource.maxRate": "Maks.",
-    "resource.larvae": "Larva",
+    "resource.larvae": "Larva (L)",
 
     /* ---------- Genel arayüz ---------- */
     "card.type.unitBasic": "Birim · Temel",
@@ -108,9 +108,10 @@ I18N.register("tr", {
     "card.type.structureBasic": "Bina · Temel",
     "card.label.cost": "Maliyet",
     "card.stat.bought": "Satın alınan",
-    "card.stat.foodProduction": "Yiyecek üretimi",
-    "card.stat.foodConsumption": "Yiyecek tüketimi",
-    "card.stat.larvaeProduction": "Larva üretimi",
+    "card.stat.foodProduction": "Üretim",
+    "card.stat.totalProduction": "Toplam üretim",
+    "card.stat.foodConsumption": "Tüketim",
+    "card.stat.larvaeProduction": "Üretim",
     "card.stat.upkeep": "Bakım gideri",
     "card.stat.recovery": "Dinlenme molası",
     "card.stat.foodLimit": "Yiyecek sınırı",
@@ -142,10 +143,10 @@ I18N.register("tr", {
     "expedition.scoutLockedTitle": "Kaşif, keşifleri otomatik olarak yapar.",
 
     /* ---------- Birimler ---------- */
-    "unit.ant.name": "Karınca",
+    "unit.ant.name": "Karınca (A)",
     "unit.ant.desc": "Kolonin için yiyecek toplar.",
     "unit.ant.buy": "Karınca satın al",
-    "unit.queen.name": "Kraliçe",
+    "unit.queen.name": "Kraliçe (Q)",
     "unit.queen.desc": "Yeni karıncaların çıkacağı larvaları bırakır.",
     "unit.queen.buy": "Kraliçe satın al",
     "unit.scout.name": "Kaşif",
@@ -156,6 +157,12 @@ I18N.register("tr", {
     "unit.grandNurse.desc": "Larva deposunu ikiye katlar.",
     "unit.broodExpert.name": "Kuluçka Uzmanı",
     "unit.broodExpert.desc": "Larvalardan yeni karıncalar yetiştirir.",
+    "unit.broodExpert.on": "Açık",
+    "unit.broodExpert.off": "Kapalı",
+    "unit.broodExpert.switchOn": "Kuluçka Uzmanlarını aç",
+    "unit.broodExpert.switchOff": "Kuluçka Uzmanlarını kapat",
+    "status.broodExpert.on": "Kuluçka Uzmanları etkin.",
+    "status.broodExpert.off": "Kuluçka Uzmanları devre dışı.",
     "unit.soldier.name": "Elit Asker",
     "unit.soldier.desc": "Keşiflerde toprakları güvence altına alır.\nGenişleme için gereklidir.",
 
@@ -194,6 +201,7 @@ I18N.register("tr", {
     "status.expedition.success": "Keşif başarılı: {amount} yiyecek bulundu.",
     "status.ant.foundCritical": "Kritik başarı! Bir karınca kolonine katıldı!",
     "status.ant.foundStray": "Yolunu kaybetmiş bir karınca kolonine katıldı!",
+    "status.ant.noHousing": "Uyuyacak yer yok – kaybolmuş karınca yoluna devam ediyor.",
     "status.scout.needAchievement": "Önce {achievement} başarımını aç.",
     "status.scout.alreadyTrained": "Zaten bir kaşif eğittin.",
     "status.scout.cannotAfford": "Kaşif için kaynaklar yetmiyor.",
@@ -415,7 +423,7 @@ I18N.register("tr", {
     "unit.builder.name": "İnşaatçı",
     "unit.builder.desc": "İnşaat sürelerini kısaltır.\nİnşaat odası gerekir.",
     "unit.ant.desc": "Kolonin için yiyecek tüketir.",
-    "unit.broodExpert.desc": "Larvaları karıncalara dönüştürür.",
+    "unit.broodExpert.desc": "1 larvayı 1 karıncaya dönüştürür. Sürekli 5 yiyecek/s tüketir.",
     "unit.scout.on": "AÇIK",
     "unit.scout.off": "KAPALI",
     "unit.scout.switchOn": "Otomasyonu aç",
@@ -486,13 +494,19 @@ I18N.register("tr", {
     "changelog.entry.parallelTraining": "Farklı birim türleri aynı anda eğitilebilir; her türden aynı anda yalnızca bir eğitim yapılabilir.",
     "changelog.entry.offlineTraining": "Devam eden eğitimler kaydedilir ve çevrimdışıyken de sürer.",
     "changelog.entry.smallCollectorReward": "«Küçük Toplayıcı» başarımı açıldığında hemen bir başıboş karınca verir.",
-    "changelog.entry.newAchievements": "Yeni başarımlar eklendi",
-    "changelog.entry.achievementOverview": "Başarım genel görünümü yenilendi",
+    "changelog.entry.newAchievements": "Yeni başarımlar eklendi.",
+    "changelog.entry.achievementOverview": "Başarım genel görünümü yenilendi.",
     "changelog.entry.collectorCosts": "Toplayıcı maliyetleri yenilendi: karınca maliyeti toplayıcı seviyesine eşitlendi; yiyecek ve larva maliyetlerindeki önceki artışlar korundu.",
     "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
+    "changelog.entry.scrollToTop": "Oyun bölümü değiştirildiğinde sayfa otomatik olarak en üste kaydırılır.",
+    "changelog.entry.resourceAbbreviations": "Kaynak ve birim kısaltmaları eklendi.",
+    "changelog.entry.totalProduction": "“Toplam üretim” göstergesi artık ilgili birim türünün katkısını gösteriyor.",
+    "changelog.entry.productionLabels": "Üretim ve tüketim etiketleri standartlaştırıldı.",
+    "changelog.entry.unitBuildingTerminology": "Birimler artık oyunun her yerinde eğitiliyor, binalar ise inşa ediliyor.",
+    "changelog.group.design": "Görünüm",
     "changelog.group.performance": "Performans",
-    "changelog.entry.performance": "Performans iyileştirmeleri",
+    "changelog.entry.performance": "Performans iyileştirmeleri.",
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
     "changelog.entry.foodUpkeep": "Toplayıcıların yiyecek tüketimi ayarlandı.",
     "changelog.entry.foodProduction": "Temel yiyecek üretimi ayarları yenilendi.",
@@ -522,38 +536,38 @@ I18N.register("tr", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("tr", {
-    "achievement.purchasedAnts1000.title": "Bin satın alınan karınca",
-    "achievement.purchasedAnts1000.locked": "Toplam {goal} normal karınca satın alındı",
-    "achievement.purchasedAnts1000.unlocked": "Toplam {goal} normal karınca satın alındı",
+    "achievement.purchasedAnts1000.title": "Bin eğitilmiş karınca",
+    "achievement.purchasedAnts1000.locked": "Toplam {goal} normal karınca eğitildi",
+    "achievement.purchasedAnts1000.unlocked": "Toplam {goal} normal karınca eğitildi",
     "achievement.purchasedAnts1000.reward": "Ödül: Şu anda mevcut olan her satın alınmış karınca +0,1 F/s üretir"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("tr", {
-    "achievement.purchasedAnts1.title": "İlk karınca satın alımı",
-    "achievement.purchasedAnts1.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts1.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts1.title": "İlk eğitilmiş karınca",
+    "achievement.purchasedAnts1.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts1.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts1.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %2",
-    "achievement.purchasedAnts10.title": "On karınca satın alındı",
-    "achievement.purchasedAnts10.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts10.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts10.title": "On karınca eğitildi",
+    "achievement.purchasedAnts10.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts10.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts10.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %5",
-    "achievement.purchasedAnts50.title": "Elli karınca satın alındı",
-    "achievement.purchasedAnts50.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts50.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts50.title": "Elli karınca eğitildi",
+    "achievement.purchasedAnts50.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts50.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts50.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %7,5",
-    "achievement.purchasedAnts100.title": "Yüz karınca satın alındı",
-    "achievement.purchasedAnts100.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts100.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts100.title": "Yüz karınca eğitildi",
+    "achievement.purchasedAnts100.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts100.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts100.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %10",
-    "achievement.purchasedAnts250.title": "İki yüz elli karınca satın alındı",
-    "achievement.purchasedAnts250.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts250.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts250.title": "İki yüz elli karınca eğitildi",
+    "achievement.purchasedAnts250.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts250.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts250.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %15",
-    "achievement.purchasedAnts500.title": "Beş yüz karınca satın alındı",
-    "achievement.purchasedAnts500.locked": "{goal} normal karınca satın alındı",
-    "achievement.purchasedAnts500.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts500.title": "Beş yüz karınca eğitildi",
+    "achievement.purchasedAnts500.locked": "{goal} normal karınca eğitildi",
+    "achievement.purchasedAnts500.unlocked": "{goal} normal karınca eğitildi",
     "achievement.purchasedAnts500.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %25"
 });
 
@@ -577,4 +591,67 @@ I18N.register("tr", {
 I18N.register("tr", {
     "achievements.series.completedExpeditions": "Tamamlanan Seferler",
     "achievements.series.expeditionFailures": "Sefer Aksilikleri"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("tr", {
+    "changelog.entry.unitTrainingTerminology": "Birimler, başarımlarda ve oyun metinlerinde tutarlı biçimde eğitilmiş olarak tanımlanır.",
+    "changelog.entry.buildingTerminology": "Binalar, başarımlarda ve oyun metinlerinde tutarlı biçimde inşa edilmiş olarak tanımlanır."
+});
+
+I18N.register("tr", {
+    "status.unit.trainingQueued": "{count}× {unit} eğitim kuyruğuna eklendi.",
+    "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("tr", {
+    "status.basic.maxReached": "Bu temel birimin ulaşılabilecek en yüksek sayısını zaten eğittin.",
+    "status.build.queued": "{count}× {structure} inşaat kuyruğuna eklendi.",
+    "category.eliteStructures": "Seçkin Yapılar",
+    "category.structureUpgrades": "Yapı Yükseltmeleri",
+    "card.type.structureUpgrade": "Yapı Yükseltmesi",
+    "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi.",
+    "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
+    "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı.",
+    "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer.",
+    "changelog.entry.broodExpertRebalance": "Kuluçka Uzmanı ayarlandı.",
+    "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir.",
+    "tooltip.preview.expectedProduction": "Beklenen üretim artışı",
+    "tooltip.preview.expectedCosts": "Beklenen maliyetler",
+    "tooltip.preview.expectedDuration": "Beklenen süre",
+    "tooltip.preview.effect": "Ek etki",
+    "tooltip.preview.cost": "Toplam maliyet",
+    "tooltip.preview.capacity": "kapasite",
+    "changelog.entry.actionPreview": "Dinamik ipuçları tekli işlemler ve 10×, 25×, MAX grupları için etkileri, toplam maliyetleri ve süreleri gösterir.",
+    "changelog.entry.housingCostScaling": "Barınma Odası maliyetleri ayarlandı.",
+    "changelog.entry.strayAntHousing": "Kaybolmuş karıncalar yalnızca yeterli barınma alanı varsa koloniye katılır.",
+    "tooltip.preview.production.food": "Yiyecek üretimi",
+    "tooltip.preview.production.larvae": "Larva üretimi",
+    "tooltip.preview.consumption.food": "Yiyecek tüketimi",
+    "tooltip.preview.consumption.larvae": "Larva tüketimi",
+    "tooltip.preview.ants": "karıncalar",
+    "tooltip.preview.queens": "kraliçeler",
+    "tooltip.preview.production.food": "Yiyecek üretimi",
+    "tooltip.preview.production.larvae": "Larva üretimi",
+    "tooltip.preview.consumption.food": "Yiyecek tüketimi",
+    "tooltip.preview.consumption.larvae": "Larva tüketimi",
+    "tooltip.preview.housingUsed": "Gerekli barınma alanı",
+    "tooltip.preview.buildSpeed": "İnşaat süresi azalması",
+    "tooltip.preview.housingCapacity": "Ek barınma alanı",
+    "tooltip.preview.builderLimit": "İnşaatçı sınırı",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("tr", {
+    "status.versionUpdateAvailable": "Yeni sürüm mevcut! Yeniliklerin keyfini çıkar!"
+});
+
+I18N.register("tr", {
+    "options.tooltips": "İşlem ipuçları",
+    "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
+    "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
 });

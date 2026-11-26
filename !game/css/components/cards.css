@@ -66,8 +66,10 @@
 .iae-card-stat { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; }
 .iae-card-stat + .iae-card-stat { border-top: 1px solid #222; }
 .iae-card-stat span { color: var(--research-muted); font-size: .75rem; }
-.iae-card-stat strong { color: var(--research-text); font-size: .8rem; font-weight: 650; text-align: right; }
+.iae-card-stat strong { color: var(--research-muted); font-size: .8rem; font-weight: 650; text-align: right; }
 .iae-card-stat.tone-positive strong { color: var(--research-green); }
+.iae-card-stat.tone-negative strong { color: var(--warning-orange); }
+.iae-card-stat strong .abbr-gold { color: var(--research-gold-bright); }
 
 /* Kosten */
 .iae-card-cost { min-height: 58px; margin: auto 0 14px; }
@@ -91,6 +93,7 @@
     transition: filter .18s, border-color .18s;
 }
 .iae-card-action:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
+.iae-card-toggle-action + .iae-card-action:not(.iae-card-batch-btn) { margin-top: 5px; }
 .iae-card-action:focus-visible { outline: 2px solid var(--research-gold-bright); outline-offset: 3px; }
 .iae-card-action:disabled { border-color: #303030; background: #252525; color: #77736c; cursor: not-allowed; }
 .iae-card-action-glyph { font-size: 1.1rem; }
@@ -130,3 +133,38 @@
 }
 .iae-card-stepper-btn:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
 .iae-card-stepper-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.iae-card-batch-actions { display: flex; gap: 7px; margin-top: 8px; }
+.iae-card-batch-actions[hidden], .iae-card-batch-btn[hidden] { display: none !important; }
+.iae-card-batch-btn { flex: 1; min-width: 0; margin: 0; padding: 10px 8px; font-size: .78rem; }
+.iae-card-batch-btn .iae-card-action-glyph { font-size: .95rem; }
+.iae-card-batch-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+
+/* Dynamische Vorschau für Bau- und Ausbildungsaktionen */
+.iae-card { position: relative; }
+.iae-card-preview {
+    position: absolute;
+    z-index: 20;
+    right: 12px;
+    bottom: 76px;
+    left: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 12px 14px;
+    border: 1px solid #80663e;
+    border-radius: 10px;
+    background: rgba(17, 16, 13, .98);
+    color: #ded5c5;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .55);
+    font-size: .75rem;
+    line-height: 1.55;
+    pointer-events: none;
+}
+.iae-card-preview[hidden] { display: none; }
+.iae-card-preview-heading { margin-top: 5px; color: var(--research-gold-bright); font-weight: 750; }
+.iae-card-preview-heading:first-child { margin-top: 0; }
+.iae-card-action:focus-visible, .iae-card-batch-btn:focus-visible { outline: 2px solid var(--research-gold-bright); outline-offset: 3px; }
+@media (max-width: 600px) {
+    .iae-card-preview { right: 8px; bottom: 72px; left: 8px; max-height: 190px; }
+}

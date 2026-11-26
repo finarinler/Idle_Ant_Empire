@@ -21,10 +21,48 @@ function recruitUnit(id)
     return true;
 }
 
+function recruitUnitBatch(id, amount)
+{
+    const options = Economy.getTrainingBatchOptions(id);
+    const quantity = amount === "max" ? options.max : amount;
+    const factor = quantity >= 26 ? 0.80 : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
+    const result = Economy.recruitBatch(id, quantity, factor);
+    if (!result.ok)
+    {
+        updateStatus(result.reason?.key || "status.elite.cannotAfford", "warning");
+        return false;
+    }
+    const def = UnitRegistry.get(id);
+    updateStatus("status.unit.trainingQueued", "status", false, { count: quantity, unit: { key: def.nameKey } });
+    updateResources();
+    if (typeof CardBuilder !== "undefined") { CardBuilder.updateAll(); }
+    return true;
+}
+
 function buyAnt()             { return recruitUnit("normal-ant"); }
 function buyQueen()           { return recruitUnit("queen"); }
 function buyCollector()       { return recruitUnit("collector"); }
 function buyBroodExpert()     { return recruitUnit("brood-expert"); }
+
+function isBroodExpertOn()
+{
+    return GameState.economy.broodExpertEnabled !== false;
+}
+
+function toggleBroodExpert()
+{
+    if (Economy.getUnitNumber("brood-expert") <= 0) { return false; }
+
+    // Erst bis zum Klickzeitpunkt mit dem bisherigen Zustand abrechnen.
+    Economy.update();
+    GameState.economy.broodExpertEnabled = !isBroodExpertOn();
+
+    updateStatus(isBroodExpertOn() ? "status.broodExpert.on" : "status.broodExpert.off", "status");
+    updateResources();
+    if (typeof CardBuilder !== "undefined") { CardBuilder.updateAll(); }
+    saveGame();
+    return true;
+}
 function buyBuilder()         { return recruitUnit("builder"); }
 function buyStorageGuardian() { return recruitUnit("storage-keeper"); }
 function buyGrandNurse()      { return recruitUnit("grand-nurse"); }

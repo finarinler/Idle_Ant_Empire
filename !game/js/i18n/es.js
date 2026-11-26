@@ -98,9 +98,9 @@ I18N.register("es", {
     "loading.scriptError": "Error al cargar: {path}",
 
     /* ---------- Recursos ---------- */
-    "resource.food": "Comida",
+    "resource.food": "Comida (F)",
     "resource.maxRate": "Máx.",
-    "resource.larvae": "Larvas",
+    "resource.larvae": "Larvas (L)",
 
     /* ---------- Interfaz general ---------- */
     "card.type.unitBasic": "Unidad · Básica",
@@ -108,9 +108,10 @@ I18N.register("es", {
     "card.type.structureBasic": "Edificio · Básico",
     "card.label.cost": "Coste",
     "card.stat.bought": "Compradas",
-    "card.stat.foodProduction": "Producción de comida",
-    "card.stat.foodConsumption": "Consumo de comida",
-    "card.stat.larvaeProduction": "Producción de larvas",
+    "card.stat.foodProduction": "Producción",
+    "card.stat.totalProduction": "Producción total",
+    "card.stat.foodConsumption": "Consumo",
+    "card.stat.larvaeProduction": "Producción",
     "card.stat.upkeep": "Mantenimiento",
     "card.stat.recovery": "Pausa de recuperación",
     "card.stat.foodLimit": "Límite de comida",
@@ -142,10 +143,10 @@ I18N.register("es", {
     "expedition.scoutLockedTitle": "La exploradora realiza las expediciones automáticamente.",
 
     /* ---------- Unidades ---------- */
-    "unit.ant.name": "Hormiga",
+    "unit.ant.name": "Hormiga (A)",
     "unit.ant.desc": "Recolecta comida para tu colonia.",
     "unit.ant.buy": "Comprar hormiga",
-    "unit.queen.name": "Reina",
+    "unit.queen.name": "Reina (Q)",
     "unit.queen.desc": "Pone las larvas de las que nacen nuevas hormigas.",
     "unit.queen.buy": "Comprar reina",
     "unit.scout.name": "Exploradora",
@@ -156,6 +157,12 @@ I18N.register("es", {
     "unit.grandNurse.desc": "Duplica el almacén de larvas.",
     "unit.broodExpert.name": "Experta en cría",
     "unit.broodExpert.desc": "Cría hormigas nuevas a partir de larvas.",
+    "unit.broodExpert.on": "Activa",
+    "unit.broodExpert.off": "Inactiva",
+    "unit.broodExpert.switchOn": "Activar expertas en cría",
+    "unit.broodExpert.switchOff": "Desactivar expertas en cría",
+    "status.broodExpert.on": "Las expertas en cría están activadas.",
+    "status.broodExpert.off": "Las expertas en cría están desactivadas.",
     "unit.soldier.name": "Soldado de élite",
     "unit.soldier.desc": "Asegura territorio en las expediciones.\nNecesario para la expansión.",
 
@@ -194,6 +201,7 @@ I18N.register("es", {
     "status.expedition.success": "Expedición exitosa: se han encontrado {amount} unidades de comida.",
     "status.ant.foundCritical": "¡Éxito crítico! ¡Una hormiga se ha unido a tu colonia!",
     "status.ant.foundStray": "¡Una hormiga extraviada se ha unido a tu colonia!",
+    "status.ant.noHousing": "No hay espacio para dormir: la hormiga extraviada sigue su camino.",
     "status.scout.needAchievement": "Primero desbloquea el logro {achievement}.",
     "status.scout.alreadyTrained": "Ya has entrenado a una exploradora.",
     "status.scout.cannotAfford": "No tienes recursos suficientes para la exploradora.",
@@ -415,7 +423,7 @@ I18N.register("es", {
     "unit.builder.name": "Constructor",
     "unit.builder.desc": "Reduce los tiempos de construcción.\nRequiere la cámara de construcción.",
     "unit.ant.desc": "Consume comida de tu colonia.",
-    "unit.broodExpert.desc": "Hace eclosionar larvas en hormigas.",
+    "unit.broodExpert.desc": "Convierte 1 larva en 1 hormiga. Consume continuamente 5 de comida/s.",
     "unit.scout.on": "SÍ",
     "unit.scout.off": "NO",
     "unit.scout.switchOn": "Activar automatización",
@@ -486,13 +494,19 @@ I18N.register("es", {
     "changelog.entry.parallelTraining": "Se pueden entrenar distintos tipos de unidades en paralelo; cada tipo solo puede entrenarse una vez a la vez.",
     "changelog.entry.offlineTraining": "Los entrenamientos en curso se guardan y continúan durante el tiempo sin conexión.",
     "changelog.entry.smallCollectorReward": "El logro «Pequeño recolector» otorga inmediatamente una hormiga errante al desbloquearse.",
-    "changelog.entry.newAchievements": "Nuevos logros añadidos",
-    "changelog.entry.achievementOverview": "Resumen de logros actualizado",
+    "changelog.entry.newAchievements": "Nuevos logros añadidos.",
+    "changelog.entry.achievementOverview": "Resumen de logros actualizado.",
     "changelog.entry.collectorCosts": "Se revisan los costes de recolectores: el coste en hormigas corresponde al nivel del recolector; se mantienen los aumentos anteriores de comida y larvas.",
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",
+    "changelog.entry.scrollToTop": "La página se desplaza automáticamente hacia arriba al cambiar de sección del juego.",
+    "changelog.entry.resourceAbbreviations": "Se añadieron abreviaturas para recursos y unidades.",
+    "changelog.entry.totalProduction": "La visualización «Producción total» ahora muestra la contribución del tipo de unidad correspondiente.",
+    "changelog.entry.productionLabels": "Se unificaron las etiquetas de producción y consumo.",
+    "changelog.entry.unitBuildingTerminology": "Ahora las unidades se entrenan de forma uniforme en todo el juego y los edificios se construyen.",
+    "changelog.group.design": "Presentación",
     "changelog.group.performance": "Rendimiento",
-    "changelog.entry.performance": "Rendimiento mejorado",
+    "changelog.entry.performance": "Rendimiento mejorado.",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
     "changelog.entry.foodUpkeep": "Se ajustó el consumo de comida de los recolectores.",
     "changelog.entry.foodProduction": "Se revisaron los fundamentos de la producción de comida.",
@@ -522,38 +536,38 @@ I18N.register("es", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("es", {
-    "achievement.purchasedAnts1000.title": "Mil hormigas compradas",
-    "achievement.purchasedAnts1000.locked": "{goal} hormigas normales compradas en total",
-    "achievement.purchasedAnts1000.unlocked": "{goal} hormigas normales compradas en total",
+    "achievement.purchasedAnts1000.title": "Mil hormigas entrenadas",
+    "achievement.purchasedAnts1000.locked": "{goal} hormigas normales entrenadas en total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} hormigas normales entrenadas en total",
     "achievement.purchasedAnts1000.reward": "Recompensa: cada hormiga comprada que tengas actualmente produce +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("es", {
-    "achievement.purchasedAnts1.title": "Primera hormiga comprada",
-    "achievement.purchasedAnts1.locked": "{goal} hormiga normal comprada",
-    "achievement.purchasedAnts1.unlocked": "{goal} hormiga normal comprada",
+    "achievement.purchasedAnts1.title": "Primera hormiga entrenada",
+    "achievement.purchasedAnts1.locked": "{goal} hormiga normal entrenada",
+    "achievement.purchasedAnts1.unlocked": "{goal} hormiga normal entrenada",
     "achievement.purchasedAnts1.reward": "Descuento total: 2% en los costes de entrenamiento de hormigas normales",
-    "achievement.purchasedAnts10.title": "Diez hormigas compradas",
-    "achievement.purchasedAnts10.locked": "{goal} hormigas normales compradas",
-    "achievement.purchasedAnts10.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts10.title": "Diez hormigas entrenadas",
+    "achievement.purchasedAnts10.locked": "{goal} hormigas normales entrenadas",
+    "achievement.purchasedAnts10.unlocked": "{goal} hormigas normales entrenadas",
     "achievement.purchasedAnts10.reward": "Descuento total: 5% en los costes de entrenamiento de hormigas normales",
-    "achievement.purchasedAnts50.title": "Cincuenta hormigas compradas",
-    "achievement.purchasedAnts50.locked": "{goal} hormigas normales compradas",
-    "achievement.purchasedAnts50.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts50.title": "Cincuenta hormigas entrenadas",
+    "achievement.purchasedAnts50.locked": "{goal} hormigas normales entrenadas",
+    "achievement.purchasedAnts50.unlocked": "{goal} hormigas normales entrenadas",
     "achievement.purchasedAnts50.reward": "Descuento total: 7,5% en los costes de entrenamiento de hormigas normales",
-    "achievement.purchasedAnts100.title": "Cien hormigas compradas",
-    "achievement.purchasedAnts100.locked": "{goal} hormigas normales compradas",
-    "achievement.purchasedAnts100.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts100.title": "Cien hormigas entrenadas",
+    "achievement.purchasedAnts100.locked": "{goal} hormigas normales entrenadas",
+    "achievement.purchasedAnts100.unlocked": "{goal} hormigas normales entrenadas",
     "achievement.purchasedAnts100.reward": "Descuento total: 10% en los costes de entrenamiento de hormigas normales",
-    "achievement.purchasedAnts250.title": "Doscientas cincuenta hormigas compradas",
-    "achievement.purchasedAnts250.locked": "{goal} hormigas normales compradas",
-    "achievement.purchasedAnts250.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts250.title": "Doscientas cincuenta hormigas entrenadas",
+    "achievement.purchasedAnts250.locked": "{goal} hormigas normales entrenadas",
+    "achievement.purchasedAnts250.unlocked": "{goal} hormigas normales entrenadas",
     "achievement.purchasedAnts250.reward": "Descuento total: 15% en los costes de entrenamiento de hormigas normales",
-    "achievement.purchasedAnts500.title": "Quinientas hormigas compradas",
-    "achievement.purchasedAnts500.locked": "{goal} hormigas normales compradas",
-    "achievement.purchasedAnts500.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts500.title": "Quinientas hormigas entrenadas",
+    "achievement.purchasedAnts500.locked": "{goal} hormigas normales entrenadas",
+    "achievement.purchasedAnts500.unlocked": "{goal} hormigas normales entrenadas",
     "achievement.purchasedAnts500.reward": "Descuento total: 25% en los costes de entrenamiento de hormigas normales"
 });
 
@@ -577,4 +591,67 @@ I18N.register("es", {
 I18N.register("es", {
     "achievements.series.completedExpeditions": "Expediciones completadas",
     "achievements.series.expeditionFailures": "Contratiempos de expedición"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("es", {
+    "changelog.entry.unitTrainingTerminology": "Las unidades se describen de forma uniforme como entrenadas en los logros y los textos del juego.",
+    "changelog.entry.buildingTerminology": "Los edificios se describen de forma uniforme como construidos en los logros y los textos del juego."
+});
+
+I18N.register("es", {
+    "status.unit.trainingQueued": "{count}× {unit} añadido(s) a la cola de entrenamiento.",
+    "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("es", {
+    "status.basic.maxReached": "Ya has entrenado el número máximo de esta unidad básica.",
+    "status.build.queued": "{count}× {structure} añadido(s) a la cola de construcción.",
+    "category.eliteStructures": "Estructuras de élite",
+    "category.structureUpgrades": "Mejoras de estructuras",
+    "card.type.structureUpgrade": "Mejora de estructura",
+    "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad.",
+    "changelog.entry.batchConstruction": "Se añadieron colas de construcción por lotes para los edificios.",
+    "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
+    "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor.",
+    "changelog.entry.broodExpertRebalance": "Experta en cría ajustada.",
+    "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo.",
+    "tooltip.preview.expectedProduction": "Aumento de producción previsto",
+    "tooltip.preview.expectedCosts": "Costes previstos",
+    "tooltip.preview.expectedDuration": "Duración prevista",
+    "tooltip.preview.effect": "Efecto adicional",
+    "tooltip.preview.cost": "Coste total",
+    "tooltip.preview.capacity": "de capacidad",
+    "changelog.entry.actionPreview": "Los tooltips dinámicos muestran efectos, costes totales y duración para acciones individuales y lotes de 10×, 25× y MAX.",
+    "changelog.entry.housingCostScaling": "Costes de la Cámara de Vivienda ajustados.",
+    "changelog.entry.strayAntHousing": "Las hormigas extraviadas solo se unen si hay suficiente espacio disponible.",
+    "tooltip.preview.production.food": "Producción de alimento",
+    "tooltip.preview.production.larvae": "Producción de larvas",
+    "tooltip.preview.consumption.food": "Consumo de alimento",
+    "tooltip.preview.consumption.larvae": "Consumo de larvas",
+    "tooltip.preview.ants": "hormigas",
+    "tooltip.preview.queens": "reinas",
+    "tooltip.preview.production.food": "Producción de alimento",
+    "tooltip.preview.production.larvae": "Producción de larvas",
+    "tooltip.preview.consumption.food": "Consumo de alimento",
+    "tooltip.preview.consumption.larvae": "Consumo de larvas",
+    "tooltip.preview.housingUsed": "Alojamiento necesario",
+    "tooltip.preview.buildSpeed": "Reducción del tiempo de construcción",
+    "tooltip.preview.housingCapacity": "Alojamiento adicional",
+    "tooltip.preview.builderLimit": "Límite de constructores",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("es", {
+    "status.versionUpdateAvailable": "¡Nueva versión disponible! ¡Disfruta de las novedades!"
+});
+
+I18N.register("es", {
+    "options.tooltips": "Tooltips de acción",
+    "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
+    "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
 });

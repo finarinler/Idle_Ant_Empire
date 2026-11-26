@@ -37,8 +37,7 @@ const DOM_IDS = {
 
     // Kategorien / Karten, die freigeschaltet werden
     catBasisStructures: "cat-basis-structures",
-    catEliteUnits: "cat-elite-units",
-    cardScout: "card-scout"
+    catEliteUnits: "cat-elite-units"
 };
 
 /**

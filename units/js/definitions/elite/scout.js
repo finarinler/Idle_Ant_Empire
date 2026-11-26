@@ -1,6 +1,6 @@
 /* =========================
     Späher (Definition)
-    Maximal 1, Wohnraum 5. Gekauft wird im Expeditionsfenster.
+    Maximal 1, Wohnraum 5. Wird unter Elite-Einheiten ausgebildet.
     ON automatisiert das bestehende Expeditionssystem, OFF lässt die manuelle Bedienung unverändert.
     Expeditionen laufen offline nicht.
 ========================= */
@@ -12,7 +12,8 @@ UnitRegistry.register({
     housing: 5,
     maxCount: BALANCE.carriedOver.scout.maxCount,
 
-    consumption: [],
+    // 18 Nahrung pro Minute = 0,3 Nahrung/s; bei deaktivierter Automatik 0,1 Nahrung/s.
+    consumption: [{ resource: "food", rate: () => 0.3 * (GameState.expedition.scoutEnabled === false ? 1 / 3 : 1), kind: "survival" }],
     production: [],
     refund: { food: BALANCE.refunds["scout"] },
 

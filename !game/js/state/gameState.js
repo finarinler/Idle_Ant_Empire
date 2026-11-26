@@ -48,14 +48,17 @@ const GameState = {
         lastUpdateMs: 0,
         deathTimers: {},
         hatch: { active: false, remaining: 0, duration: 0 },
+        broodExpertEnabled: true,
         trainings: {},
+        trainingQueues: {},
         unmet: { food: Big(0), larvae: Big(0) }   // nicht erfüllter Verbrauch (kumuliert)
     },
 
     // Zwei unabhängige Bauplätze: free = ohne Baumeisterpflicht, builder = mit Baumeisterpflicht
     construction: {
         free: null,
-        builder: null
+        builder: null,
+        queues: {}
     },
 
     stats: {
@@ -65,6 +68,10 @@ const GameState = {
         failedExpeditionsCount: 0,
         totalPlayTimeSeconds: 0,
         totalPurchasedAnts: 0
+    },
+
+    research: {
+        housingUpgrade: false
     },
 
     achievements: {

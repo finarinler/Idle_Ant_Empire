@@ -10,7 +10,7 @@
     {
         id, group,                 // group = data-card-group des Ziel-Containers
         icon, symbolClass, type, name, desc,    // Textangaben: "Text" | { key, params } | Funktion dazu
-        startsHidden,              // Karte beim Start ausblenden (z. B. Kundschafterin)
+        startsHidden,              // Karte beim Start ausblenden (falls erforderlich)
         count: { value, max },     // Bestandsanzeige oben rechts (optional)
         stats: [{ label, value, tone }],
         costLabel,                 // optional, Standard: card.label.cost
@@ -32,6 +32,26 @@ const CardBuilder = (function ()
 
     const groups = new Map();   // Gruppen-ID -> Einträge
     const mounted = [];         // { entry, nodes }
+    const PREVIEW_ENABLED_KEY = "iae_action_tooltips_enabled";
+    let previewsEnabled = (() => { try { return localStorage.getItem(PREVIEW_ENABLED_KEY) !== "false"; } catch (_) { return true; } })();
+
+    function statPriority(stat)
+    {
+        const key = stat && stat.label && stat.label.key || "";
+        // Produktionswert -> zugehöriger Bonus -> Verbrauch -> Gesamtproduktion -> Rest.
+        if (key === "card.stat.foodProduction" || key === "card.stat.larvaeProduction") { return 0; }
+        if (/bonus/i.test(key)) { return 1; }
+        if (key === "card.stat.foodConsumption" || key === "card.stat.upkeep") { return 2; }
+        if (key === "card.stat.totalProduction") { return 3; }
+        return 4;
+    }
+
+    function orderedStats(stats)
+    {
+        return (stats || []).map((stat, index) => ({ stat, index }))
+            .sort((a, b) => statPriority(a.stat) - statPriority(b.stat) || a.index - b.index)
+            .map(item => item.stat);
+    }
 
     const STATE_LABEL_KEYS = {
         locked: "button.locked",
@@ -105,6 +125,76 @@ const CardBuilder = (function ()
         return node;
     }
 
+    function hidePreview(nodes)
+    {
+        if (nodes.preview) { nodes.preview.hidden = true; }
+    }
+
+    function showPreview(entry, nodes, requested)
+    {
+        if (!previewsEnabled || !nodes.preview || !entry.action.preview || (entry.id === "scout" && hasScout())) { return; }
+        let quantity = requested === "max" ? entry.action.batchOptions().max : Number(requested);
+        if (!Number.isFinite(quantity) || quantity < 1) { hidePreview(nodes); return; }
+        const preview = Economy.getActionPreview(entry.action.preview.kind, entry.action.preview.id, quantity);
+        if (!preview.quantity) { hidePreview(nodes); return; }
+
+        const lines = [];
+        const unit = preview.quantity === 1 ? "" : ` · ${preview.quantity}×`;
+        const resourceNames = { food: "F", larvae: "L", ants: "A", queens: "K" };
+
+        // 1) Erwartete Mehrproduktion und weitere positive Effekte
+        lines.push(`${I18N.t("tooltip.preview.expectedProduction")}${unit}`);
+        RESOURCE_IDS.forEach(resource =>
+        {
+            const produced = preview.produced[resource];
+            const consumed = preview.consumed[resource];
+            if (produced && produced.isPositive()) { lines.push(`${I18N.t("tooltip.preview.production." + resource)}: +${formatRate(produced)} ${resourceNames[resource]}/s`); }
+            if (consumed && consumed.isPositive()) { lines.push(`${I18N.t("tooltip.preview.consumption." + resource)}: −${formatRate(consumed)} ${resourceNames[resource]}/s`); }
+            const capacity = preview.capacity[resource];
+            if (capacity && capacity.isPositive()) { lines.push(`+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}`); }
+        });
+
+        if (entry.action.preview.kind === "unit")
+        {
+            const unitDef = UnitRegistry.get(entry.action.preview.id);
+            if (unitDef.housing > 0) { lines.push(I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity)); }
+            if (entry.action.preview.id === "builder")
+            {
+                const before = Economy.getUnitNumber("builder");
+                const after = Math.min(BALANCE.builder.maxBuilders, before + preview.quantity);
+                const reduction = (after - before) * BALANCE.builder.reductionPerBuilder;
+                if (reduction > 0) { lines.push(I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %"); }
+            }
+        }
+        else if (entry.action.preview.id === "housing-chamber") { lines.push(I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity)); }
+        else if (entry.action.preview.id === "construction-chamber") { lines.push(I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity)); }
+
+        // 2) Erwartete Gesamtkosten
+        lines.push(I18N.t("tooltip.preview.expectedCosts"));
+        Object.keys(resourceNames).forEach(resource =>
+        {
+            const value = preview.costs[resource];
+            if (!value || !value.isPositive()) { return; }
+            const label = resource === "food" ? I18N.t("resource.food")
+                : resource === "larvae" ? I18N.t("resource.larvae")
+                : resource === "ants" ? I18N.t("tooltip.preview.ants")
+                : I18N.t("tooltip.preview.queens");
+            lines.push(`${formatGameNumber(value)} ${label}`);
+        });
+
+        // 3) Erwartete Gesamtdauer
+        lines.push(`${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}`);
+        nodes.preview.textContent = "";
+        lines.forEach((line, index) =>
+        {
+            const row = document.createElement("div");
+            row.textContent = line;
+            if (index === 0 || line === I18N.t("tooltip.preview.expectedCosts")) { row.className = "iae-card-preview-heading"; }
+            nodes.preview.appendChild(row);
+        });
+        nodes.preview.hidden = false;
+    }
+
     /* ---------- Karte erzeugen ---------- */
 
     function buildCard(entry)
@@ -142,10 +232,11 @@ const CardBuilder = (function ()
         {
             const stats = create("div", "iae-card-stats", card);
 
-            entry.stats.forEach(stat =>
+            orderedStats(entry.stats).forEach(stat =>
             {
                 const row = create("div", `iae-card-stat${stat.tone ? " tone-" + stat.tone : ""}`, stats);
                 nodes.stats.push({
+                    row,
                     label: create("span", null, row),
                     value: create("strong", null, row)
                 });
@@ -153,12 +244,14 @@ const CardBuilder = (function ()
         }
 
         const costBlock = create("div", "iae-card-cost", card);
+        nodes.costBlock = costBlock;
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
         // Fester Platzhalter sorgt dafür, dass Kosten, Fortschritt und Button
         // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
         const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
+        nodes.progress = progress;
 
         if (entry.progressId)
         {
@@ -193,6 +286,51 @@ const CardBuilder = (function ()
             nodes.button.addEventListener("click", () => entry.action.run());
         }
 
+        if (entry.toggleAction)
+        {
+            nodes.toggleButton = create("button", "iae-card-action iae-card-toggle-action", card, { type: "button" });
+            nodes.toggleButtonLabel = create("span", "iae-card-action-label", nodes.toggleButton);
+            create("span", "iae-card-action-glyph", nodes.toggleButton, { "aria-hidden": "true" });
+            nodes.toggleButton.addEventListener("click", () => entry.toggleAction.run());
+            // Brut-Expertin: An/Aus-Schalter oberhalb des Ausbildungsbuttons platzieren.
+            card.insertBefore(nodes.toggleButton, nodes.button);
+        }
+        if (entry.action && entry.action.preview)
+        {
+            nodes.button.dataset.previewQuantity = "1";
+            nodes.button.addEventListener("mouseenter", () => showPreview(entry, nodes, 1));
+            nodes.button.addEventListener("focus", () => showPreview(entry, nodes, 1));
+            nodes.button.addEventListener("blur", () => hidePreview(nodes));
+        }
+
+        if (entry.action && typeof entry.action.batchOptions === "function" && typeof entry.action.batchRun === "function")
+        {
+            nodes.batch = create("div", "iae-card-batch-actions", card);
+            nodes.batchButtons = {};
+            [["10", 10], ["25", 25], ["MAX", "max"]].forEach(([label, amount]) =>
+            {
+                const button = create("button", "iae-card-action iae-card-batch-btn", nodes.batch, { type: "button" });
+                const buttonLabel = create("span", "iae-card-action-label", button);
+                buttonLabel.textContent = label;
+                create("span", "iae-card-action-glyph", button, { "aria-hidden": "true" });
+                button.addEventListener("click", () => entry.action.batchRun(amount));
+                if (entry.action.preview)
+                {
+                    button.addEventListener("mouseenter", () => showPreview(entry, nodes, amount));
+                    button.addEventListener("focus", () => showPreview(entry, nodes, amount));
+                    button.addEventListener("blur", () => hidePreview(nodes));
+                }
+                nodes.batchButtons[label] = button;
+            });
+        }
+
+        if (entry.action && entry.action.preview)
+        {
+            nodes.preview = create("div", "iae-card-preview", card, { role: "tooltip", "aria-live": "polite" });
+            nodes.preview.hidden = true;
+            card.addEventListener("mouseleave", () => hidePreview(nodes));
+        }
+
         nodes.hint = create("p", "iae-card-hint", card);
 
         return nodes;
@@ -222,10 +360,17 @@ const CardBuilder = (function ()
             setText(nodes.countMax, max === "" ? "" : ` / ${max}`);
         }
 
-        (entry.stats || []).forEach((stat, index) =>
+        orderedStats(entry.stats).forEach((stat, index) =>
         {
             setText(nodes.stats[index].label, stat.label);
             setText(nodes.stats[index].value, stat.value);
+
+            // Positive Effekte bleiben grün; negative Werte werden als Warnung markiert.
+            // Explizit positive Boni (z. B. Zeitersparnis mit Minuszeichen) behalten Vorrang.
+            const valueText = nodes.stats[index].value.textContent.trim();
+            const isNegative = !stat.tone && /^[−-]/.test(valueText);
+            nodes.stats[index].row.classList.toggle("tone-positive", stat.tone === "positive");
+            nodes.stats[index].row.classList.toggle("tone-negative", isNegative);
         });
 
         setText(nodes.costLabel, entry.costLabel || { key: "card.label.cost" });
@@ -241,6 +386,11 @@ const CardBuilder = (function ()
             nodes.cost.removeAttribute("data-cost-signature");
             setText(nodes.cost, cost);
         }
+
+        // Bei dauerhaft ausgeschöpften Karten sind Kosten und Fortschritt nicht mehr relevant.
+        const limitReached = state === "max" || state === "built" || (typeof entry.limitReached === "function" && entry.limitReached());
+        nodes.costBlock.hidden = limitReached;
+        nodes.progress.hidden = limitReached;
 
         const action = entry.action || {};
         let label = action.label;
@@ -261,7 +411,36 @@ const CardBuilder = (function ()
         setText(nodes.buttonLabel, label);
         nodes.button.disabled = state !== "available";
 
+        if (nodes.toggleButton)
+        {
+            const toggleVisible = typeof entry.toggleAction.visible === "function"
+                ? entry.toggleAction.visible()
+                : true;
+            nodes.toggleButton.hidden = !toggleVisible;
+            if (toggleVisible)
+            {
+                setText(nodes.toggleButtonLabel, entry.toggleAction.label);
+                nodes.toggleButton.disabled = false;
+            }
+        }
+
         setText(nodes.hint, status.hint || "");
+
+        if (nodes.batchButtons)
+        {
+            const options = entry.action.batchOptions();
+            const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon" && state !== "training";
+            // Alle Mehrkauf-Buttons bleiben sichtbar; jede Menge ist nur aktiv,
+            // wenn sie vollständig finanzierbar und verfügbar ist.
+            // Bei erreichtem Einheiten-/Gebäudemaximum sind Mehrkauf-Optionen nicht mehr relevant.
+            nodes.batch.hidden = limitReached;
+            nodes.batchButtons["10"].hidden = limitReached;
+            nodes.batchButtons["25"].hidden = limitReached;
+            nodes.batchButtons.MAX.hidden = limitReached;
+            nodes.batchButtons["10"].disabled = !canUse || !options.ten;
+            nodes.batchButtons["25"].disabled = !canUse || !options.twentyFive;
+            nodes.batchButtons.MAX.disabled = !canUse || options.max < 1;
+        }
 
         if (entry.stepper)
         {
@@ -323,5 +502,14 @@ const CardBuilder = (function ()
         });
     }
 
-    return { register, mountAll, updateAll };
+    function setPreviewsEnabled(enabled)
+    {
+        previewsEnabled = Boolean(enabled);
+        try { localStorage.setItem(PREVIEW_ENABLED_KEY, String(previewsEnabled)); } catch (_) {}
+        if (!previewsEnabled) { mounted.forEach(({ nodes }) => hidePreview(nodes)); }
+    }
+
+    function arePreviewsEnabled() { return previewsEnabled; }
+
+    return { register, mountAll, updateAll, setPreviewsEnabled, arePreviewsEnabled };
 })();

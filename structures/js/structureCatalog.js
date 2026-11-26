@@ -12,9 +12,23 @@
     const SECOND = () => I18N.t("statistics.unit.second");
     const COST_ORDER = ["larvae", "ants", "queens", "food"];
 
+    const totalProductionStat = resource => ({
+        label: { key: "card.stat.totalProduction" },
+        value: () =>
+        {
+            const total = Economy.computeFlows().produced[resource].roundTo(1);
+            const abbreviation = resource === "food" ? "F" : "L";
+            return `${total.isPositive() ? "+" : ""}${formatRate(total)} [[${abbreviation}]]/s`;
+        },
+        tone: "positive"
+    });
+
     const buildAction = (structureId) => ({
         label: { key: "button.build" },
         missingLabel: { key: "button.build" },
+        preview: { kind: "structure", id: structureId },
+        batchOptions: () => Economy.getProjectBatchOptions(structureId),
+        batchRun: amount => startStructureProjectBatch(structureId, amount),
         run: () => startStructureProject(structureId, "build")
     });
 
@@ -73,11 +87,90 @@
             status: () => projectStatus("housing-chamber", "build")
         },
         {
-            id: "housing-upgrade",
-            startsHidden: true,
-            visible: () => Boolean(GameState.achievements.knowledgeIsPower),
-            icon: "⇧",
+            id: "mushroom-farm",
+            icon: "❀",
             type: { key: "card.type.structureBasic" },
+            name: { key: "structure.mushroomFarm.name" },
+            desc: { key: "structure.mushroomFarm.desc" },
+            count: { value: () => GameState.structures.mushroomFarmCount },
+            stats: [
+                { label: { key: "card.stat.foodProduction" }, value: () => `+${formatDecimal(BALANCE.mushroomFarm.foodPerSecond, 0)} [[F]]/s`, tone: "positive" },
+                { label: { key: "card.stat.mushroomFarmTotalBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getProductionBonus("mushroom-farm", "food") * 100, 1)} %`, tone: "positive" },
+                totalProductionStat("food"),
+                buildTimeStat("mushroom-farm", "build")
+            ],
+            progressId: "progress-mushroom",
+            cost: buildCost("mushroom-farm", ["food"]),
+            action: buildAction("mushroom-farm"),
+            status: () => projectStatus("mushroom-farm", "build")
+        },
+        {
+            id: "construction",
+            icon: "⚒",
+            type: { key: "card.type.structureBasic" },
+            name: { key: "structure.construction.name" },
+            desc: { key: "structure.construction.desc" },
+            count: { value: () => GameState.structures.constructionLevel, max: BALANCE.builder.maxBuilders },
+            stats: [
+                { label: { key: "card.stat.builderLimit" }, value: () => formatGameNumber(GameState.structures.constructionLevel), tone: "positive" },
+                buildTimeStat("construction-chamber", "build")
+            ],
+            progressId: "progress-construction",
+            cost: buildCost("construction-chamber"),
+            action: buildAction("construction-chamber"),
+            status: () => projectStatus("construction-chamber", "build")
+        },
+        {
+            id: "storage",
+            icon: "⌂",
+            type: { key: "card.type.structureBasic" },
+            name: { key: "structure.storage.name" },
+            desc: { key: "structure.storage.desc" },
+            count: { value: () => GameState.structures.storageCount, max: 1 },
+            stats: [
+                { label: { key: "card.stat.foodLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.storageRoom.totalFoodCapacity), tone: "positive" },
+                buildTimeStat("storage-room", "build")
+            ],
+            progressId: "progress-storage",
+            cost: buildCost("storage-room", ["larvae", "ants", "food"]),
+            action: buildAction("storage-room"),
+            status: () => projectStatus("storage-room", "build")
+        },
+        {
+            id: "nursery",
+            icon: "⌂",
+            type: { key: "card.type.structureBasic" },
+            name: { key: "structure.nursery.name" },
+            desc: { key: "structure.nursery.desc" },
+            count: { value: () => GameState.structures.nurseryCount, max: 1 },
+            stats: [
+                { label: { key: "card.stat.larvaeLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.broodChamber.totalLarvaeCapacity), tone: "positive" },
+                buildTimeStat("brood-chamber", "build")
+            ],
+            progressId: "progress-nursery",
+            cost: buildCost("brood-chamber", ["larvae", "ants", "food"]),
+            action: buildAction("brood-chamber"),
+            status: () => projectStatus("brood-chamber", "build")
+        },
+        {
+            id: "royal-chamber",
+            icon: "♕",
+            type: { key: "card.type.structureBasic" },
+            name: { key: "structure.royalChamber.name" },
+            desc: { key: "structure.royalChamber.desc" },
+            cost: "???",
+            action: { label: { key: "button.locked" } },
+            status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
+        }
+    ]);
+
+    CardBuilder.register("structures-elite", []);
+
+    CardBuilder.register("structures-upgrades", [
+        {
+            id: "housing-upgrade",
+            icon: "⇧",
+            type: { key: "card.type.structureUpgrade" },
             name: { key: "structure.housingUpgrade.name" },
             desc: { key: "structure.housingUpgrade.desc" },
             count: { value: () => GameState.structures.housingLevel, max: BALANCE.housing.maxLevel },
@@ -113,81 +206,6 @@
             status: () => GameState.structures.housingLevel >= BALANCE.housing.maxLevel
                 ? { state: "max", hint: { key: "status.elite.maxReached" } }
                 : projectStatus("housing-chamber", "upgrade", clampHousingTarget())
-        },
-        {
-            id: "mushroom-farm",
-            icon: "❀",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.mushroomFarm.name" },
-            desc: { key: "structure.mushroomFarm.desc" },
-            count: { value: () => GameState.structures.mushroomFarmCount },
-            stats: [
-                { label: { key: "card.stat.foodProduction" }, value: () => `+${formatDecimal(BALANCE.mushroomFarm.foodPerSecond, 0)} [[F]]/s`, tone: "positive" },
-                { label: { key: "card.stat.mushroomFarmTotalBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getProductionBonus("mushroom-farm", "food") * 100, 1)} %`, tone: "positive" },
-                buildTimeStat("mushroom-farm", "build")
-            ],
-            progressId: "progress-mushroom",
-            cost: buildCost("mushroom-farm", ["food"]),
-            action: buildAction("mushroom-farm"),
-            status: () => projectStatus("mushroom-farm", "build")
-        },
-        {
-            id: "storage",
-            icon: "⌂",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.storage.name" },
-            desc: { key: "structure.storage.desc" },
-            count: { value: () => GameState.structures.storageCount, max: 1 },
-            stats: [
-                { label: { key: "card.stat.foodLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.storageRoom.totalFoodCapacity), tone: "positive" },
-                buildTimeStat("storage-room", "build")
-            ],
-            progressId: "progress-storage",
-            cost: buildCost("storage-room", ["larvae", "ants", "food"]),
-            action: buildAction("storage-room"),
-            status: () => projectStatus("storage-room", "build")
-        },
-        {
-            id: "nursery",
-            icon: "⌂",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.nursery.name" },
-            desc: { key: "structure.nursery.desc" },
-            count: { value: () => GameState.structures.nurseryCount, max: 1 },
-            stats: [
-                { label: { key: "card.stat.larvaeLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.broodChamber.totalLarvaeCapacity), tone: "positive" },
-                buildTimeStat("brood-chamber", "build")
-            ],
-            progressId: "progress-nursery",
-            cost: buildCost("brood-chamber", ["larvae", "ants", "food"]),
-            action: buildAction("brood-chamber"),
-            status: () => projectStatus("brood-chamber", "build")
-        },
-        {
-            id: "construction",
-            icon: "⚒",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.construction.name" },
-            desc: { key: "structure.construction.desc" },
-            count: { value: () => GameState.structures.constructionLevel, max: BALANCE.builder.maxBuilders },
-            stats: [
-                { label: { key: "card.stat.builderLimit" }, value: () => formatGameNumber(GameState.structures.constructionLevel), tone: "positive" },
-                buildTimeStat("construction-chamber", "build")
-            ],
-            progressId: "progress-construction",
-            cost: buildCost("construction-chamber"),
-            action: buildAction("construction-chamber"),
-            status: () => projectStatus("construction-chamber", "build")
-        },
-        {
-            id: "royal-chamber",
-            icon: "♕",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.royalChamber.name" },
-            desc: { key: "structure.royalChamber.desc" },
-            cost: "???",
-            action: { label: { key: "button.locked" } },
-            status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
         }
     ]);
 })();

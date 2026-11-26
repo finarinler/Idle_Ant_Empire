@@ -98,9 +98,9 @@ I18N.register("fr", {
     "loading.scriptError": "Échec du chargement de\u00a0: {path}",
 
     /* ---------- Ressources ---------- */
-    "resource.food": "Nourriture",
+    "resource.food": "Nourriture (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larves",
+    "resource.larvae": "Larves (L)",
 
     /* ---------- Interface générale ---------- */
     "card.type.unitBasic": "Unité · Basique",
@@ -108,9 +108,10 @@ I18N.register("fr", {
     "card.type.structureBasic": "Bâtiment · Basique",
     "card.label.cost": "Coût",
     "card.stat.bought": "Achetées",
-    "card.stat.foodProduction": "Production de nourriture",
-    "card.stat.foodConsumption": "Consommation de nourriture",
-    "card.stat.larvaeProduction": "Production de larves",
+    "card.stat.foodProduction": "Production",
+    "card.stat.totalProduction": "Production totale",
+    "card.stat.foodConsumption": "Consommation",
+    "card.stat.larvaeProduction": "Production",
     "card.stat.upkeep": "Entretien",
     "card.stat.recovery": "Pause de récupération",
     "card.stat.foodLimit": "Limite de nourriture",
@@ -142,10 +143,10 @@ I18N.register("fr", {
     "expedition.scoutLockedTitle": "L’éclaireuse mène les expéditions automatiquement.",
 
     /* ---------- Unités ---------- */
-    "unit.ant.name": "Fourmi",
+    "unit.ant.name": "Fourmi (A)",
     "unit.ant.desc": "Récolte de la nourriture pour ta colonie.",
     "unit.ant.buy": "Acheter une fourmi",
-    "unit.queen.name": "Reine",
+    "unit.queen.name": "Reine (Q)",
     "unit.queen.desc": "Pond les larves dont naissent de nouvelles fourmis.",
     "unit.queen.buy": "Acheter une reine",
     "unit.scout.name": "Éclaireuse",
@@ -156,6 +157,12 @@ I18N.register("fr", {
     "unit.grandNurse.desc": "Double le stock de larves.",
     "unit.broodExpert.name": "Experte du couvain",
     "unit.broodExpert.desc": "Élève de nouvelles fourmis à partir des larves.",
+    "unit.broodExpert.on": "Activées",
+    "unit.broodExpert.off": "Désactivées",
+    "unit.broodExpert.switchOn": "Activer les expertes en couvain",
+    "unit.broodExpert.switchOff": "Désactiver les expertes en couvain",
+    "status.broodExpert.on": "Les expertes en couvain sont activées.",
+    "status.broodExpert.off": "Les expertes en couvain sont désactivées.",
     "unit.soldier.name": "Soldat d’élite",
     "unit.soldier.desc": "Sécurise le territoire lors des expéditions.\nIndispensable pour l’expansion.",
 
@@ -194,6 +201,7 @@ I18N.register("fr", {
     "status.expedition.success": "Expédition réussie\u00a0: {amount} unités de nourriture trouvées.",
     "status.ant.foundCritical": "Réussite critique\u00a0! Une fourmi a rejoint ta colonie\u00a0!",
     "status.ant.foundStray": "Une fourmi égarée a rejoint ta colonie\u00a0!",
+    "status.ant.noHousing": "Il n’y a pas de place pour dormir : la fourmi égarée poursuit son chemin.",
     "status.scout.needAchievement": "Débloque d’abord le succès {achievement}.",
     "status.scout.alreadyTrained": "Tu as déjà entraîné une éclaireuse.",
     "status.scout.cannotAfford": "Les ressources ne suffisent pas pour l’éclaireuse.",
@@ -415,7 +423,7 @@ I18N.register("fr", {
     "unit.builder.name": "Bâtisseur",
     "unit.builder.desc": "Réduit les temps de construction.\nNécessite la chambre de construction.",
     "unit.ant.desc": "Consomme de la nourriture pour ta colonie.",
-    "unit.broodExpert.desc": "Fait éclore les larves en fourmis.",
+    "unit.broodExpert.desc": "Transforme 1 larve en 1 fourmi. Consomme continuellement 5 nourriture/s.",
     "unit.scout.on": "OUI",
     "unit.scout.off": "NON",
     "unit.scout.switchOn": "Activer l'automatisation",
@@ -486,13 +494,19 @@ I18N.register("fr", {
     "changelog.entry.parallelTraining": "Différents types d’unités peuvent être entraînés en parallèle ; un seul entraînement simultané par type.",
     "changelog.entry.offlineTraining": "Les entraînements en cours sont sauvegardés et se poursuivent hors ligne.",
     "changelog.entry.smallCollectorReward": "Le succès « Petit collecteur » offre immédiatement une fourmi errante lors de son déverrouillage.",
-    "changelog.entry.newAchievements": "Nouveaux succès ajoutés",
-    "changelog.entry.achievementOverview": "Aperçu des succès remanié",
+    "changelog.entry.newAchievements": "Nouveaux succès ajoutés.",
+    "changelog.entry.achievementOverview": "Aperçu des succès remanié.",
     "changelog.entry.collectorCosts": "Coûts des collectrices révisés : le coût en fourmis correspond désormais au niveau de collectrice ; les augmentations précédentes de nourriture et de larves sont conservées.",
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
+    "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
+    "changelog.entry.resourceAbbreviations": "Ajout d’abréviations pour les ressources et les unités.",
+    "changelog.entry.totalProduction": "L’affichage « Production totale » indique désormais la contribution du type d’unité concerné.",
+    "changelog.entry.productionLabels": "Les libellés de production et de consommation ont été harmonisés.",
+    "changelog.entry.unitBuildingTerminology": "Les unités sont désormais entraînées de manière uniforme dans tout le jeu, et les bâtiments sont construits.",
+    "changelog.group.design": "Présentation",
     "changelog.group.performance": "Performances",
-    "changelog.entry.performance": "Performances améliorées",
+    "changelog.entry.performance": "Performances améliorées.",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
     "changelog.entry.foodUpkeep": "Consommation de nourriture des collectrices ajustée.",
     "changelog.entry.foodProduction": "Les bases de la production de nourriture ont été révisées.",
@@ -522,38 +536,38 @@ I18N.register("fr", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("fr", {
-    "achievement.purchasedAnts1000.title": "Mille fourmis achetées",
-    "achievement.purchasedAnts1000.locked": "{goal} fourmis normales achetées au total",
-    "achievement.purchasedAnts1000.unlocked": "{goal} fourmis normales achetées au total",
+    "achievement.purchasedAnts1000.title": "Mille fourmis entraînées",
+    "achievement.purchasedAnts1000.locked": "{goal} fourmis normales entraînées au total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} fourmis normales entraînées au total",
     "achievement.purchasedAnts1000.reward": "Récompense : chaque fourmi achetée actuellement présente produit +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("fr", {
-    "achievement.purchasedAnts1.title": "Premier achat de fourmi",
-    "achievement.purchasedAnts1.locked": "{goal} fourmi normale achetée",
-    "achievement.purchasedAnts1.unlocked": "{goal} fourmi normale achetée",
+    "achievement.purchasedAnts1.title": "Première fourmi entraînée",
+    "achievement.purchasedAnts1.locked": "{goal} fourmi normale entraînée",
+    "achievement.purchasedAnts1.unlocked": "{goal} fourmi normale entraînée",
     "achievement.purchasedAnts1.reward": "Réduction totale : 2 % sur le coût d’entraînement des fourmis normales",
-    "achievement.purchasedAnts10.title": "Dix fourmis achetées",
-    "achievement.purchasedAnts10.locked": "{goal} fourmis normales achetées",
-    "achievement.purchasedAnts10.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts10.title": "Dix fourmis entraînées",
+    "achievement.purchasedAnts10.locked": "{goal} fourmis normales entraînées",
+    "achievement.purchasedAnts10.unlocked": "{goal} fourmis normales entraînées",
     "achievement.purchasedAnts10.reward": "Réduction totale : 5 % sur le coût d’entraînement des fourmis normales",
-    "achievement.purchasedAnts50.title": "Cinquante fourmis achetées",
-    "achievement.purchasedAnts50.locked": "{goal} fourmis normales achetées",
-    "achievement.purchasedAnts50.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts50.title": "Cinquante fourmis entraînées",
+    "achievement.purchasedAnts50.locked": "{goal} fourmis normales entraînées",
+    "achievement.purchasedAnts50.unlocked": "{goal} fourmis normales entraînées",
     "achievement.purchasedAnts50.reward": "Réduction totale : 7,5 % sur le coût d’entraînement des fourmis normales",
-    "achievement.purchasedAnts100.title": "Cent fourmis achetées",
-    "achievement.purchasedAnts100.locked": "{goal} fourmis normales achetées",
-    "achievement.purchasedAnts100.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts100.title": "Cent fourmis entraînées",
+    "achievement.purchasedAnts100.locked": "{goal} fourmis normales entraînées",
+    "achievement.purchasedAnts100.unlocked": "{goal} fourmis normales entraînées",
     "achievement.purchasedAnts100.reward": "Réduction totale : 10 % sur le coût d’entraînement des fourmis normales",
-    "achievement.purchasedAnts250.title": "Deux cent cinquante fourmis achetées",
-    "achievement.purchasedAnts250.locked": "{goal} fourmis normales achetées",
-    "achievement.purchasedAnts250.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts250.title": "Deux cent cinquante fourmis entraînées",
+    "achievement.purchasedAnts250.locked": "{goal} fourmis normales entraînées",
+    "achievement.purchasedAnts250.unlocked": "{goal} fourmis normales entraînées",
     "achievement.purchasedAnts250.reward": "Réduction totale : 15 % sur le coût d’entraînement des fourmis normales",
-    "achievement.purchasedAnts500.title": "Cinq cents fourmis achetées",
-    "achievement.purchasedAnts500.locked": "{goal} fourmis normales achetées",
-    "achievement.purchasedAnts500.unlocked": "{goal} fourmis normales achetées",
+    "achievement.purchasedAnts500.title": "Cinq cents fourmis entraînées",
+    "achievement.purchasedAnts500.locked": "{goal} fourmis normales entraînées",
+    "achievement.purchasedAnts500.unlocked": "{goal} fourmis normales entraînées",
     "achievement.purchasedAnts500.reward": "Réduction totale : 25 % sur le coût d’entraînement des fourmis normales"
 });
 
@@ -577,4 +591,67 @@ I18N.register("fr", {
 I18N.register("fr", {
     "achievements.series.completedExpeditions": "Expéditions terminées",
     "achievements.series.expeditionFailures": "Revers d’expédition"
+});
+
+
+/* ---------- Changelog terminology clarification ---------- */
+I18N.register("fr", {
+    "changelog.entry.unitTrainingTerminology": "Les unités sont désignées de manière cohérente comme entraînées dans les succès et les textes du jeu.",
+    "changelog.entry.buildingTerminology": "Les bâtiments sont désignés de manière cohérente comme construits dans les succès et les textes du jeu."
+});
+
+I18N.register("fr", {
+    "status.unit.trainingQueued": "{count}× {unit} ajouté(s) à la file de formation.",
+    "changelog.entry.batchTraining": "Ajout de files de formation par lots pour tous les types d’unités."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("fr", {
+    "status.basic.maxReached": "Vous avez déjà formé le nombre maximal de cette unité de base.",
+    "status.build.queued": "{count}× {structure} ajouté(s) à la file de construction.",
+    "category.eliteStructures": "Structures d’élite",
+    "category.structureUpgrades": "Améliorations des structures",
+    "card.type.structureUpgrade": "Amélioration de structure",
+    "changelog.entry.batchTraining": "Ajout de files de formation par lots pour tous les types d’unités.",
+    "changelog.entry.batchConstruction": "Ajout de files de construction par lots pour les bâtiments.",
+    "changelog.entry.structureCategories": "Les catégories et cartes de structures ont été réorganisées.",
+    "changelog.entry.storageBroodBuildTime": "La chambre de stockage et la chambre de couvain nécessitent chacune exactement 15 minutes de construction avec un bâtisseur.",
+    "changelog.entry.broodExpertRebalance": "Experte en couvain ajustée.",
+    "changelog.entry.hideCappedCostProgress": "Le coût et la barre de progression sont masqués pour les unités et les bâtiments ayant atteint leur maximum.",
+    "tooltip.preview.expectedProduction": "Augmentation de production prévue",
+    "tooltip.preview.expectedCosts": "Coûts prévus",
+    "tooltip.preview.expectedDuration": "Durée prévue",
+    "tooltip.preview.effect": "Effet supplémentaire",
+    "tooltip.preview.cost": "Coût total",
+    "tooltip.preview.capacity": "de capacité",
+    "changelog.entry.actionPreview": "Les info-bulles dynamiques affichent les effets, les coûts totaux et la durée des actions simples et des lots 10×, 25× et MAX.",
+    "changelog.entry.housingCostScaling": "Coût des chambres d’habitation ajusté.",
+    "changelog.entry.strayAntHousing": "Les fourmis égarées ne rejoignent la colonie que si l’espace disponible est suffisant.",
+    "tooltip.preview.production.food": "Production de nourriture",
+    "tooltip.preview.production.larvae": "Production de larves",
+    "tooltip.preview.consumption.food": "Consommation de nourriture",
+    "tooltip.preview.consumption.larvae": "Consommation de larves",
+    "tooltip.preview.ants": "fourmis",
+    "tooltip.preview.queens": "reines",
+    "tooltip.preview.production.food": "Production de nourriture",
+    "tooltip.preview.production.larvae": "Production de larves",
+    "tooltip.preview.consumption.food": "Consommation de nourriture",
+    "tooltip.preview.consumption.larvae": "Consommation de larves",
+    "tooltip.preview.housingUsed": "Logement nécessaire",
+    "tooltip.preview.buildSpeed": "Réduction du temps de construction",
+    "tooltip.preview.housingCapacity": "Logement supplémentaire",
+    "tooltip.preview.builderLimit": "Limite de bâtisseurs",
+});
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("fr", {
+    "status.versionUpdateAvailable": "Nouvelle version disponible ! Profitez des nouveautés !"
+});
+
+I18N.register("fr", {
+    "options.tooltips": "Info-bulles d’action",
+    "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
+    "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
 });
