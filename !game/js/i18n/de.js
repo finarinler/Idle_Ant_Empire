@@ -658,6 +658,10 @@ I18N.register("de", {
 
 /* ---------- 007c: action tooltip controls ---------- */
 I18N.register("de", {
+    "status.versionUpdateAvailable": "Neue Version verfügbar! Viel Spaß mit den Neuerungen!"
+});
+
+I18N.register("de", {
     "options.tooltips": "Aktions-Tooltips",
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
     "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
