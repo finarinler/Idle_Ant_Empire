@@ -627,7 +627,7 @@ I18N.register("en", {
     "tooltip.preview.cost": "Total costs",
     "tooltip.preview.capacity": "capacity",
     "changelog.entry.actionPreview": "Dynamic tooltips show effects, total costs and durations for single actions and 10×, 25× and MAX batches.",
-    "changelog.entry.housingCostScaling": "The second Housing Chamber costs 150 food. Each additional chamber becomes 10% more expensive, just like Mushroom Farms.",
+    "changelog.entry.housingCostScaling": "Housing Chamber costs adjusted.",
     "changelog.entry.strayAntHousing": "Stray ants only join when enough housing space is available.",
     "tooltip.preview.production.food": "Food production",
     "tooltip.preview.production.larvae": "Larvae production",
