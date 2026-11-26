@@ -12,6 +12,17 @@
     const SECOND = () => I18N.t("statistics.unit.second");
     const COST_ORDER = ["larvae", "ants", "queens", "food"];
 
+    const totalProductionStat = resource => ({
+        label: { key: "card.stat.totalProduction" },
+        value: () =>
+        {
+            const total = Economy.computeFlows().produced[resource].roundTo(1);
+            const abbreviation = resource === "food" ? "F" : "L";
+            return `${total.isPositive() ? "+" : ""}${formatRate(total)} [[${abbreviation}]]/s`;
+        },
+        tone: "positive"
+    });
+
     const buildAction = (structureId) => ({
         label: { key: "button.build" },
         missingLabel: { key: "button.build" },
@@ -124,6 +135,7 @@
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => `+${formatDecimal(BALANCE.mushroomFarm.foodPerSecond, 0)} [[F]]/s`, tone: "positive" },
                 { label: { key: "card.stat.mushroomFarmTotalBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getProductionBonus("mushroom-farm", "food") * 100, 1)} %`, tone: "positive" },
+                totalProductionStat("food"),
                 buildTimeStat("mushroom-farm", "build")
             ],
             progressId: "progress-mushroom",
