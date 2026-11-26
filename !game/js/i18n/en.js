@@ -157,6 +157,12 @@ I18N.register("en", {
     "unit.grandNurse.desc": "Doubles the larvae storage.",
     "unit.broodExpert.name": "Brood Expert",
     "unit.broodExpert.desc": "Breeds new ants from larvae.",
+    "unit.broodExpert.on": "On",
+    "unit.broodExpert.off": "Off",
+    "unit.broodExpert.switchOn": "Turn Brood Experts on",
+    "unit.broodExpert.switchOff": "Turn Brood Experts off",
+    "status.broodExpert.on": "Brood Experts are enabled.",
+    "status.broodExpert.off": "Brood Experts are disabled.",
     "unit.soldier.name": "Elite Soldier",
     "unit.soldier.desc": "Secures land on expeditions.\nRequired for expansion.",
 
