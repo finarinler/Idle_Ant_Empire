@@ -501,6 +501,8 @@ I18N.register("en", {
     "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
+    "changelog.group.performance": "Performance",
+    "changelog.entry.performance": "Performance improvements",
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
     "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
     "changelog.entry.foodProduction": "Core food production settings revised.",
