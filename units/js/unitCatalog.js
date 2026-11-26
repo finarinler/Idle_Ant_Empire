@@ -241,6 +241,7 @@
                     value: () => `${UnitRegistry.get("brood-expert").hatch.getSeconds(Math.max(1, GameState.eliteUnits.broodExpertCount))} ${SECOND()}`
                 },
                 { label: { key: "card.stat.hatchCost" }, value: () => `${formatGameNumber(UnitRegistry.get("brood-expert").hatch.cost.larvae)} [[L]]` },
+                survivalUpkeep("brood-expert", 0),
                 housingStat("brood-expert"),
                 trainingStat("brood-expert")
             ],
