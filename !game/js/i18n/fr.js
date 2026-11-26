@@ -237,6 +237,16 @@ I18N.register("fr", {
     "achievement.buildColony.unlocked": "Garde-manger et nurserie construits",
     "achievement.buildColony.reward": "Récompense\u00a0: unités spéciales débloquées",
 
+    "achievement.mushroomFarmTen.title": "Pionnier des champignonnières",
+    "achievement.mushroomFarmTen.locked": "Construire 10 champignonnières",
+    "achievement.mushroomFarmTen.unlocked": "Construire 10 champignonnières",
+    "achievement.mushroomFarmTen.reward": "Récompense : +1 % de production des champignonnières",
+
+    "achievement.mushroomFarmTwentyFive.title": "Empire des champignonnières",
+    "achievement.mushroomFarmTwentyFive.locked": "Construire 25 champignonnières",
+    "achievement.mushroomFarmTwentyFive.unlocked": "Construire 25 champignonnières",
+    "achievement.mushroomFarmTwentyFive.reward": "Récompense : +10 % de production totale des champignonnières",
+
     "achievement.knowledgeIsPower.title": "Le savoir, c’est le pouvoir",
     "achievement.knowledgeIsPower.locked": "Entraîner une gardienne des réserves et une grande nourrice",
     "achievement.knowledgeIsPower.unlocked": "Une gardienne des réserves et une grande nourrice entraînées",
