@@ -252,15 +252,17 @@
             progressId: "brood-expert-progress",
             cost: () => ({ values: Economy.getRecruitCost("brood-expert") }),
             action: {
-                label: () => Economy.getUnitNumber("brood-expert") > 0
-                    ? { key: isBroodExpertOn() ? "unit.broodExpert.switchOff" : "unit.broodExpert.switchOn" }
-                    : { key: "button.train" },
+                label: { key: "button.train" },
                 missingLabel: { key: "button.missingResources" },
-                keepLabel: true,
                 preview: { kind: "unit", id: "brood-expert" },
                 batchOptions: () => Economy.getTrainingBatchOptions("brood-expert"),
                 batchRun: amount => recruitUnitBatch("brood-expert", amount),
-                run: () => Economy.getUnitNumber("brood-expert") > 0 ? toggleBroodExpert() : buyBroodExpert()
+                run: buyBroodExpert
+            },
+            toggleAction: {
+                visible: () => Economy.getUnitNumber("brood-expert") > 0,
+                label: () => ({ key: isBroodExpertOn() ? "unit.broodExpert.switchOff" : "unit.broodExpert.switchOn" }),
+                run: toggleBroodExpert
             },
             status: statusOf("brood-expert")
         }
