@@ -565,3 +565,10 @@ I18N.register("it", {
     "achievements.series.farms": "Fungaie",
     "achievements.series.progress": "{unlocked} / {total} livelli"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("it", {
+    "achievements.series.expeditions": "Spedizioni",
+    "achievements.series.failures": "Imprevisti"
+});
