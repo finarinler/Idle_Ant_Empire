@@ -16,8 +16,16 @@ const Economy = {
     modifiers: {
         getEfficiencyFactor(unitId) { return 1; },
         getProductionBonus(targetId, resource) {
-            if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
             const achievements = GameState.achievements || {};
+
+            if (resource === "larvae") {
+                if (achievements.queenColonyHundred) { return 0.25; }
+                if (achievements.queenColonyTwentyFive) { return 0.10; }
+                if (achievements.smallColony) { return 0.05; }
+                return 0;
+            }
+
+            if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
             if (achievements.mushroomFarmTwoFifty) { return 0.25; }
             if (achievements.mushroomFarmHundred) { return 0.20; }
             if (achievements.mushroomFarmFifty) { return 0.15; }
