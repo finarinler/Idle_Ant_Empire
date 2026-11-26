@@ -482,7 +482,7 @@ I18N.register("tr", {
     "changelog.entry.parallelTraining": "Farklı birim türleri aynı anda eğitilebilir; her türden aynı anda yalnızca bir eğitim yapılabilir.",
     "changelog.entry.offlineTraining": "Devam eden eğitimler kaydedilir ve çevrimdışıyken de sürer.",
     "changelog.entry.smallCollectorReward": "«Küçük Toplayıcı» başarımı açıldığında hemen bir başıboş karınca verir.",
-    "changelog.entry.newAchievements": "Kraliçe kilometre taşları için larva üretim bonusları veren yeni başarımlar eklendi.",
+    "changelog.entry.newAchievements": "Yeni başarımlar eklendi",
     "changelog.entry.collectorCosts": "Toplayıcı maliyetleri yenilendi: karınca maliyeti toplayıcı seviyesine eşitlendi; yiyecek ve larva maliyetlerindeki önceki artışlar korundu.",
     "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
