@@ -647,6 +647,10 @@ I18N.register("tr", {
 
 /* ---------- 007c: action tooltip controls ---------- */
 I18N.register("tr", {
+    "status.versionUpdateAvailable": "Yeni sürüm mevcut! Yeniliklerin keyfini çıkar!"
+});
+
+I18N.register("tr", {
     "options.tooltips": "İşlem ipuçları",
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
     "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
