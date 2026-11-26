@@ -63,11 +63,13 @@ const GameState = {
         expeditionAntsFound: 0,
         criticalExpeditionsCount: 0,
         failedExpeditionsCount: 0,
-        totalPlayTimeSeconds: 0
+        totalPlayTimeSeconds: 0,
+        totalPurchasedAnts: 0
     },
 
     achievements: {
         firstSteps: false,
+        purchasedAnts1000: false,
         smallCollector: false,
         collector10: false,
         collector25: false,
