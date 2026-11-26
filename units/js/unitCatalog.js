@@ -73,7 +73,7 @@
                         : rate("−", UnitRegistry.get("normal-ant").consumption[0].rate, 2, "F")
                 },
                 housingStat("normal-ant"),
-                { label: { key: "card.stat.bought" }, value: () => formatGameNumber(GameState.resources.ants) },
+                { label: { key: "card.stat.foodProduction" }, value: () => rate("+", 0, 1, "F"), tone: "positive" },
                 trainingStat("normal-ant")
             ],
             cost: () => ({ values: Economy.getRecruitCost("normal-ant"), order: ["larvae", "food"] }),
