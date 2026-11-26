@@ -50,7 +50,7 @@
         const hatch = getHatchDefinition();
         const state = GameState.economy.hatch;
 
-        if (!hatch || state.active) { return false; }
+        if (!hatch || state.active || GameState.economy.broodExpertEnabled === false) { return false; }
 
         const experts = Economy.getUnitNumber("brood-expert");
 
@@ -72,7 +72,7 @@
         const hatch = getHatchDefinition();
         const state = GameState.economy.hatch;
 
-        if (!hatch || state.active) { return null; }
+        if (!hatch || state.active || GameState.economy.broodExpertEnabled === false) { return null; }
         if (Economy.getUnitNumber("brood-expert") <= 0) { return null; }
         if (Economy.getHousingFree().lt(1)) { return null; }
 
@@ -154,7 +154,7 @@
                 });
 
                 // Schlupf
-                if (eco.hatch.active)
+                if (eco.hatch.active && eco.broodExpertEnabled !== false)
                 {
                     candidates.push({ t: eco.hatch.remaining, kind: "hatch", id: "hatch" });
                 }
@@ -264,7 +264,7 @@
                     }
                 });
 
-                if (eco.hatch.active) { eco.hatch.remaining -= dt; }
+                if (eco.hatch.active && eco.broodExpertEnabled !== false) { eco.hatch.remaining -= dt; }
 
                 Object.values(eco.trainings || {}).forEach(training =>
                 {
