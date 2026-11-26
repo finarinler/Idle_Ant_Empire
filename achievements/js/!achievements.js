@@ -14,6 +14,7 @@ const ACHIEVEMENT_MODULES = [
     "achievements/js/basic/!basic.js",
     "achievements/js/collect/!collect.js",
     "achievements/js/build/!build.js",
+    "achievements/js/units/!units.js",
     "achievements/js/expedition/!expedition.js",
     "achievements/js/research/!research.js"
 ];
@@ -30,6 +31,7 @@ async function loadAchievementModules()
     await loadBasicAchievements();
     await loadCollectAchievements();
     await loadBuildAchievements();
+    await loadUnitAchievements();
     await loadExpeditionAchievements();
     await loadResearchAchievements();
 
