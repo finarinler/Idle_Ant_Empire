@@ -18,15 +18,12 @@ const Economy = {
         // Höchster freigeschalteter Sammler-Erfolgsbonus für die Pilzfarm.
         getCollectorAchievementBonus() {
             const achievements = GameState.achievements || {};
-            // Die höchste erreichte Stufe zählt. Frühere Meilensteine dürfen
-            // durch eine spätere Stufe mit kleinerem Wert keinen Bonus verlieren.
-            return Math.max(
-                achievements.collector10 ? 0.05 : 0,
-                achievements.collector25 ? 0.025 : 0,
-                achievements.collector50 ? 0.05 : 0,
-                achievements.collector100 ? 0.075 : 0,
-                achievements.collector250 ? 0.10 : 0
-            );
+            // Alle erreichten Meilensteine bauen aufeinander auf.
+            return (achievements.collector10 ? 0.05 : 0)
+                + (achievements.collector25 ? 0.025 : 0)
+                + (achievements.collector50 ? 0.05 : 0)
+                + (achievements.collector100 ? 0.075 : 0)
+                + (achievements.collector250 ? 0.10 : 0);
         },
         // Höchster freigeschalteter Pilzfarm-Erfolgsbonus.
         getMushroomFarmAchievementBonus() {
