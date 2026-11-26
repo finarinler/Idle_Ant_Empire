@@ -123,6 +123,7 @@
 
                 tryStartHatch();
                 UnitRegistry.all().forEach(unit => Economy._startQueuedTraining(unit.id));
+                Object.keys(GameState.construction.queues || {}).forEach(id => Economy._startQueuedProject(id));
 
                 const flows = Economy.computeFlows();
                 const candidates = [];
@@ -190,6 +191,16 @@
                         wait = Math.max(wait, needed.sub(flows.stock[resource]).div(flows.net[resource]).toNumber());
                     });
                     if (possible && wait > Economy.EPS) { candidates.push({ t: wait, kind: "queueReady", id: unit.id }); }
+                });
+
+                Object.keys(GameState.construction.queues || {}).forEach(id => {
+                    const q = GameState.construction.queues[id]; if (!q || !q.length) return;
+                    if (["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build")) return;
+                    const info = Economy.getProjectInfo(id, "build"), slot = info.requiresBuilder ? "builder" : "free";
+                    if (GameState.construction[slot] || (info.requiresBuilder && Economy.getUnitNumber("builder") < 1)) return;
+                    let wait = 0, possible = true;
+                    Object.keys(info.cost).forEach(resource => { if (resource === "ants" || !RESOURCE_DEFINITIONS[resource]) return; const needed = Big(info.cost[resource]); if (flows.stock[resource].gte(needed)) return; if (!flows.net[resource].isPositive() || flows.capacity[resource].lt(needed)) { possible = false; return; } wait = Math.max(wait, needed.sub(flows.stock[resource]).div(flows.net[resource]).toNumber()); });
+                    if (possible && wait > Economy.EPS) candidates.push({ t: wait, kind: "projectQueueReady", id });
                 });
 
                 // Bauprojekte

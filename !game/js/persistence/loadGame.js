@@ -157,6 +157,12 @@ function loadSavedConstruction(saved)
             remaining: Math.min(project.remaining, project.duration)
         };
     });
+    GameState.construction.queues = {};
+    if (saved.queues && typeof saved.queues === "object") Object.entries(saved.queues).forEach(([id, queue]) => {
+        if (!StructureRegistry.has(id) || !Array.isArray(queue)) return;
+        const clean = queue.slice(0, 1000).filter(job => job && Number.isInteger(job.count) && job.count > 0 && Number.isFinite(job.factor) && job.factor > 0 && job.factor <= 1).map(job => ({ count: job.count, factor: job.factor }));
+        if (clean.length) GameState.construction.queues[id] = clean;
+    });
 }
 
 // Hält den geladenen Zustand in sich konsistent

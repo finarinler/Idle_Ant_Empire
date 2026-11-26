@@ -56,7 +56,8 @@ const GameState = {
     // Zwei unabhängige Bauplätze: free = ohne Baumeisterpflicht, builder = mit Baumeisterpflicht
     construction: {
         free: null,
-        builder: null
+        builder: null,
+        queues: {}
     },
 
     stats: {

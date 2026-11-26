@@ -290,7 +290,7 @@ const CardBuilder = (function ()
             const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon";
             nodes.batchButtons["10"].hidden = !canUse || !options.ten;
             nodes.batchButtons["25"].hidden = !canUse || !options.twentyFive;
-            nodes.batchButtons.MAX.hidden = !canUse || options.max < 2;
+            nodes.batchButtons.MAX.hidden = !canUse || options.max < 26;
         }
 
         if (entry.stepper)

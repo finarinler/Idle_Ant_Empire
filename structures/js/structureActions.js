@@ -23,6 +23,18 @@ function startStructureProject(structureId, kind, targetLevel)
     return true;
 }
 
+function startStructureProjectBatch(id, amount)
+{
+    const options = Economy.getProjectBatchOptions(id), quantity = amount === "max" ? options.max : amount;
+    if (amount === "max" && quantity < 26) return false;
+    const result = Economy.queueProjectBatch(id, quantity);
+    if (!result.ok) { updateStatus(result.reason.key || "status.elite.cannotAfford", "warning"); return false; }
+    updateStatus("status.build.queued", "status", false, { count: quantity, structure: { key: StructureRegistry.get(id).nameKey } });
+    updateResources();
+    if (typeof CardBuilder !== "undefined") CardBuilder.updateAll();
+    return true;
+}
+
 const STRUCTURE_PROGRESS_BARS = {
     "housing-chamber": { build: "progress-housing", upgrade: "progress-housing-upgrade" },
     "mushroom-farm": { build: "progress-mushroom" },
