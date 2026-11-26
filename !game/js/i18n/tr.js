@@ -625,4 +625,8 @@ I18N.register("tr", {
     "tooltip.preview.production.larvae": "Larva üretimi",
     "tooltip.preview.consumption.food": "Yiyecek tüketimi",
     "tooltip.preview.consumption.larvae": "Larva tüketimi",
+    "tooltip.preview.housingUsed": "Gerekli barınma alanı",
+    "tooltip.preview.buildSpeed": "İnşaat süresi azalması",
+    "tooltip.preview.housingCapacity": "Ek barınma alanı",
+    "tooltip.preview.builderLimit": "İnşaatçı sınırı",
 });
