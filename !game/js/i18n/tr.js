@@ -109,6 +109,7 @@ I18N.register("tr", {
     "card.label.cost": "Maliyet",
     "card.stat.bought": "Satın alınan",
     "card.stat.foodProduction": "Yiyecek üretimi",
+    "card.stat.totalProduction": "Toplam üretim",
     "card.stat.foodConsumption": "Yiyecek tüketimi",
     "card.stat.larvaeProduction": "Larva üretimi",
     "card.stat.upkeep": "Bakım gideri",
