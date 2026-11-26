@@ -504,6 +504,8 @@ I18N.register("de", {
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
     "changelog.entry.resourceAbbreviations": "Die Kürzel F (Nahrung) und L (Larven) stehen jetzt direkt bei den Ressourcen; A (Ameise) und Q (Königin) ergänzen die Namen auf den Einheitenkarten.",
+    "changelog.group.design": "Darstellung",
+    "changelog.entry.cardColors": "Farben der Einheiten- und Gebäudekarten überarbeitet: Positive Boni sind grün, negative Mali warnungsgelb, übrige Werte Status-Grau; Ressourcen-Kürzel bleiben goldfarben.",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance verbessert",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
