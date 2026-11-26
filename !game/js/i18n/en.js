@@ -247,6 +247,21 @@ I18N.register("en", {
     "achievement.mushroomFarmTwentyFive.unlocked": "Build 25 mushroom farms",
     "achievement.mushroomFarmTwentyFive.reward": "Reward: +10% total mushroom farm production",
 
+    "achievement.mushroomFarmFifty.title": "Mushroom Farm Master",
+    "achievement.mushroomFarmFifty.locked": "Build 50 mushroom farms",
+    "achievement.mushroomFarmFifty.unlocked": "Build 50 mushroom farms",
+    "achievement.mushroomFarmFifty.reward": "Total bonus: +15% mushroom farm production",
+
+    "achievement.mushroomFarmHundred.title": "Mushroom Farm Tycoon",
+    "achievement.mushroomFarmHundred.locked": "Build 100 mushroom farms",
+    "achievement.mushroomFarmHundred.unlocked": "Build 100 mushroom farms",
+    "achievement.mushroomFarmHundred.reward": "Total bonus: +20% mushroom farm production",
+
+    "achievement.mushroomFarmTwoFifty.title": "Mushroom Farm Legend",
+    "achievement.mushroomFarmTwoFifty.locked": "Build 250 mushroom farms",
+    "achievement.mushroomFarmTwoFifty.unlocked": "Build 250 mushroom farms",
+    "achievement.mushroomFarmTwoFifty.reward": "Total bonus: +25% mushroom farm production",
+
     "achievement.knowledgeIsPower.title": "Knowledge Is Power",
     "achievement.knowledgeIsPower.locked": "Train a Storage Guardian and a Grand Nurse",
     "achievement.knowledgeIsPower.unlocked": "Trained a Storage Guardian and a Grand Nurse",
