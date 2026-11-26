@@ -633,3 +633,11 @@ I18N.register("tr", {
     "tooltip.preview.housingCapacity": "Ek barınma alanı",
     "tooltip.preview.builderLimit": "İnşaatçı sınırı",
 });
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("tr", {
+    "options.tooltips": "İşlem ipuçları",
+    "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
+    "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir."
+});
