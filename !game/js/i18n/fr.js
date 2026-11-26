@@ -251,7 +251,7 @@ I18N.register("fr", {
     "achievement.mushroomFarmTen.title": "Pionnier des champignonnières",
     "achievement.mushroomFarmTen.locked": "Construire 10 champignonnières",
     "achievement.mushroomFarmTen.unlocked": "Construire 10 champignonnières",
-    "achievement.mushroomFarmTen.reward": "Récompense : +1 % de production des champignonnières",
+    "achievement.mushroomFarmTen.reward": "Récompense : +5 % de production des champignonnières",
 
     "achievement.mushroomFarmTwentyFive.title": "Empire des champignonnières",
     "achievement.mushroomFarmTwentyFive.locked": "Construire 25 champignonnières",
