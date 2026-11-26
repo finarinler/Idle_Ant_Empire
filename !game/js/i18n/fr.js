@@ -494,7 +494,7 @@ I18N.register("fr", {
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
     "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
     "changelog.entry.resourceAbbreviations": "Ajout d’abréviations pour les ressources et les unités.",
-    "changelog.entry.totalProduction": "Ajout de la production totale sur toutes les cartes productrices.",
+    "changelog.entry.totalProduction": "Ajout d’un affichage uniforme « Production totale » sur toutes les cartes productrices.",
     "changelog.group.design": "Présentation",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",
