@@ -617,8 +617,7 @@ I18N.register("es", {
     "changelog.entry.batchConstruction": "Se añadieron colas de construcción por lotes para los edificios.",
     "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
     "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor.",
-    "changelog.entry.broodExpertRebalance": "Se ha reajustado la Experta en cría: 1 larva se convierte en 1 hormiga; cada Experta en cría consume continuamente 5 de comida/s.",
-    "changelog.entry.broodExpertToggle": "Las expertas en cría se pueden activar y desactivar. Al desactivarlas, la eclosión se pausa y el consumo de comida se reduce un 50 %.",
+    "changelog.entry.broodExpertRebalance": "Experta en cría ajustada.",
     "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo.",
     "tooltip.preview.expectedProduction": "Aumento de producción previsto",
     "tooltip.preview.expectedCosts": "Costes previstos",
@@ -651,7 +650,4 @@ I18N.register("es", {
     "options.tooltips": "Tooltips de acción",
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
     "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
-    "changelog.entry.scoutElite": "La exploradora ahora figura entre las unidades de élite.",
-"changelog.entry.scoutUpkeep": "Exploradora: 18 de comida/min (0,3 de comida/s); 0,1 de comida/s con la automatización desactivada.",
-    "changelog.entry.builderTimeSaving": "El ahorro de tiempo actual del constructor ahora se muestra en verde como efecto positivo."
 });
