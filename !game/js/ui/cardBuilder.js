@@ -10,7 +10,7 @@
     {
         id, group,                 // group = data-card-group des Ziel-Containers
         icon, symbolClass, type, name, desc,    // Textangaben: "Text" | { key, params } | Funktion dazu
-        startsHidden,              // Karte beim Start ausblenden (z. B. Kundschafterin)
+        startsHidden,              // Karte beim Start ausblenden (falls erforderlich)
         count: { value, max },     // Bestandsanzeige oben rechts (optional)
         stats: [{ label, value, tone }],
         costLabel,                 // optional, Standard: card.label.cost
