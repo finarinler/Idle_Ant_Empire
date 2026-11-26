@@ -378,7 +378,7 @@ const CardBuilder = (function ()
         }
 
         // Bei dauerhaft ausgeschöpften Karten sind Kosten und Fortschritt nicht mehr relevant.
-        const limitReached = state === "max" || state === "built";
+        const limitReached = state === "max" || state === "built" || (typeof entry.limitReached === "function" && entry.limitReached());
         nodes.costBlock.hidden = limitReached;
         nodes.progress.hidden = limitReached;
 
