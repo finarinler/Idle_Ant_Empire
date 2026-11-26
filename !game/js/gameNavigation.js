@@ -73,6 +73,10 @@
                 achievements: {
                     unlocked: Boolean(achievements.firstSteps),
                     hint: I18N.t("nav.hint.firstSteps")
+                },
+                statistics: {
+                    unlocked: false,
+                    hint: I18N.t("nav.hint.underRevision")
                 }
             };
 
