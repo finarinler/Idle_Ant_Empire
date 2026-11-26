@@ -226,9 +226,10 @@
 /* alpha-v0.00.006c — Status im Header und Spielstand-Aktionen */
 .header-status-line {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+    flex-wrap: nowrap;
+    align-items: flex-start;
     gap: 8px;
+    min-height: 62px;
     margin: 2px 12px 0;
     padding: 10px 14px;
     border: 1px solid var(--game-border);
@@ -238,10 +239,21 @@
     font-size: .88rem;
 }
 .header-status-line .status-label {
+    flex: 0 0 auto;
     color: var(--game-gold);
     font-weight: 750;
 }
-#status-text { color: var(--game-text); }
+#status-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+    color: var(--game-text);
+}
 .sticky-bottom { display: none !important; }
 
 .options-description {
@@ -284,7 +296,11 @@
 @media (max-width: 520px) {
     .options-save-actions { flex-direction: column; }
     .options-action-btn { width: 100%; }
-    .header-status-line { margin-inline: 0; }
+    .header-status-line {
+        min-height: 78px;
+        margin-inline: 0;
+    }
+    #status-text { -webkit-line-clamp: 3; }
 }
 
 
