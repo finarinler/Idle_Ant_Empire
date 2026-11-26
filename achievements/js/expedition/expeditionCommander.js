@@ -7,6 +7,5 @@ registerAchievement({
     getProgress: () => ({
         current: GameState.stats.expeditionsCount,
         goal: 1000
-    }),
-    onUnlock: (restored) => unlockScoutUI(restored)
+    })
 });
