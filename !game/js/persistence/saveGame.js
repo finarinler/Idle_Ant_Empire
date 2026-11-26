@@ -36,6 +36,7 @@ function serializeEconomy()
         deathTimers: Object.assign({}, eco.deathTimers),
         hatch: Object.assign({}, eco.hatch),
         trainings: Object.assign({}, eco.trainings || {}),
+        trainingQueues: JSON.parse(JSON.stringify(eco.trainingQueues || {})),
         unmet
     };
 }
