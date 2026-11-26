@@ -233,11 +233,23 @@
         const def = UnitRegistry.get(id);
         const current = Economy.getUnitCount(id).toNumber();
         const queue = GameState.economy.trainingQueues[id] || [];
-        const pending = (GameState.economy.trainings[id] ? 1 : 0)
-            + queue.reduce((sum, job) => sum + (Number(job.count) || 0), 0);
+        const queued = queue.reduce((sum, job) => sum + (Number(job.count) || 0), 0);
+        const active = GameState.economy.trainings[id] ? 1 : 0;
+        const pending = active + queued;
         const max = Economy.getUnitMaxCount(def);
         const unlocked = Economy.getUnitUnlockedCount(def);
-        const limit = Math.max(0, Math.min(1000, Math.floor(max - current - pending), Math.floor(unlocked - current - pending)));
+
+        // Laufende Ausbildungen sind in getHousingFree() bereits reserviert.
+        // Vorgemerkte Aufträge müssen zusätzlich berücksichtigt werden.
+        const housingLimit = def.housing > 0
+            ? Math.max(0, Math.floor((Economy.getHousingFree().toNumber() - queued * def.housing) / def.housing))
+            : 1000;
+        const limit = Math.max(0, Math.min(
+            1000,
+            Math.floor(max - current - pending),
+            Math.floor(unlocked - current - pending),
+            housingLimit
+        ));
         if (limit < 1) { return { ten: false, twentyFive: false, max: 0 }; }
 
         // Dynamische Preise (z. B. Ameisen und Sammler) für jede geplante Einheit
