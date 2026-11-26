@@ -247,6 +247,21 @@ I18N.register("tr", {
     "achievement.mushroomFarmTwentyFive.unlocked": "25 mantar çiftliği inşa et",
     "achievement.mushroomFarmTwentyFive.reward": "Ödül: Mantar çiftliği toplam üretimine +%10",
 
+    "achievement.mushroomFarmFifty.title": "Mantar Çiftliği Ustası",
+    "achievement.mushroomFarmFifty.locked": "50 mantar çiftliği inşa et",
+    "achievement.mushroomFarmFifty.unlocked": "50 mantar çiftliği inşa et",
+    "achievement.mushroomFarmFifty.reward": "Toplam bonus: Mantar çiftliği üretimine +%15",
+
+    "achievement.mushroomFarmHundred.title": "Mantar Çiftliği Zengini",
+    "achievement.mushroomFarmHundred.locked": "100 mantar çiftliği inşa et",
+    "achievement.mushroomFarmHundred.unlocked": "100 mantar çiftliği inşa et",
+    "achievement.mushroomFarmHundred.reward": "Toplam bonus: Mantar çiftliği üretimine +%20",
+
+    "achievement.mushroomFarmTwoFifty.title": "Mantar Çiftliği Efsanesi",
+    "achievement.mushroomFarmTwoFifty.locked": "250 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTwoFifty.unlocked": "250 mantar çiftliği inşa et",
+    "achievement.mushroomFarmTwoFifty.reward": "Toplam bonus: Mantar çiftliği üretimine +%25",
+
     "achievement.knowledgeIsPower.title": "Bilgi Güçtür",
     "achievement.knowledgeIsPower.locked": "Bir Depo Bekçisi ve bir Baş Dadı eğit",
     "achievement.knowledgeIsPower.unlocked": "Bir Depo Bekçisi ve bir Baş Dadı eğitildi",
