@@ -621,8 +621,9 @@ I18N.register("en", {
     "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
     "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
     "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder.",
-    "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum."
-        "tooltip.preview.effect": "Additional effect",
+    "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum.",
+    "tooltip.preview.effect": "Additional effect",
     "tooltip.preview.cost": "Total costs",
     "tooltip.preview.capacity": "capacity",
+    "changelog.entry.actionPreview": "Dynamic tooltips show effects, total costs and durations for single actions and 10×, 25× and MAX batches.",
 });
