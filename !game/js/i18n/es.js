@@ -615,4 +615,10 @@ I18N.register("es", {
     "tooltip.preview.cost": "Coste total",
     "tooltip.preview.capacity": "de capacidad",
     "changelog.entry.actionPreview": "Los tooltips dinámicos muestran efectos, costes totales y duración para acciones individuales y lotes de 10×, 25× y MAX.",
+    "tooltip.preview.production.food": "Producción de alimento",
+    "tooltip.preview.production.larvae": "Producción de larvas",
+    "tooltip.preview.consumption.food": "Consumo de alimento",
+    "tooltip.preview.consumption.larvae": "Consumo de larvas",
+    "tooltip.preview.ants": "hormigas",
+    "tooltip.preview.queens": "reinas",
 });
