@@ -313,6 +313,7 @@ function loadGame()
             GameState.stats.totalPurchasedAnts = GameState.resources.ants.toNumber();
         }
         mergeSavedSection(GameState.achievements, parsed.achievements);
+        mergeSavedSection(GameState.research, parsed.research);
         mergeSavedSection(GameState.expedition, parsed.expedition);
         mergeSavedSection(GameState.time, parsed.time);
         loadSavedEconomy(parsed.economy);

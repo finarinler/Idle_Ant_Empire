@@ -69,6 +69,10 @@ const GameState = {
         totalPurchasedAnts: 0
     },
 
+    research: {
+        housingUpgrade: false
+    },
+
     achievements: {
         firstSteps: false,
         purchasedAnts1: false,

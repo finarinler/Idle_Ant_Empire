@@ -66,6 +66,7 @@ function saveGame()
         eliteUnits: GameState.eliteUnits,
         stats: GameState.stats,
         achievements: GameState.achievements,
+        research: GameState.research,
         expedition: GameState.expedition,
         economy: serializeEconomy(),
         construction: GameState.construction

@@ -18,6 +18,6 @@ StructureRegistry.register({
 
     build: {
         requiresBuilder: BALANCE.provisional.requiresBuilder.storageRoom,
-        getInfo: () => ({ cost: BALANCE.carriedOver.storageRoom.cost, seconds: BALANCE.provisional.storageRoomBuildSeconds })
+        getInfo: () => ({ cost: BALANCE.carriedOver.storageRoom.cost, seconds: BALANCE.provisional.storageRoomBuildSeconds / (1 - BALANCE.builder.reductionPerBuilder) })
     }
 });
