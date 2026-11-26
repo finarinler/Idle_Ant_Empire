@@ -142,10 +142,10 @@ I18N.register("fr", {
     "expedition.scoutLockedTitle": "L’éclaireuse mène les expéditions automatiquement.",
 
     /* ---------- Unités ---------- */
-    "unit.ant.name": "Fourmi",
+    "unit.ant.name": "Fourmi (A)",
     "unit.ant.desc": "Récolte de la nourriture pour ta colonie.",
     "unit.ant.buy": "Acheter une fourmi",
-    "unit.queen.name": "Reine",
+    "unit.queen.name": "Reine (Q)",
     "unit.queen.desc": "Pond les larves dont naissent de nouvelles fourmis.",
     "unit.queen.buy": "Acheter une reine",
     "unit.scout.name": "Éclaireuse",
@@ -492,7 +492,7 @@ I18N.register("fr", {
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
     "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
-    "changelog.entry.resourceAbbreviations": "La barre de ressources affiche désormais les abréviations F (nourriture) et L (larves) à côté de leurs noms.",
+    "changelog.entry.resourceAbbreviations": "Les abréviations F (nourriture) et L (larves) figurent désormais à côté des ressources ; A (fourmi) et Q (reine) sont ajoutées aux noms des cartes d’unités.",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
