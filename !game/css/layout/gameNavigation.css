@@ -267,6 +267,15 @@
     overflow: hidden;
     color: var(--game-text);
 }
+#status-text .status-preview-current {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .82rem;
+    line-height: 1.35;
+    color: var(--game-text);
+}
 #status-text .log-entry {
     display: flex;
     align-items: baseline;
