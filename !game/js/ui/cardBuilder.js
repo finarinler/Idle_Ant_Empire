@@ -411,13 +411,13 @@ const CardBuilder = (function ()
 
         if (nodes.toggleButton)
         {
-            const toggleVisible = typeof action.toggleAction?.visible === "function"
-                ? action.toggleAction.visible()
+            const toggleVisible = typeof entry.toggleAction.visible === "function"
+                ? entry.toggleAction.visible()
                 : true;
             nodes.toggleButton.hidden = !toggleVisible;
             if (toggleVisible)
             {
-                setText(nodes.toggleButtonLabel, action.toggleAction.label);
+                setText(nodes.toggleButtonLabel, entry.toggleAction.label);
                 nodes.toggleButton.disabled = false;
             }
         }
