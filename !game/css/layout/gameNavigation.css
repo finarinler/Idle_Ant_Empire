@@ -230,13 +230,13 @@
     align-items: flex-start;
     gap: 12px;
     width: calc(100% - 24px);
-    min-height: 82px;
+    min-height: 60px;
     margin: 2px 12px 0;
     text-align: left;
     font: inherit;
     cursor: pointer;
     transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
-    padding: 10px 14px;
+    padding: 8px 14px;
     border: 1px solid var(--game-border);
     border-radius: 10px;
     background: rgba(17, 17, 17, .78);
