@@ -7,6 +7,8 @@
 
 const BUILD_ACHIEVEMENT_MODULES = [
     "achievements/js/build/smallColony.js",
+    "achievements/js/build/queenColonyTwentyFive.js",
+    "achievements/js/build/queenColonyHundred.js",
     "achievements/js/build/buildColony.js",
     "achievements/js/build/mushroomFarmTen.js",
     "achievements/js/build/mushroomFarmTwentyFive.js",
