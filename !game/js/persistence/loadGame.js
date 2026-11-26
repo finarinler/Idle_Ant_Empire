@@ -112,6 +112,16 @@ function loadSavedEconomy(saved)
         });
     }
 
+    if (saved.trainingQueues && typeof saved.trainingQueues === "object")
+    {
+        Object.entries(saved.trainingQueues).forEach(([unitId, queue]) =>
+        {
+            if (!UnitRegistry.has(unitId) || !Array.isArray(queue)) { return; }
+            eco.trainingQueues[unitId] = queue.slice(0, 1000).filter(job => job && Number.isInteger(job.count) && job.count > 0 && Number.isFinite(job.factor) && job.factor > 0 && job.factor <= 1).map(job => ({ count: job.count, factor: job.factor }));
+            if (!eco.trainingQueues[unitId].length) { delete eco.trainingQueues[unitId]; }
+        });
+    }
+
     if (saved.unmet && typeof saved.unmet === "object")
     {
         Object.keys(eco.unmet).forEach(key =>
