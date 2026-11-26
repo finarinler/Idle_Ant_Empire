@@ -628,8 +628,7 @@ I18N.register("en", {
     "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
     "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
     "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder.",
-    "changelog.entry.broodExpertRebalance": "Brood Expert rebalanced: 1 larva becomes 1 ant; each Brood Expert continuously consumes 5 food/s.",
-    "changelog.entry.broodExpertToggle": "Brood experts can be switched on and off. When off, hatching pauses and food consumption is reduced by 50%.",
+    "changelog.entry.broodExpertRebalance": "Brood Expert adjusted.",
     "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum.",
     "tooltip.preview.expectedProduction": "Expected production increase",
     "tooltip.preview.expectedCosts": "Expected costs",
@@ -662,7 +661,4 @@ I18N.register("en", {
     "options.tooltips": "Action tooltips",
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
     "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
-    "changelog.entry.scoutElite": "The scout is now listed among the elite units.",
-"changelog.entry.scoutUpkeep": "Scout: 18 food/min (0.3 food/s); 0.1 food/s when automation is off.",
-    "changelog.entry.builderTimeSaving": "The builder’s current time saving is now shown in green as a positive effect."
 });
