@@ -109,6 +109,10 @@
             RESOURCE_IDS.forEach(id => { nominal[id] = nominal[id].add(out[id]); });
         });
 
+        // Der Ameisen-Erfolgsbonus ist eine feste Zusatzproduktion und skaliert
+        // ausschließlich mit den aktuell vorhandenen gekauften Ameisen.
+        nominal.food = nominal.food.add(Economy.modifiers.getPurchasedAntFoodProduction());
+
         consumption.forEach(entry =>
         {
             if (entry.kind === "survival")
@@ -182,6 +186,8 @@
             const out = structureOutput(structure, Economy.getStructureNumber(structure.id), effOf, counts);
             RESOURCE_IDS.forEach(id => { produced[id] = produced[id].add(out[id]); });
         });
+
+        produced.food = produced.food.add(Economy.modifiers.getPurchasedAntFoodProduction());
 
         consumption.forEach(entry =>
         {
