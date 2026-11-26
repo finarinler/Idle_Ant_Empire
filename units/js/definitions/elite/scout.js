@@ -12,8 +12,8 @@ UnitRegistry.register({
     housing: 5,
     maxCount: BALANCE.carriedOver.scout.maxCount,
 
-    // 6 Nahrung pro Minute = 0,1 Nahrung/s; bei deaktivierter Automatik 50 %.
-    consumption: [{ resource: "food", rate: () => 0.1 * (GameState.expedition.scoutEnabled === false ? 0.5 : 1), kind: "survival" }],
+    // 18 Nahrung pro Minute = 0,3 Nahrung/s; bei deaktivierter Automatik 0,1 Nahrung/s.
+    consumption: [{ resource: "food", rate: () => 0.3 * (GameState.expedition.scoutEnabled === false ? 1 / 3 : 1), kind: "survival" }],
     production: [],
     refund: { food: BALANCE.refunds["scout"] },
 
