@@ -26,57 +26,19 @@ function injectVersion()
 
 function showVersionUpdateNotice()
 {
-    const storageKey = "idleAntEmpireVersionNotice";
+    const rolloutKey = "idleAntEmpireVersionNoticeRollout";
     const duration = 5 * 60 * 1000;
-    let noticeState;
-
-    try
-    {
-        noticeState = JSON.parse(localStorage.getItem(storageKey) || "null");
-    }
-    catch (_) { noticeState = null; }
-
     const now = Date.now();
-    if (!noticeState || typeof noticeState !== "object")
-    {
-        // Bei bestehenden Spielständen die zuletzt gespielte Version als Ausgangspunkt verwenden.
-        // So wird ein Update auch dann angezeigt, wenn diese Funktion erstmals live verfügbar ist.
-        let previousGameVersion = null;
-        try
-        {
-            const savedGame = JSON.parse(localStorage.getItem(CORE_CONFIG.SAVE_KEY) || "null");
-            if (savedGame && typeof savedGame.gameVersion === "string")
-            {
-                previousGameVersion = savedGame.gameVersion;
-            }
-        }
-        catch (_) {}
+    let shownVersion = null;
 
-        if (previousGameVersion && previousGameVersion !== GAME_VERSION)
-        {
-            noticeState = { version: GAME_VERSION, expiresAt: now + duration };
-        }
-        else
-        {
-            noticeState = { version: GAME_VERSION, expiresAt: 0 };
-        }
+    try { shownVersion = localStorage.getItem(rolloutKey); } catch (_) {}
 
-        try { localStorage.setItem(storageKey, JSON.stringify(noticeState)); } catch (_) {}
-        if (noticeState.expiresAt <= now) return;
-    }
-
-    if (noticeState.version !== GAME_VERSION)
-    {
-        noticeState = { version: GAME_VERSION, expiresAt: now + duration };
-        try { localStorage.setItem(storageKey, JSON.stringify(noticeState)); } catch (_) {}
-    }
-
-    const remaining = Number(noticeState.expiresAt) - now;
-    if (!Number.isFinite(remaining) || remaining <= 0) return;
+    // Jede neue Spielversion wird einmalig angekündigt. Der separate Rollout-Schlüssel
+    // macht die Anzeige unabhängig von älteren, fehlerhaften Notice-Einträgen und Spielständen.
+    if (shownVersion === GAME_VERSION) return;
 
     const header = document.querySelector(".sticky-top");
-    const statusButton = document.getElementById("status-logbook-button");
-    if (!header || !statusButton) return;
+    if (!header) return;
 
     const style = document.createElement("style");
     style.textContent = ".header-version-update{display:block;margin:8px auto 0;padding:10px 14px;max-width:100%;text-align:center;border:1px solid rgba(143,191,139,.55);border-radius:9px;background:rgba(38,83,43,.28);color:#c9efc5;font-size:.84rem;font-weight:800;letter-spacing:.02em;box-shadow:0 2px 12px rgba(0,0,0,.18)}";
@@ -89,13 +51,17 @@ function showVersionUpdateNotice()
     notice.setAttribute("data-i18n", "status.versionUpdateAvailable");
     notice.textContent = I18N.t("status.versionUpdateAvailable");
 
-    const maintenanceLine = statusButton.nextElementSibling;
+    const statusButton = document.getElementById("status-logbook-button");
+    const maintenanceLine = statusButton && statusButton.nextElementSibling;
     if (maintenanceLine && maintenanceLine.classList.contains("header-maintenance-line"))
         maintenanceLine.insertAdjacentElement("afterend", notice);
-    else
+    else if (statusButton)
         statusButton.insertAdjacentElement("afterend", notice);
+    else
+        header.appendChild(notice);
 
-    window.setTimeout(() => notice.remove(), remaining);
+    try { localStorage.setItem(rolloutKey, GAME_VERSION); } catch (_) {}
+    window.setTimeout(() => notice.remove(), duration);
 }
 
 function initGame()
