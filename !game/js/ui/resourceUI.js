@@ -49,7 +49,7 @@ function updateResources()
         DOM.larvaeMax.textContent = `/ ${formatGameNumber(currentLarvaeMax)}`;
     }
 
-    /* 2. Nahrungsrate (ganze Zahlen) */
+    /* 2. Nahrungsrate (eine Nachkommastelle) plus theoretisches Maximum */
     if (DOM.foodRate)
     {
         let netRate = flows.net.food;
@@ -59,13 +59,24 @@ function updateResources()
             netRate = BigNum.ZERO;
         }
 
-        const displayRate = netRate.round();   // BigNum kennt kein "-0"
+        const displayRate = netRate.roundTo(1);
+        const currentDisplay = DOM.foodRate.querySelector(".food-rate-current");
+        const maxDisplay = DOM.foodRate.querySelector(".food-rate-max");
 
-        setRateDisplay(
-            DOM.foodRate,
-            displayRate,
-            `${displayRate.isNegative() ? "" : "+"}${formatGameNumber(displayRate)}/s`
-        );
+        if (currentDisplay)
+        {
+            setRateDisplay(
+                currentDisplay,
+                displayRate,
+                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
+            );
+        }
+
+        if (maxDisplay)
+        {
+            const maxRate = flows.maxNet.food.roundTo(1);
+            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)}/s`;
+        }
     }
 
     /* 3. Larvenrate (eine Nachkommastelle) */
