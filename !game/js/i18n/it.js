@@ -555,3 +555,13 @@ I18N.register("it", {
     "achievement.purchasedAnts500.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts500.reward": "Sconto totale: 25% sui costi di addestramento delle formiche normali"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("it", {
+    "achievements.series.ants": "Formiche",
+    "achievements.series.queens": "Regine",
+    "achievements.series.collectors": "Raccoglitrici",
+    "achievements.series.farms": "Fungaie",
+    "achievements.series.progress": "{unlocked} / {total} livelli"
+});
