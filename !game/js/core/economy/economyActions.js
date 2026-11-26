@@ -159,6 +159,65 @@
         return { state: "available" };
     };
 
+    Economy.getTrainingBatchOptions = function (id)
+    {
+        const def = UnitRegistry.get(id);
+        const current = Economy.getUnitCount(id).toNumber();
+        const max = Economy.getUnitMaxCount(def);
+        const unlocked = Economy.getUnitUnlockedCount(def);
+        const limit = Math.max(0, Math.min(1000, Math.floor(max - current), Math.floor(unlocked - current)));
+        if (limit < 1) { return { ten: false, twentyFive: false, max: 0 }; }
+        const cost = Economy.getRecruitCost(id);
+        let affordable = limit;
+        for (const key of COST_KEYS)
+        {
+            const need = amountOf(cost, key);
+            if (need.isPositive())
+            {
+                const available = key === "ants" ? getTotalAnts() : GameState.resources[key];
+                affordable = Math.min(affordable, Math.floor(available.div(need).toNumber()));
+            }
+        }
+        affordable = Math.max(0, affordable);
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
+    };
+
+    Economy.recruitBatch = function (id, amount, factorOverride)
+    {
+        Economy.update();
+        const quantity = Math.floor(Number(amount));
+        const factor = Number.isFinite(factorOverride) ? factorOverride : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
+        if (!Number.isFinite(quantity) || quantity < 1 || quantity > 1000 || factor <= 0 || factor > 1) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
+        const options = Economy.getTrainingBatchOptions(id);
+        if (quantity > options.max) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
+        const queue = GameState.economy.trainingQueues[id] || [];
+        const last = queue[queue.length - 1];
+        if (last && last.factor === factor) { last.count += quantity; }
+        else { queue.push({ count: quantity, factor }); }
+        GameState.economy.trainingQueues[id] = queue;
+        Economy._startQueuedTraining(id);
+        return { ok: true, queued: quantity };
+    };
+
+    Economy._startQueuedTraining = function (id)
+    {
+        const eco = GameState.economy;
+        if (eco.trainings[id]) { return false; }
+        const queue = eco.trainingQueues[id];
+        if (!queue || !queue.length) { delete eco.trainingQueues[id]; return false; }
+        const job = queue[0];
+        const state = Economy.getRecruitState(id);
+        if (state.state !== "available") { return false; }
+        const duration = Economy.getTrainingSeconds(id) * job.factor;
+        if (!Number.isFinite(duration) || duration <= 0 || !Economy._spend(Economy.getRecruitCost(id))) { return false; }
+        eco.trainings[id] = { duration, remaining: duration, batchFactor: job.factor };
+        job.count--;
+        if (job.count <= 0) { queue.shift(); }
+        if (!queue.length) { delete eco.trainingQueues[id]; }
+        if (id === "normal-ant") { GameState.stats.totalPurchasedAnts = (GameState.stats.totalPurchasedAnts || 0) + 1; }
+        return true;
+    };
+
     Economy.recruit = function (id)
     {
         Economy.update();
