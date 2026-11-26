@@ -184,6 +184,13 @@
 
         GameState.economy.trainings[id] = { duration, remaining: duration };
 
+        // Nur tatsächlich bezahlte Käufe normaler Ameisen zählen – unabhängig davon,
+        // wann die Ausbildung endet oder ob die Ameise später stirbt.
+        if (id === "normal-ant")
+        {
+            GameState.stats.totalPurchasedAnts = (GameState.stats.totalPurchasedAnts || 0) + 1;
+        }
+
         return { ok: true, durationSeconds: duration };
     };
 
