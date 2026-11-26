@@ -610,8 +610,9 @@ I18N.register("tr", {
     "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
     "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı.",
     "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer.",
-    "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir."
-        "tooltip.preview.effect": "Ek etki",
+    "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir.",
+    "tooltip.preview.effect": "Ek etki",
     "tooltip.preview.cost": "Toplam maliyet",
     "tooltip.preview.capacity": "kapasite",
+    "changelog.entry.actionPreview": "Dinamik ipuçları tekli işlemler ve 10×, 25×, MAX grupları için etkileri, toplam maliyetleri ve süreleri gösterir.",
 });
