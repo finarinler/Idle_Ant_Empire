@@ -82,17 +82,7 @@ function addLogEntry(key, type = "status", params = null)
                 existing.params.unitCounts[unitId] = (existing.params.unitCounts[unitId] || 0) + count;
             });
 
-            const element = [...DOM.logContent.children].find(node => node.classList.contains("log-entry")
-                && node.querySelector(".log-text")?.textContent === I18N.t(key, {
-                    count: existing.params.count,
-                    units: Object.entries(existing.params.unitCounts).map(([unitId, count]) =>
-                    {
-                        const unit = UnitRegistry.get(unitId);
-                        return unit ? `${count}× ${I18N.t(unit.nameKey)}` : "";
-                    }).filter(Boolean).join(" · ")
-                }));
-            if (element) element.remove();
-            DOM.logContent.prepend(buildLogEntryElement(existing));
+            renderLog();
             return;
         }
     }
