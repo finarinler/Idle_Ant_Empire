@@ -44,8 +44,11 @@
 .iae-card-desc {
     display: -webkit-box;
     max-width: 280px;
-    height: 2.4em;
+    min-height: calc(3em + 2px);
+    max-height: calc(3em + 2px);
+    box-sizing: border-box;
     margin: 0;
+    padding-bottom: 2px;
     overflow: hidden;
     color: var(--research-muted);
     font-size: .8rem;
