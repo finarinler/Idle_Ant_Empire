@@ -99,6 +99,7 @@ const BALANCE = {
     },
 
     upkeep: {   // Nahrungsverbrauch pro Sekunde (Überlebensressource)
+        "brood-expert": 5,
         "normal-ant": 0.5,               // vereinbart
         "queen": 1.0,                    // vereinbart
         "collector": 0.25,
@@ -134,8 +135,8 @@ const BALANCE = {
     /* ---------- VORLÄUFIG (wartet auf Freigabe) ---------- */
 
     provisional: {
-        // Schlupfkosten je Ameise (aus dem bisherigen Code: 2 Larven pro Ameise)
-        hatchCost: { larvae: 2 },
+        // Eine Larve wird zu genau einer Ameise.
+        hatchCost: { larvae: 1 },
 
         housing: {
             baseCost: { food: 150 },
