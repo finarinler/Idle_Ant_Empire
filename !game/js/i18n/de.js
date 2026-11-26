@@ -576,3 +576,10 @@ I18N.register("de", {
     "achievements.series.farms": "Pilzfarmen",
     "achievements.series.progress": "{unlocked} / {total} Stufen"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("de", {
+    "achievements.series.expeditions": "Expeditionen",
+    "achievements.series.failures": "Rückschläge"
+});
