@@ -43,6 +43,26 @@ function buyAnt()             { return recruitUnit("normal-ant"); }
 function buyQueen()           { return recruitUnit("queen"); }
 function buyCollector()       { return recruitUnit("collector"); }
 function buyBroodExpert()     { return recruitUnit("brood-expert"); }
+
+function isBroodExpertOn()
+{
+    return GameState.economy.broodExpertEnabled !== false;
+}
+
+function toggleBroodExpert()
+{
+    if (Economy.getUnitNumber("brood-expert") <= 0) { return false; }
+
+    // Erst bis zum Klickzeitpunkt mit dem bisherigen Zustand abrechnen.
+    Economy.update();
+    GameState.economy.broodExpertEnabled = !isBroodExpertOn();
+
+    updateStatus(isBroodExpertOn() ? "status.broodExpert.on" : "status.broodExpert.off", "status");
+    updateResources();
+    if (typeof CardBuilder !== "undefined") { CardBuilder.updateAll(); }
+    saveGame();
+    return true;
+}
 function buyBuilder()         { return recruitUnit("builder"); }
 function buyStorageGuardian() { return recruitUnit("storage-keeper"); }
 function buyGrandNurse()      { return recruitUnit("grand-nurse"); }
