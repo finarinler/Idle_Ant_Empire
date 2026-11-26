@@ -621,4 +621,8 @@ I18N.register("es", {
     "tooltip.preview.consumption.larvae": "Consumo de larvas",
     "tooltip.preview.ants": "hormigas",
     "tooltip.preview.queens": "reinas",
+    "tooltip.preview.production.food": "Producción de alimento",
+    "tooltip.preview.production.larvae": "Producción de larvas",
+    "tooltip.preview.consumption.food": "Consumo de alimento",
+    "tooltip.preview.consumption.larvae": "Consumo de larvas",
 });
