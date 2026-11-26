@@ -663,5 +663,6 @@ I18N.register("en", {
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
     "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
     "changelog.entry.scoutElite": "The scout is now listed among the elite units.",
+    "changelog.entry.scoutUpkeep": "Scout: 6 food/min (0.1 food/s); consumption is reduced by 50% when automation is off.",
     "changelog.entry.builderTimeSaving": "The builder’s current time saving is now shown in green as a positive effect."
 });
