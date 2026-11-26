@@ -46,6 +46,7 @@ I18N.register("de", {
     "achievements.cat.basic": "Basis",
     "achievements.cat.collect": "Sammeln",
     "achievements.cat.build": "Bauen",
+    "achievements.cat.units": "Einheiten",
     "achievements.cat.expedition": "Expeditionen",
     "achievements.cat.research": "Forschung",
     "achievements.cat.military": "Militär",
