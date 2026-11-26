@@ -117,7 +117,12 @@ function renderStatusPreview()
     // Neutrale bzw. laufende Zustände gehören in die Statusanzeige,
     // aber ausdrücklich nicht in die dauerhafte Ereignischronik.
     const currentStatus = GameState?.ui?.status;
-    const transientStatusKeys = ["status.default", "status.expeditionStarted"];
+    const transientStatusKeys = [
+        "status.default",
+        "status.expeditionStarted",
+        "status.build.started",
+        "status.unit.trainingStarted"
+    ];
     if (currentStatus && transientStatusKeys.includes(currentStatus.key))
     {
         const statusLine = document.createElement("div");
