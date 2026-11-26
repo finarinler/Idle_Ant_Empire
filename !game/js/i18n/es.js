@@ -608,5 +608,6 @@ I18N.register("es", {
     "card.type.structureUpgrade": "Mejora de estructura",
     "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad.",
     "changelog.entry.batchConstruction": "Se añadieron colas de construcción por lotes para los edificios.",
-    "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras; la mejora de la cámara de vivienda es visible antes de la investigación, pero permanece bloqueada."
+    "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
+    "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor."
 });
