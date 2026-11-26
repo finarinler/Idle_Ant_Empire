@@ -360,6 +360,7 @@ I18N.register("it", {
 I18N.register("it", {
     "status.versionReset": "Nuova versione: il salvataggio è stato azzerato una volta. Inizia una nuova partita!",
     "status.unit.died": "{count}× {unit} è morto di fame.",
+    "status.units.starved": "{count} unità morte di fame: {units}",
     "status.build.completed": "{structure} completato!",
     "status.build.started": "Costruzione avviata: {structure} ({time})",
     "status.build.inProgress": "In costruzione … ancora {time}",
