@@ -620,5 +620,6 @@ I18N.register("en", {
     "changelog.entry.batchTraining": "Added batch training queues for all unit types.",
     "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
     "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
-    "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder."
+    "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder.",
+    "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum."
 });
