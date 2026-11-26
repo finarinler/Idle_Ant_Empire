@@ -156,16 +156,18 @@ const CardBuilder = (function ()
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
+        // Fester Platzhalter sorgt dafür, dass Kosten, Fortschritt und Button
+        // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
+        const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
+
         if (entry.progressId)
         {
-            const progress = create("div", "iae-card-progress", card);
             const track = create("div", "iae-card-progress-track", progress);
             create("div", "iae-card-progress-fill", track, { id: entry.progressId });
         }
-
-        if (entry.trainingProgressId)
+        else if (entry.trainingProgressId)
         {
-            const progress = create("div", "iae-card-progress iae-card-training-progress", card);
+            progress.classList.add("iae-card-training-progress");
             const track = create("div", "iae-card-progress-track", progress);
             create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
         }
