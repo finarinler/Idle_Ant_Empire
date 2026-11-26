@@ -515,3 +515,12 @@ I18N.register("es", {
     "achievement.collector250.unlocked": "250 recolectores de setas entrenados",
     "achievement.collector250.reward": "Bonificación total: +10% de producción de las granjas de hongos",
 });
+
+
+/* ---------- Purchased ant food production achievement ---------- */
+I18N.register("es", {
+    "achievement.purchasedAnts1000.title": "Mil hormigas compradas",
+    "achievement.purchasedAnts1000.locked": "{goal} hormigas normales compradas en total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} hormigas normales compradas en total",
+    "achievement.purchasedAnts1000.reward": "Recompensa: cada hormiga comprada que tengas actualmente produce +0,1 A/s"
+});
