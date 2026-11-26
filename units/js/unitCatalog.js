@@ -1,9 +1,9 @@
-/* =========================================================
+/* =================================================
     Einheiten-Katalog
     Zentrale Definition aller Einheiten-Karten (Daten und Aktionen).
     Die Darstellung übernimmt der gemeinsame CardBuilder.
     Konfiguration: units/js/definitions/*.js · Käufe: unitActions.js · Rechnung: core/economy
-========================================================= */
+================================================= */
 
 (() =>
 {
@@ -18,7 +18,6 @@
         run
     });
 
-    // Status der Karte direkt aus der zentralen Wirtschaft
     const statusOf = id => () =>
     {
         const state = Economy.getRecruitState(id);
@@ -66,6 +65,7 @@
             desc: { key: "unit.ant.desc" },
             count: { value: () => formatGameNumber(getTotalAnts()) },
             stats: [
+                { label: { key: "card.stat.foodProduction" }, value: () => rate("+", GameState.achievements.purchasedAnts1000 ? GameState.resources.ants.mul(0.1).toNumber() : 0, 1, "F"), tone: "positive" },
                 {
                     label: { key: "card.stat.foodConsumption" },
                     value: () => GameState.achievements.goldenAge
@@ -73,7 +73,6 @@
                         : rate("−", UnitRegistry.get("normal-ant").consumption[0].rate, 2, "F")
                 },
                 housingStat("normal-ant"),
-                { label: { key: "card.stat.foodProduction" }, value: () => rate("+", GameState.achievements.purchasedAnts1000 ? GameState.resources.ants.mul(0.1).toNumber() : 0, 1, "F"), tone: "positive" },
                 trainingStat("normal-ant")
             ],
             cost: () => ({ values: Economy.getRecruitCost("normal-ant"), order: ["larvae", "food"] }),
@@ -170,11 +169,7 @@
             },
             status: () =>
             {
-                if (hasScout())
-                {
-                    return { state: "available" };   // Schalter ON/OFF
-                }
-
+                if (hasScout()) { return { state: "available" }; }
                 const state = Economy.getRecruitState("scout");
                 return { state: state.state, hint: state.hint };
             }
