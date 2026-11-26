@@ -633,3 +633,11 @@ I18N.register("fr", {
     "tooltip.preview.housingCapacity": "Logement supplémentaire",
     "tooltip.preview.builderLimit": "Limite de bâtisseurs",
 });
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("fr", {
+    "options.tooltips": "Info-bulles d’action",
+    "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
+    "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options."
+});
