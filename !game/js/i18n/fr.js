@@ -555,3 +555,13 @@ I18N.register("fr", {
     "achievement.purchasedAnts500.unlocked": "{goal} fourmis normales achetées",
     "achievement.purchasedAnts500.reward": "Réduction totale : 25 % sur le coût d’entraînement des fourmis normales"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("fr", {
+    "achievements.series.ants": "Fourmis",
+    "achievements.series.queens": "Reines",
+    "achievements.series.collectors": "Collectrices",
+    "achievements.series.farms": "Champignonnières",
+    "achievements.series.progress": "{unlocked} / {total} niveaux"
+});
