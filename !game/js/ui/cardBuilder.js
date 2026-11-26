@@ -194,6 +194,19 @@ const CardBuilder = (function ()
             nodes.button.addEventListener("click", () => entry.action.run());
         }
 
+        if (entry.action && typeof entry.action.batchOptions === "function" && typeof entry.action.batchRun === "function")
+        {
+            nodes.batch = create("div", "iae-card-batch-actions", card);
+            nodes.batchButtons = {};
+            [["10", 10], ["25", 25], ["MAX", "max"]].forEach(([label, amount]) =>
+            {
+                const button = create("button", "iae-card-batch-btn", nodes.batch, { type: "button" });
+                button.textContent = label;
+                button.addEventListener("click", () => entry.action.batchRun(amount));
+                nodes.batchButtons[label] = button;
+            });
+        }
+
         nodes.hint = create("p", "iae-card-hint", card);
 
         return nodes;
@@ -270,6 +283,15 @@ const CardBuilder = (function ()
         nodes.button.disabled = state !== "available";
 
         setText(nodes.hint, status.hint || "");
+
+        if (nodes.batchButtons)
+        {
+            const options = entry.action.batchOptions();
+            const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon";
+            nodes.batchButtons["10"].hidden = !canUse || !options.ten;
+            nodes.batchButtons["25"].hidden = !canUse || !options.twentyFive;
+            nodes.batchButtons.MAX.hidden = !canUse || options.max < 2;
+        }
 
         if (entry.stepper)
         {
