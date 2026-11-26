@@ -68,7 +68,6 @@
 
 /* Kosten */
 .iae-card-cost { min-height: 58px; margin: auto 0 14px; }
-.iae-card-stats + .iae-card-cost { margin-top: 0; }
 .iae-card-label { display: block; margin-bottom: 5px; color: var(--research-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
 .iae-card-cost-line { color: #c9c1b4; font-size: .78rem; line-height: 1.5; overflow-wrap: anywhere; }
 
