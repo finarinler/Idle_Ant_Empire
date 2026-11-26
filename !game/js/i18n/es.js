@@ -625,4 +625,8 @@ I18N.register("es", {
     "tooltip.preview.production.larvae": "Producción de larvas",
     "tooltip.preview.consumption.food": "Consumo de alimento",
     "tooltip.preview.consumption.larvae": "Consumo de larvas",
+    "tooltip.preview.housingUsed": "Alojamiento necesario",
+    "tooltip.preview.buildSpeed": "Reducción del tiempo de construcción",
+    "tooltip.preview.housingCapacity": "Alojamiento adicional",
+    "tooltip.preview.builderLimit": "Límite de constructores",
 });
