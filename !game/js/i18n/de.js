@@ -99,7 +99,7 @@ I18N.register("de", {
 
     /* ---------- Ressourcen ---------- */
     "resource.food": "Nahrung",
-    "resource.maxRate": "Max.:",
+    "resource.maxRate": "Max.",
     "resource.larvae": "Larven",
 
     /* ---------- Allgemeine UI ---------- */
