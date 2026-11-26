@@ -12,7 +12,8 @@
 
 .game-navigation {
     position: sticky;
-    top: 18px;
+    top: 220px;
+    z-index: 90;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -178,7 +179,7 @@
 
 @media (max-width: 800px) {
     .game-shell { grid-template-columns: 1fr; gap: 16px; }
-    .game-navigation { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .game-navigation { position: sticky; top: 190px; z-index: 90; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .game-nav-group-label, .game-nav-spacer, .game-nav-divider { grid-column: 1 / -1; }
     .game-nav-button { min-height: 42px; }
     .game-main { min-height: 360px; }
