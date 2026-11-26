@@ -66,8 +66,10 @@
 .iae-card-stat { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; }
 .iae-card-stat + .iae-card-stat { border-top: 1px solid #222; }
 .iae-card-stat span { color: var(--research-muted); font-size: .75rem; }
-.iae-card-stat strong { color: var(--research-text); font-size: .8rem; font-weight: 650; text-align: right; }
+.iae-card-stat strong { color: var(--research-muted); font-size: .8rem; font-weight: 650; text-align: right; }
 .iae-card-stat.tone-positive strong { color: var(--research-green); }
+.iae-card-stat.tone-negative strong { color: var(--warning-orange); }
+.iae-card-stat strong .abbr-gold { color: var(--research-gold-bright); }
 
 /* Kosten */
 .iae-card-cost { min-height: 58px; margin: auto 0 14px; }
