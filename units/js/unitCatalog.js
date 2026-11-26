@@ -23,9 +23,11 @@
         tone: "positive"
     });
 
-    const trainAction = (run) => ({
+    const trainAction = (run, id) => ({
         label: { key: "button.train" },
         missingLabel: { key: "button.missingResources" },
+        batchOptions: () => Economy.getTrainingBatchOptions(id),
+        batchRun: amount => recruitUnitBatch(id, amount),
         run
     });
 
@@ -88,7 +90,7 @@
                 trainingStat("normal-ant")
             ],
             cost: () => ({ values: Economy.getRecruitCost("normal-ant"), order: ["larvae", "food"] }),
-            action: trainAction(buyAnt),
+            action: trainAction(buyAnt, "normal-ant"),
             status: statusOf("normal-ant")
         },
         {
@@ -107,7 +109,7 @@
                 trainingStat("queen")
             ],
             cost: () => ({ values: Economy.getRecruitCost("queen"), order: ["ants", "food"] }),
-            action: trainAction(buyQueen),
+            action: trainAction(buyQueen, "queen"),
             status: statusOf("queen")
         },
         {
@@ -126,7 +128,7 @@
                 trainingStat("collector")
             ],
             cost: () => ({ values: Economy.getRecruitCost("collector"), order: ["ants", "food", "larvae"] }),
-            action: trainAction(buyCollector),
+            action: trainAction(buyCollector, "collector"),
             status: statusOf("collector")
         },
         {
@@ -144,7 +146,7 @@
                 trainingStat("builder")
             ],
             cost: () => ({ values: Economy.getRecruitCost("builder"), order: ["ants", "food", "larvae", "queens"] }),
-            action: trainAction(buyBuilder),
+            action: trainAction(buyBuilder, "builder"),
             status: statusOf("builder")
         }
     ]);
@@ -179,6 +181,8 @@
                     : { key: "button.train" },
                 missingLabel: { key: "button.missingResources" },
                 keepLabel: true,
+                batchOptions: () => hasScout() ? { ten: false, twentyFive: false, max: 0 } : Economy.getTrainingBatchOptions("scout"),
+                batchRun: amount => recruitUnitBatch("scout", amount),
                 run: () => hasScout() ? toggleScoutAutomation() : buyScout()
             },
             status: () =>
@@ -207,7 +211,7 @@
                 trainingStat("storage-keeper")
             ],
             cost: () => ({ values: Economy.getRecruitCost("storage-keeper") }),
-            action: trainAction(buyStorageGuardian),
+            action: trainAction(buyStorageGuardian, "storage-keeper"),
             status: statusOf("storage-keeper")
         },
         {
@@ -224,7 +228,7 @@
                 trainingStat("grand-nurse")
             ],
             cost: () => ({ values: Economy.getRecruitCost("grand-nurse") }),
-            action: trainAction(buyGrandNurse),
+            action: trainAction(buyGrandNurse, "grand-nurse"),
             status: statusOf("grand-nurse")
         },
         {
@@ -246,7 +250,7 @@
             ],
             progressId: "brood-expert-progress",
             cost: () => ({ values: Economy.getRecruitCost("brood-expert") }),
-            action: trainAction(buyBroodExpert),
+            action: trainAction(buyBroodExpert, "brood-expert"),
             status: statusOf("brood-expert")
         }
     ]);
