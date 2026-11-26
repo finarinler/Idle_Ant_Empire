@@ -26,7 +26,6 @@ function startStructureProject(structureId, kind, targetLevel)
 function startStructureProjectBatch(id, amount)
 {
     const options = Economy.getProjectBatchOptions(id), quantity = amount === "max" ? options.max : amount;
-    if (amount === "max" && quantity < 26) return false;
     const result = Economy.queueProjectBatch(id, quantity);
     if (!result.ok) { updateStatus(result.reason.key || "status.elite.cannotAfford", "warning"); return false; }
     updateStatus("status.build.queued", "status", false, { count: quantity, structure: { key: StructureRegistry.get(id).nameKey } });
