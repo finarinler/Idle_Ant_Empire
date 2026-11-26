@@ -26,6 +26,7 @@
     const trainAction = (run, id) => ({
         label: { key: "button.train" },
         missingLabel: { key: "button.missingResources" },
+        preview: { kind: "unit", id },
         batchOptions: () => Economy.getTrainingBatchOptions(id),
         batchRun: amount => recruitUnitBatch(id, amount),
         run
