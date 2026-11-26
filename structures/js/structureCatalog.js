@@ -26,6 +26,7 @@
     const buildAction = (structureId) => ({
         label: { key: "button.build" },
         missingLabel: { key: "button.build" },
+        preview: { kind: "structure", id: structureId },
         batchOptions: () => Economy.getProjectBatchOptions(structureId),
         batchRun: amount => startStructureProjectBatch(structureId, amount),
         run: () => startStructureProject(structureId, "build")
