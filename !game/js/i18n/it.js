@@ -528,36 +528,36 @@ I18N.register("it", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("it", {
-    "achievement.purchasedAnts1000.title": "Mille formiche acquistate",
-    "achievement.purchasedAnts1000.locked": "{goal} formiche normali acquistate in totale",
-    "achievement.purchasedAnts1000.unlocked": "{goal} formiche normali acquistate in totale",
+    "achievement.purchasedAnts1000.title": "Mille formiche addestrate",
+    "achievement.purchasedAnts1000.locked": "{goal} formiche normali addestrate in totale",
+    "achievement.purchasedAnts1000.unlocked": "{goal} formiche normali addestrate in totale",
     "achievement.purchasedAnts1000.reward": "Ricompensa: ogni formica acquistata attualmente presente produce +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("it", {
-    "achievement.purchasedAnts1.title": "Primo acquisto di formica",
+    "achievement.purchasedAnts1.title": "Prima formica addestrata",
     "achievement.purchasedAnts1.locked": "{goal} formica normale acquistata",
     "achievement.purchasedAnts1.unlocked": "{goal} formica normale acquistata",
     "achievement.purchasedAnts1.reward": "Sconto totale: 2% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts10.title": "Dieci formiche acquistate",
+    "achievement.purchasedAnts10.title": "Dieci formiche addestrate",
     "achievement.purchasedAnts10.locked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts10.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts10.reward": "Sconto totale: 5% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts50.title": "Cinquanta formiche acquistate",
+    "achievement.purchasedAnts50.title": "Cinquanta formiche addestrate",
     "achievement.purchasedAnts50.locked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts50.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts50.reward": "Sconto totale: 7,5% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts100.title": "Cento formiche acquistate",
+    "achievement.purchasedAnts100.title": "Cento formiche addestrate",
     "achievement.purchasedAnts100.locked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts100.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts100.reward": "Sconto totale: 10% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts250.title": "Duecentocinquanta formiche acquistate",
+    "achievement.purchasedAnts250.title": "Duecentocinquanta formiche addestrate",
     "achievement.purchasedAnts250.locked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts250.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts250.reward": "Sconto totale: 15% sui costi di addestramento delle formiche normali",
-    "achievement.purchasedAnts500.title": "Cinquecento formiche acquistate",
+    "achievement.purchasedAnts500.title": "Cinquecento formiche addestrate",
     "achievement.purchasedAnts500.locked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts500.unlocked": "{goal} formiche normali acquistate",
     "achievement.purchasedAnts500.reward": "Sconto totale: 25% sui costi di addestramento delle formiche normali"

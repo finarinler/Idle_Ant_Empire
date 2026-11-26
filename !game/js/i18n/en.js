@@ -539,36 +539,36 @@ I18N.register("en", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("en", {
-    "achievement.purchasedAnts1000.title": "A Thousand Purchased Ants",
-    "achievement.purchasedAnts1000.locked": "{goal} normal ants purchased in total",
-    "achievement.purchasedAnts1000.unlocked": "{goal} normal ants purchased in total",
+    "achievement.purchasedAnts1000.title": "A Thousand Trained Ants",
+    "achievement.purchasedAnts1000.locked": "{goal} normal ants trained in total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normal ants trained in total",
     "achievement.purchasedAnts1000.reward": "Reward: Each currently owned purchased ant produces +0.1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("en", {
-    "achievement.purchasedAnts1.title": "First Ant Purchase",
+    "achievement.purchasedAnts1.title": "First Ant Trained",
     "achievement.purchasedAnts1.locked": "{goal} normal ant purchased",
     "achievement.purchasedAnts1.unlocked": "{goal} normal ant purchased",
     "achievement.purchasedAnts1.reward": "Total discount: 2% off normal ant training costs",
-    "achievement.purchasedAnts10.title": "Ten Purchased Ants",
+    "achievement.purchasedAnts10.title": "Ten Trained Ants",
     "achievement.purchasedAnts10.locked": "{goal} normal ants purchased",
     "achievement.purchasedAnts10.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts10.reward": "Total discount: 5% off normal ant training costs",
-    "achievement.purchasedAnts50.title": "Fifty Purchased Ants",
+    "achievement.purchasedAnts50.title": "Fifty Trained Ants",
     "achievement.purchasedAnts50.locked": "{goal} normal ants purchased",
     "achievement.purchasedAnts50.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts50.reward": "Total discount: 7.5% off normal ant training costs",
-    "achievement.purchasedAnts100.title": "One Hundred Purchased Ants",
+    "achievement.purchasedAnts100.title": "One Hundred Trained Ants",
     "achievement.purchasedAnts100.locked": "{goal} normal ants purchased",
     "achievement.purchasedAnts100.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts100.reward": "Total discount: 10% off normal ant training costs",
-    "achievement.purchasedAnts250.title": "Two Hundred Fifty Purchased Ants",
+    "achievement.purchasedAnts250.title": "Two Hundred Fifty Trained Ants",
     "achievement.purchasedAnts250.locked": "{goal} normal ants purchased",
     "achievement.purchasedAnts250.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts250.reward": "Total discount: 15% off normal ant training costs",
-    "achievement.purchasedAnts500.title": "Five Hundred Purchased Ants",
+    "achievement.purchasedAnts500.title": "Five Hundred Trained Ants",
     "achievement.purchasedAnts500.locked": "{goal} normal ants purchased",
     "achievement.purchasedAnts500.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts500.reward": "Total discount: 25% off normal ant training costs"

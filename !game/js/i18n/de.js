@@ -539,36 +539,36 @@ I18N.register("de", {
 
 /* ---------- Purchased ant food production achievement ---------- */
 I18N.register("de", {
-    "achievement.purchasedAnts1000.title": "Tausend gekaufte Ameisen",
-    "achievement.purchasedAnts1000.locked": "{goal} normale Ameisen insgesamt gekauft",
-    "achievement.purchasedAnts1000.unlocked": "{goal} normale Ameisen insgesamt gekauft",
+    "achievement.purchasedAnts1000.title": "Tausend ausgebildete Ameisen",
+    "achievement.purchasedAnts1000.locked": "{goal} normale Ameisen insgesamt ausgebildet",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normale Ameisen insgesamt ausgebildet",
     "achievement.purchasedAnts1000.reward": "Belohnung: Jede aktuell vorhandene gekaufte Ameise produziert +0,1 F/s"
 });
 
 
 /* ---------- Purchased ant training cost achievements ---------- */
 I18N.register("de", {
-    "achievement.purchasedAnts1.title": "Erster Ameisenkauf",
+    "achievement.purchasedAnts1.title": "Erste ausgebildete Ameise",
     "achievement.purchasedAnts1.locked": "{goal} normale Ameise gekauft",
     "achievement.purchasedAnts1.unlocked": "{goal} normale Ameise gekauft",
     "achievement.purchasedAnts1.reward": "Belohnung: −2 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts10.title": "Zehn gekaufte Ameisen",
+    "achievement.purchasedAnts10.title": "Zehn ausgebildete Ameisen",
     "achievement.purchasedAnts10.locked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts10.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts10.reward": "Belohnung: −5 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts50.title": "Fünfzig gekaufte Ameisen",
+    "achievement.purchasedAnts50.title": "Fünfzig ausgebildete Ameisen",
     "achievement.purchasedAnts50.locked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts50.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts50.reward": "Belohnung: −7,5 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts100.title": "Hundert gekaufte Ameisen",
+    "achievement.purchasedAnts100.title": "Hundert ausgebildete Ameisen",
     "achievement.purchasedAnts100.locked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts100.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts100.reward": "Belohnung: −10 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts250.title": "Zweihundertfünfzig gekaufte Ameisen",
+    "achievement.purchasedAnts250.title": "Zweihundertfünfzig ausgebildete Ameisen",
     "achievement.purchasedAnts250.locked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts250.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts250.reward": "Belohnung: −15 % auf die Ausbildungskosten normaler Ameisen",
-    "achievement.purchasedAnts500.title": "Fünfhundert gekaufte Ameisen",
+    "achievement.purchasedAnts500.title": "Fünfhundert ausgebildete Ameisen",
     "achievement.purchasedAnts500.locked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts500.unlocked": "{goal} normale Ameisen gekauft",
     "achievement.purchasedAnts500.reward": "Belohnung: −25 % auf die Ausbildungskosten normaler Ameisen"
