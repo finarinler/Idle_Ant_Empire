@@ -566,3 +566,13 @@ I18N.register("en", {
     "achievement.purchasedAnts500.unlocked": "{goal} normal ants purchased",
     "achievement.purchasedAnts500.reward": "Total discount: 25% off normal ant training costs"
 });
+
+
+/* ---------- Achievement series ---------- */
+I18N.register("en", {
+    "achievements.series.ants": "Ants",
+    "achievements.series.queens": "Queens",
+    "achievements.series.collectors": "Collectors",
+    "achievements.series.farms": "Mushroom Farms",
+    "achievements.series.progress": "{unlocked} / {total} tiers"
+});
