@@ -610,8 +610,9 @@ I18N.register("it", {
     "changelog.entry.batchConstruction": "Aggiunte code di costruzione multipla per gli edifici.",
     "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate.",
     "changelog.entry.storageBroodBuildTime": "La camera di stoccaggio e la camera della covata richiedono ciascuna esattamente 15 minuti di costruzione con un Costruttore.",
-    "changelog.entry.hideCappedCostProgress": "Il costo e la barra di avanzamento vengono nascosti per le unità e gli edifici che hanno raggiunto il limite massimo."
-        "tooltip.preview.effect": "Effetto aggiuntivo",
+    "changelog.entry.hideCappedCostProgress": "Il costo e la barra di avanzamento vengono nascosti per le unità e gli edifici che hanno raggiunto il limite massimo.",
+    "tooltip.preview.effect": "Effetto aggiuntivo",
     "tooltip.preview.cost": "Costo totale",
     "tooltip.preview.capacity": "di capacità",
+    "changelog.entry.actionPreview": "I tooltip dinamici mostrano effetti, costi totali e durata per azioni singole e gruppi 10×, 25× e MAX.",
 });
