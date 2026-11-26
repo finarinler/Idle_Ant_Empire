@@ -617,8 +617,7 @@ I18N.register("tr", {
     "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
     "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı.",
     "changelog.entry.storageBroodBuildTime": "Erzak Odası ve Kuluçka Odası, bir İnşaatçı ile ayrı ayrı tam 15 dakika sürer.",
-    "changelog.entry.broodExpertRebalance": "Kuluçka Uzmanı yeniden dengelendi: 1 larva 1 karıncaya dönüşür; her Kuluçka Uzmanı sürekli 5 yiyecek/s tüketir.",
-    "changelog.entry.broodExpertToggle": "Kuluçka uzmanları açılıp kapatılabilir. Kapalıyken yumurtadan çıkma duraklar ve yiyecek tüketimi %50 azalır.",
+    "changelog.entry.broodExpertRebalance": "Kuluçka Uzmanı ayarlandı.",
     "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir.",
     "tooltip.preview.expectedProduction": "Beklenen üretim artışı",
     "tooltip.preview.expectedCosts": "Beklenen maliyetler",
@@ -651,7 +650,4 @@ I18N.register("tr", {
     "options.tooltips": "İşlem ipuçları",
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
     "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
-    "changelog.entry.scoutElite": "Kaşif artık elit birimler arasında listeleniyor.",
-"changelog.entry.scoutUpkeep": "Kaşif: 18 yiyecek/dk (0,3 yiyecek/sn); otomasyon kapalıyken 0,1 yiyecek/sn.",
-    "changelog.entry.builderTimeSaving": "İnşaatçının mevcut zaman tasarrufu artık olumlu bir etki olarak yeşil gösteriliyor."
 });
