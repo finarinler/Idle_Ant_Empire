@@ -616,7 +616,7 @@ I18N.register("it", {
     "tooltip.preview.cost": "Costo totale",
     "tooltip.preview.capacity": "di capacità",
     "changelog.entry.actionPreview": "I tooltip dinamici mostrano effetti, costi totali e durata per azioni singole e gruppi 10×, 25× e MAX.",
-    "changelog.entry.housingCostScaling": "La seconda Camera Abitativa costa 150 unità di cibo. Ogni camera aggiuntiva costa il 10% in più, come le Fattorie di Funghi.",
+    "changelog.entry.housingCostScaling": "Costi della Camera Abitativa modificati.",
     "changelog.entry.strayAntHousing": "Le formiche smarrite si uniscono alla colonia solo se c’è spazio abitativo sufficiente.",
     "tooltip.preview.production.food": "Produzione di cibo",
     "tooltip.preview.production.larvae": "Produzione di larve",
