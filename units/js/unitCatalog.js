@@ -152,15 +152,12 @@
         }
     ]);
 
-    /* ---------- Expeditionsfenster: Späher ---------- */
-
-    CardBuilder.register("expedition-scout", [
-        {
+    CardBuilder.register("units-elite", [
+{
             id: "scout",
             trainingProgressId: "training-scout-progress",
             icon: "⚲",
-            startsHidden: true,
-            type: { key: "card.type.unitBasic" },
+            type: { key: "card.type.unitElite" },
             name: { key: "unit.scout.name" },
             desc: { key: "unit.scout.desc" },
             count: countOf("scout", 1),
@@ -183,7 +180,6 @@
                 missingLabel: { key: "button.missingResources" },
                 keepLabel: true,
                 preview: { kind: "unit", id: "scout" },
-                preview: { kind: "unit", id: "scout" },
                 batchOptions: () => hasScout() ? { ten: false, twentyFive: false, max: 0 } : Economy.getTrainingBatchOptions("scout"),
                 batchRun: amount => recruitUnitBatch("scout", amount),
                 run: () => hasScout() ? toggleScoutAutomation() : buyScout()
@@ -194,12 +190,8 @@
                 const state = Economy.getRecruitState("scout");
                 return { state: state.state, hint: state.hint };
             }
-        }
-    ]);
+        },
 
-    /* ---------- Elite-Einheiten ---------- */
-
-    CardBuilder.register("units-elite", [
         {
             id: "guardian",
             trainingProgressId: "training-storage-keeper-progress",
