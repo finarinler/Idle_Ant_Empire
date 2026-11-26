@@ -31,13 +31,15 @@ function handleEconomyResult(result)
 
     result.deaths.forEach(death => { deaths[death.unit] = (deaths[death.unit] || 0) + 1; });
 
-    Object.keys(deaths).forEach(unitId =>
+    const deathCount = Object.values(deaths).reduce((sum, count) => sum + count, 0);
+
+    if (deathCount > 0)
     {
-        updateStatus("status.unit.died", "warning", false, {
-            count: deaths[unitId],
-            unit: { key: UnitRegistry.get(unitId).nameKey }
+        updateStatus("status.units.starved", "warning", false, {
+            count: deathCount,
+            unitCounts: deaths
         });
-    });
+    }
 
     let needsSpecialSave = false;
 
