@@ -41,7 +41,7 @@ const BALANCE = {
 
     housing: {
         baseCapacityPerChamber: 10,
-        costGrowth: 1.005,                                            // +0,5 % je weiterer Wohnkammer
+        costGrowth: 1.10,                                             // +10 % je weiterer Wohnkammer
         maxLevel: 10,
         // Zeit je Upgrade-Stufe in Sekunden: 1→2 ... 9→10
         upgradeSeconds: [120, 300, 600, 900, 1200, 1800, 2700, 3600, 7200],
@@ -138,7 +138,7 @@ const BALANCE = {
         hatchCost: { larvae: 2 },
 
         housing: {
-            baseCost: { food: 300 },
+            baseCost: { food: 150 },
             buildSeconds: 10,
             capacityBonusPerLevel: 5,                 // Wohnraum je Wohnkammer: 10 + 5 × (Stufe − 1)
             // Nahrungskosten je Upgrade-Stufe 1→2 ... 9→10
