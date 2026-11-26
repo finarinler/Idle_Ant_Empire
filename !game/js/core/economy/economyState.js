@@ -38,6 +38,11 @@ const Economy = {
                 : achievements.mushroomFarmTen ? 0.05
                 : 0;
         },
+        getPurchasedAntFoodProduction() {
+            return GameState.achievements.purchasedAnts1000
+                ? GameState.resources.ants.mul(0.1)
+                : BigNum.ZERO;
+        },
         getProductionBonus(targetId, resource) {
             const achievements = GameState.achievements || {};
 
