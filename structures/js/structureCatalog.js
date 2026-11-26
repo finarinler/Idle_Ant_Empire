@@ -123,7 +123,7 @@
             count: { value: () => GameState.structures.mushroomFarmCount },
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => `+${formatDecimal(BALANCE.mushroomFarm.foodPerSecond, 0)} [[F]]/s`, tone: "positive" },
-                { label: { key: "card.stat.mushroomBonus" }, value: () => `+${formatDecimal(Economy.getUnitNumber("collector") * BALANCE.collector.bonusPerCollector * 100, 0)} %`, tone: "positive" },
+                { label: { key: "card.stat.mushroomBonus" }, value: () => `+${formatDecimal((Economy.getUnitNumber("collector") * BALANCE.collector.bonusPerCollector + (GameState.achievements.mushroomFarmTen ? 0.01 : 0) + (GameState.achievements.mushroomFarmTwentyFive ? 0.09 : 0)) * 100, 1)} %`, tone: "positive" },
                 buildTimeStat("mushroom-farm", "build")
             ],
             progressId: "progress-mushroom",
