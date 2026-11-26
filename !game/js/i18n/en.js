@@ -644,3 +644,11 @@ I18N.register("en", {
     "tooltip.preview.housingCapacity": "Additional housing",
     "tooltip.preview.builderLimit": "Builder limit",
 });
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("en", {
+    "options.tooltips": "Action tooltips",
+    "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
+    "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options."
+});
