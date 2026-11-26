@@ -576,3 +576,10 @@ I18N.register("en", {
     "achievements.series.farms": "Mushroom Farms",
     "achievements.series.progress": "{unlocked} / {total} tiers"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("en", {
+    "achievements.series.expeditions": "Expeditions",
+    "achievements.series.failures": "Setbacks"
+});
