@@ -288,7 +288,7 @@
     {
         Economy.update();
         const quantity = Math.floor(Number(amount));
-        const factor = Number.isFinite(factorOverride) ? factorOverride : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
+        const factor = Number.isFinite(factorOverride) ? factorOverride : quantity >= 26 ? 0.80 : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
         if (!Number.isFinite(quantity) || quantity < 1 || quantity > 1000 || factor <= 0 || factor > 1 || (factor <= 0.80 && quantity < 26)) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
         const options = Economy.getTrainingBatchOptions(id);
         if (quantity > options.max) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
