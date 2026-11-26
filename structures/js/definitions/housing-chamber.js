@@ -58,7 +58,10 @@
 
         build: {
             requiresBuilder: BALANCE.provisional.requiresBuilder.housingBuild,
-            getInfo: () => ({ cost: getChamberCost(), seconds: config.buildSeconds })
+            getInfo: () => ({
+                cost: getChamberCost(),
+                seconds: BALANCE.getCountBasedSeconds(GameState.structures.housingCount + 1, BALANCE.provisional.structureBuildSecondsByCount)
+            })
         },
 
         upgrade: {
