@@ -653,5 +653,6 @@ I18N.register("de", {
 I18N.register("de", {
     "options.tooltips": "Aktions-Tooltips",
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
-    "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten."
+    "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
+    "changelog.entry.scoutElite": "Die Kundschafterin ist jetzt unter den Elite-Einheiten eingeordnet."
 });
