@@ -563,6 +563,9 @@ I18N.register("fr", {
     "achievements.series.queens": "Reines",
     "achievements.series.collectors": "Collectrices",
     "achievements.series.farms": "Champignonnières",
+    "achievements.series.colonyMilestones": "Étapes de la colonie",
+    "achievements.series.gatheringAchievements": "Succès de collecte",
+    "achievements.series.colonyConstruction": "Construction de la colonie",
     "achievements.series.verySuccessfulExpeditions": "Expéditions très réussies",
     "achievements.series.expeditionAchievements": "Succès d’expédition",
     "achievements.series.progress": "{unlocked} / {total} niveaux"

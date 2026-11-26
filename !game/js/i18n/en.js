@@ -574,6 +574,9 @@ I18N.register("en", {
     "achievements.series.queens": "Queens",
     "achievements.series.collectors": "Collectors",
     "achievements.series.farms": "Mushroom Farms",
+    "achievements.series.colonyMilestones": "Colony Milestones",
+    "achievements.series.gatheringAchievements": "Gathering Achievements",
+    "achievements.series.colonyConstruction": "Colony Construction",
     "achievements.series.verySuccessfulExpeditions": "Highly Successful Expeditions",
     "achievements.series.expeditionAchievements": "Expedition Achievements",
     "achievements.series.progress": "{unlocked} / {total} tiers"

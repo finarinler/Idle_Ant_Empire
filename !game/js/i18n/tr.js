@@ -563,6 +563,9 @@ I18N.register("tr", {
     "achievements.series.queens": "Kraliçeler",
     "achievements.series.collectors": "Toplayıcılar",
     "achievements.series.farms": "Mantar çiftlikleri",
+    "achievements.series.colonyMilestones": "Koloni Kilometre Taşları",
+    "achievements.series.gatheringAchievements": "Toplama Başarımları",
+    "achievements.series.colonyConstruction": "Koloni İnşası",
     "achievements.series.verySuccessfulExpeditions": "Çok Başarılı Seferler",
     "achievements.series.expeditionAchievements": "Sefer Başarımları",
     "achievements.series.progress": "{unlocked} / {total} aşama"

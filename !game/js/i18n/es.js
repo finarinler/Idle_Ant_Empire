@@ -563,6 +563,9 @@ I18N.register("es", {
     "achievements.series.queens": "Reinas",
     "achievements.series.collectors": "Recolectoras",
     "achievements.series.farms": "Granjas de hongos",
+    "achievements.series.colonyMilestones": "Hitos de la colonia",
+    "achievements.series.gatheringAchievements": "Logros de recolección",
+    "achievements.series.colonyConstruction": "Construcción de la colonia",
     "achievements.series.verySuccessfulExpeditions": "Expediciones muy exitosas",
     "achievements.series.expeditionAchievements": "Logros de expedición",
     "achievements.series.progress": "{unlocked} / {total} niveles"

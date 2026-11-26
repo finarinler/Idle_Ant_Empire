@@ -6,6 +6,9 @@ const ACHIEVEMENT_CATEGORY_ORDER = [
  {id:"expedition",icon:"🧭"},{id:"research",icon:"⚗"},{id:"military",icon:"⚔"},{id:"other",icon:"🏆"}
 ];
 const ACHIEVEMENT_SERIES = [
+ {id:"colonyMilestones",category:"basic",titleKey:"achievements.series.colonyMilestones",icon:"🏡",ids:["firstSteps","goldenAge","knowledgeIsPower"]},
+ {id:"gatheringAchievements",category:"collect",titleKey:"achievements.series.gatheringAchievements",icon:"📦",ids:["smallCollector"]},
+ {id:"colonyConstruction",category:"build",titleKey:"achievements.series.colonyConstruction",icon:"🏗️",ids:["buildColony"]},
  {id:"ants",category:"units",titleKey:"achievements.series.ants",icon:"🐜",ids:["purchasedAnts1","purchasedAnts10","purchasedAnts50","purchasedAnts100","purchasedAnts250","purchasedAnts500","purchasedAnts1000"]},
  {id:"queens",category:"units",titleKey:"achievements.series.queens",icon:"👑",ids:["smallColony","queenColonyTwentyFive","queenColonyHundred"]},
  {id:"collectors",category:"units",titleKey:"achievements.series.collectors",icon:"🍄",ids:["collector10","collector25","collector50","collector100","collector250"]},

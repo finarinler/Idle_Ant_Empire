@@ -563,6 +563,9 @@ I18N.register("it", {
     "achievements.series.queens": "Regine",
     "achievements.series.collectors": "Raccoglitrici",
     "achievements.series.farms": "Fungaie",
+    "achievements.series.colonyMilestones": "Traguardi della colonia",
+    "achievements.series.gatheringAchievements": "Obiettivi di raccolta",
+    "achievements.series.colonyConstruction": "Costruzione della colonia",
     "achievements.series.verySuccessfulExpeditions": "Spedizioni di grande successo",
     "achievements.series.expeditionAchievements": "Obiettivi delle spedizioni",
     "achievements.series.progress": "{unlocked} / {total} livelli"

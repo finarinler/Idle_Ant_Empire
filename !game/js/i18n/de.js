@@ -574,6 +574,9 @@ I18N.register("de", {
     "achievements.series.queens": "Königinnen",
     "achievements.series.collectors": "Sammler",
     "achievements.series.farms": "Pilzfarmen",
+    "achievements.series.colonyMilestones": "Kolonie-Meilensteine",
+    "achievements.series.gatheringAchievements": "Sammel-Erfolge",
+    "achievements.series.colonyConstruction": "Kolonieaufbau",
     "achievements.series.verySuccessfulExpeditions": "Sehr erfolgreiche Expeditionen",
     "achievements.series.expeditionAchievements": "Expeditions-Erfolge",
     "achievements.series.progress": "{unlocked} / {total} Stufen"
