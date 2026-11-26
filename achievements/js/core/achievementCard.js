@@ -57,10 +57,11 @@ function getAchievementSeriesContainer(series){
 function refreshAchievementCategoryCounts(){
  if(!DOM.achievementList)return;
  DOM.achievementList.querySelectorAll(".achievement-category").forEach(group=>{
-  const cards=Array.from(group.querySelectorAll(".achievement-card"));
-  const unlocked=cards.filter(card=>card.classList.contains("unlocked")).length;
+  const categoryId=group.dataset.achievementCategory;
+  const definitions=ACHIEVEMENTS.filter(item=>(item.category||"other")===categoryId);
+  const unlocked=definitions.filter(item=>GameState.achievements[item.id]).length;
   const count=group.querySelector(":scope > .achievement-category-toggle .achievement-category-count");
-  if(count)count.textContent=unlocked+" / "+cards.length;
+  if(count)count.textContent=unlocked+" / "+definitions.length;
  });
  ACHIEVEMENT_SERIES.forEach(series=>{
   const group=DOM.achievementList.querySelector('[data-achievement-series="'+series.id+'"]');if(!group)return;
