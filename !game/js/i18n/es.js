@@ -98,9 +98,9 @@ I18N.register("es", {
     "loading.scriptError": "Error al cargar: {path}",
 
     /* ---------- Recursos ---------- */
-    "resource.food": "Comida",
+    "resource.food": "Comida (F)",
     "resource.maxRate": "Máx.",
-    "resource.larvae": "Larvas",
+    "resource.larvae": "Larvas (L)",
 
     /* ---------- Interfaz general ---------- */
     "card.type.unitBasic": "Unidad · Básica",
@@ -492,6 +492,7 @@ I18N.register("es", {
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",
     "changelog.entry.scrollToTop": "La página se desplaza automáticamente hacia arriba al cambiar de sección del juego.",
+    "changelog.entry.resourceAbbreviations": "La barra de recursos ahora muestra las abreviaturas F (comida) y L (larvas) junto a sus nombres.",
     "changelog.group.performance": "Rendimiento",
     "changelog.entry.performance": "Rendimiento mejorado",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
