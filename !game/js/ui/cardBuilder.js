@@ -37,11 +37,13 @@ const CardBuilder = (function ()
 
     function statPriority(stat)
     {
-        const key = stat && stat.label && stat.label.key;
+        const key = stat && stat.label && stat.label.key || "";
+        // Produktionswert -> zugehöriger Bonus -> Verbrauch -> Gesamtproduktion -> Rest.
         if (key === "card.stat.foodProduction" || key === "card.stat.larvaeProduction") { return 0; }
-        if (key === "card.stat.foodConsumption" || key === "card.stat.upkeep") { return 1; }
-        if (key === "card.stat.totalProduction") { return 2; }
-        return 3;
+        if (/bonus/i.test(key)) { return 1; }
+        if (key === "card.stat.foodConsumption" || key === "card.stat.upkeep") { return 2; }
+        if (key === "card.stat.totalProduction") { return 3; }
+        return 4;
     }
 
     function orderedStats(stats)
@@ -138,8 +140,10 @@ const CardBuilder = (function ()
 
         const lines = [];
         const unit = preview.quantity === 1 ? "" : ` · ${preview.quantity}×`;
-        lines.push(`${I18N.t("tooltip.preview.effect")}${unit}`);
         const resourceNames = { food: "F", larvae: "L", ants: "A", queens: "K" };
+
+        // 1) Erwartete Mehrproduktion und weitere positive Effekte
+        lines.push(`${I18N.t("tooltip.preview.expectedProduction")}${unit}`);
         RESOURCE_IDS.forEach(resource =>
         {
             const produced = preview.produced[resource];
@@ -165,10 +169,8 @@ const CardBuilder = (function ()
         else if (entry.action.preview.id === "housing-chamber") { lines.push(I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity)); }
         else if (entry.action.preview.id === "construction-chamber") { lines.push(I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity)); }
 
-        lines.push(`${I18N.t(entry.action.preview.kind === "unit" ? "card.stat.trainingTime" : "card.stat.buildTime")}: ${formatDuration(preview.seconds)}`);
-
-        // Kosten stehen bewusst am Ende: oben Effekte und erwartete Produktionsänderungen.
-        lines.push(I18N.t("tooltip.preview.cost"));
+        // 2) Erwartete Gesamtkosten
+        lines.push(I18N.t("tooltip.preview.expectedCosts"));
         Object.keys(resourceNames).forEach(resource =>
         {
             const value = preview.costs[resource];
@@ -179,12 +181,15 @@ const CardBuilder = (function ()
                 : I18N.t("tooltip.preview.queens");
             lines.push(`${formatGameNumber(value)} ${label}`);
         });
+
+        // 3) Erwartete Gesamtdauer
+        lines.push(`${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}`);
         nodes.preview.textContent = "";
         lines.forEach((line, index) =>
         {
             const row = document.createElement("div");
             row.textContent = line;
-            if (index === 0 || line === I18N.t("tooltip.preview.cost")) { row.className = "iae-card-preview-heading"; }
+            if (index === 0 || line === I18N.t("tooltip.preview.expectedCosts")) { row.className = "iae-card-preview-heading"; }
             nodes.preview.appendChild(row);
         });
         nodes.preview.hidden = false;
