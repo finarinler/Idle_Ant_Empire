@@ -452,7 +452,7 @@ I18N.register("de", {
     "changelog.group.balance": "Spielbalance & Wirtschaft",
     "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
     "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
-    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt."
+    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt.",
 });
 
 
