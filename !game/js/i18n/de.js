@@ -626,4 +626,10 @@ I18N.register("de", {
     "tooltip.preview.cost": "Gesamtkosten",
     "tooltip.preview.capacity": "Kapazität",
     "changelog.entry.actionPreview": "Dynamische Tooltips zeigen Effekte, Gesamtkosten und Zeiten für Einzelaktionen sowie 10×-, 25×- und MAX-Aufträge.",
+    "tooltip.preview.production.food": "Nahrungsproduktion",
+    "tooltip.preview.production.larvae": "Larvenproduktion",
+    "tooltip.preview.consumption.food": "Nahrungsverbrauch",
+    "tooltip.preview.consumption.larvae": "Larvenverbrauch",
+    "tooltip.preview.ants": "Ameisen",
+    "tooltip.preview.queens": "Königinnen",
 });
