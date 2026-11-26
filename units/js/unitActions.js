@@ -25,8 +25,7 @@ function recruitUnitBatch(id, amount)
 {
     const options = Economy.getTrainingBatchOptions(id);
     const quantity = amount === "max" ? options.max : amount;
-    if (amount === "max" && quantity < 26) { return false; }
-    const factor = amount === "max" ? 0.80 : quantity >= 25 ? 0.85 : 0.90;
+    const factor = quantity >= 26 ? 0.80 : quantity >= 25 ? 0.85 : quantity >= 10 ? 0.90 : 1;
     const result = Economy.recruitBatch(id, quantity, factor);
     if (!result.ok)
     {
