@@ -493,6 +493,8 @@ I18N.register("tr", {
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
     "changelog.entry.scrollToTop": "Oyun bölümü değiştirildiğinde sayfa otomatik olarak en üste kaydırılır.",
     "changelog.entry.resourceAbbreviations": "Kaynak adlarının yanında artık F (yiyecek) ve L (larva); birim kartı adlarında ise A (karınca) ve Q (kraliçe) kısaltmaları gösteriliyor.",
+    "changelog.group.design": "Görünüm",
+    "changelog.entry.cardColors": "Birim ve bina kartlarının renkleri güncellendi: pozitif bonuslar yeşil, negatif etkiler uyarı sarısı, diğer değerler durum grisi; kaynak kısaltmaları altın renginde kalır.",
     "changelog.group.performance": "Performans",
     "changelog.entry.performance": "Performans iyileştirmeleri",
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
