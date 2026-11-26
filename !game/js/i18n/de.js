@@ -157,6 +157,12 @@ I18N.register("de", {
     "unit.grandNurse.desc": "Verdoppelt das Larvenlager.",
     "unit.broodExpert.name": "Brut-Expertin",
     "unit.broodExpert.desc": "Züchtet neue Ameisen aus Larven.",
+    "unit.broodExpert.on": "An",
+    "unit.broodExpert.off": "Aus",
+    "unit.broodExpert.switchOn": "Brut-Expertin einschalten",
+    "unit.broodExpert.switchOff": "Brut-Expertin ausschalten",
+    "status.broodExpert.on": "Die Brut-Expertinnen sind eingeschaltet.",
+    "status.broodExpert.off": "Die Brut-Expertinnen sind ausgeschaltet.",
     "unit.soldier.name": "Elite-Soldat",
     "unit.soldier.desc": "Sichert Land bei Expeditionen.\nBenötigt für Expansion.",
 
