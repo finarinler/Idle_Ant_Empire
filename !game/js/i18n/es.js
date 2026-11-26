@@ -493,6 +493,8 @@ I18N.register("es", {
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",
     "changelog.entry.scrollToTop": "La página se desplaza automáticamente hacia arriba al cambiar de sección del juego.",
     "changelog.entry.resourceAbbreviations": "Las abreviaturas F (comida) y L (larvas) aparecen junto a los recursos; A (hormiga) y Q (reina) se añaden a los nombres de las tarjetas de unidades.",
+    "changelog.group.design": "Presentación",
+    "changelog.entry.cardColors": "Se actualizaron los colores de las tarjetas de unidades y edificios: las bonificaciones positivas son verdes, los modificadores negativos amarillo de advertencia y los demás valores gris de estado; las abreviaturas de recursos siguen en dorado.",
     "changelog.group.performance": "Rendimiento",
     "changelog.entry.performance": "Rendimiento mejorado",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
