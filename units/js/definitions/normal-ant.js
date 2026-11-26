@@ -78,7 +78,13 @@ UnitRegistry.register({
     refund: { food: BALANCE.refunds["normal-ant"] },
 
     recruit: {
-        getCost: () => ({ food: getCurrentAntFoodCost(), larvae: getCurrentAntLarvaeCost() }),
+        getCost: () => {
+            const discount = Economy.modifiers.getPurchasedAntTrainingDiscount();
+            return {
+                food: getCurrentAntFoodCost().mul(1 - discount),
+                larvae: getCurrentAntLarvaeCost().mul(1 - discount)
+            };
+        },
         announce: false
     }
 });
