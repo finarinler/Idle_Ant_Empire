@@ -29,10 +29,10 @@ const Economy = {
 
             // Sammler-Meilensteine: jeweils nur der höchste erreichte Gesamtwert.
             const collectorBonus = achievements.collector250 ? 0.10
-                : achievements.collectorHundred ? 0.075
-                : achievements.collectorFifty ? 0.05
+                : achievements.collector100 ? 0.075
+                : achievements.collector50 ? 0.05
                 : achievements.collector25 ? 0.025
-                : achievements.collectorTen ? 0.01
+                : achievements.collector10 ? 0.01
                 : 0;
 
             // Pilzfarm-Meilensteine bleiben eine eigene, ebenfalls nicht additive Staffel.
