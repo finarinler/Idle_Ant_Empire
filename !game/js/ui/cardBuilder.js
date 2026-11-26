@@ -245,7 +245,6 @@ const CardBuilder = (function ()
             nodes.button.dataset.previewQuantity = "1";
             nodes.button.addEventListener("mouseenter", () => showPreview(entry, nodes, 1));
             nodes.button.addEventListener("focus", () => showPreview(entry, nodes, 1));
-            nodes.button.addEventListener("mouseleave", () => hidePreview(nodes));
             nodes.button.addEventListener("blur", () => hidePreview(nodes));
         }
 
@@ -262,7 +261,6 @@ const CardBuilder = (function ()
                 {
                     button.addEventListener("mouseenter", () => showPreview(entry, nodes, amount));
                     button.addEventListener("focus", () => showPreview(entry, nodes, amount));
-                    button.addEventListener("mouseleave", () => hidePreview(nodes));
                     button.addEventListener("blur", () => hidePreview(nodes));
                 }
                 nodes.batchButtons[label] = button;
@@ -273,6 +271,7 @@ const CardBuilder = (function ()
         {
             nodes.preview = create("div", "iae-card-preview", card, { role: "tooltip", "aria-live": "polite" });
             nodes.preview.hidden = true;
+            card.addEventListener("mouseleave", () => hidePreview(nodes));
         }
 
         nodes.hint = create("p", "iae-card-hint", card);
