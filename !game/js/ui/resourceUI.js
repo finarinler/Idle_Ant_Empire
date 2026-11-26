@@ -61,7 +61,7 @@ function updateResources()
 
         const displayRate = netRate.roundTo(1);
         const currentDisplay = DOM.foodRate.querySelector(".food-rate-current");
-        const maxDisplay = DOM.foodRate.querySelector(".food-rate-max");
+        const maxDisplay = DOM.foodRate.querySelector(".resource-rate-max");
 
         if (currentDisplay)
         {
@@ -79,7 +79,7 @@ function updateResources()
         }
     }
 
-    /* 3. Larvenrate (eine Nachkommastelle) */
+    /* 3. Larvenrate (eine Nachkommastelle) plus theoretisches Maximum */
     if (DOM.larvaeRate)
     {
         let netRate = flows.net.larvae;
@@ -90,12 +90,23 @@ function updateResources()
         }
 
         const displayRate = netRate.roundTo(1);
+        const currentDisplay = DOM.larvaeRate.querySelector(".larvae-rate-current");
+        const maxDisplay = DOM.larvaeRate.querySelector(".larvae-rate-max");
 
-        setRateDisplay(
-            DOM.larvaeRate,
-            displayRate,
-            `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
-        );
+        if (currentDisplay)
+        {
+            setRateDisplay(
+                currentDisplay,
+                displayRate,
+                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
+            );
+        }
+
+        if (maxDisplay)
+        {
+            const maxRate = flows.maxNet.larvae.roundTo(1);
+            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)}/s`;
+        }
     }
 
     /* 4. Karten (Einheiten, Gebäude, Forschung) */
