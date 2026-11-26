@@ -469,6 +469,7 @@ I18N.register("it", {
 /* ---------- Navigation tooltips & changelog (all releases) ---------- */
 I18N.register("it", {
     "nav.hint.comingSoon": "Prossimamente!",
+    "nav.hint.underRevision": "In revisione",
     "nav.hint.firstSteps": "Obiettivo: Primi passi — completa 5 spedizioni.",
     "changelog.eyebrow": "CRONOLOGIA MODIFICHE",
     "changelog.title": "Modifiche",
@@ -487,6 +488,7 @@ I18N.register("it", {
     "changelog.entry.newAchievements": "Nuovi obiettivi aggiunti",
     "changelog.entry.collectorCosts": "Costi delle raccoglitrici rivisti: il costo in formiche corrisponde al livello della raccoglitrice; restano invariati i precedenti aumenti dei costi in cibo e larve.",
     "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
+    "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
     "changelog.entry.foodUpkeep": "Consumo di cibo delle raccoglitrici modificato.",
     "changelog.entry.foodProduction": "Riviste le basi della produzione di cibo.",
