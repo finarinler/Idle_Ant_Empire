@@ -565,3 +565,10 @@ I18N.register("es", {
     "achievements.series.farms": "Granjas de hongos",
     "achievements.series.progress": "{unlocked} / {total} niveles"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("es", {
+    "achievements.series.expeditions": "Expediciones",
+    "achievements.series.failures": "Contratiempos"
+});
