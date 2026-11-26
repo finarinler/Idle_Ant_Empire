@@ -299,8 +299,10 @@ const CardBuilder = (function ()
             nodes.batchButtons = {};
             [["10", 10], ["25", 25], ["MAX", "max"]].forEach(([label, amount]) =>
             {
-                const button = create("button", "iae-card-batch-btn", nodes.batch, { type: "button" });
-                button.textContent = label;
+                const button = create("button", "iae-card-action iae-card-batch-btn", nodes.batch, { type: "button" });
+                const buttonLabel = create("span", "iae-card-action-label", button);
+                buttonLabel.textContent = label;
+                create("span", "iae-card-action-glyph", button, { "aria-hidden": "true" });
                 button.addEventListener("click", () => entry.action.batchRun(amount));
                 if (entry.action.preview)
                 {
@@ -404,10 +406,15 @@ const CardBuilder = (function ()
         if (nodes.batchButtons)
         {
             const options = entry.action.batchOptions();
-            const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon";
-            nodes.batchButtons["10"].hidden = !canUse || !options.ten;
-            nodes.batchButtons["25"].hidden = !canUse || !options.twentyFive;
-            nodes.batchButtons.MAX.hidden = !canUse || options.max < 26;
+            const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon" && state !== "training";
+            // Alle Mehrkauf-Buttons bleiben sichtbar; jede Menge ist nur aktiv,
+            // wenn sie vollständig finanzierbar und verfügbar ist.
+            nodes.batchButtons["10"].hidden = false;
+            nodes.batchButtons["25"].hidden = false;
+            nodes.batchButtons.MAX.hidden = false;
+            nodes.batchButtons["10"].disabled = !canUse || !options.ten;
+            nodes.batchButtons["25"].disabled = !canUse || !options.twentyFive;
+            nodes.batchButtons.MAX.disabled = !canUse || options.max < 1;
         }
 
         if (entry.stepper)
