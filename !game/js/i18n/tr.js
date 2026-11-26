@@ -157,6 +157,12 @@ I18N.register("tr", {
     "unit.grandNurse.desc": "Larva deposunu ikiye katlar.",
     "unit.broodExpert.name": "Kuluçka Uzmanı",
     "unit.broodExpert.desc": "Larvalardan yeni karıncalar yetiştirir.",
+    "unit.broodExpert.on": "Açık",
+    "unit.broodExpert.off": "Kapalı",
+    "unit.broodExpert.switchOn": "Kuluçka Uzmanlarını aç",
+    "unit.broodExpert.switchOff": "Kuluçka Uzmanlarını kapat",
+    "status.broodExpert.on": "Kuluçka Uzmanları etkin.",
+    "status.broodExpert.off": "Kuluçka Uzmanları devre dışı.",
     "unit.soldier.name": "Elit Asker",
     "unit.soldier.desc": "Keşiflerde toprakları güvence altına alır.\nGenişleme için gereklidir.",
 
