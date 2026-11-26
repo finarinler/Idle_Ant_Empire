@@ -108,7 +108,7 @@
             count: countOf("collector"),
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => rate("+", BALANCE.collector.foodPerSecond, 0, "F"), tone: "positive" },
-                { label: { key: "card.stat.mushroomBonus" }, value: () => `+${formatDecimal(BALANCE.collector.bonusPerCollector * 100, 0)} %`, tone: "positive" },
+                { label: { key: "card.stat.collectorFarmAchievementBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getCollectorAchievementBonus() * 100, 1)} %`, tone: "positive" },
                 housingStat("collector"),
                 trainingStat("collector")
             ],
