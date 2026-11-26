@@ -142,10 +142,10 @@ I18N.register("it", {
     "expedition.scoutLockedTitle": "L’esploratrice conduce le spedizioni automaticamente.",
 
     /* ---------- Unità ---------- */
-    "unit.ant.name": "Formica",
+    "unit.ant.name": "Formica (A)",
     "unit.ant.desc": "Raccoglie cibo per la tua colonia.",
     "unit.ant.buy": "Compra formica",
-    "unit.queen.name": "Regina",
+    "unit.queen.name": "Regina (Q)",
     "unit.queen.desc": "Depone le larve da cui nascono nuove formiche.",
     "unit.queen.buy": "Compra regina",
     "unit.scout.name": "Esploratrice",
@@ -492,7 +492,7 @@ I18N.register("it", {
     "changelog.entry.navigation": "Tutte le aree di gioco sono visibili fin dall’inizio; passando sulle aree bloccate vengono mostrate indicazioni sui contenuti futuri o sui requisiti di sblocco.",
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
     "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
-    "changelog.entry.resourceAbbreviations": "La barra delle risorse ora mostra le abbreviazioni F (cibo) e L (larve) accanto ai nomi.",
+    "changelog.entry.resourceAbbreviations": "Le abbreviazioni F (cibo) e L (larve) sono ora accanto alle risorse; A (formica) e Q (regina) sono aggiunte ai nomi delle schede unità.",
     "changelog.group.performance": "Prestazioni",
     "changelog.entry.performance": "Prestazioni migliorate",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
