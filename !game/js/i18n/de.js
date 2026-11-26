@@ -654,5 +654,6 @@ I18N.register("de", {
     "options.tooltips": "Aktions-Tooltips",
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
     "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
-    "changelog.entry.scoutElite": "Die Kundschafterin ist jetzt unter den Elite-Einheiten eingeordnet."
+    "changelog.entry.scoutElite": "Die Kundschafterin ist jetzt unter den Elite-Einheiten eingeordnet.",
+    "changelog.entry.builderTimeSaving": "Die aktuelle Zeitersparnis des Baumeisters wird als positiver Effekt grün dargestellt."
 });
