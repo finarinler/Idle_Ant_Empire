@@ -69,6 +69,12 @@ const GameState = {
 
     achievements: {
         firstSteps: false,
+        purchasedAnts1: false,
+        purchasedAnts10: false,
+        purchasedAnts50: false,
+        purchasedAnts100: false,
+        purchasedAnts250: false,
+        purchasedAnts500: false,
         purchasedAnts1000: false,
         smallCollector: false,
         collector10: false,
