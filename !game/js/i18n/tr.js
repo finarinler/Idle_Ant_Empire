@@ -469,6 +469,7 @@ I18N.register("tr", {
 /* ---------- Navigation tooltips & changelog (all releases) ---------- */
 I18N.register("tr", {
     "nav.hint.comingSoon": "Çok yakında!",
+    "nav.hint.underRevision": "Yeniden düzenleniyor",
     "nav.hint.firstSteps": "Başarım: İlk Adımlar — 5 keşif tamamla.",
     "changelog.eyebrow": "DEĞİŞİKLİK GÜNLÜĞÜ",
     "changelog.title": "Değişiklikler",
@@ -487,6 +488,7 @@ I18N.register("tr", {
     "changelog.entry.newAchievements": "Yeni başarımlar eklendi",
     "changelog.entry.collectorCosts": "Toplayıcı maliyetleri yenilendi: karınca maliyeti toplayıcı seviyesine eşitlendi; yiyecek ve larva maliyetlerindeki önceki artışlar korundu.",
     "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
+    "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
     "changelog.entry.foodUpkeep": "Toplayıcıların yiyecek tüketimi ayarlandı.",
     "changelog.entry.foodProduction": "Temel yiyecek üretimi ayarları yenilendi.",
