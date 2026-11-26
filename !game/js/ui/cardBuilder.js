@@ -105,6 +105,51 @@ const CardBuilder = (function ()
         return node;
     }
 
+    function hidePreview(nodes)
+    {
+        if (nodes.preview) { nodes.preview.hidden = true; }
+    }
+
+    function showPreview(entry, nodes, requested)
+    {
+        if (!nodes.preview || !entry.action.preview) { return; }
+        let quantity = requested === "max" ? entry.action.batchOptions().max : Number(requested);
+        if (!Number.isFinite(quantity) || quantity < 1) { hidePreview(nodes); return; }
+        const preview = Economy.getActionPreview(entry.action.preview.kind, entry.action.preview.id, quantity);
+        if (!preview.quantity) { hidePreview(nodes); return; }
+
+        const lines = [];
+        const unit = preview.quantity === 1 ? "" : ` · ${preview.quantity}×`;
+        lines.push(`${I18N.t("tooltip.preview.effect")}${unit}`);
+        const resourceNames = { food: "F", larvae: "L", ants: "A", queens: "K" };
+        RESOURCE_IDS.forEach(resource =>
+        {
+            const produced = preview.produced[resource];
+            const consumed = preview.consumed[resource];
+            if (produced && produced.isPositive()) { lines.push(`+${formatRate(produced)} ${resourceNames[resource]}/s`); }
+            if (consumed && consumed.isPositive()) { lines.push(`−${formatRate(consumed)} ${resourceNames[resource]}/s`); }
+            const capacity = preview.capacity[resource];
+            if (capacity && capacity.isPositive()) { lines.push(`+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}`); }
+        });
+
+        lines.push(I18N.t("tooltip.preview.cost"));
+        Object.keys(resourceNames).forEach(resource =>
+        {
+            const value = preview.costs[resource];
+            if (value && value.isPositive()) { lines.push(`${formatGameNumber(value)} ${resourceNames[resource]}`); }
+        });
+        lines.push(`${I18N.t(entry.action.preview.kind === "unit" ? "card.stat.trainingTime" : "card.stat.buildTime")}: ${formatDuration(preview.seconds)}`);
+        nodes.preview.textContent = "";
+        lines.forEach((line, index) =>
+        {
+            const row = document.createElement("div");
+            row.textContent = line;
+            if (index === 0 || line === I18N.t("tooltip.preview.cost")) { row.className = "iae-card-preview-heading"; }
+            nodes.preview.appendChild(row);
+        });
+        nodes.preview.hidden = false;
+    }
+
     /* ---------- Karte erzeugen ---------- */
 
     function buildCard(entry)
@@ -195,6 +240,14 @@ const CardBuilder = (function ()
         {
             nodes.button.addEventListener("click", () => entry.action.run());
         }
+        if (entry.action && entry.action.preview)
+        {
+            nodes.button.dataset.previewQuantity = "1";
+            nodes.button.addEventListener("mouseenter", () => showPreview(entry, nodes, 1));
+            nodes.button.addEventListener("focus", () => showPreview(entry, nodes, 1));
+            nodes.button.addEventListener("mouseleave", () => hidePreview(nodes));
+            nodes.button.addEventListener("blur", () => hidePreview(nodes));
+        }
 
         if (entry.action && typeof entry.action.batchOptions === "function" && typeof entry.action.batchRun === "function")
         {
@@ -205,8 +258,21 @@ const CardBuilder = (function ()
                 const button = create("button", "iae-card-batch-btn", nodes.batch, { type: "button" });
                 button.textContent = label;
                 button.addEventListener("click", () => entry.action.batchRun(amount));
+                if (entry.action.preview)
+                {
+                    button.addEventListener("mouseenter", () => showPreview(entry, nodes, amount));
+                    button.addEventListener("focus", () => showPreview(entry, nodes, amount));
+                    button.addEventListener("mouseleave", () => hidePreview(nodes));
+                    button.addEventListener("blur", () => hidePreview(nodes));
+                }
                 nodes.batchButtons[label] = button;
             });
+        }
+
+        if (entry.action && entry.action.preview)
+        {
+            nodes.preview = create("div", "iae-card-preview", card, { role: "tooltip", "aria-live": "polite" });
+            nodes.preview.hidden = true;
         }
 
         nodes.hint = create("p", "iae-card-hint", card);
