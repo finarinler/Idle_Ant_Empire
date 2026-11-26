@@ -493,6 +493,8 @@ I18N.register("it", {
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
     "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
     "changelog.entry.resourceAbbreviations": "Le abbreviazioni F (cibo) e L (larve) sono ora accanto alle risorse; A (formica) e Q (regina) sono aggiunte ai nomi delle schede unità.",
+    "changelog.group.design": "Aspetto",
+    "changelog.entry.cardColors": "Colori delle schede di unità ed edifici aggiornati: i bonus positivi sono verdi, i modificatori negativi giallo di avviso e gli altri valori grigio di stato; le abbreviazioni delle risorse restano dorate.",
     "changelog.group.performance": "Prestazioni",
     "changelog.entry.performance": "Prestazioni migliorate",
     "changelog.entry.discord": "La community Discord è ora accessibile anche direttamente dalle opzioni di gioco.",
