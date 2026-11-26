@@ -41,8 +41,6 @@ const APP_MODULES = [
     Loading Screen
 ========================= */
 
-const MIN_LOADING_TIME = 10000;
-
 let loadingStartTime = 0;
 
 
@@ -73,18 +71,6 @@ function updateLoadingProgress(percent) {
 }
 
 
-/* =========================
-    Minimum Loading Time
-========================= */
-
-function waitForRemainingLoadingTime() {
-    const elapsed = Date.now() - loadingStartTime;
-    const remaining = Math.max(0, MIN_LOADING_TIME - elapsed);
-
-    return new Promise(resolve => {
-        window.setTimeout(resolve, remaining);
-    });
-}
 
 
 /* =========================
@@ -221,10 +207,6 @@ async function loadModules() {
         updateLoadingStatus(I18N.t("loading.awakening"));
 
         await initGame();
-
-        // Sicherstellen, dass der Ladebildschirm
-        // mindestens 10 Sekunden sichtbar bleibt.
-        await waitForRemainingLoadingTime();
 
         updateLoadingProgress(100);
 
