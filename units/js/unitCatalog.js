@@ -183,6 +183,7 @@
                 missingLabel: { key: "button.missingResources" },
                 keepLabel: true,
                 preview: { kind: "unit", id: "scout" },
+                preview: { kind: "unit", id: "scout" },
                 batchOptions: () => hasScout() ? { ten: false, twentyFive: false, max: 0 } : Economy.getTrainingBatchOptions("scout"),
                 batchRun: amount => recruitUnitBatch("scout", amount),
                 run: () => hasScout() ? toggleScoutAutomation() : buyScout()
