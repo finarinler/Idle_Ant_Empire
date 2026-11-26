@@ -592,3 +592,8 @@ I18N.register("fr", {
     "changelog.entry.unitTrainingTerminology": "Les unités sont désignées de manière cohérente comme entraînées dans les succès et les textes du jeu.",
     "changelog.entry.buildingTerminology": "Les bâtiments sont désignés de manière cohérente comme construits dans les succès et les textes du jeu."
 });
+
+I18N.register("fr", {
+    "status.unit.trainingQueued": "{count}× {unit} ajouté(s) à la file de formation.",
+    "changelog.entry.batchTraining": "Ajout de la formation par lots avec file et bonus de temps pour tous les types d’unités."
+});
