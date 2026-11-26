@@ -628,8 +628,7 @@ I18N.register("de", {
     "changelog.entry.batchConstruction": "Mehrfachbau mit Warteschlange für Gebäude ergänzt.",
     "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert.",
     "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit.",
-    "changelog.entry.broodExpertRebalance": "Brut-Expertin angepasst: 1 Larve wird zu 1 Ameise; jede Brut-Expertin verbraucht dauerhaft 5 Nahrung/s.",
-    "changelog.entry.broodExpertToggle": "Brut-Expertinnen lassen sich ein- und ausschalten. Ausgeschaltet pausiert der Schlupf und der Nahrungsverbrauch sinkt um 50 %.",
+    "changelog.entry.broodExpertRebalance": "Brut-Expertin angepasst.",
     "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet.",
     "tooltip.preview.expectedProduction": "Erwartete Mehrproduktion",
     "tooltip.preview.expectedCosts": "Erwartete Kosten",
@@ -662,7 +661,4 @@ I18N.register("de", {
     "options.tooltips": "Aktions-Tooltips",
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
     "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
-    "changelog.entry.scoutElite": "Die Kundschafterin ist jetzt unter den Elite-Einheiten eingeordnet.",
-"changelog.entry.scoutUpkeep": "Kundschafterin: 18 Nahrung/min (0,3 Nahrung/s); bei ausgeschalteter Automatik 0,1 Nahrung/s.",
-    "changelog.entry.builderTimeSaving": "Die aktuelle Zeitersparnis des Baumeisters wird als positiver Effekt grün dargestellt."
 });
