@@ -430,7 +430,7 @@ I18N.register("es", {
     "structure.construction.name": "Cámara de construcción",
     "structure.construction.desc": "Permite constructores.\nCada nivel permite uno más.",
     "card.stat.housing": "Alojamiento",
-    "card.stat.collectorFarmAchievementBonus": "Bonus de logros para la producción de las granjas de hongos",
+    "card.stat.collectorFarmAchievementBonus": "Bonus de logros de los recolectores para la producción de las granjas de hongos",
     "card.stat.mushroomFarmTotalBonus": "Bonus total de las granjas de hongos",
     "card.stat.hatchTime": "Tiempo de eclosión",
     "card.stat.hatchCost": "Coste de eclosión",
