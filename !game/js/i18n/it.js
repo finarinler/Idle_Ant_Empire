@@ -494,6 +494,7 @@ I18N.register("it", {
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
     "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
     "changelog.entry.resourceAbbreviations": "Aggiunte abbreviazioni per risorse e unità.",
+    "changelog.entry.totalProduction": "Aggiunta la produzione totale a tutte le schede che producono risorse.",
     "changelog.group.design": "Aspetto",
     "changelog.group.performance": "Prestazioni",
     "changelog.entry.performance": "Prestazioni migliorate",
