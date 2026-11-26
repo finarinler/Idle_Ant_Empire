@@ -242,12 +242,26 @@
                 },
                 { label: { key: "card.stat.hatchCost" }, value: () => `${formatGameNumber(UnitRegistry.get("brood-expert").hatch.cost.larvae)} [[L]]` },
                 survivalUpkeep("brood-expert", 0),
+                {
+                    label: { key: "card.stat.automation" },
+                    value: () => ({ key: isBroodExpertOn() ? "unit.broodExpert.on" : "unit.broodExpert.off" })
+                },
                 housingStat("brood-expert"),
                 trainingStat("brood-expert")
             ],
             progressId: "brood-expert-progress",
             cost: () => ({ values: Economy.getRecruitCost("brood-expert") }),
-            action: trainAction(buyBroodExpert, "brood-expert"),
+            action: {
+                label: () => Economy.getUnitNumber("brood-expert") > 0
+                    ? { key: isBroodExpertOn() ? "unit.broodExpert.switchOff" : "unit.broodExpert.switchOn" }
+                    : { key: "button.train" },
+                missingLabel: { key: "button.missingResources" },
+                keepLabel: true,
+                preview: { kind: "unit", id: "brood-expert" },
+                batchOptions: () => Economy.getTrainingBatchOptions("brood-expert"),
+                batchRun: amount => recruitUnitBatch("brood-expert", amount),
+                run: () => Economy.getUnitNumber("brood-expert") > 0 ? toggleBroodExpert() : buyBroodExpert()
+            },
             status: statusOf("brood-expert")
         }
     ]);
