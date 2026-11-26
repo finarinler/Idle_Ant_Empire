@@ -230,7 +230,17 @@ I18N.register("de", {
     "achievement.smallColony.title": "Kleiner Ameisenstaat",
     "achievement.smallColony.locked": "{goal} Königinnen gekauft",
     "achievement.smallColony.unlocked": "{goal} Königinnen gekauft",
-    "achievement.smallColony.reward": "Belohnung: Basis-Strukturen freigeschaltet",
+    "achievement.smallColony.reward": "Belohnung: +5 % Larvenproduktion",
+    "achievement.queenColonyTwentyFive.title": "Wachsende Königinnenkolonie",
+    "achievement.queenColonyTwentyFive.locked": "{goal} Königinnen gekauft",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} Königinnen gekauft",
+    "achievement.queenColonyTwentyFive.reward": "Belohnung: +10 % Larvenproduktion",
+
+    "achievement.queenColonyHundred.title": "Königinnen-Dynastie",
+    "achievement.queenColonyHundred.locked": "{goal} Königinnen gekauft",
+    "achievement.queenColonyHundred.unlocked": "{goal} Königinnen gekauft",
+    "achievement.queenColonyHundred.reward": "Belohnung: +25 % Larvenproduktion",
+
 
     "achievement.buildColony.title": "Bau der Kolonie",
     "achievement.buildColony.locked": "Vorratskammer und Brutkammer errichtet",
