@@ -325,10 +325,14 @@
     .options-save-actions { flex-direction: column; }
     .options-action-btn { width: 100%; }
     .header-status-line {
-        min-height: 78px;
+        min-height: 44px;
+        padding: 8px 12px;
         margin-inline: 0;
+        align-items: center;
+        gap: 8px;
     }
-    #status-text .log-entry:nth-child(3) { display: flex; }
+    #status-text { gap: 0; }
+    #status-text .log-entry:nth-child(n+2) { display: none; }
 }
 
 
