@@ -8,11 +8,11 @@ const UNIT_MODULES = [
     "units/js/definitions/normal-ant.js",
     "units/js/definitions/queen.js",
     "units/js/definitions/collector.js",
-    "units/js/definitions/scout.js",
-    "units/js/definitions/brood-expert.js",
+    "units/js/definitions/elite/scout.js",
+    "units/js/definitions/elite/brood-expert.js",
     "units/js/definitions/builder.js",
-    "units/js/definitions/storage-keeper.js",
-    "units/js/definitions/grand-nurse.js",
+    "units/js/definitions/elite/storage-keeper.js",
+    "units/js/definitions/elite/grand-nurse.js",
     "units/js/unitActions.js",
     "units/js/unitCatalog.js"
 ];
