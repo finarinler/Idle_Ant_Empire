@@ -494,7 +494,7 @@ I18N.register("tr", {
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
     "changelog.entry.scrollToTop": "Oyun bölümü değiştirildiğinde sayfa otomatik olarak en üste kaydırılır.",
     "changelog.entry.resourceAbbreviations": "Kaynak ve birim kısaltmaları eklendi.",
-    "changelog.entry.totalProduction": "Kaynak üreten tüm kartlara toplam üretim eklendi.",
+    "changelog.entry.totalProduction": "Üretim yapan tüm kartlara tutarlı bir “Toplam üretim” göstergesi eklendi.",
     "changelog.group.design": "Görünüm",
     "changelog.group.performance": "Performans",
     "changelog.entry.performance": "Performans iyileştirmeleri",
