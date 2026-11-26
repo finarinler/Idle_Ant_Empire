@@ -237,6 +237,16 @@ I18N.register("es", {
     "achievement.buildColony.unlocked": "Despensa y sala de cría construidas",
     "achievement.buildColony.reward": "Recompensa: unidades especiales desbloqueadas",
 
+    "achievement.mushroomFarmTen.title": "Pionero de las granjas de hongos",
+    "achievement.mushroomFarmTen.locked": "Construye 10 granjas de hongos",
+    "achievement.mushroomFarmTen.unlocked": "Construye 10 granjas de hongos",
+    "achievement.mushroomFarmTen.reward": "Recompensa: +1% de producción de las granjas de hongos",
+
+    "achievement.mushroomFarmTwentyFive.title": "Imperio de las granjas de hongos",
+    "achievement.mushroomFarmTwentyFive.locked": "Construye 25 granjas de hongos",
+    "achievement.mushroomFarmTwentyFive.unlocked": "Construye 25 granjas de hongos",
+    "achievement.mushroomFarmTwentyFive.reward": "Recompensa: +10% de producción total de las granjas de hongos",
+
     "achievement.knowledgeIsPower.title": "El saber es poder",
     "achievement.knowledgeIsPower.locked": "Entrenar una guardiana de la despensa y una gran nodriza",
     "achievement.knowledgeIsPower.unlocked": "Has entrenado una guardiana de la despensa y una gran nodriza",
