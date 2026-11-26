@@ -247,6 +247,21 @@ I18N.register("es", {
     "achievement.mushroomFarmTwentyFive.unlocked": "Construye 25 granjas de hongos",
     "achievement.mushroomFarmTwentyFive.reward": "Recompensa: +10% de producción total de las granjas de hongos",
 
+    "achievement.mushroomFarmFifty.title": "Maestro de las granjas de hongos",
+    "achievement.mushroomFarmFifty.locked": "Construye 50 granjas de hongos",
+    "achievement.mushroomFarmFifty.unlocked": "Construye 50 granjas de hongos",
+    "achievement.mushroomFarmFifty.reward": "Bonificación total: +15% de producción",
+
+    "achievement.mushroomFarmHundred.title": "Magnate de las granjas de hongos",
+    "achievement.mushroomFarmHundred.locked": "Construye 100 granjas de hongos",
+    "achievement.mushroomFarmHundred.unlocked": "Construye 100 granjas de hongos",
+    "achievement.mushroomFarmHundred.reward": "Bonificación total: +20% de producción",
+
+    "achievement.mushroomFarmTwoFifty.title": "Leyenda de las granjas de hongos",
+    "achievement.mushroomFarmTwoFifty.locked": "Construye 250 granjas de hongos",
+    "achievement.mushroomFarmTwoFifty.unlocked": "Construye 250 granjas de hongos",
+    "achievement.mushroomFarmTwoFifty.reward": "Bonificación total: +25% de producción",
+
     "achievement.knowledgeIsPower.title": "El saber es poder",
     "achievement.knowledgeIsPower.locked": "Entrenar una guardiana de la despensa y una gran nodriza",
     "achievement.knowledgeIsPower.unlocked": "Has entrenado una guardiana de la despensa y una gran nodriza",
