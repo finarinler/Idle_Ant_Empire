@@ -15,6 +15,7 @@
 .iae-card {
     display: flex;
     min-width: 0;
+    min-height: 460px;
     flex-direction: column;
     padding: 20px;
     border: 1px solid var(--research-border);
