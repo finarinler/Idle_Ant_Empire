@@ -13,7 +13,7 @@ UnitRegistry.register({
     housing: 3,
     maxCount: BALANCE.carriedOver.broodExpert.maxCount,
 
-    consumption: [{ resource: "food", rate: BALANCE.upkeep["brood-expert"], kind: "survival" }],
+    consumption: [{ resource: "food", rate: BALANCE.upkeep["brood-expert"], kind: "survival", enabled: () => GameState.economy.broodExpertEnabled !== false }],
     production: [],
     refund: { food: BALANCE.refunds["brood-expert"] },
 
