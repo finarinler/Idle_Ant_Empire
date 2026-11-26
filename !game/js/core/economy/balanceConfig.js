@@ -127,8 +127,8 @@ const BALANCE = {
             multiplier: { ants: 2, food: 1.75, larvae: 1.5, queens: 2 },
             maxCount: 5
         },
-        storageRoom: { cost: { larvae: 50, ants: 100, queens: 0, food: 1000 }, totalFoodCapacity: 10000 },
-        broodChamber: { cost: { food: 3000, larvae: 150, ants: 150, queens: 0 }, totalLarvaeCapacity: 2500 }
+        storageRoom: { cost: { larvae: 50, ants: 75, queens: 0, food: 1000 }, totalFoodCapacity: 10000 },
+        broodChamber: { cost: { food: 1500, larvae: 75, ants: 100, queens: 0 }, totalLarvaeCapacity: 2500 }
     },
 
     /* ---------- VORLÄUFIG (wartet auf Freigabe) ---------- */
@@ -160,7 +160,7 @@ const BALANCE = {
             { max: Infinity, seconds: 60 }
         ],
 
-        constructionChamber: { cost: { food: 1500, larvae: 50, ants: 75, queens: 5 }, buildSeconds: 600 },
+        constructionChamber: { cost: { food: 1000, larvae: 75, ants: 50, queens: 1 }, buildSeconds: 600 },
 
         storageRoomBuildSeconds: 900,
         broodChamberBuildSeconds: 900,
@@ -172,7 +172,7 @@ const BALANCE = {
 
         // Welche Projekte einen Baumeister benötigen (nur Wohnkammer-Upgrades sind vorgegeben)
         requiresBuilder: { housingBuild: false, housingUpgrade: true, mushroomFarm: false,
-                           storageRoom: false, broodChamber: false, constructionChamber: false },
+                           storageRoom: true, broodChamber: true, constructionChamber: true },
 
         // Forschungs-Freischaltung der 2.-5. Vorratshüterin / Groß-Amme ist noch nicht
         // implementiert: bis dahin ist nur die erste verfügbar.

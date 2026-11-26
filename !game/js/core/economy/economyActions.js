@@ -234,11 +234,24 @@
             ? operation.getInfo(targetLevel)
             : operation.getInfo();
 
+        let requiresBuilder = Boolean(operation.requiresBuilder);
+
+        // Ab der 16. Wohnkammer bzw. der 26. Pilzfarm wird ein Baumeister benötigt.
+        // Die Nummer bezieht sich auf das als Nächstes gestartete Bauprojekt.
+        if (kind === "build" && structureId === "housing-chamber")
+        {
+            requiresBuilder = requiresBuilder || Economy.getStructureNumber(structureId) + 1 >= 16;
+        }
+        else if (kind === "build" && structureId === "mushroom-farm")
+        {
+            requiresBuilder = requiresBuilder || Economy.getStructureNumber(structureId) + 1 >= 26;
+        }
+
         return {
             cost: info.cost,
             baseSeconds: info.seconds,
             seconds: info.seconds * Economy.getBuildTimeFactor(),
-            requiresBuilder: Boolean(operation.requiresBuilder)
+            requiresBuilder
         };
     };
 

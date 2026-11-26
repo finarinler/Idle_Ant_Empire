@@ -12,18 +12,30 @@ UnitRegistry.register({
     housing: 0,
     maxCount: () => Math.min(BALANCE.builder.maxBuilders, GameState.structures.constructionLevel),
 
-    consumption: [],
+    consumption: [{ resource: "food", rate: () => Math.pow(2, Math.max(0, (GameState.eliteUnits.builderCount || 0) - 1)) }],
     production: [],
     refund: { food: BALANCE.refunds["builder"] },
 
     requirement: () => GameState.structures.constructionLevel > 0 ? null : { key: "status.requires.constructionChamber" },
 
     recruit: {
-        getCost: () => getScaledCost(
-            BALANCE.provisional.builder.baseCost,
-            BALANCE.provisional.builder.multiplier,
-            GameState.eliteUnits.builderCount || 0
-        ),
+        getCost: () =>
+        {
+            const count = GameState.eliteUnits.builderCount || 0;
+
+            // Nur Baumeister Nr. 1 erhält den einmaligen Einstiegspreis.
+            // Ab Nr. 2 bleiben Grundkosten und Multiplikatoren exakt unverändert.
+            if (count === 0)
+            {
+                return { ants: 25, food: 750, larvae: 100, queens: 1 };
+            }
+
+            return getScaledCost(
+                BALANCE.provisional.builder.baseCost,
+                BALANCE.provisional.builder.multiplier,
+                count
+            );
+        },
         announce: true,
         messageKey: "status.builder.trained"
     }

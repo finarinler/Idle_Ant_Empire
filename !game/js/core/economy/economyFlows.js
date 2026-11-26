@@ -81,7 +81,13 @@
             (unit.consumption || []).forEach(entry =>
             {
                 if (entry.enabled && !entry.enabled()) { return; }
-                consumption.push({ unit, resource: entry.resource, rate: entry.rate, kind: entry.kind || "survival", n });
+                consumption.push({
+                    unit,
+                    resource: entry.resource,
+                    rate: typeof entry.rate === "function" ? entry.rate(n) : entry.rate,
+                    kind: entry.kind || "survival",
+                    n
+                });
             });
 
             (unit.production || []).forEach(entry =>
