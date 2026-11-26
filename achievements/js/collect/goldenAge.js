@@ -1,7 +1,8 @@
 /* Erfolg: Das goldene Zeitalter */
 
 registerAchievement({
-    category: "collect",
+    category: "units",
+    unitGroupOrder: 1,
     id: "goldenAge",
     order: 299,
 
