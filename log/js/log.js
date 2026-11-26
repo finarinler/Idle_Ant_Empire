@@ -113,7 +113,21 @@ function renderStatusPreview()
     if (!preview) return;
 
     preview.replaceChildren();
-    logEntries.slice(0, 3).forEach(entry => {
+
+    // Neutrale bzw. laufende Zustände gehören in die Statusanzeige,
+    // aber ausdrücklich nicht in die dauerhafte Ereignischronik.
+    const currentStatus = GameState?.ui?.status;
+    const transientStatusKeys = ["status.default", "status.expeditionStarted"];
+    if (currentStatus && transientStatusKeys.includes(currentStatus.key))
+    {
+        const statusLine = document.createElement("div");
+        statusLine.className = "status-preview-current";
+        statusLine.textContent = I18N.t(currentStatus.key, currentStatus.params);
+        preview.appendChild(statusLine);
+    }
+
+    // Die Statuszeile zeigt zusätzlich die letzten echten Logbucheinträge.
+    logEntries.slice(0, 2).forEach(entry => {
         preview.appendChild(buildLogEntryElement(entry));
     });
 }
