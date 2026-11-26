@@ -23,6 +23,8 @@ function getAchievementCategory(id){const d=getAchievementDefinition(id);return 
 function getAchievementSeries(id){return ACHIEVEMENT_SERIES.find(s=>s.ids.includes(id));}
 function isAchievementSeriesStageVisible(id){
  const s=getAchievementSeries(id); if(!s)return true;
+ // Kolonie-Meilensteine sind unabhängige Erfolge und werden immer gemeinsam angezeigt.
+ if(s.id==="colonyMilestones")return true;
  const i=s.ids.indexOf(id);
  return !!GameState.achievements[id] || s.ids.slice(0,i).every(previous=>GameState.achievements[previous]);
 }
