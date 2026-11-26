@@ -127,7 +127,24 @@ function renderStatusPreview()
     {
         const statusLine = document.createElement("div");
         statusLine.className = "status-preview-current";
-        statusLine.textContent = I18N.t(currentStatus.key, currentStatus.params);
+
+        const timeSpan = document.createElement("span");
+        timeSpan.className = "log-time";
+        const statusTimestamp = currentStatus.timestamp instanceof Date
+            ? currentStatus.timestamp
+            : new Date();
+        const time = statusTimestamp.toLocaleTimeString(I18N.getLanguageInfo().localeTag, {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+        timeSpan.textContent = `[${time}]`;
+
+        const messageSpan = document.createElement("span");
+        messageSpan.className = "status-preview-message";
+        messageSpan.textContent = I18N.t(currentStatus.key, currentStatus.params);
+
+        statusLine.append(timeSpan, messageSpan);
         preview.appendChild(statusLine);
     }
 
