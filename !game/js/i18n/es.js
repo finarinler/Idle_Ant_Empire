@@ -526,3 +526,32 @@ I18N.register("es", {
     "achievement.purchasedAnts1000.unlocked": "{goal} hormigas normales compradas en total",
     "achievement.purchasedAnts1000.reward": "Recompensa: cada hormiga comprada que tengas actualmente produce +0,1 F/s"
 });
+
+
+/* ---------- Purchased ant training cost achievements ---------- */
+I18N.register("es", {
+    "achievement.purchasedAnts1.title": "Primera hormiga comprada",
+    "achievement.purchasedAnts1.locked": "{goal} hormiga normal comprada",
+    "achievement.purchasedAnts1.unlocked": "{goal} hormiga normal comprada",
+    "achievement.purchasedAnts1.reward": "Descuento total: 2% en los costes de entrenamiento de hormigas normales",
+    "achievement.purchasedAnts10.title": "Diez hormigas compradas",
+    "achievement.purchasedAnts10.locked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts10.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts10.reward": "Descuento total: 5% en los costes de entrenamiento de hormigas normales",
+    "achievement.purchasedAnts50.title": "Cincuenta hormigas compradas",
+    "achievement.purchasedAnts50.locked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts50.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts50.reward": "Descuento total: 7,5% en los costes de entrenamiento de hormigas normales",
+    "achievement.purchasedAnts100.title": "Cien hormigas compradas",
+    "achievement.purchasedAnts100.locked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts100.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts100.reward": "Descuento total: 10% en los costes de entrenamiento de hormigas normales",
+    "achievement.purchasedAnts250.title": "Doscientas cincuenta hormigas compradas",
+    "achievement.purchasedAnts250.locked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts250.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts250.reward": "Descuento total: 15% en los costes de entrenamiento de hormigas normales",
+    "achievement.purchasedAnts500.title": "Quinientas hormigas compradas",
+    "achievement.purchasedAnts500.locked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts500.unlocked": "{goal} hormigas normales compradas",
+    "achievement.purchasedAnts500.reward": "Descuento total: 25% en los costes de entrenamiento de hormigas normales"
+});
