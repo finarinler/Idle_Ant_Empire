@@ -500,7 +500,7 @@ I18N.register("en", {
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
     "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
     "changelog.entry.foodProduction": "Core food production settings revised.",
-    "changelog.entry.economy": "Colony costs and economic settings rebalanced."
+    "changelog.entry.economy": "Colony costs and economic settings rebalanced.",
     "achievement.collector10.title": "Collector Apprentice",
     "achievement.collector10.locked": "Gather 10 collectors",
     "achievement.collector10.unlocked": "Gather 10 collectors",
