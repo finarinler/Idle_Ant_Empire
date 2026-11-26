@@ -618,6 +618,7 @@ I18N.register("it", {
     "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate.",
     "changelog.entry.storageBroodBuildTime": "La camera di stoccaggio e la camera della covata richiedono ciascuna esattamente 15 minuti di costruzione con un Costruttore.",
     "changelog.entry.broodExpertRebalance": "Esperta della covata ribilanciata: 1 larva diventa 1 formica; ogni Esperta della covata consuma continuamente 5 cibo/s.",
+    "changelog.entry.broodExpertToggle": "Le Esperte della covata possono essere attivate e disattivate. Quando sono disattivate, la schiusa si interrompe e il consumo di cibo si ferma.",
     "changelog.entry.hideCappedCostProgress": "Il costo e la barra di avanzamento vengono nascosti per le unità e gli edifici che hanno raggiunto il limite massimo.",
     "tooltip.preview.expectedProduction": "Aumento della produzione previsto",
     "tooltip.preview.expectedCosts": "Costi previsti",
