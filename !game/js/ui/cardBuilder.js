@@ -154,12 +154,14 @@ const CardBuilder = (function ()
         }
 
         const costBlock = create("div", "iae-card-cost", card);
+        nodes.costBlock = costBlock;
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
         // Fester Platzhalter sorgt dafür, dass Kosten, Fortschritt und Button
         // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
         const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
+        nodes.progress = progress;
 
         if (entry.progressId)
         {
@@ -262,6 +264,11 @@ const CardBuilder = (function ()
             nodes.cost.removeAttribute("data-cost-signature");
             setText(nodes.cost, cost);
         }
+
+        // Bei dauerhaft ausgeschöpften Karten sind Kosten und Fortschritt nicht mehr relevant.
+        const limitReached = state === "max" || state === "built";
+        nodes.costBlock.hidden = limitReached;
+        nodes.progress.hidden = limitReached;
 
         const action = entry.action || {};
         let label = action.label;
