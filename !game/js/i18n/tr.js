@@ -616,7 +616,7 @@ I18N.register("tr", {
     "tooltip.preview.cost": "Toplam maliyet",
     "tooltip.preview.capacity": "kapasite",
     "changelog.entry.actionPreview": "Dinamik ipuçları tekli işlemler ve 10×, 25×, MAX grupları için etkileri, toplam maliyetleri ve süreleri gösterir.",
-    "changelog.entry.housingCostScaling": "İkinci Barınma Odası 150 yiyeceğe mal olur. Her ek oda, Mantar Çiftlikleri gibi %10 daha pahalı olur.",
+    "changelog.entry.housingCostScaling": "Barınma Odası maliyetleri ayarlandı.",
     "changelog.entry.strayAntHousing": "Kaybolmuş karıncalar yalnızca yeterli barınma alanı varsa koloniye katılır.",
     "tooltip.preview.production.food": "Yiyecek üretimi",
     "tooltip.preview.production.larvae": "Larva üretimi",
