@@ -616,7 +616,7 @@ I18N.register("es", {
     "tooltip.preview.cost": "Coste total",
     "tooltip.preview.capacity": "de capacidad",
     "changelog.entry.actionPreview": "Los tooltips dinámicos muestran efectos, costes totales y duración para acciones individuales y lotes de 10×, 25× y MAX.",
-    "changelog.entry.housingCostScaling": "La segunda Cámara de Vivienda cuesta 150 de comida. Cada cámara adicional aumenta su precio un 10 %, igual que las Granjas de Hongos.",
+    "changelog.entry.housingCostScaling": "Costes de la Cámara de Vivienda ajustados.",
     "changelog.entry.strayAntHousing": "Las hormigas extraviadas solo se unen si hay suficiente espacio disponible.",
     "tooltip.preview.production.food": "Producción de alimento",
     "tooltip.preview.production.larvae": "Producción de larvas",
