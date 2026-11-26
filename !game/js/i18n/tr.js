@@ -495,7 +495,7 @@ I18N.register("tr", {
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
     "changelog.entry.scrollToTop": "Oyun bölümü değiştirildiğinde sayfa otomatik olarak en üste kaydırılır.",
     "changelog.entry.resourceAbbreviations": "Kaynak ve birim kısaltmaları eklendi.",
-    "changelog.entry.totalProduction": "Üretim yapan tüm kartlara tutarlı bir “Toplam üretim” göstergesi eklendi.",
+    "changelog.entry.totalProduction": "“Toplam üretim” artık genel üretim yerine ilgili birim türünün katkısını gösteriyor.",
     "changelog.entry.productionLabels": "Üretim ve tüketim etiketleri standartlaştırıldı.",
     "changelog.entry.unitBuildingTerminology": "Birimler artık oyunun her yerinde eğitiliyor, binalar ise inşa ediliyor.",
     "changelog.group.design": "Görünüm",
