@@ -647,6 +647,10 @@ I18N.register("fr", {
 
 /* ---------- 007c: action tooltip controls ---------- */
 I18N.register("fr", {
+    "status.versionUpdateAvailable": "Nouvelle version disponible ! Profitez des nouveautés !"
+});
+
+I18N.register("fr", {
     "options.tooltips": "Info-bulles d’action",
     "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
     "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
