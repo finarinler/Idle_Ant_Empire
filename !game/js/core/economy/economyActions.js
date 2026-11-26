@@ -80,6 +80,66 @@
         GameState.resources.antsFound = GameState.resources.antsFound.add(amount);
     };
 
+    /* ---------- Vorschau für Bau- und Ausbildungsaktionen ---------- */
+
+    Economy.getActionPreview = function (kind, id, quantity = 1)
+    {
+        const amount = Math.max(1, Math.min(1000, Math.floor(Number(quantity) || 1)));
+        const costs = { ants: Big(0), food: Big(0), larvae: Big(0), queens: Big(0) };
+        const before = Economy.computeFlows();
+        let seconds = 0;
+        let factor = amount >= 26 ? 0.80 : amount >= 25 ? 0.85 : amount >= 10 ? 0.90 : 1;
+        let completed = 0;
+
+        if (kind === "unit")
+        {
+            const def = UnitRegistry.get(id);
+            try
+            {
+                for (; completed < amount; completed++)
+                {
+                    const cost = Economy.getRecruitCost(id);
+                    COST_KEYS.forEach(key => { costs[key] = costs[key].add(amountOf(cost, key)); });
+                    seconds += Economy.getTrainingSeconds(id) * factor;
+                    Economy._addUnits(id, 1);
+                }
+            }
+            finally
+            {
+                if (completed) { Economy._removeUnits(id, completed); }
+            }
+        }
+        else
+        {
+            const def = StructureRegistry.get(id), store = def.store;
+            try
+            {
+                for (; completed < amount; completed++)
+                {
+                    const info = Economy.getProjectInfo(id, "build");
+                    COST_KEYS.forEach(key => { costs[key] = costs[key].add(amountOf(info.cost, key)); });
+                    seconds += info.seconds * factor;
+                    GameState[store.section][store.key]++;
+                }
+            }
+            finally
+            {
+                GameState[store.section][store.key] -= completed;
+            }
+        }
+
+        const after = Economy.computeFlows();
+        return {
+            quantity: completed,
+            costs,
+            seconds,
+            factor,
+            produced: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.produced[key].sub(before.produced[key])])),
+            consumed: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.consumed[key].sub(before.consumed[key])])),
+            capacity: Object.fromEntries(RESOURCE_IDS.map(key => [key, after.capacity[key].sub(before.capacity[key])]))
+        };
+    };
+
     /* ---------- Rekrutierung ---------- */
 
     Economy.getUnitMaxCount = function (def)
