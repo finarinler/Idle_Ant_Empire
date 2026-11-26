@@ -251,7 +251,7 @@ I18N.register("de", {
     "achievement.mushroomFarmTen.title": "Pilzfarm-Pionier",
     "achievement.mushroomFarmTen.locked": "10 Pilzfarmen errichtet",
     "achievement.mushroomFarmTen.unlocked": "10 Pilzfarmen errichtet",
-    "achievement.mushroomFarmTen.reward": "Belohnung: +1 % Pilzfarm-Produktion",
+    "achievement.mushroomFarmTen.reward": "Belohnung: +5 % Pilzfarm-Produktion",
 
     "achievement.mushroomFarmTwentyFive.title": "Pilzfarm-Imperium",
     "achievement.mushroomFarmTwentyFive.locked": "25 Pilzfarmen errichtet",
