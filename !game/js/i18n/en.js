@@ -506,7 +506,7 @@ I18N.register("en", {
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
     "changelog.entry.scrollToTop": "The page automatically scrolls to the top when switching game sections.",
     "changelog.entry.resourceAbbreviations": "Resource and unit abbreviations added.",
-    "changelog.entry.totalProduction": "A consistent “Total production” display added to all producing cards.",
+    "changelog.entry.totalProduction": "“Total production” now shows the contribution of the respective unit type instead of global production.",
     "changelog.entry.productionLabels": "Production and consumption labels standardized.",
     "changelog.entry.unitBuildingTerminology": "Units are now trained consistently throughout the game, and buildings are constructed.",
     "changelog.group.design": "Visual design",
