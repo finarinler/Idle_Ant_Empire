@@ -496,6 +496,7 @@ I18N.register("fr", {
     "changelog.entry.resourceAbbreviations": "Ajout d’abréviations pour les ressources et les unités.",
     "changelog.entry.totalProduction": "Ajout d’un affichage uniforme « Production totale » sur toutes les cartes productrices.",
     "changelog.entry.productionLabels": "Les libellés de production et de consommation ont été harmonisés.",
+    "changelog.entry.unitBuildingTerminology": "Les unités sont désormais entraînées de manière uniforme dans tout le jeu, et les bâtiments sont construits.",
     "changelog.group.design": "Présentation",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",

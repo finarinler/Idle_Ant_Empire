@@ -496,6 +496,7 @@ I18N.register("es", {
     "changelog.entry.resourceAbbreviations": "Se añadieron abreviaturas para recursos y unidades.",
     "changelog.entry.totalProduction": "Se añadió la indicación uniforme «Producción total» a todas las tarjetas productoras.",
     "changelog.entry.productionLabels": "Se unificaron las etiquetas de producción y consumo.",
+    "changelog.entry.unitBuildingTerminology": "Ahora las unidades se entrenan de forma uniforme en todo el juego y los edificios se construyen.",
     "changelog.group.design": "Presentación",
     "changelog.group.performance": "Rendimiento",
     "changelog.entry.performance": "Rendimiento mejorado",

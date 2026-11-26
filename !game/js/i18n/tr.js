@@ -496,6 +496,7 @@ I18N.register("tr", {
     "changelog.entry.resourceAbbreviations": "Kaynak ve birim kısaltmaları eklendi.",
     "changelog.entry.totalProduction": "Üretim yapan tüm kartlara tutarlı bir “Toplam üretim” göstergesi eklendi.",
     "changelog.entry.productionLabels": "Üretim ve tüketim etiketleri standartlaştırıldı.",
+    "changelog.entry.unitBuildingTerminology": "Birimler artık oyunun her yerinde eğitiliyor, binalar ise inşa ediliyor.",
     "changelog.group.design": "Görünüm",
     "changelog.group.performance": "Performans",
     "changelog.entry.performance": "Performans iyileştirmeleri",

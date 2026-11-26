@@ -507,6 +507,7 @@ I18N.register("de", {
     "changelog.entry.resourceAbbreviations": "Ressourcen- und Einheiten-Kürzel ergänzt.",
     "changelog.entry.totalProduction": "Einheitliche Anzeige „Gesamte Produktion“ auf allen produzierenden Karten ergänzt.",
     "changelog.entry.productionLabels": "Produktions- und Verbrauchsbezeichnungen vereinheitlicht.",
+    "changelog.entry.unitBuildingTerminology": "Einheiten werden jetzt überall ausgebildet und Gebäude errichtet.",
     "changelog.group.design": "Darstellung",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance verbessert",
