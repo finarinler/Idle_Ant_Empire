@@ -430,7 +430,7 @@ I18N.register("it", {
     "structure.construction.name": "Camera di costruzione",
     "structure.construction.desc": "Abilita i costruttori.\nOgni livello ne consente uno in più.",
     "card.stat.housing": "Alloggio",
-    "card.stat.collectorFarmAchievementBonus": "Bonus obiettivi alla produzione delle fungaie",
+    "card.stat.collectorFarmAchievementBonus": "Bonus obiettivi dei raccoglitori alla produzione delle fungaie",
     "card.stat.mushroomFarmTotalBonus": "Bonus totale delle fungaie",
     "card.stat.hatchTime": "Tempo di schiusa",
     "card.stat.hatchCost": "Costo di schiusa",
