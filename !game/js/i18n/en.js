@@ -526,3 +526,12 @@ I18N.register("en", {
     "achievement.collector250.unlocked": "250 mushroom collectors trained",
     "achievement.collector250.reward": "Total bonus: +10% mushroom farm production",
 });
+
+
+/* ---------- Purchased ant food production achievement ---------- */
+I18N.register("en", {
+    "achievement.purchasedAnts1000.title": "A Thousand Purchased Ants",
+    "achievement.purchasedAnts1000.locked": "{goal} normal ants purchased in total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} normal ants purchased in total",
+    "achievement.purchasedAnts1000.reward": "Reward: Each currently owned purchased ant produces +0.1 F/s"
+});
