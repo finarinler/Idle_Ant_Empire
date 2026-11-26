@@ -72,6 +72,8 @@ const GameState = {
         smallCollectorAntRewardClaimed: false,
         smallColony: false,
         buildColony: false,
+        mushroomFarmTen: false,
+        mushroomFarmTwentyFive: false,
         knowledgeIsPower: false,
         foundTenAnts: false,
         expeditionVeteran: false,
