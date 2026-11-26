@@ -2,6 +2,7 @@
 
 registerAchievement({
     category: "units",
+    unitGroupOrder: 2,
     id: "smallColony",
     order: 400,
     getProgress: () => ({
