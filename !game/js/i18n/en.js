@@ -493,6 +493,7 @@ I18N.register("en", {
     "changelog.entry.parallelTraining": "Different unit types can be trained in parallel; only one training at a time for each type.",
     "changelog.entry.offlineTraining": "Ongoing training is saved and continues during offline time.",
     "changelog.entry.smallCollectorReward": "The “Little Collector” achievement immediately grants one stray ant when unlocked.",
+    "changelog.entry.newAchievements": "Added new queen milestone achievements with bonuses to larvae production.",
     "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
