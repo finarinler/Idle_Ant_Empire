@@ -505,6 +505,7 @@ I18N.register("en", {
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
     "changelog.entry.scrollToTop": "The page automatically scrolls to the top when switching game sections.",
     "changelog.entry.resourceAbbreviations": "Resource and unit abbreviations added.",
+    "changelog.entry.totalProduction": "Total production added to all producing cards.",
     "changelog.group.design": "Visual design",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance improvements",
