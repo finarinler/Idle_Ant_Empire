@@ -22,7 +22,8 @@ function renderStatus()
 function setDefaultStatus()
 {
     GameState.ui.status = { key: "status.default", params: null };
-    addLogEntry("status.default", "status");
+    // Der neutrale Wartezustand ist nur eine Statusanzeige und kein Logereignis.
+    // Vorhandene Logeinträge bleiben in der Vorschau sichtbar.
     renderStatus();
 }
 
