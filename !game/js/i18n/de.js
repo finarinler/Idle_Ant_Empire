@@ -622,4 +622,7 @@ I18N.register("de", {
     "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert.",
     "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit.",
     "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet."
+        "tooltip.preview.effect": "Zusätzlicher Effekt",
+    "tooltip.preview.cost": "Gesamtkosten",
+    "tooltip.preview.capacity": "Kapazität",
 });
