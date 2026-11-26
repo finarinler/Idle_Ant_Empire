@@ -142,10 +142,10 @@ I18N.register("tr", {
     "expedition.scoutLockedTitle": "Kaşif, keşifleri otomatik olarak yapar.",
 
     /* ---------- Birimler ---------- */
-    "unit.ant.name": "Karınca",
+    "unit.ant.name": "Karınca (A)",
     "unit.ant.desc": "Kolonin için yiyecek toplar.",
     "unit.ant.buy": "Karınca satın al",
-    "unit.queen.name": "Kraliçe",
+    "unit.queen.name": "Kraliçe (Q)",
     "unit.queen.desc": "Yeni karıncaların çıkacağı larvaları bırakır.",
     "unit.queen.buy": "Kraliçe satın al",
     "unit.scout.name": "Kaşif",
@@ -492,7 +492,7 @@ I18N.register("tr", {
     "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",
     "changelog.entry.scrollToTop": "Oyun bölümü değiştirildiğinde sayfa otomatik olarak en üste kaydırılır.",
-    "changelog.entry.resourceAbbreviations": "Kaynak çubuğunda artık adların yanında F (yiyecek) ve L (larva) kısaltmaları gösteriliyor.",
+    "changelog.entry.resourceAbbreviations": "Kaynak adlarının yanında artık F (yiyecek) ve L (larva); birim kartı adlarında ise A (karınca) ve Q (kraliçe) kısaltmaları gösteriliyor.",
     "changelog.group.performance": "Performans",
     "changelog.entry.performance": "Performans iyileştirmeleri",
     "changelog.entry.discord": "Discord topluluğuna artık doğrudan oyun seçeneklerinden de erişilebilir.",
