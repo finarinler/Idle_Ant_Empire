@@ -21,6 +21,24 @@ function recruitUnit(id)
     return true;
 }
 
+function recruitUnitBatch(id, amount)
+{
+    const options = Economy.getTrainingBatchOptions(id);
+    const quantity = amount === "max" ? options.max : amount;
+    const factor = amount === "max" ? 0.80 : quantity >= 25 ? 0.85 : 0.90;
+    const result = Economy.recruitBatch(id, quantity, factor);
+    if (!result.ok)
+    {
+        updateStatus(result.reason?.key || "status.elite.cannotAfford", "warning");
+        return false;
+    }
+    const def = UnitRegistry.get(id);
+    updateStatus("status.unit.trainingQueued", "status", false, { count: quantity, unit: { key: def.nameKey } });
+    updateResources();
+    if (typeof CardBuilder !== "undefined") { CardBuilder.updateAll(); }
+    return true;
+}
+
 function buyAnt()             { return recruitUnit("normal-ant"); }
 function buyQueen()           { return recruitUnit("queen"); }
 function buyCollector()       { return recruitUnit("collector"); }
