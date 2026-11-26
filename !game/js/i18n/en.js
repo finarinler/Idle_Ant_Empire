@@ -653,5 +653,6 @@ I18N.register("en", {
 I18N.register("en", {
     "options.tooltips": "Action tooltips",
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
-    "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options."
+    "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
+    "changelog.entry.scoutElite": "The scout is now listed among the elite units."
 });
