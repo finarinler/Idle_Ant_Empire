@@ -620,5 +620,6 @@ I18N.register("de", {
     "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt.",
     "changelog.entry.batchConstruction": "Mehrfachbau mit Warteschlange für Gebäude ergänzt.",
     "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert.",
-    "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit."
+    "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit.",
+    "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet."
 });
