@@ -15,6 +15,26 @@ const Economy = {
     //  - Produktionsboni gleicher Art werden ADDIERT (+20 % und +10 % = +30 %)
     modifiers: {
         getEfficiencyFactor(unitId) { return 1; },
+        // Höchster freigeschalteter Sammler-Erfolgsbonus für die Pilzfarm.
+        getCollectorAchievementBonus() {
+            const achievements = GameState.achievements || {};
+            return achievements.collector250 ? 0.10
+                : achievements.collector100 ? 0.075
+                : achievements.collector50 ? 0.05
+                : achievements.collector25 ? 0.025
+                : achievements.collector10 ? 0.01
+                : 0;
+        },
+        // Höchster freigeschalteter Pilzfarm-Erfolgsbonus.
+        getMushroomFarmAchievementBonus() {
+            const achievements = GameState.achievements || {};
+            return achievements.mushroomFarmTwoFifty ? 0.25
+                : achievements.mushroomFarmHundred ? 0.20
+                : achievements.mushroomFarmFifty ? 0.15
+                : achievements.mushroomFarmTwentyFive ? 0.10
+                : achievements.mushroomFarmTen ? 0.05
+                : 0;
+        },
         getProductionBonus(targetId, resource) {
             const achievements = GameState.achievements || {};
 
@@ -27,23 +47,8 @@ const Economy = {
 
             if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
 
-            // Sammler-Meilensteine: jeweils nur der höchste erreichte Gesamtwert.
-            const collectorBonus = achievements.collector250 ? 0.10
-                : achievements.collector100 ? 0.075
-                : achievements.collector50 ? 0.05
-                : achievements.collector25 ? 0.025
-                : achievements.collector10 ? 0.01
-                : 0;
-
-            // Pilzfarm-Meilensteine bleiben eine eigene, ebenfalls nicht additive Staffel.
-            const farmBonus = achievements.mushroomFarmTwoFifty ? 0.25
-                : achievements.mushroomFarmHundred ? 0.20
-                : achievements.mushroomFarmFifty ? 0.15
-                : achievements.mushroomFarmTwentyFive ? 0.10
-                : achievements.mushroomFarmTen ? 0.05
-                : 0;
-
-            return collectorBonus + farmBonus;
+            // Beide Erfolgsketten wirken additiv; innerhalb jeder Kette zählt nur die höchste Stufe.
+            return this.getCollectorAchievementBonus() + this.getMushroomFarmAchievementBonus();
         },
         getCapacityBonus(resource) { return { absolute: 0, percent: 0 }; }
     }
