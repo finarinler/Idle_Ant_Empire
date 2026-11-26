@@ -251,7 +251,7 @@ I18N.register("en", {
     "achievement.mushroomFarmTen.title": "Mushroom Farm Pioneer",
     "achievement.mushroomFarmTen.locked": "Build 10 mushroom farms",
     "achievement.mushroomFarmTen.unlocked": "Build 10 mushroom farms",
-    "achievement.mushroomFarmTen.reward": "Reward: +1% mushroom farm production",
+    "achievement.mushroomFarmTen.reward": "Reward: +5% mushroom farm production",
 
     "achievement.mushroomFarmTwentyFive.title": "Mushroom Farm Empire",
     "achievement.mushroomFarmTwentyFive.locked": "Build 25 mushroom farms",
