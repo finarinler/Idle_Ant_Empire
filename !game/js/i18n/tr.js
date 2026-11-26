@@ -526,3 +526,32 @@ I18N.register("tr", {
     "achievement.purchasedAnts1000.unlocked": "Toplam {goal} normal karınca satın alındı",
     "achievement.purchasedAnts1000.reward": "Ödül: Şu anda mevcut olan her satın alınmış karınca +0,1 F/s üretir"
 });
+
+
+/* ---------- Purchased ant training cost achievements ---------- */
+I18N.register("tr", {
+    "achievement.purchasedAnts1.title": "İlk karınca satın alımı",
+    "achievement.purchasedAnts1.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts1.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts1.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %2",
+    "achievement.purchasedAnts10.title": "On karınca satın alındı",
+    "achievement.purchasedAnts10.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts10.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts10.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %5",
+    "achievement.purchasedAnts50.title": "Elli karınca satın alındı",
+    "achievement.purchasedAnts50.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts50.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts50.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %7,5",
+    "achievement.purchasedAnts100.title": "Yüz karınca satın alındı",
+    "achievement.purchasedAnts100.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts100.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts100.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %10",
+    "achievement.purchasedAnts250.title": "İki yüz elli karınca satın alındı",
+    "achievement.purchasedAnts250.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts250.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts250.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %15",
+    "achievement.purchasedAnts500.title": "Beş yüz karınca satın alındı",
+    "achievement.purchasedAnts500.locked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts500.unlocked": "{goal} normal karınca satın alındı",
+    "achievement.purchasedAnts500.reward": "Toplam indirim: normal karınca eğitim maliyetlerinde %25"
+});
