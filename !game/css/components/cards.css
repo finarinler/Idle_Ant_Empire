@@ -93,6 +93,7 @@
     transition: filter .18s, border-color .18s;
 }
 .iae-card-action:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
+.iae-card-toggle-action + .iae-card-action:not(.iae-card-batch-btn) { margin-top: 5px; }
 .iae-card-action:focus-visible { outline: 2px solid var(--research-gold-bright); outline-offset: 3px; }
 .iae-card-action:disabled { border-color: #303030; background: #252525; color: #77736c; cursor: not-allowed; }
 .iae-card-action-glyph { font-size: 1.1rem; }
