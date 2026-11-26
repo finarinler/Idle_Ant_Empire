@@ -487,6 +487,7 @@ I18N.register("tr", {
     "changelog.entry.offlineTraining": "Devam eden eğitimler kaydedilir ve çevrimdışıyken de sürer.",
     "changelog.entry.smallCollectorReward": "«Küçük Toplayıcı» başarımı açıldığında hemen bir başıboş karınca verir.",
     "changelog.entry.newAchievements": "Yeni başarımlar eklendi",
+    "changelog.entry.achievementOverview": "Başarım genel görünümü yenilendi",
     "changelog.entry.collectorCosts": "Toplayıcı maliyetleri yenilendi: karınca maliyeti toplayıcı seviyesine eşitlendi; yiyecek ve larva maliyetlerindeki önceki artışlar korundu.",
     "changelog.entry.navigation": "Tüm oyun alanları en başından görünür; kilitli alanların üzerine gelindiğinde gelecek içerikler veya açılma koşulları hakkında ipuçları gösterilir.",
     "changelog.entry.statisticsRevision": "İstatistikler gözden geçirilmek üzere geçici olarak devre dışı bırakıldı.",

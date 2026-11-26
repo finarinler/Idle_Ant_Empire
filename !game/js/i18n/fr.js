@@ -487,6 +487,7 @@ I18N.register("fr", {
     "changelog.entry.offlineTraining": "Les entraînements en cours sont sauvegardés et se poursuivent hors ligne.",
     "changelog.entry.smallCollectorReward": "Le succès « Petit collecteur » offre immédiatement une fourmi errante lors de son déverrouillage.",
     "changelog.entry.newAchievements": "Nouveaux succès ajoutés",
+    "changelog.entry.achievementOverview": "Aperçu des succès remanié",
     "changelog.entry.collectorCosts": "Coûts des collectrices révisés : le coût en fourmis correspond désormais au niveau de collectrice ; les augmentations précédentes de nourriture et de larves sont conservées.",
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",

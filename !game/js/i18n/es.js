@@ -487,6 +487,7 @@ I18N.register("es", {
     "changelog.entry.offlineTraining": "Los entrenamientos en curso se guardan y continúan durante el tiempo sin conexión.",
     "changelog.entry.smallCollectorReward": "El logro «Pequeño recolector» otorga inmediatamente una hormiga errante al desbloquearse.",
     "changelog.entry.newAchievements": "Nuevos logros añadidos",
+    "changelog.entry.achievementOverview": "Resumen de logros actualizado",
     "changelog.entry.collectorCosts": "Se revisan los costes de recolectores: el coste en hormigas corresponde al nivel del recolector; se mantienen los aumentos anteriores de comida y larvas.",
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",

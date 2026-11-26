@@ -99,7 +99,13 @@ function gameTick()
 
     updateExpedition();
     updateScoutAutomation();
-    updateResources();
+
+    // Die Wirtschaft läuft weiterhin mit 100 ms. Die aufwendige DOM-/Karten-
+    // Aktualisierung reicht alle 300 ms und reduziert unnötige Renderarbeit.
+    if (GameState.time.ticks % 3 === 0)
+    {
+        updateResources();
+    }
 
     if (GameState.time.ticks % 10 === 0)
     {

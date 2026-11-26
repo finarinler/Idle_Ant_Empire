@@ -498,6 +498,7 @@ I18N.register("en", {
     "changelog.entry.offlineTraining": "Ongoing training is saved and continues during offline time.",
     "changelog.entry.smallCollectorReward": "The “Little Collector” achievement immediately grants one stray ant when unlocked.",
     "changelog.entry.newAchievements": "New achievements added",
+    "changelog.entry.achievementOverview": "Achievement overview revised",
     "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",

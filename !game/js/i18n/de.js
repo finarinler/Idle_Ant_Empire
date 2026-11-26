@@ -498,6 +498,7 @@ I18N.register("de", {
     "changelog.entry.offlineTraining": "Laufende Ausbildungen werden gespeichert und während der Offline-Zeit weitergeführt.",
     "changelog.entry.smallCollectorReward": "Der Erfolg „Kleiner Sammler“ gewährt beim Freischalten sofort eine Streuner-Ameise.",
     "changelog.entry.newAchievements": "Neue Erfolge hinzugefügt",
+    "changelog.entry.achievementOverview": "Erfolgsübersicht überarbeitet",
     "changelog.entry.collectorCosts": "Sammlerkosten überarbeitet: Die Ameisenkosten entsprechen der Sammlerstufe; die bisherigen Kostensteigerungen für Nahrung und Larven bleiben erhalten.",
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
