@@ -39,9 +39,30 @@ function showVersionUpdateNotice()
     const now = Date.now();
     if (!noticeState || typeof noticeState !== "object")
     {
-        // Beim ersten Start nach Einführung dieses Features nur die aktuelle Version merken.
-        try { localStorage.setItem(storageKey, JSON.stringify({ version: GAME_VERSION, expiresAt: 0 })); } catch (_) {}
-        return;
+        // Bei bestehenden Spielständen die zuletzt gespielte Version als Ausgangspunkt verwenden.
+        // So wird ein Update auch dann angezeigt, wenn diese Funktion erstmals live verfügbar ist.
+        let previousGameVersion = null;
+        try
+        {
+            const savedGame = JSON.parse(localStorage.getItem(CORE_CONFIG.SAVE_KEY) || "null");
+            if (savedGame && typeof savedGame.gameVersion === "string")
+            {
+                previousGameVersion = savedGame.gameVersion;
+            }
+        }
+        catch (_) {}
+
+        if (previousGameVersion && previousGameVersion !== GAME_VERSION)
+        {
+            noticeState = { version: GAME_VERSION, expiresAt: now + duration };
+        }
+        else
+        {
+            noticeState = { version: GAME_VERSION, expiresAt: 0 };
+        }
+
+        try { localStorage.setItem(storageKey, JSON.stringify(noticeState)); } catch (_) {}
+        if (noticeState.expiresAt <= now) return;
     }
 
     if (noticeState.version !== GAME_VERSION)
