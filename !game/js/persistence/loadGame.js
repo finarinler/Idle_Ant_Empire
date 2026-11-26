@@ -74,6 +74,11 @@ function loadSavedEconomy(saved)
 
     const eco = GameState.economy;
 
+    if (typeof saved.broodExpertEnabled === "boolean")
+    {
+        eco.broodExpertEnabled = saved.broodExpertEnabled;
+    }
+
     if (saved.deathTimers && typeof saved.deathTimers === "object")
     {
         UnitRegistry.all().forEach(def =>
