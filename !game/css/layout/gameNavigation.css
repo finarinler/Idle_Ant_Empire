@@ -276,7 +276,7 @@
     white-space: nowrap;
     font-size: .82rem;
     line-height: 1.35;
-    color: var(--game-text);
+    color: var(--game-muted);
 }
 #status-text .status-preview-message {
     min-width: 0;
