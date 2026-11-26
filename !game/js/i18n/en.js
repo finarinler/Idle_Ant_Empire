@@ -658,6 +658,10 @@ I18N.register("en", {
 
 /* ---------- 007c: action tooltip controls ---------- */
 I18N.register("en", {
+    "status.versionUpdateAvailable": "New version available! Enjoy the latest improvements!"
+});
+
+I18N.register("en", {
     "options.tooltips": "Action tooltips",
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
     "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
