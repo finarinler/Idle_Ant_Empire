@@ -72,12 +72,19 @@
         return Economy._store(resource, amount);
     };
 
-    // Von Expeditionen gefundene Ameisen werden weiterhin direkt hinzugefügt (vorläufige Regel:
-    // eine Überschreitung des Wohnraums ist dadurch möglich).
+    // Gefundene Ameisen können nur aufgenommen werden, wenn ausreichend Wohnraum frei ist.
     Economy.addFoundAnt = function (amount = 1)
     {
         Economy.update();
-        GameState.resources.antsFound = GameState.resources.antsFound.add(amount);
+
+        const count = Math.max(0, Math.floor(Number(amount) || 0));
+        if (count === 0 || Economy.getHousingFree().lt(count))
+        {
+            return false;
+        }
+
+        GameState.resources.antsFound = GameState.resources.antsFound.add(count);
+        return true;
     };
 
     /* ---------- Vorschau für Bau- und Ausbildungsaktionen ---------- */
