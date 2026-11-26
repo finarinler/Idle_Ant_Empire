@@ -626,4 +626,10 @@ I18N.register("en", {
     "tooltip.preview.cost": "Total costs",
     "tooltip.preview.capacity": "capacity",
     "changelog.entry.actionPreview": "Dynamic tooltips show effects, total costs and durations for single actions and 10×, 25× and MAX batches.",
+    "tooltip.preview.production.food": "Food production",
+    "tooltip.preview.production.larvae": "Larvae production",
+    "tooltip.preview.consumption.food": "Food consumption",
+    "tooltip.preview.consumption.larvae": "Larvae consumption",
+    "tooltip.preview.ants": "ants",
+    "tooltip.preview.queens": "queens",
 });
