@@ -506,7 +506,7 @@ I18N.register("de", {
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
     "changelog.entry.resourceAbbreviations": "Ressourcen- und Einheiten-Kürzel ergänzt.",
-    "changelog.entry.totalProduction": "Einheitliche Anzeige „Gesamte Produktion“ auf allen produzierenden Karten ergänzt.",
+    "changelog.entry.totalProduction": "Die Anzeige „Gesamte Produktion“ zeigt jetzt den Beitrag des jeweiligen Einheitentyps statt der globalen Produktion.",
     "changelog.entry.productionLabels": "Produktions- und Verbrauchsbezeichnungen vereinheitlicht.",
     "changelog.entry.unitBuildingTerminology": "Einheiten werden jetzt überall ausgebildet und Gebäude errichtet.",
     "changelog.group.design": "Darstellung",
