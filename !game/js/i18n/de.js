@@ -142,10 +142,10 @@ I18N.register("de", {
     "expedition.scoutLockedTitle": "Die Kundschafterin führt Expeditionen automatisch durch.",
 
     /* ---------- Einheiten ---------- */
-    "unit.ant.name": "Ameise",
+    "unit.ant.name": "Ameise (A)",
     "unit.ant.desc": "Sammelt Nahrung für deine Kolonie.",
     "unit.ant.buy": "Ameise kaufen",
-    "unit.queen.name": "Königin",
+    "unit.queen.name": "Königin (Q)",
     "unit.queen.desc": "Legt die Larven, aus denen neue Ameisen entstehen.",
     "unit.queen.buy": "Königin kaufen",
     "unit.scout.name": "Kundschafterin",
@@ -503,7 +503,7 @@ I18N.register("de", {
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
-    "changelog.entry.resourceAbbreviations": "Die Ressourcenleiste zeigt jetzt die Kürzel F (Nahrung) und L (Larven) direkt neben den Bezeichnungen.",
+    "changelog.entry.resourceAbbreviations": "Die Kürzel F (Nahrung) und L (Larven) stehen jetzt direkt bei den Ressourcen; A (Ameise) und Q (Königin) ergänzen die Namen auf den Einheitenkarten.",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance verbessert",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
