@@ -26,17 +26,24 @@ const Economy = {
             }
 
             if (targetId !== "mushroom-farm" || resource !== "food") { return 0; }
-            if (achievements.collectorTwoFifty) { return 0.10; }
-            if (achievements.collectorHundred) { return 0.075; }
-            if (achievements.collectorFifty) { return 0.05; }
-            if (achievements.collectorTwentyFive) { return 0.025; }
-            if (achievements.collectorTen) { return 0.01; }
-            if (achievements.mushroomFarmTwoFifty) { return 0.25; }
-            if (achievements.mushroomFarmHundred) { return 0.20; }
-            if (achievements.mushroomFarmFifty) { return 0.15; }
-            if (achievements.mushroomFarmTwentyFive) { return 0.10; }
-            if (achievements.mushroomFarmTen) { return 0.01; }
-            return 0;
+
+            // Sammler-Meilensteine: jeweils nur der höchste erreichte Gesamtwert.
+            const collectorBonus = achievements.collector250 ? 0.10
+                : achievements.collectorHundred ? 0.075
+                : achievements.collectorFifty ? 0.05
+                : achievements.collector25 ? 0.025
+                : achievements.collectorTen ? 0.01
+                : 0;
+
+            // Pilzfarm-Meilensteine bleiben eine eigene, ebenfalls nicht additive Staffel.
+            const farmBonus = achievements.mushroomFarmTwoFifty ? 0.25
+                : achievements.mushroomFarmHundred ? 0.20
+                : achievements.mushroomFarmFifty ? 0.15
+                : achievements.mushroomFarmTwentyFive ? 0.10
+                : achievements.mushroomFarmTen ? 0.01
+                : 0;
+
+            return collectorBonus + farmBonus;
         },
         getCapacityBonus(resource) { return { absolute: 0, percent: 0 }; }
     }
