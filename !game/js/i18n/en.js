@@ -237,6 +237,16 @@ I18N.register("en", {
     "achievement.buildColony.unlocked": "Storage Chamber and Nursery built",
     "achievement.buildColony.reward": "Reward: Special units unlocked",
 
+    "achievement.mushroomFarmTen.title": "Mushroom Farm Pioneer",
+    "achievement.mushroomFarmTen.locked": "Build 10 mushroom farms",
+    "achievement.mushroomFarmTen.unlocked": "Build 10 mushroom farms",
+    "achievement.mushroomFarmTen.reward": "Reward: +1% mushroom farm production",
+
+    "achievement.mushroomFarmTwentyFive.title": "Mushroom Farm Empire",
+    "achievement.mushroomFarmTwentyFive.locked": "Build 25 mushroom farms",
+    "achievement.mushroomFarmTwentyFive.unlocked": "Build 25 mushroom farms",
+    "achievement.mushroomFarmTwentyFive.reward": "Reward: +10% total mushroom farm production",
+
     "achievement.knowledgeIsPower.title": "Knowledge Is Power",
     "achievement.knowledgeIsPower.locked": "Train a Storage Guardian and a Grand Nurse",
     "achievement.knowledgeIsPower.unlocked": "Trained a Storage Guardian and a Grand Nurse",
