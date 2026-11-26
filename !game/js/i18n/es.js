@@ -489,7 +489,7 @@ I18N.register("es", {
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
     "changelog.entry.foodUpkeep": "Se ajustó el consumo de comida de los recolectores.",
     "changelog.entry.foodProduction": "Se revisaron los fundamentos de la producción de comida.",
-    "changelog.entry.economy": "Se reajustaron los costes y las condiciones económicas de la colonia."
+    "changelog.entry.economy": "Se reajustaron los costes y las condiciones económicas de la colonia.",
     "achievement.collector10.title": "Aprendiz recolector",
     "achievement.collector10.locked": "Reúne 10 recolectores",
     "achievement.collector10.unlocked": "Reúne 10 recolectores",
