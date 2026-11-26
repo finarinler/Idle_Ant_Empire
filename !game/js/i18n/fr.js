@@ -469,6 +469,7 @@ I18N.register("fr", {
 /* ---------- Navigation tooltips & changelog (all releases) ---------- */
 I18N.register("fr", {
     "nav.hint.comingSoon": "Bientôt disponible !",
+    "nav.hint.underRevision": "En cours de révision",
     "nav.hint.firstSteps": "Succès : Premiers pas — terminer 5 expéditions.",
     "changelog.eyebrow": "JOURNAL DES MODIFICATIONS",
     "changelog.title": "Modifications",
@@ -487,6 +488,7 @@ I18N.register("fr", {
     "changelog.entry.newAchievements": "Nouveaux succès ajoutés",
     "changelog.entry.collectorCosts": "Coûts des collectrices révisés : le coût en fourmis correspond désormais au niveau de collectrice ; les augmentations précédentes de nourriture et de larves sont conservées.",
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
+    "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
     "changelog.entry.foodUpkeep": "Consommation de nourriture des collectrices ajustée.",
     "changelog.entry.foodProduction": "Les bases de la production de nourriture ont été révisées.",
