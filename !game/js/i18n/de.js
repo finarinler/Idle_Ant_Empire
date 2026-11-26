@@ -431,7 +431,7 @@ I18N.register("de", {
     "structure.construction.desc": "Ermöglicht Baumeister.\nJede Stufe erlaubt einen weiteren.",
     "card.stat.housing": "Wohnraum",
     "card.stat.collectorFarmAchievementBonus": "Pilzfarm-Produktionsbonus",
-    "card.stat.mushroomFarmTotalBonus": "Pilzfarm-Gesamtbonus",
+    "card.stat.mushroomFarmTotalBonus": "Pilzfarm-Produktionsbonus",
     "card.stat.hatchTime": "Schlupfzeit",
     "card.stat.hatchCost": "Schlupfkosten",
     "card.stat.buildSpeed": "Bauzeit je Baumeister",
