@@ -500,7 +500,7 @@ I18N.register("de", {
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
     "changelog.entry.foodUpkeep": "Nahrungsverbrauch der Sammler angepasst.",
     "changelog.entry.foodProduction": "Grundlagen der Nahrungsproduktion überarbeitet.",
-    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt."
+    "changelog.entry.economy": "Kosten und wirtschaftliche Rahmenbedingungen der Kolonie neu abgestimmt.",
     "achievement.collector10.title": "Sammler-Lehrling",
     "achievement.collector10.locked": "10 Sammler gesammelt",
     "achievement.collector10.unlocked": "10 Sammler gesammelt",
