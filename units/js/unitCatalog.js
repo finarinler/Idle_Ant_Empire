@@ -12,11 +12,11 @@
     const SECOND = () => I18N.t("statistics.unit.second");
     const rate = (sign, value, decimals, abbr) => `${sign}${formatDecimal(value, decimals)} [[${abbr}]]/s`;
 
-    const totalProductionStat = resource => ({
+    const totalProductionStat = (id, resource) => ({
         label: { key: "card.stat.totalProduction" },
         value: () =>
         {
-            const total = Economy.computeFlows().produced[resource].roundTo(1);
+            const total = Economy.computeFlows().unitProduced[id][resource].roundTo(1);
             const abbreviation = resource === "food" ? "F" : "L";
             return `${total.isPositive() ? "+" : ""}${formatRate(total)} [[${abbreviation}]]/s`;
         },
@@ -80,7 +80,7 @@
             count: { value: () => formatGameNumber(getTotalAnts()) },
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => rate("+", GameState.achievements.purchasedAnts1000 ? GameState.resources.ants.mul(0.1).toNumber() : 0, 1, "F"), tone: "positive" },
-                totalProductionStat("food"),
+                totalProductionStat("normal-ant", "food"),
                 {
                     label: { key: "card.stat.foodConsumption" },
                     value: () => GameState.achievements.goldenAge
@@ -104,7 +104,7 @@
             count: countOf("queen"),
             stats: [
                 { label: { key: "card.stat.larvaeProduction" }, value: () => rate("+", BALANCE.larvaeProductionPerQueen, 1, "L"), tone: "positive" },
-                totalProductionStat("larvae"),
+                totalProductionStat("queen", "larvae"),
                 { label: { key: "card.stat.foodConsumption" }, value: () => rate("−", BALANCE.upkeep["queen"], 1, "F") },
                 housingStat("queen"),
                 trainingStat("queen")
@@ -123,7 +123,7 @@
             count: countOf("collector"),
             stats: [
                 { label: { key: "card.stat.foodProduction" }, value: () => rate("+", BALANCE.collector.foodPerSecond, 0, "F"), tone: "positive" },
-                totalProductionStat("food"),
+                totalProductionStat("collector", "food"),
                 { label: { key: "card.stat.collectorFarmAchievementBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getCollectorAchievementBonus() * 100, 1)} %`, tone: "positive" },
                 housingStat("collector"),
                 trainingStat("collector")
