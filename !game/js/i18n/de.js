@@ -505,7 +505,7 @@ I18N.register("de", {
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
     "changelog.entry.resourceAbbreviations": "Ressourcen- und Einheiten-Kürzel ergänzt.",
-    "changelog.entry.totalProduction": "Gesamt-Produktion bei allen produzierenden Karten ergänzt.",
+    "changelog.entry.totalProduction": "Einheitliche Anzeige „Gesamte Produktion“ auf allen produzierenden Karten ergänzt.",
     "changelog.group.design": "Darstellung",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance verbessert",
