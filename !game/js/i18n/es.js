@@ -652,5 +652,6 @@ I18N.register("es", {
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
     "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
     "changelog.entry.scoutElite": "La exploradora ahora figura entre las unidades de élite.",
+    "changelog.entry.scoutUpkeep": "Exploradora: 6 de comida/min (0,1 de comida/s); el consumo se reduce un 50 % con la automatización desactivada.",
     "changelog.entry.builderTimeSaving": "El ahorro de tiempo actual del constructor ahora se muestra en verde como efecto positivo."
 });
