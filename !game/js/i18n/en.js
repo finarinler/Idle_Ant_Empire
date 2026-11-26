@@ -632,4 +632,8 @@ I18N.register("en", {
     "tooltip.preview.consumption.larvae": "Larvae consumption",
     "tooltip.preview.ants": "ants",
     "tooltip.preview.queens": "queens",
+    "tooltip.preview.production.food": "Food production",
+    "tooltip.preview.production.larvae": "Larvae production",
+    "tooltip.preview.consumption.food": "Food consumption",
+    "tooltip.preview.consumption.larvae": "Larvae consumption",
 });
