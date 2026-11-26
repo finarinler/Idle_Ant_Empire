@@ -434,6 +434,8 @@
         const limit = Math.max(0, Math.min(1000, Math.floor((def.maxCount === undefined ? Infinity : def.maxCount) - current - pending)));
         const stock = { ants: getTotalAnts(), food: GameState.resources.food, larvae: GameState.resources.larvae, queens: GameState.resources.queens };
         let affordable = 0;
+        // Aktive und bereits vorgemerkte Bauaufträge bei dynamischen Folgekosten berücksichtigen.
+        GameState[store.section][store.key] += pending;
         try {
             for (; affordable < limit; affordable++) {
                 const cost = Economy.getProjectInfo(id, "build").cost;
@@ -441,7 +443,7 @@
                 COST_KEYS.forEach(key => { stock[key] = stock[key].sub(amountOf(cost, key)); });
                 GameState[store.section][store.key]++;
             }
-        } finally { if (affordable) { GameState[store.section][store.key] -= affordable; } }
+        } finally { GameState[store.section][store.key] -= pending + affordable; }
         return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
     };
 
