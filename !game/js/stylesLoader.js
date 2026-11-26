@@ -7,6 +7,11 @@
  * =========================
  */
 
+const STYLE_CACHE_VERSION = (() => {
+    const scriptUrl = document.currentScript?.src;
+    return scriptUrl ? new URL(scriptUrl, document.baseURI).searchParams.get("v") || "dev" : "dev";
+})();
+
 const STYLE_MODULES = [
     "!game/css/core/variables.css",
     "!game/css/core/base.css",
@@ -31,7 +36,7 @@ function loadStyleModules()
     {
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = href;
+        link.href = href + (href.includes("?") ? "&" : "?") + "v=" + STYLE_CACHE_VERSION;
         document.head.appendChild(link);
     });
 }
