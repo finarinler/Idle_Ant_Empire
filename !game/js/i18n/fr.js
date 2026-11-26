@@ -611,4 +611,7 @@ I18N.register("fr", {
     "changelog.entry.structureCategories": "Les catégories et cartes de structures ont été réorganisées.",
     "changelog.entry.storageBroodBuildTime": "La chambre de stockage et la chambre de couvain nécessitent chacune exactement 15 minutes de construction avec un bâtisseur.",
     "changelog.entry.hideCappedCostProgress": "Le coût et la barre de progression sont masqués pour les unités et les bâtiments ayant atteint leur maximum."
+        "tooltip.preview.effect": "Effet supplémentaire",
+    "tooltip.preview.cost": "Coût total",
+    "tooltip.preview.capacity": "de capacité",
 });
