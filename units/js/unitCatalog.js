@@ -34,7 +34,7 @@
         label: { key: "card.stat.trainingTime" },
         value: () =>
         {
-            const seconds = BALANCE.trainingSeconds[id];
+            const seconds = Economy.getTrainingSeconds(id);
             if (seconds < 60) { return `${seconds} ${SECOND()}`; }
             const minutes = Math.floor(seconds / 60);
             const remainder = seconds % 60;
