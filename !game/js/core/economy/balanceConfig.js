@@ -11,6 +11,12 @@
 
 const BALANCE = {
 
+    // Liefert die Dauer anhand der Nummer des neu gebauten/ausgebildeten Objekts.
+    getCountBasedSeconds(count, tiers) {
+        const tier = tiers.find(item => count <= item.max);
+        return (tier || tiers[tiers.length - 1]).seconds;
+    },
+
     /* ---------- VERBINDLICH ---------- */
 
     // Feste Ausbildungszeiten für alle rekrutierbaren Einheitentypen (Sekunden)
@@ -64,7 +70,14 @@ const BALANCE = {
         bonusPerCollector: 0, // bleibt ohne Forschungsstufen zunächst bei 0
         bonusPerCollectorPerResearchLevel: 0.001, // +0,1 Prozentpunkte je Sammler und Forschungsstufe
         maxBonusResearchLevel: 10,
-        foodPerSecond: 1
+        foodPerSecond: 1,
+        trainingSecondsByCount: [
+            { max: 25, seconds: 20 },
+            { max: 50, seconds: 30 },
+            { max: 75, seconds: 40 },
+            { max: 100, seconds: 50 },
+            { max: Infinity, seconds: 60 }
+        ]
     },
 
     mushroomFarm: { foodPerSecond: 1, researchPerLevel: 0.5, maxResearchLevel: 8 },
@@ -133,6 +146,19 @@ const BALANCE = {
         },
 
         mushroomFarm: { baseCost: { food: 150 }, costGrowth: 1.10, buildSeconds: 10 },
+        structureBuildSecondsByCount: [
+            { max: 10, seconds: 10 },
+            { max: 20, seconds: 15 },
+            { max: 30, seconds: 20 },
+            { max: 40, seconds: 25 },
+            { max: 50, seconds: 30 },
+            { max: 60, seconds: 35 },
+            { max: 70, seconds: 40 },
+            { max: 80, seconds: 45 },
+            { max: 90, seconds: 50 },
+            { max: 100, seconds: 55 },
+            { max: Infinity, seconds: 60 }
+        ],
 
         constructionChamber: { cost: { food: 1500, larvae: 50, ants: 75, queens: 5 }, buildSeconds: 600 },
 
