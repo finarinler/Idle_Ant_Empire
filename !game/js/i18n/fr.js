@@ -595,5 +595,18 @@ I18N.register("fr", {
 
 I18N.register("fr", {
     "status.unit.trainingQueued": "{count}× {unit} ajouté(s) à la file de formation.",
-    "changelog.entry.batchTraining": "Ajout de la formation par lots avec file et bonus de temps pour tous les types d’unités."
+    "changelog.entry.batchTraining": "Ajout de files de formation par lots pour tous les types d’unités."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("fr", {
+    "status.basic.maxReached": "Vous avez déjà formé le nombre maximal de cette unité de base.",
+    "status.build.queued": "{count}× {structure} ajouté(s) à la file de construction.",
+    "category.eliteStructures": "Structures d’élite",
+    "category.structureUpgrades": "Améliorations des structures",
+    "card.type.structureUpgrade": "Amélioration de structure",
+    "changelog.entry.batchTraining": "Ajout de files de formation par lots pour tous les types d’unités.",
+    "changelog.entry.batchConstruction": "Ajout de files de construction par lots pour les bâtiments.",
+    "changelog.entry.structureCategories": "Les catégories et cartes de structures ont été réorganisées ; l’amélioration de la chambre d’habitation est visible avant la recherche, mais reste verrouillée."
 });

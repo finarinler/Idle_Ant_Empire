@@ -595,5 +595,18 @@ I18N.register("es", {
 
 I18N.register("es", {
     "status.unit.trainingQueued": "{count}× {unit} añadido(s) a la cola de entrenamiento.",
-    "changelog.entry.batchTraining": "Se añadió el entrenamiento por lotes con cola y bonificaciones de tiempo para todos los tipos de unidad."
+    "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("es", {
+    "status.basic.maxReached": "Ya has entrenado el número máximo de esta unidad básica.",
+    "status.build.queued": "{count}× {structure} añadido(s) a la cola de construcción.",
+    "category.eliteStructures": "Estructuras de élite",
+    "category.structureUpgrades": "Mejoras de estructuras",
+    "card.type.structureUpgrade": "Mejora de estructura",
+    "changelog.entry.batchTraining": "Se añadieron colas de entrenamiento por lotes para todos los tipos de unidad.",
+    "changelog.entry.batchConstruction": "Se añadieron colas de construcción por lotes para los edificios.",
+    "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras; la mejora de la cámara de vivienda es visible antes de la investigación, pero permanece bloqueada."
 });

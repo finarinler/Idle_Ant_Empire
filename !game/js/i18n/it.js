@@ -595,5 +595,18 @@ I18N.register("it", {
 
 I18N.register("it", {
     "status.unit.trainingQueued": "{count}× {unit} aggiunto/i alla coda di addestramento.",
-    "changelog.entry.batchTraining": "Aggiunto l’addestramento multiplo con coda e bonus di tempo per tutti i tipi di unità."
+    "changelog.entry.batchTraining": "Aggiunte code di addestramento multiplo per tutti i tipi di unità."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("it", {
+    "status.basic.maxReached": "Hai già addestrato il numero massimo di questa unità base.",
+    "status.build.queued": "{count}× {structure} aggiunto/i alla coda di costruzione.",
+    "category.eliteStructures": "Strutture élite",
+    "category.structureUpgrades": "Miglioramenti delle strutture",
+    "card.type.structureUpgrade": "Miglioramento struttura",
+    "changelog.entry.batchTraining": "Aggiunte code di addestramento multiplo per tutti i tipi di unità.",
+    "changelog.entry.batchConstruction": "Aggiunte code di costruzione multipla per gli edifici.",
+    "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate; il miglioramento della camera abitativa è visibile prima della ricerca, ma resta bloccato."
 });

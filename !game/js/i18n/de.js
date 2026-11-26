@@ -606,5 +606,18 @@ I18N.register("de", {
 
 I18N.register("de", {
     "status.unit.trainingQueued": "{count}× {unit} zur Ausbildungswarteschlange hinzugefügt.",
-    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange und Zeitbonus für alle Einheitentypen ergänzt."
+    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("de", {
+    "status.basic.maxReached": "Du hast bereits die maximale Anzahl dieser Basis-Einheit ausgebildet.",
+    "status.build.queued": "{count}× {structure} zur Bauwarteschlange hinzugefügt.",
+    "category.eliteStructures": "Elite-Strukturen",
+    "category.structureUpgrades": "Struktur Upgrades",
+    "card.type.structureUpgrade": "Struktur-Upgrade",
+    "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt.",
+    "changelog.entry.batchConstruction": "Mehrfachbau mit Warteschlange für Gebäude ergänzt.",
+    "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert; Wohnkammer-Ausbau ist vor der Forschung sichtbar und bleibt bis zur Freischaltung gesperrt."
 });

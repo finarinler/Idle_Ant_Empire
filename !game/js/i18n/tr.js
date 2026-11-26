@@ -595,5 +595,18 @@ I18N.register("tr", {
 
 I18N.register("tr", {
     "status.unit.trainingQueued": "{count}× {unit} eğitim kuyruğuna eklendi.",
-    "changelog.entry.batchTraining": "Tüm birim türleri için kuyruk ve süre bonuslarıyla toplu eğitim eklendi."
+    "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("tr", {
+    "status.basic.maxReached": "Bu temel birimin ulaşılabilecek en yüksek sayısını zaten eğittin.",
+    "status.build.queued": "{count}× {structure} inşaat kuyruğuna eklendi.",
+    "category.eliteStructures": "Seçkin Yapılar",
+    "category.structureUpgrades": "Yapı Yükseltmeleri",
+    "card.type.structureUpgrade": "Yapı Yükseltmesi",
+    "changelog.entry.batchTraining": "Tüm birim türleri için toplu eğitim kuyrukları eklendi.",
+    "changelog.entry.batchConstruction": "Binalar için toplu inşaat kuyrukları eklendi.",
+    "changelog.entry.structureCategories": "Yapı kategorileri ve kartları yeniden sıralandı; Yaşam Odası Yükseltmesi araştırmadan önce görünür, ancak açılana kadar kilitli kalır."
 });

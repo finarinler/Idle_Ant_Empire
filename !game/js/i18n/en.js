@@ -606,5 +606,18 @@ I18N.register("en", {
 
 I18N.register("en", {
     "status.unit.trainingQueued": "{count}× {unit} added to the training queue.",
-    "changelog.entry.batchTraining": "Added batch training with a queue and time bonuses for all unit types."
+    "changelog.entry.batchTraining": "Added batch training queues for all unit types."
+});
+
+
+/* ---------- 007c: batch queues and structure layout ---------- */
+I18N.register("en", {
+    "status.basic.maxReached": "You have already trained the maximum number of this basic unit.",
+    "status.build.queued": "{count}× {structure} added to the construction queue.",
+    "category.eliteStructures": "Elite Structures",
+    "category.structureUpgrades": "Structure Upgrades",
+    "card.type.structureUpgrade": "Structure Upgrade",
+    "changelog.entry.batchTraining": "Added batch training queues for all unit types.",
+    "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
+    "changelog.entry.structureCategories": "Reordered structure categories and cards; the Housing Upgrade is visible before research and remains locked until unlocked."
 });
