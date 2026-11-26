@@ -565,3 +565,10 @@ I18N.register("fr", {
     "achievements.series.farms": "Champignonnières",
     "achievements.series.progress": "{unlocked} / {total} niveaux"
 });
+
+
+/* ---------- More achievement series ---------- */
+I18N.register("fr", {
+    "achievements.series.expeditions": "Expéditions",
+    "achievements.series.failures": "Revers"
+});
