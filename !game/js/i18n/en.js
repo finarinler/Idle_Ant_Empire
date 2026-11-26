@@ -142,10 +142,10 @@ I18N.register("en", {
     "expedition.scoutLockedTitle": "The scout runs expeditions automatically.",
 
     /* ---------- Units ---------- */
-    "unit.ant.name": "Ant",
+    "unit.ant.name": "Ant (A)",
     "unit.ant.desc": "Gathers food for your colony.",
     "unit.ant.buy": "Buy ant",
-    "unit.queen.name": "Queen",
+    "unit.queen.name": "Queen (Q)",
     "unit.queen.desc": "Lays the larvae from which new ants emerge.",
     "unit.queen.buy": "Buy queen",
     "unit.scout.name": "Scout",
@@ -503,7 +503,7 @@ I18N.register("en", {
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
     "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
     "changelog.entry.scrollToTop": "The page automatically scrolls to the top when switching game sections.",
-    "changelog.entry.resourceAbbreviations": "The resource bar now displays the abbreviations F (Food) and L (Larvae) next to their labels.",
+    "changelog.entry.resourceAbbreviations": "F (Food) and L (Larvae) now appear beside the resource labels; A (Ant) and Q (Queen) are added to the unit card names.",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance improvements",
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
