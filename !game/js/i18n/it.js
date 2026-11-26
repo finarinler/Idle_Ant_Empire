@@ -563,12 +563,14 @@ I18N.register("it", {
     "achievements.series.queens": "Regine",
     "achievements.series.collectors": "Raccoglitrici",
     "achievements.series.farms": "Fungaie",
+    "achievements.series.verySuccessfulExpeditions": "Spedizioni di grande successo",
+    "achievements.series.expeditionAchievements": "Obiettivi delle spedizioni",
     "achievements.series.progress": "{unlocked} / {total} livelli"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("it", {
-    "achievements.series.expeditions": "Spedizioni",
-    "achievements.series.failures": "Imprevisti"
+    "achievements.series.completedExpeditions": "Spedizioni completate",
+    "achievements.series.expeditionFailures": "Battute d’arresto delle spedizioni"
 });

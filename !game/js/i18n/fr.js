@@ -563,12 +563,14 @@ I18N.register("fr", {
     "achievements.series.queens": "Reines",
     "achievements.series.collectors": "Collectrices",
     "achievements.series.farms": "Champignonnières",
+    "achievements.series.verySuccessfulExpeditions": "Expéditions très réussies",
+    "achievements.series.expeditionAchievements": "Succès d’expédition",
     "achievements.series.progress": "{unlocked} / {total} niveaux"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("fr", {
-    "achievements.series.expeditions": "Expéditions",
-    "achievements.series.failures": "Revers"
+    "achievements.series.completedExpeditions": "Expéditions terminées",
+    "achievements.series.expeditionFailures": "Revers d’expédition"
 });

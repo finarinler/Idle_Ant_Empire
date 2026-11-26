@@ -574,12 +574,14 @@ I18N.register("de", {
     "achievements.series.queens": "Königinnen",
     "achievements.series.collectors": "Sammler",
     "achievements.series.farms": "Pilzfarmen",
+    "achievements.series.verySuccessfulExpeditions": "Sehr erfolgreiche Expeditionen",
+    "achievements.series.expeditionAchievements": "Expeditions-Erfolge",
     "achievements.series.progress": "{unlocked} / {total} Stufen"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("de", {
-    "achievements.series.expeditions": "Expeditionen",
-    "achievements.series.failures": "Rückschläge"
+    "achievements.series.completedExpeditions": "Abgeschlossene Expeditionen",
+    "achievements.series.expeditionFailures": "Expeditions-Rückschläge"
 });

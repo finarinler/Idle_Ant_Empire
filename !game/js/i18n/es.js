@@ -563,12 +563,14 @@ I18N.register("es", {
     "achievements.series.queens": "Reinas",
     "achievements.series.collectors": "Recolectoras",
     "achievements.series.farms": "Granjas de hongos",
+    "achievements.series.verySuccessfulExpeditions": "Expediciones muy exitosas",
+    "achievements.series.expeditionAchievements": "Logros de expedición",
     "achievements.series.progress": "{unlocked} / {total} niveles"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("es", {
-    "achievements.series.expeditions": "Expediciones",
-    "achievements.series.failures": "Contratiempos"
+    "achievements.series.completedExpeditions": "Expediciones completadas",
+    "achievements.series.expeditionFailures": "Contratiempos de expedición"
 });

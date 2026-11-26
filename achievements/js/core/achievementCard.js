@@ -10,8 +10,10 @@ const ACHIEVEMENT_SERIES = [
  {id:"queens",category:"units",titleKey:"achievements.series.queens",icon:"👑",ids:["smallColony","queenColonyTwentyFive","queenColonyHundred"]},
  {id:"collectors",category:"units",titleKey:"achievements.series.collectors",icon:"🍄",ids:["collector10","collector25","collector50","collector100","collector250"]},
  {id:"farms",category:"build",titleKey:"achievements.series.farms",icon:"🍄",ids:["mushroomFarmTen","mushroomFarmTwentyFive","mushroomFarmFifty","mushroomFarmHundred","mushroomFarmTwoFifty"]},
- {id:"expeditions",category:"expedition",titleKey:"achievements.series.expeditions",icon:"🧭",ids:["expeditionVeteran","speedExpeditions","expeditionCommander"]},
- {id:"failures",category:"expedition",titleKey:"achievements.series.failures",icon:"🛡️",ids:["expeditionMisfortune","expeditionMisfortuneMaster","expeditionMisfortuneLegend"]}
+ {id:"completedExpeditions",category:"expedition",titleKey:"achievements.series.completedExpeditions",icon:"🧭",ids:["expeditionVeteran","speedExpeditions","expeditionCommander"]},
+ {id:"verySuccessfulExpeditions",category:"expedition",titleKey:"achievements.series.verySuccessfulExpeditions",icon:"⭐",ids:["criticalMastery"]},
+ {id:"expeditionAchievements",category:"expedition",titleKey:"achievements.series.expeditionAchievements",icon:"🏆",ids:["foundTenAnts"]},
+ {id:"expeditionFailures",category:"expedition",titleKey:"achievements.series.expeditionFailures",icon:"🛡️",ids:["expeditionMisfortune","expeditionMisfortuneMaster","expeditionMisfortuneLegend"]}
 ];
 function getAchievementDefinition(id){return ACHIEVEMENTS.find(item=>item.id===id);}
 function getAchievementCategory(id){const d=getAchievementDefinition(id);return d&&d.category?d.category:"other";}

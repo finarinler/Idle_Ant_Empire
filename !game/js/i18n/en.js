@@ -574,12 +574,14 @@ I18N.register("en", {
     "achievements.series.queens": "Queens",
     "achievements.series.collectors": "Collectors",
     "achievements.series.farms": "Mushroom Farms",
+    "achievements.series.verySuccessfulExpeditions": "Highly Successful Expeditions",
+    "achievements.series.expeditionAchievements": "Expedition Achievements",
     "achievements.series.progress": "{unlocked} / {total} tiers"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("en", {
-    "achievements.series.expeditions": "Expeditions",
-    "achievements.series.failures": "Setbacks"
+    "achievements.series.completedExpeditions": "Completed Expeditions",
+    "achievements.series.expeditionFailures": "Expedition Setbacks"
 });

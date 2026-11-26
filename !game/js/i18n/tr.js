@@ -563,12 +563,14 @@ I18N.register("tr", {
     "achievements.series.queens": "Kraliçeler",
     "achievements.series.collectors": "Toplayıcılar",
     "achievements.series.farms": "Mantar çiftlikleri",
+    "achievements.series.verySuccessfulExpeditions": "Çok Başarılı Seferler",
+    "achievements.series.expeditionAchievements": "Sefer Başarımları",
     "achievements.series.progress": "{unlocked} / {total} aşama"
 });
 
 
 /* ---------- More achievement series ---------- */
 I18N.register("tr", {
-    "achievements.series.expeditions": "Seferler",
-    "achievements.series.failures": "Aksilikler"
+    "achievements.series.completedExpeditions": "Tamamlanan Seferler",
+    "achievements.series.expeditionFailures": "Sefer Aksilikleri"
 });
