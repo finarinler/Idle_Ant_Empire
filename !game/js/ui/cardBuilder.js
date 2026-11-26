@@ -430,9 +430,11 @@ const CardBuilder = (function ()
             const canUse = state !== "locked" && state !== "max" && state !== "built" && state !== "soon" && state !== "training";
             // Alle Mehrkauf-Buttons bleiben sichtbar; jede Menge ist nur aktiv,
             // wenn sie vollständig finanzierbar und verfügbar ist.
-            nodes.batchButtons["10"].hidden = false;
-            nodes.batchButtons["25"].hidden = false;
-            nodes.batchButtons.MAX.hidden = false;
+            // Bei erreichtem Einheiten-/Gebäudemaximum sind Mehrkauf-Optionen nicht mehr relevant.
+            nodes.batch.hidden = limitReached;
+            nodes.batchButtons["10"].hidden = limitReached;
+            nodes.batchButtons["25"].hidden = limitReached;
+            nodes.batchButtons.MAX.hidden = limitReached;
             nodes.batchButtons["10"].disabled = !canUse || !options.ten;
             nodes.batchButtons["25"].disabled = !canUse || !options.twentyFive;
             nodes.batchButtons.MAX.disabled = !canUse || options.max < 1;
