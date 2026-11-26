@@ -157,6 +157,12 @@ I18N.register("es", {
     "unit.grandNurse.desc": "Duplica el almacén de larvas.",
     "unit.broodExpert.name": "Experta en cría",
     "unit.broodExpert.desc": "Cría hormigas nuevas a partir de larvas.",
+    "unit.broodExpert.on": "Activa",
+    "unit.broodExpert.off": "Inactiva",
+    "unit.broodExpert.switchOn": "Activar expertas en cría",
+    "unit.broodExpert.switchOff": "Desactivar expertas en cría",
+    "status.broodExpert.on": "Las expertas en cría están activadas.",
+    "status.broodExpert.off": "Las expertas en cría están desactivadas.",
     "unit.soldier.name": "Soldado de élite",
     "unit.soldier.desc": "Asegura territorio en las expediciones.\nNecesario para la expansión.",
 
