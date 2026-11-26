@@ -46,6 +46,7 @@ I18N.register("tr", {
     "achievements.cat.basic": "Temel",
     "achievements.cat.collect": "Toplama",
     "achievements.cat.build": "İnşa",
+    "achievements.cat.units": "Birimler",
     "achievements.cat.expedition": "Keşifler",
     "achievements.cat.research": "Araştırma",
     "achievements.cat.military": "Ordu",
