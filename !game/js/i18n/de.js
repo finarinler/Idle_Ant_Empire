@@ -619,5 +619,6 @@ I18N.register("de", {
     "card.type.structureUpgrade": "Struktur-Upgrade",
     "changelog.entry.batchTraining": "Mehrfachausbildung mit Warteschlange für alle Einheitentypen ergänzt.",
     "changelog.entry.batchConstruction": "Mehrfachbau mit Warteschlange für Gebäude ergänzt.",
-    "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert; Wohnkammer-Ausbau ist vor der Forschung sichtbar und bleibt bis zur Freischaltung gesperrt."
+    "changelog.entry.structureCategories": "Gebäudekategorien und Karten neu sortiert.",
+    "changelog.entry.storageBroodBuildTime": "Vorratskammer und Brutkammer benötigen mit einem Baumeister jeweils exakt 15 Minuten Bauzeit."
 });
