@@ -285,6 +285,14 @@ const CardBuilder = (function ()
         {
             nodes.button.addEventListener("click", () => entry.action.run());
         }
+
+        if (entry.toggleAction)
+        {
+            nodes.toggleButton = create("button", "iae-card-action iae-card-toggle-action", card, { type: "button" });
+            nodes.toggleButtonLabel = create("span", "iae-card-action-label", nodes.toggleButton);
+            create("span", "iae-card-action-glyph", nodes.toggleButton, { "aria-hidden": "true" });
+            nodes.toggleButton.addEventListener("click", () => entry.toggleAction.run());
+        }
         if (entry.action && entry.action.preview)
         {
             nodes.button.dataset.previewQuantity = "1";
@@ -400,6 +408,19 @@ const CardBuilder = (function ()
 
         setText(nodes.buttonLabel, label);
         nodes.button.disabled = state !== "available";
+
+        if (nodes.toggleButton)
+        {
+            const toggleVisible = typeof action.toggleAction?.visible === "function"
+                ? action.toggleAction.visible()
+                : true;
+            nodes.toggleButton.hidden = !toggleVisible;
+            if (toggleVisible)
+            {
+                setText(nodes.toggleButtonLabel, action.toggleAction.label);
+                nodes.toggleButton.disabled = false;
+            }
+        }
 
         setText(nodes.hint, status.hint || "");
 
