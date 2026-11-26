@@ -619,5 +619,6 @@ I18N.register("en", {
     "card.type.structureUpgrade": "Structure Upgrade",
     "changelog.entry.batchTraining": "Added batch training queues for all unit types.",
     "changelog.entry.batchConstruction": "Added batch construction queues for buildings.",
-    "changelog.entry.structureCategories": "Reordered structure categories and cards; the Housing Upgrade is visible before research and remains locked until unlocked."
+    "changelog.entry.structureCategories": "Reorganized structure categories and cards.",
+    "changelog.entry.storageBroodBuildTime": "The Storage Chamber and Brood Chamber each take exactly 15 minutes to build with one Builder."
 });
