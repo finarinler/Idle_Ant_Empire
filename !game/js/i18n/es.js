@@ -251,7 +251,7 @@ I18N.register("es", {
     "achievement.mushroomFarmTen.title": "Pionero de las granjas de hongos",
     "achievement.mushroomFarmTen.locked": "Construye 10 granjas de hongos",
     "achievement.mushroomFarmTen.unlocked": "Construye 10 granjas de hongos",
-    "achievement.mushroomFarmTen.reward": "Recompensa: +1% de producción de las granjas de hongos",
+    "achievement.mushroomFarmTen.reward": "Recompensa: +5% de producción de las granjas de hongos",
 
     "achievement.mushroomFarmTwentyFive.title": "Imperio de las granjas de hongos",
     "achievement.mushroomFarmTwentyFive.locked": "Construye 25 granjas de hongos",
