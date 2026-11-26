@@ -522,5 +522,5 @@ I18N.register("fr", {
     "achievement.purchasedAnts1000.title": "Mille fourmis achetées",
     "achievement.purchasedAnts1000.locked": "{goal} fourmis normales achetées au total",
     "achievement.purchasedAnts1000.unlocked": "{goal} fourmis normales achetées au total",
-    "achievement.purchasedAnts1000.reward": "Récompense : chaque fourmi achetée actuellement présente produit +0,1 N/s"
+    "achievement.purchasedAnts1000.reward": "Récompense : chaque fourmi achetée actuellement présente produit +0,1 F/s"
 });
