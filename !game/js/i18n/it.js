@@ -495,7 +495,7 @@ I18N.register("it", {
     "changelog.entry.statisticsRevision": "Statistiche temporaneamente disattivate per revisione.",
     "changelog.entry.scrollToTop": "Quando si cambia sezione di gioco, la pagina scorre automaticamente verso l’alto.",
     "changelog.entry.resourceAbbreviations": "Aggiunte abbreviazioni per risorse e unità.",
-    "changelog.entry.totalProduction": "Aggiunta una visualizzazione uniforme «Produzione totale» a tutte le schede produttrici.",
+    "changelog.entry.totalProduction": "«Produzione totale» ora mostra il contributo del rispettivo tipo di unità anziché la produzione globale.",
     "changelog.entry.productionLabels": "Le etichette di produzione e consumo sono state uniformate.",
     "changelog.entry.unitBuildingTerminology": "Ora le unità vengono addestrate in modo uniforme in tutto il gioco e gli edifici vengono costruiti.",
     "changelog.group.design": "Aspetto",
