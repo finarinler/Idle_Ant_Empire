@@ -3,6 +3,7 @@
 */
 registerAchievement({
     category: "units",
+    unitGroupOrder: 1,
     id: "purchasedAnts1000",
     order: 409,
     getProgress: () => ({
