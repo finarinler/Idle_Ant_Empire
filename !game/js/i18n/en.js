@@ -230,7 +230,17 @@ I18N.register("en", {
     "achievement.smallColony.title": "Small Ant State",
     "achievement.smallColony.locked": "{goal} queens bought",
     "achievement.smallColony.unlocked": "{goal} queens bought",
-    "achievement.smallColony.reward": "Reward: Basic structures unlocked",
+    "achievement.smallColony.reward": "Reward: +5% larvae production",
+    "achievement.queenColonyTwentyFive.title": "Growing Queen Colony",
+    "achievement.queenColonyTwentyFive.locked": "{goal} queens bought",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} queens bought",
+    "achievement.queenColonyTwentyFive.reward": "Reward: +10% larvae production",
+
+    "achievement.queenColonyHundred.title": "Queen Dynasty",
+    "achievement.queenColonyHundred.locked": "{goal} queens bought",
+    "achievement.queenColonyHundred.unlocked": "{goal} queens bought",
+    "achievement.queenColonyHundred.reward": "Reward: +25% larvae production",
+
 
     "achievement.buildColony.title": "Building the Colony",
     "achievement.buildColony.locked": "Storage Chamber and Nursery built",
