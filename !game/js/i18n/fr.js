@@ -247,6 +247,21 @@ I18N.register("fr", {
     "achievement.mushroomFarmTwentyFive.unlocked": "Construire 25 champignonnières",
     "achievement.mushroomFarmTwentyFive.reward": "Récompense : +10 % de production totale des champignonnières",
 
+    "achievement.mushroomFarmFifty.title": "Maître des champignonnières",
+    "achievement.mushroomFarmFifty.locked": "Construire 50 champignonnières",
+    "achievement.mushroomFarmFifty.unlocked": "Construire 50 champignonnières",
+    "achievement.mushroomFarmFifty.reward": "Bonus total : +15 % de production",
+
+    "achievement.mushroomFarmHundred.title": "Magnat des champignonnières",
+    "achievement.mushroomFarmHundred.locked": "Construire 100 champignonnières",
+    "achievement.mushroomFarmHundred.unlocked": "Construire 100 champignonnières",
+    "achievement.mushroomFarmHundred.reward": "Bonus total : +20 % de production",
+
+    "achievement.mushroomFarmTwoFifty.title": "Légende des champignonnières",
+    "achievement.mushroomFarmTwoFifty.locked": "Construire 250 champignonnières",
+    "achievement.mushroomFarmTwoFifty.unlocked": "Construire 250 champignonnières",
+    "achievement.mushroomFarmTwoFifty.reward": "Bonus total : +25 % de production",
+
     "achievement.knowledgeIsPower.title": "Le savoir, c’est le pouvoir",
     "achievement.knowledgeIsPower.locked": "Entraîner une gardienne des réserves et une grande nourrice",
     "achievement.knowledgeIsPower.unlocked": "Une gardienne des réserves et une grande nourrice entraînées",
