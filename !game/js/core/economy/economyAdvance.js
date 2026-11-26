@@ -122,6 +122,7 @@
                 }
 
                 tryStartHatch();
+                UnitRegistry.all().forEach(unit => Economy._startQueuedTraining(unit.id));
 
                 const flows = Economy.computeFlows();
                 const candidates = [];
@@ -170,6 +171,25 @@
                     {
                         candidates.push({ t: training.remaining, kind: "training", id: unitId });
                     }
+                });
+
+                // Warteschlangen starten, sobald Ressourcen durch Produktion wieder ausreichen.
+                UnitRegistry.all().forEach(unit =>
+                {
+                    const queue = eco.trainingQueues[unit.id];
+                    if (!queue || !queue.length || eco.trainings[unit.id]) { return; }
+                    const cost = Economy.getRecruitCost(unit.id);
+                    let wait = 0;
+                    let possible = true;
+                    Object.keys(cost).forEach(resource =>
+                    {
+                        if (resource === "ants" || !RESOURCE_DEFINITIONS[resource]) { return; }
+                        const needed = Big(cost[resource]);
+                        if (flows.stock[resource].gte(needed)) { return; }
+                        if (!flows.net[resource].isPositive() || flows.capacity[resource].lt(needed)) { possible = false; return; }
+                        wait = Math.max(wait, needed.sub(flows.stock[resource]).div(flows.net[resource]).toNumber());
+                    });
+                    if (possible && wait > Economy.EPS) { candidates.push({ t: wait, kind: "queueReady", id: unit.id }); }
                 });
 
                 // Bauprojekte
@@ -282,6 +302,7 @@
 
                     delete eco.trainings[candidate.id];
                     Economy._addUnits(candidate.id, 1);
+                    Economy._startQueuedTraining(candidate.id);
 
                     if (candidate.id === "scout")
                     {
