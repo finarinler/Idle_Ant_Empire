@@ -146,6 +146,7 @@ const CardBuilder = (function ()
             {
                 const row = create("div", `iae-card-stat${stat.tone ? " tone-" + stat.tone : ""}`, stats);
                 nodes.stats.push({
+                    row,
                     label: create("span", null, row),
                     value: create("strong", null, row)
                 });
@@ -226,6 +227,13 @@ const CardBuilder = (function ()
         {
             setText(nodes.stats[index].label, stat.label);
             setText(nodes.stats[index].value, stat.value);
+
+            // Positive Effekte bleiben grün; negative Werte werden als Warnung markiert.
+            // Explizit positive Boni (z. B. Zeitersparnis mit Minuszeichen) behalten Vorrang.
+            const valueText = nodes.stats[index].value.textContent.trim();
+            const isNegative = !stat.tone && /^[−-]/.test(valueText);
+            nodes.stats[index].row.classList.toggle("tone-positive", stat.tone === "positive");
+            nodes.stats[index].row.classList.toggle("tone-negative", isNegative);
         });
 
         setText(nodes.costLabel, entry.costLabel || { key: "card.label.cost" });
