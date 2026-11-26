@@ -143,6 +143,21 @@ const CardBuilder = (function ()
                 : I18N.t("tooltip.preview.queens");
             lines.push(`${formatGameNumber(value)} ${label}`);
         });
+        if (entry.action.preview.kind === "unit")
+        {
+            const unitDef = UnitRegistry.get(entry.action.preview.id);
+            if (unitDef.housing > 0) { lines.push(I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity)); }
+            if (entry.action.preview.id === "builder")
+            {
+                const before = Economy.getUnitNumber("builder");
+                const after = Math.min(BALANCE.builder.maxBuilders, before + preview.quantity);
+                const reduction = (after - before) * BALANCE.builder.reductionPerBuilder;
+                if (reduction > 0) { lines.push(I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %"); }
+            }
+        }
+        else if (entry.action.preview.id === "housing-chamber") { lines.push(I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity)); }
+        else if (entry.action.preview.id === "construction-chamber") { lines.push(I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity)); }
+
         lines.push(`${I18N.t(entry.action.preview.kind === "unit" ? "card.stat.trainingTime" : "card.stat.buildTime")}: ${formatDuration(preview.seconds)}`);
         nodes.preview.textContent = "";
         lines.forEach((line, index) =>
