@@ -608,5 +608,6 @@ I18N.register("it", {
     "card.type.structureUpgrade": "Miglioramento struttura",
     "changelog.entry.batchTraining": "Aggiunte code di addestramento multiplo per tutti i tipi di unità.",
     "changelog.entry.batchConstruction": "Aggiunte code di costruzione multipla per gli edifici.",
-    "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate; il miglioramento della camera abitativa è visibile prima della ricerca, ma resta bloccato."
+    "changelog.entry.structureCategories": "Categorie e schede delle strutture riordinate.",
+    "changelog.entry.storageBroodBuildTime": "La camera di stoccaggio e la camera della covata richiedono ciascuna esattamente 15 minuti di costruzione con un Costruttore."
 });
