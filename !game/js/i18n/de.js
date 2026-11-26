@@ -98,9 +98,9 @@ I18N.register("de", {
     "loading.scriptError": "Fehler beim Laden von: {path}",
 
     /* ---------- Ressourcen ---------- */
-    "resource.food": "Nahrung",
+    "resource.food": "Nahrung (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larven",
+    "resource.larvae": "Larven (L)",
 
     /* ---------- Allgemeine UI ---------- */
     "card.type.unitBasic": "Einheit · Basis",
@@ -503,6 +503,7 @@ I18N.register("de", {
     "changelog.entry.navigation": "Alle Spielbereiche sind von Beginn an sichtbar; gesperrte Bereiche zeigen beim Darüberfahren passende Hinweise zu kommenden Inhalten oder zu Freischaltbedingungen.",
     "changelog.entry.statisticsRevision": "Statistik deaktiviert zur Überarbeitung.",
     "changelog.entry.scrollToTop": "Beim Wechsel des Spielbereichs scrollt die Seite automatisch nach oben.",
+    "changelog.entry.resourceAbbreviations": "Die Ressourcenleiste zeigt jetzt die Kürzel F (Nahrung) und L (Larven) direkt neben den Bezeichnungen.",
     "changelog.group.performance": "Performance",
     "changelog.entry.performance": "Performance verbessert",
     "changelog.entry.discord": "Die Discord-Community ist jetzt auch direkt in den Spieloptionen erreichbar.",
