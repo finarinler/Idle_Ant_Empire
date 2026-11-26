@@ -603,3 +603,8 @@ I18N.register("en", {
     "changelog.entry.unitTrainingTerminology": "Units are consistently described as trained in achievements and game text.",
     "changelog.entry.buildingTerminology": "Buildings are consistently described as constructed in achievements and game text."
 });
+
+I18N.register("en", {
+    "status.unit.trainingQueued": "{count}× {unit} added to the training queue.",
+    "changelog.entry.batchTraining": "Added batch training with a queue and time bonuses for all unit types."
+});
