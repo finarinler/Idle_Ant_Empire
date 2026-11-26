@@ -592,3 +592,8 @@ I18N.register("es", {
     "changelog.entry.unitTrainingTerminology": "Las unidades se describen de forma uniforme como entrenadas en los logros y los textos del juego.",
     "changelog.entry.buildingTerminology": "Los edificios se describen de forma uniforme como construidos en los logros y los textos del juego."
 });
+
+I18N.register("es", {
+    "status.unit.trainingQueued": "{count}× {unit} añadido(s) a la cola de entrenamiento.",
+    "changelog.entry.batchTraining": "Se añadió el entrenamiento por lotes con cola y bonificaciones de tiempo para todos los tipos de unidad."
+});
