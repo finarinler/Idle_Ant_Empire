@@ -6,7 +6,8 @@
 
 const UNIT_ACHIEVEMENT_MODULES = [
     "achievements/js/build/queenColonyTwentyFive.js",
-    "achievements/js/build/queenColonyHundred.js"
+    "achievements/js/build/queenColonyHundred.js",
+    "achievements/js/units/purchasedAnts1000.js"
 ];
 
 async function loadUnitAchievements()
