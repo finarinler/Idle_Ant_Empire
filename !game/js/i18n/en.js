@@ -480,6 +480,7 @@ I18N.register("en", {
 /* ---------- Navigation tooltips & changelog (all releases) ---------- */
 I18N.register("en", {
     "nav.hint.comingSoon": "Coming soon!",
+    "nav.hint.underRevision": "Under revision",
     "nav.hint.firstSteps": "Achievement: First Steps — complete 5 expeditions.",
     "changelog.eyebrow": "CHANGELOG",
     "changelog.title": "Changes",
@@ -498,6 +499,7 @@ I18N.register("en", {
     "changelog.entry.newAchievements": "New achievements added",
     "changelog.entry.collectorCosts": "Collector costs revised: ant costs now match the collector level; previous food and larvae cost increases remain unchanged.",
     "changelog.entry.navigation": "All game areas are visible from the start; locked areas show hints about upcoming content or unlock conditions on hover.",
+    "changelog.entry.statisticsRevision": "Statistics temporarily disabled for revision.",
     "changelog.entry.discord": "The Discord community can now also be accessed directly from the game options.",
     "changelog.entry.foodUpkeep": "Collector food consumption adjusted.",
     "changelog.entry.foodProduction": "Core food production settings revised.",
