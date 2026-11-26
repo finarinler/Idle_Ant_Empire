@@ -515,3 +515,12 @@ I18N.register("fr", {
     "achievement.collector250.unlocked": "250 cueilleurs de champignons entraînés",
     "achievement.collector250.reward": "Bonus total : +10 % de production des champignonnières",
 });
+
+
+/* ---------- Purchased ant food production achievement ---------- */
+I18N.register("fr", {
+    "achievement.purchasedAnts1000.title": "Mille fourmis achetées",
+    "achievement.purchasedAnts1000.locked": "{goal} fourmis normales achetées au total",
+    "achievement.purchasedAnts1000.unlocked": "{goal} fourmis normales achetées au total",
+    "achievement.purchasedAnts1000.reward": "Récompense : chaque fourmi achetée actuellement présente produit +0,1 N/s"
+});
