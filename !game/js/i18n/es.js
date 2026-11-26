@@ -142,10 +142,10 @@ I18N.register("es", {
     "expedition.scoutLockedTitle": "La exploradora realiza las expediciones automáticamente.",
 
     /* ---------- Unidades ---------- */
-    "unit.ant.name": "Hormiga",
+    "unit.ant.name": "Hormiga (A)",
     "unit.ant.desc": "Recolecta comida para tu colonia.",
     "unit.ant.buy": "Comprar hormiga",
-    "unit.queen.name": "Reina",
+    "unit.queen.name": "Reina (Q)",
     "unit.queen.desc": "Pone las larvas de las que nacen nuevas hormigas.",
     "unit.queen.buy": "Comprar reina",
     "unit.scout.name": "Exploradora",
@@ -492,7 +492,7 @@ I18N.register("es", {
     "changelog.entry.navigation": "Todas las áreas del juego están visibles desde el principio; las áreas bloqueadas muestran información sobre el contenido futuro o los requisitos al pasar el cursor.",
     "changelog.entry.statisticsRevision": "Estadísticas desactivadas temporalmente para su revisión.",
     "changelog.entry.scrollToTop": "La página se desplaza automáticamente hacia arriba al cambiar de sección del juego.",
-    "changelog.entry.resourceAbbreviations": "La barra de recursos ahora muestra las abreviaturas F (comida) y L (larvas) junto a sus nombres.",
+    "changelog.entry.resourceAbbreviations": "Las abreviaturas F (comida) y L (larvas) aparecen junto a los recursos; A (hormiga) y Q (reina) se añaden a los nombres de las tarjetas de unidades.",
     "changelog.group.performance": "Rendimiento",
     "changelog.entry.performance": "Rendimiento mejorado",
     "changelog.entry.discord": "Ahora también se puede acceder a la comunidad de Discord directamente desde las opciones del juego.",
