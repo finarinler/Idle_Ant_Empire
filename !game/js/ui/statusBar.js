@@ -11,13 +11,18 @@ function renderStatus()
         return;
     }
 
-    const status = GameState.ui.status;
-    DOM.statusText.textContent = I18N.t(status.key, status.params);
+    // Die Statusvorschau wird ausschließlich aus dem Logbuch aufgebaut.
+    // So überschreibt ein zurückgesetzter Idle-Status keine älteren Meldungen.
+    if (typeof renderStatusPreview === "function")
+    {
+        renderStatusPreview();
+    }
 }
 
 function setDefaultStatus()
 {
     GameState.ui.status = { key: "status.default", params: null };
+    addLogEntry("status.default", "status");
     renderStatus();
 }
 
