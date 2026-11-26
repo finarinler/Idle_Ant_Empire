@@ -618,7 +618,7 @@ I18N.register("fr", {
     "changelog.entry.structureCategories": "Les catégories et cartes de structures ont été réorganisées.",
     "changelog.entry.storageBroodBuildTime": "La chambre de stockage et la chambre de couvain nécessitent chacune exactement 15 minutes de construction avec un bâtisseur.",
     "changelog.entry.broodExpertRebalance": "Experte en couvain rééquilibrée : 1 larve devient 1 fourmi ; chaque experte consomme continuellement 5 nourriture/s.",
-    "changelog.entry.broodExpertToggle": "Les expertes en couvain peuvent être activées et désactivées. Lorsqu'elles sont désactivées, l'éclosion est en pause et la consommation de nourriture s'arrête.",
+    "changelog.entry.broodExpertToggle": "Les expertes en couvain peuvent être activées ou désactivées. À l’arrêt, l’éclosion est en pause et la consommation de nourriture diminue de 50 %.",
     "changelog.entry.hideCappedCostProgress": "Le coût et la barre de progression sont masqués pour les unités et les bâtiments ayant atteint leur maximum.",
     "tooltip.preview.expectedProduction": "Augmentation de production prévue",
     "tooltip.preview.expectedCosts": "Coûts prévus",
