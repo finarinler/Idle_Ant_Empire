@@ -618,7 +618,7 @@ I18N.register("es", {
     "changelog.entry.structureCategories": "Se reorganizaron las categorías y tarjetas de estructuras.",
     "changelog.entry.storageBroodBuildTime": "La Cámara de Almacenamiento y la Cámara de Cría tardan exactamente 15 minutos cada una en construirse con un Constructor.",
     "changelog.entry.broodExpertRebalance": "Se ha reajustado la Experta en cría: 1 larva se convierte en 1 hormiga; cada Experta en cría consume continuamente 5 de comida/s.",
-    "changelog.entry.broodExpertToggle": "Las expertas en cría se pueden activar y desactivar. Al desactivarlas, la eclosión se pausa y se detiene el consumo de comida.",
+    "changelog.entry.broodExpertToggle": "Las expertas en cría se pueden activar y desactivar. Al desactivarlas, la eclosión se pausa y el consumo de comida se reduce un 50 %.",
     "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo.",
     "tooltip.preview.expectedProduction": "Aumento de producción previsto",
     "tooltip.preview.expectedCosts": "Costes previstos",
