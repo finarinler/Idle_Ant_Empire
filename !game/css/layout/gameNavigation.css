@@ -226,9 +226,9 @@
 /* alpha-v0.00.006c — Status im Header und Spielstand-Aktionen */
 .header-status-line {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
     width: calc(100% - 24px);
     min-height: 82px;
     margin: 2px 12px 0;
@@ -253,12 +253,15 @@
 }
 .header-status-line .status-label {
     flex: 0 0 auto;
+    padding-top: 1px;
     color: var(--game-gold);
     font-weight: 750;
 }
 #status-text {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
+    align-items: stretch;
     gap: 3px;
     min-width: 0;
     overflow: hidden;
