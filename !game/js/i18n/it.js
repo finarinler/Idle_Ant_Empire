@@ -230,7 +230,17 @@ I18N.register("it", {
     "achievement.smallColony.title": "Piccolo formicaio",
     "achievement.smallColony.locked": "{goal} regine acquistate",
     "achievement.smallColony.unlocked": "{goal} regine acquistate",
-    "achievement.smallColony.reward": "Ricompensa: strutture di base sbloccate",
+    "achievement.smallColony.reward": "Ricompensa: +5% alla produzione di larve",
+    "achievement.queenColonyTwentyFive.title": "Colonia di regine in crescita",
+    "achievement.queenColonyTwentyFive.locked": "{goal} regine acquistate",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} regine acquistate",
+    "achievement.queenColonyTwentyFive.reward": "Ricompensa: +10% alla produzione di larve",
+
+    "achievement.queenColonyHundred.title": "Dinastia delle regine",
+    "achievement.queenColonyHundred.locked": "{goal} regine acquistate",
+    "achievement.queenColonyHundred.unlocked": "{goal} regine acquistate",
+    "achievement.queenColonyHundred.reward": "Ricompensa: +25% alla produzione di larve",
+
 
     "achievement.buildColony.title": "Costruzione della colonia",
     "achievement.buildColony.locked": "Dispensa e camera della covata costruite",
