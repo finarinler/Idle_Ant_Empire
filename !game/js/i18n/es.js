@@ -633,3 +633,11 @@ I18N.register("es", {
     "tooltip.preview.housingCapacity": "Alojamiento adicional",
     "tooltip.preview.builderLimit": "Límite de constructores",
 });
+
+
+/* ---------- 007c: action tooltip controls ---------- */
+I18N.register("es", {
+    "options.tooltips": "Tooltips de acción",
+    "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
+    "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones."
+});
