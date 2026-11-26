@@ -163,22 +163,43 @@
     {
         const def = UnitRegistry.get(id);
         const current = Economy.getUnitCount(id).toNumber();
+        const queue = GameState.economy.trainingQueues[id] || [];
+        const pending = (GameState.economy.trainings[id] ? 1 : 0)
+            + queue.reduce((sum, job) => sum + (Number(job.count) || 0), 0);
         const max = Economy.getUnitMaxCount(def);
         const unlocked = Economy.getUnitUnlockedCount(def);
-        const limit = Math.max(0, Math.min(1000, Math.floor(max - current), Math.floor(unlocked - current)));
+        const limit = Math.max(0, Math.min(1000, Math.floor(max - current - pending), Math.floor(unlocked - current - pending)));
         if (limit < 1) { return { ten: false, twentyFive: false, max: 0 }; }
-        const cost = Economy.getRecruitCost(id);
-        let affordable = limit;
-        for (const key of COST_KEYS)
+
+        // Dynamische Preise (z. B. Ameisen und Sammler) für jede geplante Einheit
+        // einzeln berechnen, ohne Ressourcen tatsächlich auszugeben.
+        const stock = {
+            ants: getTotalAnts(),
+            food: GameState.resources.food,
+            larvae: GameState.resources.larvae,
+            queens: GameState.resources.queens
+        };
+        let affordable = 0;
+        try
         {
-            const need = amountOf(cost, key);
-            if (need.isPositive())
+            for (; affordable < limit; affordable++)
             {
-                const available = key === "ants" ? getTotalAnts() : GameState.resources[key];
-                affordable = Math.min(affordable, Math.floor(available.div(need).toNumber()));
+                const cost = Economy.getRecruitCost(id);
+                let canPay = true;
+                for (const key of COST_KEYS)
+                {
+                    if (stock[key].lt(amountOf(cost, key))) { canPay = false; break; }
+                }
+                if (!canPay) { break; }
+                COST_KEYS.forEach(key => { stock[key] = stock[key].sub(amountOf(cost, key)); });
+                Economy._addUnits(id, 1);
             }
         }
-        affordable = Math.max(0, affordable);
+        finally
+        {
+            if (affordable > 0) { Economy._removeUnits(id, affordable); }
+        }
+
         return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
     };
 
