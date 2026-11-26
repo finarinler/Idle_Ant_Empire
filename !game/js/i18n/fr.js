@@ -98,9 +98,9 @@ I18N.register("fr", {
     "loading.scriptError": "Échec du chargement de\u00a0: {path}",
 
     /* ---------- Ressources ---------- */
-    "resource.food": "Nourriture",
+    "resource.food": "Nourriture (F)",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larves",
+    "resource.larvae": "Larves (L)",
 
     /* ---------- Interface générale ---------- */
     "card.type.unitBasic": "Unité · Basique",
@@ -492,6 +492,7 @@ I18N.register("fr", {
     "changelog.entry.navigation": "Toutes les zones du jeu sont visibles dès le début ; les zones verrouillées affichent au survol des indications sur le contenu à venir ou les conditions de déverrouillage.",
     "changelog.entry.statisticsRevision": "Statistiques désactivées temporairement pour révision.",
     "changelog.entry.scrollToTop": "La page défile automatiquement vers le haut lors du changement de section du jeu.",
+    "changelog.entry.resourceAbbreviations": "La barre de ressources affiche désormais les abréviations F (nourriture) et L (larves) à côté de leurs noms.",
     "changelog.group.performance": "Performances",
     "changelog.entry.performance": "Performances améliorées",
     "changelog.entry.discord": "La communauté Discord est désormais également accessible directement depuis les options du jeu.",
