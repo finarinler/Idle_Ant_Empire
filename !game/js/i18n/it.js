@@ -247,6 +247,21 @@ I18N.register("it", {
     "achievement.mushroomFarmTwentyFive.unlocked": "Costruisci 25 fungaie",
     "achievement.mushroomFarmTwentyFive.reward": "Ricompensa: +10% alla produzione totale delle fungaie",
 
+    "achievement.mushroomFarmFifty.title": "Maestro delle fungaie",
+    "achievement.mushroomFarmFifty.locked": "Costruisci 50 fungaie",
+    "achievement.mushroomFarmFifty.unlocked": "Costruisci 50 fungaie",
+    "achievement.mushroomFarmFifty.reward": "Bonus totale: +15% alla produzione",
+
+    "achievement.mushroomFarmHundred.title": "Magnate delle fungaie",
+    "achievement.mushroomFarmHundred.locked": "Costruisci 100 fungaie",
+    "achievement.mushroomFarmHundred.unlocked": "Costruisci 100 fungaie",
+    "achievement.mushroomFarmHundred.reward": "Bonus totale: +20% alla produzione",
+
+    "achievement.mushroomFarmTwoFifty.title": "Leggenda delle fungaie",
+    "achievement.mushroomFarmTwoFifty.locked": "Costruisci 250 fungaie",
+    "achievement.mushroomFarmTwoFifty.unlocked": "Costruisci 250 fungaie",
+    "achievement.mushroomFarmTwoFifty.reward": "Bonus totale: +25% alla produzione",
+
     "achievement.knowledgeIsPower.title": "Sapere è potere",
     "achievement.knowledgeIsPower.locked": "Addestrare una guardiana delle scorte e una grande balia",
     "achievement.knowledgeIsPower.unlocked": "Una guardiana delle scorte e una grande balia addestrate",
