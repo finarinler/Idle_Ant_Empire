@@ -247,6 +247,21 @@ I18N.register("de", {
     "achievement.mushroomFarmTwentyFive.unlocked": "25 Pilzfarmen errichtet",
     "achievement.mushroomFarmTwentyFive.reward": "Belohnung: +10 % Pilzfarm-Produktion insgesamt",
 
+    "achievement.mushroomFarmFifty.title": "Pilzfarm-Meister",
+    "achievement.mushroomFarmFifty.locked": "50 Pilzfarmen errichtet",
+    "achievement.mushroomFarmFifty.unlocked": "50 Pilzfarmen errichtet",
+    "achievement.mushroomFarmFifty.reward": "Gesamtbonus: +15 % Pilzfarm-Produktion",
+
+    "achievement.mushroomFarmHundred.title": "Pilzfarm-Magnat",
+    "achievement.mushroomFarmHundred.locked": "100 Pilzfarmen errichtet",
+    "achievement.mushroomFarmHundred.unlocked": "100 Pilzfarmen errichtet",
+    "achievement.mushroomFarmHundred.reward": "Gesamtbonus: +20 % Pilzfarm-Produktion",
+
+    "achievement.mushroomFarmTwoFifty.title": "Pilzfarm-Legende",
+    "achievement.mushroomFarmTwoFifty.locked": "250 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTwoFifty.unlocked": "250 Pilzfarmen errichtet",
+    "achievement.mushroomFarmTwoFifty.reward": "Gesamtbonus: +25 % Pilzfarm-Produktion",
+
     "achievement.knowledgeIsPower.title": "Wissen ist Macht",
     "achievement.knowledgeIsPower.locked": "Eine Vorrats-Hüterin und eine Groß-Amme ausbilden",
     "achievement.knowledgeIsPower.unlocked": "Eine Vorrats-Hüterin und eine Groß-Amme ausgebildet",
