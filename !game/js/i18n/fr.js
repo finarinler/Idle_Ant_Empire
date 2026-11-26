@@ -617,8 +617,7 @@ I18N.register("fr", {
     "changelog.entry.batchConstruction": "Ajout de files de construction par lots pour les bâtiments.",
     "changelog.entry.structureCategories": "Les catégories et cartes de structures ont été réorganisées.",
     "changelog.entry.storageBroodBuildTime": "La chambre de stockage et la chambre de couvain nécessitent chacune exactement 15 minutes de construction avec un bâtisseur.",
-    "changelog.entry.broodExpertRebalance": "Experte en couvain rééquilibrée : 1 larve devient 1 fourmi ; chaque experte consomme continuellement 5 nourriture/s.",
-    "changelog.entry.broodExpertToggle": "Les expertes en couvain peuvent être activées ou désactivées. À l’arrêt, l’éclosion est en pause et la consommation de nourriture diminue de 50 %.",
+    "changelog.entry.broodExpertRebalance": "Experte en couvain ajustée.",
     "changelog.entry.hideCappedCostProgress": "Le coût et la barre de progression sont masqués pour les unités et les bâtiments ayant atteint leur maximum.",
     "tooltip.preview.expectedProduction": "Augmentation de production prévue",
     "tooltip.preview.expectedCosts": "Coûts prévus",
@@ -651,7 +650,4 @@ I18N.register("fr", {
     "options.tooltips": "Info-bulles d’action",
     "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
     "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
-    "changelog.entry.scoutElite": "L’éclaireuse figure désormais parmi les unités d’élite.",
-"changelog.entry.scoutUpkeep": "Éclaireuse : 18 nourriture/min (0,3 nourriture/s) ; 0,1 nourriture/s lorsque l’automatisation est désactivée.",
-    "changelog.entry.builderTimeSaving": "Le gain de temps actuel du bâtisseur est désormais affiché en vert comme effet positif."
 });
