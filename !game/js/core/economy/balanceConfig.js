@@ -172,7 +172,7 @@ const BALANCE = {
 
         // Welche Projekte einen Baumeister benötigen (nur Wohnkammer-Upgrades sind vorgegeben)
         requiresBuilder: { housingBuild: false, housingUpgrade: true, mushroomFarm: false,
-                           storageRoom: true, broodChamber: true, constructionChamber: true },
+                           storageRoom: true, broodChamber: true, constructionChamber: false },
 
         // Forschungs-Freischaltung der 2.-5. Vorratshüterin / Groß-Amme ist noch nicht
         // implementiert: bis dahin ist nur die erste verfügbar.
