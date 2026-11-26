@@ -48,7 +48,11 @@ function updateStatus(key, type = "status", preventReset = false, params = null)
     const signature = key + "\u0000" + JSON.stringify(params);
     const isRepeatedWarning = type === "warning" && signature === GameState.ui.lastLogMessage;
 
-    if (!isRepeatedWarning)
+    // Der Start einer Expedition ist ein laufender Zustand, kein dauerhaftes Logereignis.
+    // Das eigentliche Ergebnis (Fund / Misserfolg) wird weiterhin protokolliert.
+    const isTransientExpeditionStart = key === "status.expeditionStarted";
+
+    if (!isRepeatedWarning && !isTransientExpeditionStart)
     {
         addLogEntry(key, type, params);
     }
