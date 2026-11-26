@@ -230,7 +230,17 @@ I18N.register("tr", {
     "achievement.smallColony.title": "Küçük Karınca Devleti",
     "achievement.smallColony.locked": "{goal} kraliçe satın alındı",
     "achievement.smallColony.unlocked": "{goal} kraliçe satın alındı",
-    "achievement.smallColony.reward": "Ödül: Temel yapılar açıldı",
+    "achievement.smallColony.reward": "Ödül: Larva üretimine +%5",
+    "achievement.queenColonyTwentyFive.title": "Büyüyen Kraliçe Kolonisi",
+    "achievement.queenColonyTwentyFive.locked": "{goal} kraliçe satın alındı",
+    "achievement.queenColonyTwentyFive.unlocked": "{goal} kraliçe satın alındı",
+    "achievement.queenColonyTwentyFive.reward": "Ödül: Larva üretimine +%10",
+
+    "achievement.queenColonyHundred.title": "Kraliçe Hanedanı",
+    "achievement.queenColonyHundred.locked": "{goal} kraliçe satın alındı",
+    "achievement.queenColonyHundred.unlocked": "{goal} kraliçe satın alındı",
+    "achievement.queenColonyHundred.reward": "Ödül: Larva üretimine +%25",
+
 
     "achievement.buildColony.title": "Kolonin İnşası",
     "achievement.buildColony.locked": "Erzak Odası ve Kuluçka Odası inşa edildi",
