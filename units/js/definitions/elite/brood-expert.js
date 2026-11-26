@@ -2,7 +2,7 @@
     Brutexpertin (Definition)
     Maximal 5, benötigt die Brutkammer, Wohnraum 3 je Brutexpertin.
     Schlüpft immer nur EINE Ameise gleichzeitig. Eine Larve ergibt eine Ameise.
-    Jede Brut-Expertin verbraucht dauerhaft 5 Nahrung/s. Die Schlupfzeit hängt von
+    Jede Brut-Expertin verbraucht 5 Nahrung/s (ausgeschaltet: 2,5 Nahrung/s). Die Schlupfzeit hängt von
     der Anzahl der Brut-Expertinnen ab. Ohne freien Wohnraum wartet der Schlupf.
 ========================= */
 
@@ -13,7 +13,7 @@ UnitRegistry.register({
     housing: 3,
     maxCount: BALANCE.carriedOver.broodExpert.maxCount,
 
-    consumption: [{ resource: "food", rate: BALANCE.upkeep["brood-expert"], kind: "survival", enabled: () => GameState.economy.broodExpertEnabled !== false }],
+    consumption: [{ resource: "food", rate: () => BALANCE.upkeep["brood-expert"] * (GameState.economy.broodExpertEnabled === false ? 0.5 : 1), kind: "survival" }],
     production: [],
     refund: { food: BALANCE.refunds["brood-expert"] },
 
