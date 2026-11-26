@@ -621,4 +621,8 @@ I18N.register("tr", {
     "tooltip.preview.consumption.larvae": "Larva tüketimi",
     "tooltip.preview.ants": "karıncalar",
     "tooltip.preview.queens": "kraliçeler",
+    "tooltip.preview.production.food": "Yiyecek üretimi",
+    "tooltip.preview.production.larvae": "Larva üretimi",
+    "tooltip.preview.consumption.food": "Yiyecek tüketimi",
+    "tooltip.preview.consumption.larvae": "Larva tüketimi",
 });
