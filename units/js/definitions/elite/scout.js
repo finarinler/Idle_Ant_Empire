@@ -1,6 +1,6 @@
 /* =========================
     Späher (Definition)
-    Maximal 1, Wohnraum 5. Gekauft wird im Expeditionsfenster.
+    Maximal 1, Wohnraum 5. Wird unter Elite-Einheiten ausgebildet.
     ON automatisiert das bestehende Expeditionssystem, OFF lässt die manuelle Bedienung unverändert.
     Expeditionen laufen offline nicht.
 ========================= */
