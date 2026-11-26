@@ -40,7 +40,7 @@ const Economy = {
                 : achievements.mushroomFarmHundred ? 0.20
                 : achievements.mushroomFarmFifty ? 0.15
                 : achievements.mushroomFarmTwentyFive ? 0.10
-                : achievements.mushroomFarmTen ? 0.01
+                : achievements.mushroomFarmTen ? 0.05
                 : 0;
 
             return collectorBonus + farmBonus;
