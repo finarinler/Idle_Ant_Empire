@@ -359,6 +359,7 @@ I18N.register("en", {
 I18N.register("en", {
     "status.versionReset": "New version: your save was reset once. A new game begins!",
     "status.unit.died": "{count}× {unit} starved.",
+    "status.units.starved": "{count} units starved: {units}",
     "status.build.completed": "{structure} completed!",
     "status.build.started": "Construction started: {structure} ({time})",
     "status.build.inProgress": "Under construction … {time} left",
