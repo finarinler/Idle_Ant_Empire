@@ -622,7 +622,6 @@ I18N.register("fr", {
     "changelog.entry.hideCappedCostProgress": "Le coût et la barre de progression sont masqués pour les unités et les bâtiments ayant atteint leur maximum.",
     "tooltip.preview.expectedProduction": "Production",
     "tooltip.preview.expectedConsumption": "Consommation",
-    "tooltip.preview.expectedOther": "Divers",
     "tooltip.preview.expectedTime": "Durée",
     "tooltip.preview.expectedCosts": "Coûts prévus",
     "tooltip.preview.expectedDuration": "Durée prévue",
