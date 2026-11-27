@@ -45,7 +45,11 @@ function initializeAchievementPointsForExistingAchievements()
     }
 
     const stats = GameState.stats;
-    if (stats.achievementPointsInitialized === true)
+    const hasUnlockedPointRewards = ACHIEVEMENTS.some(definition =>
+        GameState.achievements[definition.id] && Number(definition.epReward) > 0
+    );
+    if (stats.achievementPointsInitialized === true
+        && ((Number(stats.totalAchievementPointsEarned) || 0) > 0 || !hasUnlockedPointRewards))
     {
         updateAchievementPointsDisplay();
         return;
