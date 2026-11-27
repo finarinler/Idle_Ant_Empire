@@ -12,21 +12,21 @@
     <link rel="stylesheet" href="!game/css/core/loading-screen.css">
     <link rel="icon" type="image/png" href="!game/assets/images/header.png">
 
-    <script src="!game/js/stylesLoader.js?v=2026:11:27:22:20:00"></script>
+    <script src="!game/js/stylesLoader.js?v=2026:11:27:22:25:00"></script>
 
     <!-- Mehrsprachigkeit: klassische Skripte für file:// -->
     <script src="!game/js/i18n/i18n.js"></script>
-    <script src="!game/js/i18n/de.js?v=2026:11:27:22:20:00"></script>
-    <script src="!game/js/i18n/en.js?v=2026:11:27:22:20:00"></script>
-    <script src="!game/js/i18n/es.js?v=2026:11:27:22:20:00"></script>
-    <script src="!game/js/i18n/fr.js?v=2026:11:27:22:20:00"></script>
-    <script src="!game/js/i18n/it.js?v=2026:11:27:22:20:00"></script>
-    <script src="!game/js/i18n/tr.js?v=2026:11:27:22:20:00"></script>
+    <script src="!game/js/i18n/de.js?v=2026:11:27:22:25:00"></script>
+    <script src="!game/js/i18n/en.js?v=2026:11:27:22:25:00"></script>
+    <script src="!game/js/i18n/es.js?v=2026:11:27:22:25:00"></script>
+    <script src="!game/js/i18n/fr.js?v=2026:11:27:22:25:00"></script>
+    <script src="!game/js/i18n/it.js?v=2026:11:27:22:25:00"></script>
+    <script src="!game/js/i18n/tr.js?v=2026:11:27:22:25:00"></script>
 
     <!-- Musik wird vor dem Modul-Loader geladen. -->
-    <script src="!game/js/musicController.js?v=2026:11:27:22:20:00"></script>
+    <script src="!game/js/musicController.js?v=2026:11:27:22:25:00"></script>
     <script src="!game/js/gameSections.js"></script>
-    <script src="!game/js/main.js?v=2026:11:27:22:20:00"></script>
+    <script src="!game/js/main.js?v=2026:11:27:22:25:00"></script>
 </head>
 
 <body data-initial-view="expeditions">
@@ -81,36 +81,6 @@
                     </h1>
                 </div>
             </div>
-
-            <div class="resource-bar">
-                <div class="res-item">
-                    <span class="res-label" data-i18n="resource.food">Nahrung</span>
-                    <div class="res-value-container">
-                        <span id="food-count" class="res-value resource-gold">0.00</span>
-                        <span id="food-max" class="res-max">/ 0</span>
-                    </div>
-                    <div id="food-rate" class="res-rate resource-rate-stack">
-                        <span class="food-rate-current rate-neutral">0,0 <span class="abbr-gold">F</span>/s</span>
-                        <span class="resource-rate-max" data-i18n="resource.maxRate">Max.</span>
-                    </div>
-                </div>
-
-                <div class="res-item">
-                    <span class="res-label" data-i18n="resource.larvae">Larven</span>
-                    <div class="res-value-container">
-                        <span id="larvae-count" class="res-value resource-gold">0.00</span>
-                        <span id="larvae-max" class="res-max">/ 0</span>
-                    </div>
-                    <div id="larvae-rate" class="res-rate resource-rate-stack">
-                        <span class="larvae-rate-current rate-neutral">0,0 <span class="abbr-gold">L</span>/s</span>
-                        <span class="larvae-rate-max resource-rate-max" data-i18n="resource.maxRate">Max.:</span>
-                    </div>
-                </div>
-            </div>
-            <button id="status-logbook-button" class="header-status-line" type="button">
-                <span class="status-label" data-i18n="status.label">Status:</span>
-                <span id="status-text" data-i18n="status.init">Initialisierung...</span>
-            </button>
         </header>
 
         <div class="game-shell">
@@ -159,9 +129,44 @@
                 </button>
       
                 </div>
-            </nav>      </nav>
+            </nav>
+            <div class="game-content">
+            <div class="resource-bar">
+                <div class="res-item">
+                    <span class="res-label" data-i18n="resource.food">Nahrung</span>
+                    <div class="res-value-container">
+                        <span id="food-count" class="res-value resource-gold">0.00</span>
+                        <span id="food-max" class="res-max">/ 0</span>
+                    </div>
+                    <div id="food-rate" class="res-rate resource-rate-stack">
+                        <span class="food-rate-current rate-neutral">0,0 <span class="abbr-gold">F</span>/s</span>
+                        <span class="resource-rate-max" data-i18n="resource.maxRate">Max.</span>
+                    </div>
+                </div>
 
+                <div class="res-item">
+                    <span class="res-label" data-i18n="resource.larvae">Larven</span>
+                    <div class="res-value-container">
+                        <span id="larvae-count" class="res-value resource-gold">0.00</span>
+                        <span id="larvae-max" class="res-max">/ 0</span>
+                    </div>
+                    <div id="larvae-rate" class="res-rate resource-rate-stack">
+                        <span class="larvae-rate-current rate-neutral">0,0 <span class="abbr-gold">L</span>/s</span>
+                        <span class="larvae-rate-max resource-rate-max" data-i18n="resource.maxRate">Max.:</span>
+                    </div>
+                </div>
+            </div>
+            <button id="status-logbook-button" class="header-status-line" type="button">
+                <span class="status-label" data-i18n="status.label">Status:</span>
+                <span id="status-text" data-i18n="status.init">Initialisierung...</span>
+            </button>
+                <button id="status-logbook-button" class="header-status-line" type="button">
+                    <span class="status-label" data-i18n="status.label">Status:</span>
+                    <span id="status-text" data-i18n="status.init">Initialisierung...</span>
+                </button>
             <main class="game-main" id="game-main" aria-live="off"></main>
+            </div>
+        </div>
         </div> <!-- /.game-shell -->
 
         <!-- =========================
