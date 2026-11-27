@@ -108,6 +108,7 @@ I18N.register("es", {
     "card.type.unitBasic": "Unidad · Básica",
     "card.type.unitElite": "Unidad · Élite",
     "card.type.structureBasic": "Edificio · Básico",
+    "card.type.structureElite": "Edificio · Élite",
     "card.label.cost": "Coste",
     "card.stat.bought": "Compradas",
     "card.stat.foodProduction": "Producción",
