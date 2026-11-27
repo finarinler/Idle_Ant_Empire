@@ -31,6 +31,8 @@ const GameState = {
         hasNursery: false,
         housingCount: 1,
         housingLevel: 1,
+        storageRoomLevel: 1,
+        broodChamberLevel: 1,
         mushroomFarmCount: 0,
         constructionLevel: 0
     },
@@ -80,7 +82,10 @@ const GameState = {
     },
 
     research: {
-        housingUpgrade: false
+        housingUpgrade: false,
+        // Stufe 1 = Grundgebäude; spätere Forschung schaltet die Ausbaustufen 2–10 frei.
+        storageRoomUpgradeLevel: 1,
+        broodChamberUpgradeLevel: 1
     },
 
     achievements: {
