@@ -176,7 +176,9 @@
         const produced = zeros();
         const consumed = zeros();
         const unitProduced = {};
+        const structureProduced = {};
         units.forEach(unit => { unitProduced[unit.id] = zeros(); });
+        structures.forEach(structure => { structureProduced[structure.id] = zeros(); });
 
         production.forEach(entry =>
         {
@@ -194,6 +196,7 @@
         structures.forEach(structure =>
         {
             const out = structureOutput(structure, Economy.getStructureNumber(structure.id), effOf, counts);
+            structureProduced[structure.id] = out;
             RESOURCE_IDS.forEach(id => { produced[id] = produced[id].add(out[id]); });
         });
 
@@ -247,7 +250,7 @@
         });
 
         return {
-            counts, stock, ratio, efficiency, produced, unitProduced, consumed, net, maxNet, capacity,
+            counts, stock, ratio, efficiency, produced, unitProduced, structureProduced, consumed, net, maxNet, capacity,
             nominal, survivalDemand, workBlocked, deathCondition,
             consumptionEntries: consumption
         };
