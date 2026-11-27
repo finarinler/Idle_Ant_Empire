@@ -500,7 +500,11 @@ const CardBuilder = (function ()
         }
         else if (STATE_LABEL_KEYS[state] && !action.keepLabel)
         {
-            label = { key: STATE_LABEL_KEYS[state] };
+            label = state === "max" && action.maxLabel
+                ? action.maxLabel
+                : state === "built" && action.builtLabel
+                    ? action.builtLabel
+                    : { key: STATE_LABEL_KEYS[state] };
         }
 
         const queueProgress = action.queueProgress ? action.queueProgress() : null;
