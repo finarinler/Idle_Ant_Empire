@@ -623,3 +623,27 @@
     .game-navigation-items { grid-template-columns: 1fr 1fr; }
     .game-navigation-items .game-nav-button { min-height: 42px; }
 }
+
+
+/* Navigation: nur bei Platzmangel innerhalb der Menüliste scrollen. */
+.game-navigation-items {
+    max-height: min(70vh, 640px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(181, 138, 72, .62) rgba(255, 255, 255, .035);
+}
+.game-navigation-items::-webkit-scrollbar { width: 7px; }
+.game-navigation-items::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .035);
+}
+.game-navigation-items::-webkit-scrollbar-thumb {
+    border: 1px solid rgba(17, 17, 17, .9);
+    border-radius: 8px;
+    background: rgba(181, 138, 72, .62);
+}
+.game-navigation-items::-webkit-scrollbar-thumb:hover {
+    background: rgba(207, 169, 105, .82);
+}
