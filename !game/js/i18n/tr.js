@@ -655,3 +655,9 @@ I18N.register("tr", {
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
     "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("tr", {
+    "changelog.entry.builderUpkeep": "Her inşaatçı artık saniyede 5 yiyecek tüketiyor."
+});
