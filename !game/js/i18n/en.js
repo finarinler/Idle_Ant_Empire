@@ -810,3 +810,15 @@ I18N.register("en", {
     "button.alreadyTrained": "Already Trained",
     "button.alreadyBuilt": "Already Built"
 });
+
+
+/* ---------- Research-gated storage and brood chamber upgrades ---------- */
+I18N.register("en", {
+    "structure.storageUpgrade.name": "Storage Chamber Upgrade",
+    "structure.storageUpgrade.desc": "Increases food storage by 10,000 per level. Each level must be researched.",
+    "structure.broodUpgrade.name": "Brood Chamber Upgrade",
+    "structure.broodUpgrade.desc": "Increases larva storage by 2,500 per level. Each level must be researched.",
+    "structure.capacityUpgrade.target": "Target: level {level}",
+    "status.structureUpgrade.balancePending": "Upgrade costs and construction times will be defined later.",
+    "changelog.entry.storageBroodUpgrades": "Prepared nine research-gated upgrade levels for the Storage Chamber and Brood Chamber."
+});
