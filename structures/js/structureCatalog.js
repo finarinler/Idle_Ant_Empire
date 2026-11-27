@@ -1,244 +1,4 @@
-/* =========================================================
-    Gebäude-Katalog
-    Zentrale Definition aller Gebäude-Karten (Daten und Aktionen).
-    Die Darstellung übernimmt der gemeinsame CardBuilder.
-    Konfiguration: structures/js/definitions/*.js · Bau: structureActions.js · Rechnung: core/economy
-========================================================= */
-
-(() =>
-{
-    "use strict";
-
-    const SECOND = () => I18N.t("statistics.unit.second");
-    const COST_ORDER = ["larvae", "ants", "queens", "food"];
-
-    const totalProductionStat = resource => ({
-        label: { key: "card.stat.totalProduction" },
-        value: () =>
-        {
-            const total = Economy.computeFlows().produced[resource].roundTo(1);
-            const abbreviation = resource === "food" ? "F" : "L";
-            return `${total.isPositive() ? "+" : ""}${formatRate(total)} [[${abbreviation}]]/s`;
-        },
-        tone: "positive"
-    });
-
-    const buildAction = (structureId) => ({
-        label: { key: "button.build" },
-        missingLabel: { key: "button.missingResources" },
-        builtLabel: { key: "button.alreadyBuilt" },
-        preview: { kind: "structure", id: structureId },
-        batchOptions: () => Economy.getProjectBatchOptions(structureId),
-        queueProgress: () => {
-            const progress = Economy.getProjectQueueProgress(structureId);
-            return progress ? { ...progress, key: "queue.progress.build" } : null;
-        },
-        batchRun: amount => startStructureProjectBatch(structureId, amount),
-        run: () => startStructureProject(structureId, "build")
-    });
-
-    // Status direkt aus der Wirtschaft; bei laufendem Projekt wird die Restzeit angezeigt
-    function projectStatus(structureId, kind, targetLevel)
-    {
-        const state = Economy.getProjectState(structureId, kind, targetLevel);
-
-        if (state.hint && state.hint.key === "status.build.inProgress")
-        {
-            const project = Economy.getProject(structureId, kind);
-            return { state: state.state, hint: { key: state.hint.key, params: { time: formatDuration(project ? project.remaining : 0) } } };
-        }
-
-        return { state: state.state, hint: state.hint };
-    }
-
-    const buildCost = (structureId, order) => () => ({
-        values: Economy.getProjectInfo(structureId, "build").cost,
-        order: order || COST_ORDER
-    });
-
-    const buildTimeStat = (structureId, kind, target) => ({
-        label: { key: "card.stat.buildTime" },
-        value: () => `${formatDuration(Economy.getProjectInfo(structureId, kind, target ? target() : undefined).seconds)}`
-    });
-
-    // Zielstufe des globalen Wohnkammer-Upgrades (Überspringen erlaubt)
-    let housingUpgradeTarget = 2;
-
-    function clampHousingTarget()
-    {
-        const level = GameState.structures.housingLevel;
-        const max = BALANCE.housing.maxLevel;
-
-        housingUpgradeTarget = Math.max(level + 1, Math.min(max, housingUpgradeTarget));
-        return housingUpgradeTarget;
-    }
-
-    function createCapacityUpgradeCard(config)
-    {
-        let target = 2;
-        const currentLevel = () => GameState.structures[config.levelKey];
-        const clampTarget = () =>
-        {
-            target = currentLevel() >= config.maxLevel
-                ? config.maxLevel
-                : Math.max(currentLevel() + 1, Math.min(config.maxLevel, target));
-            return target;
-        };
-        const capacityAt = level => StructureRegistry.get(config.structureId).capacityAtLevel(level);
-
-        return {
-            id: config.id,
-            icon: "⇧",
-            type: { key: "card.type.structureUpgrade" },
-            name: { key: config.nameKey },
-            desc: { key: config.descKey },
-            count: { value: currentLevel, max: config.maxLevel },
-            stats: [
-                {
-                    label: { key: config.capacityLabel },
-                    value: () => `${formatGameNumber(capacityAt(currentLevel()))} → ${formatGameNumber(capacityAt(clampTarget()))}`,
-                    tone: "positive"
-                },
-                { label: { key: "card.stat.buildTime" }, value: () => "—" },
-                { label: { key: "card.stat.needsBuilder" }, value: { key: "card.value.yes" } }
-            ],
-            stepper: {
-                label: () => ({ key: "structure.capacityUpgrade.target", params: { level: clampTarget() } }),
-                canDec: () => clampTarget() > currentLevel() + 1,
-                canInc: () => clampTarget() < config.maxLevel,
-                dec: () => { target--; CardBuilder.updateAll(); },
-                inc: () => { target++; CardBuilder.updateAll(); }
-            },
-            cost: () => ({ values: {}, order: [config.resource] }),
-            action: {
-                label: { key: "button.upgrade" },
-                missingLabel: { key: "button.upgrade" },
-                run: () => startStructureProject(config.structureId, "upgrade", clampTarget())
-            },
-            status: () => currentLevel() >= config.maxLevel
-                ? { state: "max", hint: { key: "status.elite.maxReached" } }
-                : projectStatus(config.structureId, "upgrade", clampTarget())
-        };
-    }
-
-    CardBuilder.register("structures-basic", [
-        {
-            id: "housing",
-            icon: "⌂",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.housing.name" },
-            desc: { key: "structure.housing.desc" },
-            count: { value: () => GameState.structures.housingCount },
-            stats: [
-                { label: { key: "card.stat.housing" }, value: () => `${formatGameNumber(Economy.getHousingUsed())} / ${formatGameNumber(Economy.getHousingCapacity())}`, tone: "positive" },
-                { label: { key: "card.stat.perChamber" }, value: () => formatGameNumber(Economy.getHousingPerChamber()) },
-                buildTimeStat("housing-chamber", "build")
-            ],
-            progressId: "progress-housing",
-            cost: buildCost("housing-chamber", ["food"]),
-            action: buildAction("housing-chamber"),
-            status: () => projectStatus("housing-chamber", "build")
-        },
-        {
-            id: "mushroom-farm",
-            icon: "❀",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.mushroomFarm.name" },
-            desc: { key: "structure.mushroomFarm.desc" },
-            count: { value: () => GameState.structures.mushroomFarmCount },
-            stats: [
-                { label: { key: "card.stat.foodProduction" }, value: () => `+${formatDecimal(BALANCE.mushroomFarm.foodPerSecond, 0)} [[F]]/s`, tone: "positive" },
-                { label: { key: "card.stat.mushroomFarmTotalBonus" }, value: () => `+${formatDecimal(Economy.modifiers.getProductionBonus("mushroom-farm", "food") * 100, 1)} %`, tone: "positive" },
-                totalProductionStat("food"),
-                buildTimeStat("mushroom-farm", "build")
-            ],
-            progressId: "progress-mushroom",
-            cost: buildCost("mushroom-farm", ["food"]),
-            action: buildAction("mushroom-farm"),
-            status: () => projectStatus("mushroom-farm", "build")
-        },
-        {
-            id: "construction",
-            icon: "⚒",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.construction.name" },
-            desc: { key: "structure.construction.desc" },
-            count: { value: () => GameState.structures.constructionLevel, max: BALANCE.builder.maxBuilders },
-            stats: [
-                { label: { key: "card.stat.builderLimit" }, value: () => formatGameNumber(GameState.structures.constructionLevel), tone: "positive" },
-                buildTimeStat("construction-chamber", "build")
-            ],
-            progressId: "progress-construction",
-            cost: buildCost("construction-chamber"),
-            action: buildAction("construction-chamber"),
-            status: () => projectStatus("construction-chamber", "build")
-        },
-        {
-            id: "storage",
-            icon: "⌂",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.storage.name" },
-            desc: { key: "structure.storage.desc" },
-            count: { value: () => GameState.structures.storageCount, max: 1 },
-            stats: [
-                { label: { key: "card.stat.foodLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.storageRoom.totalFoodCapacity), tone: "positive" },
-                buildTimeStat("storage-room", "build")
-            ],
-            progressId: "progress-storage",
-            cost: buildCost("storage-room", ["larvae", "ants", "food"]),
-            action: buildAction("storage-room"),
-            status: () => projectStatus("storage-room", "build")
-        },
-        {
-            id: "nursery",
-            icon: "⌂",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.nursery.name" },
-            desc: { key: "structure.nursery.desc" },
-            count: { value: () => GameState.structures.nurseryCount, max: 1 },
-            stats: [
-                { label: { key: "card.stat.larvaeLimit" }, value: () => formatGameNumber(BALANCE.carriedOver.broodChamber.totalLarvaeCapacity), tone: "positive" },
-                buildTimeStat("brood-chamber", "build")
-            ],
-            progressId: "progress-nursery",
-            cost: buildCost("brood-chamber", ["larvae", "ants", "food"]),
-            action: buildAction("brood-chamber"),
-            status: () => projectStatus("brood-chamber", "build")
-        },
-        {
-            id: "royal-chamber",
-            icon: "♕",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.royalChamber.name" },
-            desc: { key: "structure.royalChamber.desc" },
-            action: { label: { key: "button.locked" } },
-            status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
-        }
-    ]);
-
-    CardBuilder.register("structures-elite", []);
-
     CardBuilder.register("structures-upgrades", [
-        createCapacityUpgradeCard({
-            id: "storage-room-upgrade",
-            structureId: "storage-room",
-            levelKey: "storageRoomLevel",
-            maxLevel: 10,
-            nameKey: "structure.storageUpgrade.name",
-            descKey: "structure.storageUpgrade.desc",
-            capacityLabel: "card.stat.foodLimit",
-            resource: "food"
-        }),
-        createCapacityUpgradeCard({
-            id: "brood-chamber-upgrade",
-            structureId: "brood-chamber",
-            levelKey: "broodChamberLevel",
-            maxLevel: 10,
-            nameKey: "structure.broodUpgrade.name",
-            descKey: "structure.broodUpgrade.desc",
-            capacityLabel: "card.stat.larvaeLimit",
-            resource: "larvae"
-        }),
         {
             id: "housing-upgrade",
             icon: "⇧",
@@ -279,5 +39,48 @@
                 ? { state: "max", hint: { key: "status.elite.maxReached" } }
                 : projectStatus("housing-chamber", "upgrade", clampHousingTarget())
         }
+
+        createCapacityUpgradeCard({
+            id: "storage-room-upgrade",
+            structureId: "storage-room",
+            levelKey: "storageRoomLevel",
+            maxLevel: 10,
+            nameKey: "structure.storageUpgrade.name",
+            descKey: "structure.storageUpgrade.desc",
+            capacityLabel: "card.stat.foodLimit",
+            resource: "food"
+        }),
+        createCapacityUpgradeCard({
+            id: "brood-chamber-upgrade",
+            structureId: "brood-chamber",
+            levelKey: "broodChamberLevel",
+            maxLevel: 10,
+            nameKey: "structure.broodUpgrade.name",
+            descKey: "structure.broodUpgrade.desc",
+            capacityLabel: "card.stat.larvaeLimit",
+            resource: "larvae"
+        }),
+,
+        createCapacityUpgradeCard({
+            id: "storage-room-upgrade",
+            structureId: "storage-room",
+            levelKey: "storageRoomLevel",
+            maxLevel: 10,
+            nameKey: "structure.storageUpgrade.name",
+            descKey: "structure.storageUpgrade.desc",
+            capacityLabel: "card.stat.foodLimit",
+            resource: "food"
+        }),
+        createCapacityUpgradeCard({
+            id: "brood-chamber-upgrade",
+            structureId: "brood-chamber",
+            levelKey: "broodChamberLevel",
+            maxLevel: 10,
+            nameKey: "structure.broodUpgrade.name",
+            descKey: "structure.broodUpgrade.desc",
+            capacityLabel: "card.stat.larvaeLimit",
+            resource: "larvae"
+        }),
+
     ]);
 })();
