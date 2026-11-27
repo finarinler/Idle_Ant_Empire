@@ -822,3 +822,8 @@ I18N.register("de", {
     "status.structureUpgrade.balancePending": "Kosten und Bauzeiten für dieses Upgrade werden später festgelegt.",
     "changelog.entry.storageBroodUpgrades": "Neun erforschungspflichtige Ausbaustufen für Vorratskammer und Brutkammer vorbereitet."
 });
+
+
+I18N.register("de", {
+    "status.structureUpgrade.requiresBuilding": "Die zugehörige Kammer muss zuerst errichtet werden."
+});
