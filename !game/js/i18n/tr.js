@@ -99,9 +99,9 @@ I18N.register("tr", {
     "loading.scriptError": "Yüklenemedi: {path}",
 
     /* ---------- Kaynaklar ---------- */
-    "resource.food": "Yiyecek (F)",
+    "resource.food": "Yiyecek ([[F]])",
     "resource.maxRate": "Maks.",
-    "resource.larvae": "Larva (L)",
+    "resource.larvae": "Larva ([[L]])",
 
     /* ---------- Genel arayüz ---------- */
     "card.type.unitBasic": "Birim · Temel",
@@ -144,10 +144,10 @@ I18N.register("tr", {
     "expedition.scoutLockedTitle": "Kaşif, keşifleri otomatik olarak yapar.",
 
     /* ---------- Birimler ---------- */
-    "unit.ant.name": "Karınca (A)",
+    "unit.ant.name": "Karınca ([[A]])",
     "unit.ant.desc": "Kolonin için yiyecek toplar.",
     "unit.ant.buy": "Karınca satın al",
-    "unit.queen.name": "Kraliçe (Q)",
+    "unit.queen.name": "Kraliçe ([[Q]])",
     "unit.queen.desc": "Yeni karıncaların çıkacağı larvaları bırakır.",
     "unit.queen.buy": "Kraliçe satın al",
     "unit.scout.name": "Kaşif",
