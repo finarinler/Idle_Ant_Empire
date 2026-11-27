@@ -46,29 +46,29 @@ function initializeAchievementPointsForExistingAchievements()
 
     const stats = GameState.stats;
 
-    // Die Nachvergütung ist eine einmalige Migration. Das Flag ist maßgeblich:
-    // Auch ein gültiger Gesamtstand von 0 darf beim Neuladen nicht erneut
-    // als Anlass für eine Nachvergütung bereits freigeschalteter Erfolge dienen.
-    if (stats.achievementPointsInitialized === true)
+    // Einmalige Integritätskorrektur: Die EP werden aus den tatsächlich
+    // freigeschalteten Erfolgen neu berechnet. Vor dem Prestige-System sind
+    // aktueller EP-Stand und lebenslange EP identisch. Damit werden sowohl
+    // alte Spielstände nachvergütet als auch frühere Doppelgutschriften repariert.
+    if (stats.achievementPointsIntegrityFixApplied !== true)
     {
-        updateAchievementPointsDisplay();
-        return;
-    }
-
-    let retroactivePoints = 0;
-    ACHIEVEMENTS.forEach(definition =>
-    {
-        if (GameState.achievements[definition.id])
+        const verifiedPoints = ACHIEVEMENTS.reduce((sum, definition) =>
         {
-            retroactivePoints += Math.max(0, Number(definition.epReward) || 0);
-        }
-    });
+            return sum + (GameState.achievements[definition.id]
+                ? Math.max(0, Number(definition.epReward) || 0)
+                : 0);
+        }, 0);
 
-    stats.currentAchievementPoints =
-        (Number(stats.currentAchievementPoints) || 0) + retroactivePoints;
-    stats.totalAchievementPointsEarned =
-        (Number(stats.totalAchievementPointsEarned) || 0) + retroactivePoints;
-    stats.achievementPointsInitialized = true;
+        stats.currentAchievementPoints = verifiedPoints;
+        stats.totalAchievementPointsEarned = verifiedPoints;
+        stats.achievementPointsInitialized = true;
+        stats.achievementPointsIntegrityFixApplied = true;
+    }
+    else if (stats.achievementPointsInitialized !== true)
+    {
+        // Defensive fallback for saves created during the first EP rollout.
+        stats.achievementPointsInitialized = true;
+    }
 
     updateAchievementPointsDisplay();
     if (typeof updateStatistics === "function") updateStatistics();
