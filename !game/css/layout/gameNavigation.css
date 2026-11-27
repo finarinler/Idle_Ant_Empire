@@ -655,3 +655,9 @@
 .game-navigation-items::-webkit-scrollbar-thumb:hover {
     background: rgba(207, 169, 105, .82);
 }
+
+
+/* Abstand zwischen Statusmeldung und nachfolgenden Hinweis-/Wartungsleisten. */
+.game-content > .header-status-line {
+    margin-bottom: 12px;
+}
