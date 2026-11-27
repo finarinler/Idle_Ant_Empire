@@ -245,7 +245,8 @@ const Economy = {
 
             if (effect.total !== undefined)
             {
-                base = BigNum.max(base, effect.total);
+                const total = typeof effect.total === "function" ? effect.total() : effect.total;
+                base = BigNum.max(base, total);
             }
 
             if (effect.absolute)
