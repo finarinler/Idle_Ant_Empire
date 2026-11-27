@@ -354,7 +354,7 @@ const CardBuilder = (function ()
         }
         if (entry.trainingProgressId)
         {
-            progress.classList.add("iae-card-has-training-progress");
+            if (entry.progressId) { progress.classList.add("iae-card-dual-progress"); }
             const track = create("div", "iae-card-progress-track iae-card-training-progress-track", progress);
             create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
         }
