@@ -671,6 +671,7 @@ I18N.register("de", {
 I18N.register("de", {
     "options.tooltips": "Aktions-Tooltips",
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
+    "changelog.entry.tooltipsUpdated": "Tooltips überarbeitet.",
     "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
 });
 
