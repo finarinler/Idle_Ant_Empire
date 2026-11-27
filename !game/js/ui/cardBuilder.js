@@ -346,8 +346,6 @@ const CardBuilder = (function ()
         // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
         const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
         nodes.progress = progress;
-        nodes.queueProgress = create("div", "iae-card-queue-progress", card);
-        nodes.queueProgress.hidden = true;
 
         if (entry.progressId)
         {
@@ -374,6 +372,7 @@ const CardBuilder = (function ()
         }
 
         nodes.button = create("button", "iae-card-action", card, { type: "button", id: `buy-${entry.id}-btn` });
+        nodes.buttonProgress = create("div", "iae-card-action-progress", nodes.button, { "aria-hidden": "true" });
         nodes.buttonLabel = create("span", "iae-card-action-label", nodes.button);
         create("span", "iae-card-action-glyph", nodes.button, { "aria-hidden": "true" });
 
@@ -504,7 +503,21 @@ const CardBuilder = (function ()
             label = { key: STATE_LABEL_KEYS[state] };
         }
 
-        setText(nodes.buttonLabel, label);
+        const queueProgress = action.queueProgress ? action.queueProgress() : null;
+        const hasQueueProgress = !!(queueProgress && queueProgress.total > 0);
+        nodes.button.classList.toggle("has-queue-progress", hasQueueProgress);
+        if (hasQueueProgress)
+        {
+            const completed = Math.max(0, Math.min(Number(queueProgress.completed) || 0, Number(queueProgress.total) || 0));
+            const total = Math.max(1, Number(queueProgress.total) || 1);
+            nodes.buttonProgress.style.width = `${completed / total * 100}%`;
+            setText(nodes.buttonLabel, { key: queueProgress.key, params: { completed, total } });
+        }
+        else
+        {
+            nodes.buttonProgress.style.width = "0%";
+            setText(nodes.buttonLabel, label);
+        }
         nodes.button.disabled = state !== "available";
 
         if (nodes.toggleButton)
@@ -521,16 +534,6 @@ const CardBuilder = (function ()
         }
 
         setText(nodes.hint, status.hint || "");
-        const queueProgress = action.queueProgress ? action.queueProgress() : null;
-        if (nodes.queueProgress) {
-            nodes.queueProgress.hidden = !queueProgress || !queueProgress.total;
-            if (queueProgress && queueProgress.total) {
-                setText(nodes.queueProgress, { key: queueProgress.key, params: { completed: queueProgress.completed, total: queueProgress.total } });
-            } else {
-                setText(nodes.queueProgress, "");
-            }
-        }
-
         if (nodes.batchButtons)
         {
             const options = entry.action.batchOptions();
