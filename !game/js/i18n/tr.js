@@ -8,6 +8,7 @@ I18N.register("tr", {
 
     /* ---------- Seitenbereiche (alpha-v0.00.006c) ---------- */
     "nav.aria": "Oyun bölümleri",
+    "nav.menu": "Gezinme",
     "nav.expeditions": "Keşifler",
     "nav.units": "Birimler",
     "nav.structures": "Binalar",
