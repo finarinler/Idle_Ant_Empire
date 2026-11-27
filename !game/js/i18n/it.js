@@ -659,5 +659,4 @@ I18N.register("it", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("it", {
-    "changelog.entry.builderUpkeep": "Ogni costruttore consuma ora 5 cibo/s."
 });
