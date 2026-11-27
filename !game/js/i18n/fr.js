@@ -16,6 +16,7 @@ I18N.register("fr", {
     "nav.military": "Armée",
     "nav.logbook": "Journal de bord",
     "nav.achievements": "Succès",
+    "nav.prestige": "Prestige",
     "nav.statistics": "Statistiques",
     "nav.options": "Options",
     "expedition.eyebrow": "EXPLORATION & BUTIN",
