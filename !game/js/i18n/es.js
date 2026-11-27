@@ -655,3 +655,9 @@ I18N.register("es", {
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
     "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("es", {
+    "changelog.entry.builderUpkeep": "Cada constructor consume ahora 5 de comida/s."
+});
