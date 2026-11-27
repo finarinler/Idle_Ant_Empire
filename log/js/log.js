@@ -49,7 +49,7 @@ function buildLogEntryElement(entry)
         }).filter(Boolean).join(" · ");
         messageParams = { ...entry.params, units: breakdown };
     }
-    text.textContent = I18N.t(entry.key, messageParams);
+    I18N.renderInto(text, I18N.t(entry.key, messageParams));
 
     element.append(timeSpan, dot, text);
 
@@ -142,7 +142,7 @@ function renderStatusPreview()
 
         const messageSpan = document.createElement("span");
         messageSpan.className = "status-preview-message";
-        messageSpan.textContent = I18N.t(currentStatus.key, currentStatus.params);
+        I18N.renderInto(messageSpan, I18N.t(currentStatus.key, currentStatus.params));
 
         statusLine.append(timeSpan, messageSpan);
         preview.appendChild(statusLine);
