@@ -674,3 +674,7 @@ I18N.register("es", {
     "queue.progress.training": "Entrenadas: {completed}/{total}",
     "queue.progress.build": "Construidos: {completed}/{total}"
 });
+
+I18N.register("es", {
+    "changelog.entry.queueProgress": "Las colas de entrenamiento y construcción ahora muestran el progreso completado."
+});
