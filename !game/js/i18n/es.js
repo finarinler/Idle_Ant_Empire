@@ -8,6 +8,7 @@ I18N.register("es", {
 
     /* ---------- Seitenbereiche (alpha-v0.00.006c) ---------- */
     "nav.aria": "Secciones del juego",
+    "nav.menu": "Navegación",
     "nav.expeditions": "Expediciones",
     "nav.units": "Unidades",
     "nav.structures": "Edificios",
