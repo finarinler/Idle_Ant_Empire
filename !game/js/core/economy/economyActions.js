@@ -430,6 +430,13 @@
 
         let requiredBuilders = operation.requiresBuilder ? 1 : 0;
 
+        // Baukammern nutzen und binden alle bereits ausgebildeten Baumeister.
+        // Die erste Baukammer kann deshalb auch ohne Baumeister gestartet werden.
+        if (kind === "build" && structureId === "construction-chamber")
+        {
+            requiredBuilders = Math.min(Economy.getUnitNumber("builder"), BALANCE.builder.maxBuilders);
+        }
+
         // Ausbauprojekte reservieren die für ihre sichtbare Zielstufe festgelegte Baumeisterzahl.
         if (kind === "upgrade" && structureId === "housing-chamber")
         {
