@@ -674,3 +674,7 @@ I18N.register("it", {
     "queue.progress.training": "Addestrate: {completed}/{total}",
     "queue.progress.build": "Costruiti: {completed}/{total}"
 });
+
+I18N.register("it", {
+    "changelog.entry.queueProgress": "Le code di addestramento e costruzione mostrano ora l’avanzamento completato."
+});
