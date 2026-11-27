@@ -659,5 +659,4 @@ I18N.register("es", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("es", {
-    "changelog.entry.builderUpkeep": "Cada constructor consume ahora 5 de comida/s."
 });
