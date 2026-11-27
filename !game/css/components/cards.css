@@ -93,6 +93,10 @@
     transition: filter .18s, border-color .18s;
 }
 .iae-card-action:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
+.iae-card-action.has-queue-progress { position: relative; min-height: 56px; overflow: hidden; }
+.iae-card-action-progress { position: absolute; inset: 0 auto 0 0; width: 0; background: rgba(255,255,255,.25); box-shadow: inset -5px 0 10px rgba(0,0,0,.16); transition: width .25s ease; pointer-events: none; }
+.iae-card-action-label, .iae-card-action-glyph { position: relative; z-index: 1; }
+.iae-card-action.has-queue-progress .iae-card-action-label { text-shadow: 1px 1px 3px rgba(0,0,0,.6); }
 .iae-card-toggle-action + .iae-card-action:not(.iae-card-batch-btn) { margin-top: 5px; }
 .iae-card-action:focus-visible { outline: 2px solid var(--research-gold-bright); outline-offset: 3px; }
 .iae-card-action:disabled { border-color: #303030; background: #252525; color: #77736c; cursor: not-allowed; }
@@ -183,13 +187,3 @@
 }
 
 
-/* Fortschritt der Mehrfach-Ausbildungs- und Bauwarteschlangen */
-.iae-card-queue-progress {
-    margin: -5px 0 11px;
-    color: var(--research-gold-bright);
-    font-size: .75rem;
-    font-weight: 750;
-    font-variant-numeric: tabular-nums;
-    text-align: right;
-}
-.iae-card-queue-progress[hidden] { display: none; }
