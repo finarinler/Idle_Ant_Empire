@@ -660,6 +660,7 @@ I18N.register("fr", {
 I18N.register("fr", {
     "options.tooltips": "Info-bulles d’action",
     "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
+    "changelog.entry.tooltipsUpdated": "Info-bulles mises à jour.",
     "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
 });
 
