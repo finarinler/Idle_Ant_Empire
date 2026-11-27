@@ -76,14 +76,6 @@
 .iae-card-label { display: block; margin-bottom: 5px; color: var(--research-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
 .iae-card-cost-line { color: #c9c1b4; font-size: .78rem; line-height: 1.5; overflow-wrap: anywhere; }
 
-/* Fortschrittsbalken (Brut-Expertin) */
-.iae-card-progress { margin-bottom: 14px; }
-.iae-card-progress-slot { flex: 0 0 20px; min-height: 20px; }
-.iae-card-progress-slot.iae-card-dual-progress { display: grid; gap: 5px; grid-auto-rows: 6px; min-height: 31px; flex-basis: 31px; }
-.iae-card-progress-track { position: relative; height: 6px; overflow: hidden; border: 1px solid #3b3123; border-radius: 4px; background: #17140f; }
-.iae-card-progress-fill { position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--research-gold-deep); transition: width 1s linear; }
-.iae-card-training-progress-fill { background: var(--research-gold-bright); }
-
 /* Aktion */
 .iae-card-toggle-action[hidden] { display: none !important; }
 .iae-card-action {
