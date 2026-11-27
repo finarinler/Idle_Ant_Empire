@@ -26,6 +26,7 @@
     const trainAction = (run, id) => ({
         label: { key: "button.train" },
         missingLabel: { key: "button.missingResources" },
+        maxLabel: { key: "button.alreadyTrained" },
         preview: { kind: "unit", id },
         batchOptions: () => Economy.getTrainingBatchOptions(id),
         queueProgress: () => {
@@ -269,6 +270,7 @@
             action: {
                 label: { key: "button.train" },
                 missingLabel: { key: "button.missingResources" },
+                maxLabel: { key: "button.alreadyTrained" },
                 preview: { kind: "unit", id: "brood-expert" },
                 batchOptions: () => Economy.getTrainingBatchOptions("brood-expert"),
                 queueProgress: () => {
