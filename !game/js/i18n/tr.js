@@ -671,8 +671,8 @@ I18N.register("tr", {
 
 /* ---------- Queue completion counters ---------- */
 I18N.register("tr", {
-    "queue.progress.training": "Eğitilen: {completed}/{total}",
-    "queue.progress.build": "İnşa edilen: {completed}/{total}"
+    "queue.progress.training": "{completed}/{total} eğitildi",
+    "queue.progress.build": "{completed}/{total} inşa edildi"
 });
 
 I18N.register("tr", {
