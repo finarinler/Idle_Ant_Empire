@@ -226,11 +226,11 @@ const CardBuilder = (function ()
                 : null;
             if (abbreviation)
                 {
-                    row.append(document.createTextNode(abbreviation[1]));
+                    row.append(document.createTextNode(abbreviation[0]));
                     const abbr = document.createElement("span");
                     abbr.className = "abbr-gold";
-                    abbr.textContent = abbreviation[2];
-                    row.append(abbr, document.createTextNode(abbreviation[3]));
+                    abbr.textContent = abbreviation[1];
+                    row.append(abbr, document.createTextNode(abbreviation[2]));
                 }
                 else
                 {
