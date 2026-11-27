@@ -85,7 +85,9 @@ const GameState = {
         housingUpgrade: false,
         // Stufe 1 = Grundgebäude; spätere Forschung schaltet die Ausbaustufen 2–10 frei.
         storageRoomUpgradeLevel: 1,
-        broodChamberUpgradeLevel: 1
+        broodChamberUpgradeLevel: 1,
+        // Höchste freigeschaltete Baukammer; Forschung erhöht diesen Wert später stufenweise.
+        constructionChamberLevel: 1
     },
 
     achievements: {
