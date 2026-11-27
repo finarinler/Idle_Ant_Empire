@@ -816,3 +816,8 @@ I18N.register("it", {
 I18N.register("it", {
     "status.structureUpgrade.requiresBuilding": "La camera corrispondente deve essere costruita prima."
 });
+
+
+I18N.register("it", {
+    "changelog.entry.unitBalanceUpdated": "Bilanciamento delle unità aggiornato."
+});
