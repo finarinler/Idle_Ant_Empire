@@ -433,7 +433,7 @@ I18N.register("de", {
     "structure.housing.name": "Wohnkammer",
     "structure.housing.desc": "Bietet Wohnraum für deine Ameisen.",
     "structure.housingUpgrade.name": "Wohnkammer-Ausbau",
-    "structure.housingUpgrade.desc": "Verbessert alle Wohnkammern gleichzeitig.\nStufen dürfen übersprungen werden.",
+    "structure.housingUpgrade.desc": "Verbessert alle Wohnkammern.\nJede Stufe muss erforscht werden.",
     "structure.housingUpgrade.target": "Ziel: Stufe {level}",
     "structure.mushroomFarm.name": "Pilzfarm",
     "structure.mushroomFarm.desc": "Produziert Nahrung.\nSammler steigern die Gesamtproduktion.",
