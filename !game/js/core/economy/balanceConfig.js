@@ -36,7 +36,10 @@ const BALANCE = {
 
     builder: {
         reductionPerBuilder: 0.05,   // 5 % je Baumeister
-        maxBuilders: 10
+        maxBuilders: 10,
+        // Benötigte und für das jeweilige Ausbauprojekt gebundene Baumeister.
+        housingUpgradeRequirements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        capacityUpgradeRequirements: [2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
 
     housing: {
