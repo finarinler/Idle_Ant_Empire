@@ -38,8 +38,7 @@
             status: () => GameState.structures.housingLevel >= BALANCE.housing.maxLevel
                 ? { state: "max", hint: { key: "status.elite.maxReached" } }
                 : projectStatus("housing-chamber", "upgrade", clampHousingTarget())
-        }
-
+        },
         createCapacityUpgradeCard({
             id: "storage-room-upgrade",
             structureId: "storage-room",
@@ -59,28 +58,6 @@
             descKey: "structure.broodUpgrade.desc",
             capacityLabel: "card.stat.larvaeLimit",
             resource: "larvae"
-        }),
-,
-        createCapacityUpgradeCard({
-            id: "storage-room-upgrade",
-            structureId: "storage-room",
-            levelKey: "storageRoomLevel",
-            maxLevel: 10,
-            nameKey: "structure.storageUpgrade.name",
-            descKey: "structure.storageUpgrade.desc",
-            capacityLabel: "card.stat.foodLimit",
-            resource: "food"
-        }),
-        createCapacityUpgradeCard({
-            id: "brood-chamber-upgrade",
-            structureId: "brood-chamber",
-            levelKey: "broodChamberLevel",
-            maxLevel: 10,
-            nameKey: "structure.broodUpgrade.name",
-            descKey: "structure.broodUpgrade.desc",
-            capacityLabel: "card.stat.larvaeLimit",
-            resource: "larvae"
-        }),
-
+        })
     ]);
 })();
