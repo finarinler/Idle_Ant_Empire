@@ -306,8 +306,18 @@
 
     Economy.getTrainingQueueProgress = function (id)
     {
-        const progress = GameState.economy.trainingQueueProgress && GameState.economy.trainingQueueProgress[id];
-        return progress && progress.total > 0 ? { completed: progress.completed, total: progress.total } : null;
+        const eco = GameState.economy;
+        const progress = eco.trainingQueueProgress && eco.trainingQueueProgress[id];
+        if (!progress || progress.total <= 1) { return null; }
+
+        // Die Anzeige gehört ausschließlich zu einer Mehrfachausbildung.
+        // Alte/übernommene Zähler ohne laufenden Batch sollen den normalen
+        // Buttontext "Ausbilden" nicht dauerhaft verdrängen.
+        const hasActiveBatch = !!(eco.trainings[id] && eco.trainings[id].queueBatch);
+        const hasQueuedBatch = !!(eco.trainingQueues[id] && eco.trainingQueues[id].length);
+        if (progress.completed <= 0 && !hasActiveBatch && !hasQueuedBatch) { return null; }
+
+        return { completed: progress.completed, total: progress.total };
     };
 
     Economy._startQueuedTraining = function (id)
