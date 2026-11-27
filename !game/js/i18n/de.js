@@ -666,3 +666,9 @@ I18N.register("de", {
     "options.tooltipsDescription": "Aktions-Tooltips mit Effekten, Produktionsänderungen und Kosten anzeigen",
     "changelog.entry.actionPreview": "Aktions-Tooltips zeigen jetzt die erwarteten Produktionsänderungen; die Anzeige lässt sich in den Optionen ein- und ausschalten.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("de", {
+    "changelog.entry.builderUpkeep": "Jeder Baumeister verbraucht jetzt 5 Nahrung/s."
+});
