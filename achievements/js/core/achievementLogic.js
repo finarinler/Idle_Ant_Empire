@@ -164,7 +164,7 @@ function renderUnlockedAchievement(definition)
         {
             title: I18N.t(getAchievementTitleKey(definition.id)),
             desc: I18N.t(`achievement.${definition.id}.unlocked`, { goal }),
-            rewardText: I18N.t(`achievement.${definition.id}.reward`),
+            rewardText: I18N.t(`achievement.${definition.id}.reward`) + (definition.epReward > 0 ? " · " + I18N.t("achievementPoints.reward", { points: definition.epReward }) : ""),
             progressText: ""
         },
         true
