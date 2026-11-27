@@ -633,7 +633,6 @@ I18N.register("en", {
     "changelog.entry.hideCappedCostProgress": "The cost display and progress bar are hidden for units and buildings that have reached their maximum.",
     "tooltip.preview.expectedProduction": "Production",
     "tooltip.preview.expectedConsumption": "Consumption",
-    "tooltip.preview.expectedOther": "Other",
     "tooltip.preview.expectedTime": "Time",
     "tooltip.preview.expectedCosts": "Expected costs",
     "tooltip.preview.expectedDuration": "Expected duration",
