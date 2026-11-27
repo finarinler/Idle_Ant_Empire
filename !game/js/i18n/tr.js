@@ -630,6 +630,9 @@ I18N.register("tr", {
     "changelog.entry.housingCostScaling": "Barınma Odası maliyetleri ayarlandı.",
     "changelog.entry.strayAntHousing": "Kaybolmuş karıncalar yalnızca yeterli barınma alanı varsa koloniye katılır.",
     "changelog.entry.builderUpkeepDisplay": "Yiyecek tüketimi artık İnşaatçı kartında gösteriliyor.",
+    "changelog.entry.collapsibleNavigation": "Gezinme menüsü artık mandibula düğmesiyle açılıp kapatılabilir.",
+    "changelog.entry.maxBuildSlot": "Gerekli inşaat yuvası doluyken MAX düğmesi devre dışı bırakılır.",
+    "changelog.entry.goldResourceAbbreviations": "Kaynak ve birim kısaltmaları artık göstergelerde ve adlarda altın rengiyle vurgulanıyor.",
     undefined
     "tooltip.preview.production.food": "Yiyecek üretimi",
     "tooltip.preview.production.larvae": "Larva üretimi",
