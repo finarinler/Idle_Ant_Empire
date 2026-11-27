@@ -75,7 +75,7 @@ function updateResources()
         if (maxDisplay)
         {
             const maxRate = flows.maxNet.food.roundTo(1);
-            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[F]]/s`;
+            I18N.renderInto(maxDisplay, `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[F]]/s`);
         }
     }
 
@@ -105,7 +105,7 @@ function updateResources()
         if (maxDisplay)
         {
             const maxRate = flows.maxNet.larvae.roundTo(1);
-            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[L]]/s`;
+            I18N.renderInto(maxDisplay, `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[L]]/s`);
         }
     }
 
