@@ -659,5 +659,4 @@ I18N.register("tr", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("tr", {
-    "changelog.entry.builderUpkeep": "Her inşaatçı artık saniyede 5 yiyecek tüketiyor."
 });
