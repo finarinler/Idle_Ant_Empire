@@ -443,6 +443,9 @@
             requiresBuilder = requiresBuilder || Economy.getStructureNumber(structureId) + 1 >= 26;
         }
 
+        // Auch ältere Bauprojekte mit einfachem Baumeisterbedarf reservieren mindestens einen.
+        if (requiresBuilder) { requiredBuilders = Math.max(1, requiredBuilders); }
+
         return {
             cost: info.cost,
             baseSeconds: info.seconds,
