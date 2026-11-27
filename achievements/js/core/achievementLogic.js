@@ -7,6 +7,59 @@ function getAchievementTitleKey(id)
     return `achievement.${id}.title`;
 }
 
+function grantAchievementPoints(points)
+{
+    const amount = Math.max(0, Math.floor(Number(points) || 0));
+    if (amount > 0)
+    {
+        GameState.stats.currentAchievementPoints =
+            (Number(GameState.stats.currentAchievementPoints) || 0) + amount;
+        GameState.stats.totalAchievementPointsEarned =
+            (Number(GameState.stats.totalAchievementPointsEarned) || 0) + amount;
+    }
+
+    updateAchievementPointsDisplay();
+    if (typeof updateStatistics === "function") updateStatistics();
+}
+
+function updateAchievementPointsDisplay()
+{
+    const current = Math.max(0, Number(GameState.stats.currentAchievementPoints) || 0);
+    const total = Math.max(0, Number(GameState.stats.totalAchievementPointsEarned) || 0);
+    const currentNode = document.getElementById("achievement-points-current");
+    const totalNode = document.getElementById("achievement-points-total");
+    if (currentNode) currentNode.textContent = formatGameNumber(current);
+    if (totalNode) totalNode.textContent = formatGameNumber(total);
+}
+
+function initializeAchievementPointsForExistingAchievements()
+{
+    const stats = GameState.stats;
+    if (stats.achievementPointsInitialized === true)
+    {
+        updateAchievementPointsDisplay();
+        return;
+    }
+
+    let retroactivePoints = 0;
+    ACHIEVEMENTS.forEach(definition =>
+    {
+        if (GameState.achievements[definition.id])
+        {
+            retroactivePoints += Math.max(0, Number(definition.epReward) || 0);
+        }
+    });
+
+    stats.currentAchievementPoints =
+        (Number(stats.currentAchievementPoints) || 0) + retroactivePoints;
+    stats.totalAchievementPointsEarned =
+        (Number(stats.totalAchievementPointsEarned) || 0) + retroactivePoints;
+    stats.achievementPointsInitialized = true;
+
+    updateAchievementPointsDisplay();
+    if (typeof updateStatistics === "function") updateStatistics();
+}
+
 // Jeden Tick aus updateResources() aufgerufen
 function checkAchievements()
 {
@@ -66,6 +119,7 @@ function unlockAchievement(definition)
     }
 
     GameState.achievements[definition.id] = true;
+    grantAchievementPoints(definition.epReward);
 
     // Forschungsabhängige Gebäudekarten sofort nach der Freischaltung einblenden.
     if (typeof CardBuilder !== "undefined")
@@ -132,6 +186,7 @@ function renderUnlockedAchievements()
 // Nach dem Laden: Karten und freigeschaltete Bereiche wiederherstellen (ohne Meldungen)
 function rebuildAchievementsUI()
 {
+    updateAchievementPointsDisplay();
     ACHIEVEMENTS.forEach(definition =>
     {
         if (!GameState.achievements[definition.id])
