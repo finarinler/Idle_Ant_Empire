@@ -822,3 +822,8 @@ I18N.register("en", {
     "status.structureUpgrade.balancePending": "Upgrade costs and construction times will be defined later.",
     "changelog.entry.storageBroodUpgrades": "Prepared nine research-gated upgrade levels for the Storage Chamber and Brood Chamber."
 });
+
+
+I18N.register("en", {
+    "status.structureUpgrade.requiresBuilding": "The corresponding chamber must be built first."
+});
