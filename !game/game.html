@@ -115,6 +115,11 @@
 
         <div class="game-shell">
             <nav class="game-navigation" aria-label="Spielbereiche" data-i18n-aria-label="nav.aria">
+                <button class="game-navigation-toggle" id="game-navigation-toggle" type="button" aria-expanded="true" aria-controls="game-navigation-items">
+                    <span data-i18n="nav.menu">Navigation</span>
+                    <span class="game-navigation-toggle-icon" aria-hidden="true">⌄</span>
+                </button>
+                <div class="game-navigation-items" id="game-navigation-items">
                 <button class="game-nav-button is-active" type="button" data-game-view="expeditions" aria-controls="game-view-expeditions" aria-current="page">
                     <span class="game-nav-icon" aria-hidden="true">🧭</span><span data-i18n="nav.expeditions">Expeditionen</span>
                 </button>
@@ -148,7 +153,9 @@
                 <button class="game-nav-button" type="button" data-game-view="changelog" aria-controls="game-view-changelog">
                     <span class="game-nav-icon" aria-hidden="true">📜</span><span id="changelog-nav-version"></span>
                 </button>
-            </nav>
+      
+                </div>
+            </nav>      </nav>
 
             <main class="game-main" id="game-main" aria-live="off"></main>
         </div> <!-- /.game-shell -->
