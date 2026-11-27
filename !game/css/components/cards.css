@@ -84,6 +84,7 @@
 .iae-card-training-progress-fill { background: var(--research-gold-bright); }
 
 /* Aktion */
+.iae-card-toggle-action[hidden] { display: none !important; }
 .iae-card-action {
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
