@@ -99,9 +99,9 @@ I18N.register("es", {
     "loading.scriptError": "Error al cargar: {path}",
 
     /* ---------- Recursos ---------- */
-    "resource.food": "Comida (F)",
+    "resource.food": "Comida ([[F]])",
     "resource.maxRate": "Máx.",
-    "resource.larvae": "Larvas (L)",
+    "resource.larvae": "Larvas ([[L]])",
 
     /* ---------- Interfaz general ---------- */
     "card.type.unitBasic": "Unidad · Básica",
@@ -144,10 +144,10 @@ I18N.register("es", {
     "expedition.scoutLockedTitle": "La exploradora realiza las expediciones automáticamente.",
 
     /* ---------- Unidades ---------- */
-    "unit.ant.name": "Hormiga (A)",
+    "unit.ant.name": "Hormiga ([[A]])",
     "unit.ant.desc": "Recolecta comida para tu colonia.",
     "unit.ant.buy": "Comprar hormiga",
-    "unit.queen.name": "Reina (Q)",
+    "unit.queen.name": "Reina ([[Q]])",
     "unit.queen.desc": "Pone las larvas de las que nacen nuevas hormigas.",
     "unit.queen.buy": "Comprar reina",
     "unit.scout.name": "Exploradora",
