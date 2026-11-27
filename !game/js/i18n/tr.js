@@ -628,6 +628,7 @@ I18N.register("tr", {
     "changelog.entry.actionPreview": "Dinamik ipuçları tekli işlemler ve 10×, 25×, MAX grupları için etkileri, toplam maliyetleri ve süreleri gösterir.",
     "changelog.entry.housingCostScaling": "Barınma Odası maliyetleri ayarlandı.",
     "changelog.entry.strayAntHousing": "Kaybolmuş karıncalar yalnızca yeterli barınma alanı varsa koloniye katılır.",
+    undefined
     "tooltip.preview.production.food": "Yiyecek üretimi",
     "tooltip.preview.production.larvae": "Larva üretimi",
     "tooltip.preview.consumption.food": "Yiyecek tüketimi",
