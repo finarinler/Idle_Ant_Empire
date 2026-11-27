@@ -673,6 +673,7 @@ I18N.register("en", {
     "options.tooltips": "Action tooltips",
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
     "changelog.entry.tooltipsUpdated": "Tooltips updated.",
+    "changelog.entry.layoutUpdated": "Layout updated.",
     "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
 });
 
