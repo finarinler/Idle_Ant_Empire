@@ -674,3 +674,7 @@ I18N.register("tr", {
     "queue.progress.training": "Eğitilen: {completed}/{total}",
     "queue.progress.build": "İnşa edilen: {completed}/{total}"
 });
+
+I18N.register("tr", {
+    "changelog.entry.queueProgress": "Eğitim ve inşaat kuyrukları artık tamamlanan ilerlemeyi gösteriyor."
+});
