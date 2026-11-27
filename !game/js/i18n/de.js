@@ -670,5 +670,4 @@ I18N.register("de", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("de", {
-    "changelog.entry.builderUpkeep": "Jeder Baumeister verbraucht jetzt 5 Nahrung/s."
 });
