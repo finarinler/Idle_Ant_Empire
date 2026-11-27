@@ -827,3 +827,8 @@ I18N.register("de", {
 I18N.register("de", {
     "status.structureUpgrade.requiresBuilding": "Die zugehörige Kammer muss zuerst errichtet werden."
 });
+
+
+I18N.register("de", {
+    "changelog.entry.unitBalanceUpdated": "Einheiten-Balance angepasst."
+});
