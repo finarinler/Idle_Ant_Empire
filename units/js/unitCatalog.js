@@ -30,8 +30,12 @@
         preview: { kind: "unit", id },
         batchOptions: () => Economy.getTrainingBatchOptions(id),
         queueProgress: () => {
-            const progress = Economy.getTrainingQueueProgress(id);
-            return progress ? { ...progress, key: "queue.progress.training" } : null;
+            const batch = Economy.getTrainingQueueProgress(id);
+            if (batch) { return { ...batch, key: "queue.progress.training" }; }
+            const training = GameState.economy.trainings && GameState.economy.trainings[id];
+            return training && training.duration > 0
+                ? { fraction: 1 - training.remaining / training.duration, key: "button.train" }
+                : null;
         },
         batchRun: amount => recruitUnitBatch(id, amount),
         run
