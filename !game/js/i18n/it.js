@@ -799,3 +799,15 @@ I18N.register("it", {
     "button.alreadyTrained": "Già addestrato",
     "button.alreadyBuilt": "Già costruito"
 });
+
+
+/* ---------- Research-gated storage and brood chamber upgrades ---------- */
+I18N.register("it", {
+    "structure.storageUpgrade.name": "Potenziamento della camera di stoccaggio",
+    "structure.storageUpgrade.desc": "Aumenta la capacità di cibo di 10.000 per livello. Ogni livello deve essere ricercato.",
+    "structure.broodUpgrade.name": "Potenziamento della camera di covata",
+    "structure.broodUpgrade.desc": "Aumenta la capacità di larve di 2.500 per livello. Ogni livello deve essere ricercato.",
+    "structure.capacityUpgrade.target": "Livello obiettivo: {level}",
+    "status.structureUpgrade.balancePending": "Costi e tempi di costruzione saranno definiti in seguito.",
+    "changelog.entry.storageBroodUpgrades": "Preparati nove livelli di potenziamento soggetti a ricerca per le camere di stoccaggio e covata."
+});
