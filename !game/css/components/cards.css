@@ -85,6 +85,7 @@
 
 /* Aktion */
 .iae-card-action {
+    position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     width: 100%; margin-top: 0; padding: 12px 14px;
     border: 1px solid #655033; border-radius: 10px;
@@ -93,8 +94,8 @@
     transition: filter .18s, border-color .18s;
 }
 .iae-card-action:hover:not(:disabled) { border-color: #a88955; filter: brightness(1.12); }
-.iae-card-action.has-queue-progress { position: relative; min-height: 56px; overflow: hidden; }
-.iae-card-action-progress { position: absolute; inset: 0 auto 0 0; width: 0; background: rgba(255,255,255,.25); box-shadow: inset -5px 0 10px rgba(0,0,0,.16); transition: width .25s ease; pointer-events: none; }
+.iae-card-action.has-queue-progress { min-height: 60px; }
+.iae-card-action-progress { position: absolute; inset: 0 auto 0 0; width: 0; background: rgba(255,255,255,.3); box-shadow: inset -5px 0 10px rgba(0,0,0,.16); transition: width .25s ease; pointer-events: none; }
 .iae-card-action-label, .iae-card-action-glyph { position: relative; z-index: 1; }
 .iae-card-action.has-queue-progress .iae-card-action-label { text-shadow: 1px 1px 3px rgba(0,0,0,.6); }
 .iae-card-toggle-action + .iae-card-action:not(.iae-card-batch-btn) { margin-top: 5px; }
