@@ -811,3 +811,8 @@ I18N.register("es", {
     "status.structureUpgrade.balancePending": "Los costes y tiempos de construcción se definirán más adelante.",
     "changelog.entry.storageBroodUpgrades": "Preparados nueve niveles de mejora sujetos a investigación para las cámaras de reservas y cría."
 });
+
+
+I18N.register("es", {
+    "status.structureUpgrade.requiresBuilding": "Primero debes construir la cámara correspondiente."
+});
