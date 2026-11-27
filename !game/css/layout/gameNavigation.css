@@ -523,3 +523,90 @@
         transform: translateY(0);
     }
 }
+
+
+/* Einklappbare Hauptnavigation – besonders kompakt auf Mobilgeräten */
+.game-navigation {
+    width: 100%;
+    box-sizing: border-box;
+}
+.game-navigation-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 13px;
+    border: 1px solid #6b512e;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #302516, #1e1912);
+    color: var(--game-gold-bright);
+    font: inherit;
+    font-weight: 750;
+    text-align: left;
+    cursor: pointer;
+}
+.game-navigation-toggle:hover {
+    border-color: var(--game-gold-bright);
+    background: linear-gradient(135deg, #3a2c19, #241c12);
+}
+.game-navigation-toggle:focus-visible {
+    outline: 2px solid var(--game-gold-bright);
+    outline-offset: 3px;
+}
+.game-navigation-toggle-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(197, 163, 110, .12);
+    font-size: 1.25rem;
+    line-height: 1;
+}
+.game-navigation-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    margin-top: 8px;
+}
+.game-navigation-items[hidden] { display: none !important; }
+.game-shell:has(.game-navigation.is-collapsed) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+}
+.game-navigation.is-collapsed {
+    grid-column: 1 / -1;
+    padding: 7px;
+}
+.game-navigation.is-collapsed + .game-main {
+    grid-column: 1 / -1;
+}
+@media (max-width: 800px) {
+    .game-navigation { position: static; }
+    .game-navigation-items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+    }
+    .game-navigation-items .game-nav-divider { grid-column: 1 / -1; }
+    .game-navigation-items .game-nav-button {
+        flex-direction: row;
+        justify-content: flex-start;
+        min-height: 44px;
+        padding: 9px 10px;
+        font-size: .82rem;
+    }
+    .game-navigation.is-collapsed {
+        position: static;
+        grid-column: 1;
+        margin: 0;
+    }
+    .game-navigation.is-collapsed + .game-main { grid-column: 1; }
+}
+@media (max-width: 460px) {
+    .game-navigation-items { grid-template-columns: 1fr 1fr; }
+    .game-navigation-items .game-nav-button { min-height: 42px; }
+}
