@@ -5,7 +5,7 @@
 
 function setRateDisplay(element, rate, text)
 {
-    element.textContent = text;
+    I18N.renderInto(element, text);
 
     if (rate.isPositive())
     {
@@ -68,14 +68,14 @@ function updateResources()
             setRateDisplay(
                 currentDisplay,
                 displayRate,
-                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
+                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)} [[F]]/s`
             );
         }
 
         if (maxDisplay)
         {
             const maxRate = flows.maxNet.food.roundTo(1);
-            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)}/s`;
+            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[F]]/s`;
         }
     }
 
@@ -98,14 +98,14 @@ function updateResources()
             setRateDisplay(
                 currentDisplay,
                 displayRate,
-                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)}/s`
+                `${displayRate.isPositive() ? "+" : ""}${formatRate(displayRate)} [[L]]/s`
             );
         }
 
         if (maxDisplay)
         {
             const maxRate = flows.maxNet.larvae.roundTo(1);
-            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)}/s`;
+            maxDisplay.textContent = `${I18N.t("resource.maxRate")}: ${maxRate.isPositive() ? "+" : ""}${formatRate(maxRate)} [[L]]/s`;
         }
     }
 
