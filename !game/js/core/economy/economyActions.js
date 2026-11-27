@@ -493,6 +493,13 @@
                 return { state: "locked", hint: info, reason: info };
             }
 
+            // Lager-Upgrades bleiben bis zur späteren Balance-Festlegung deaktiviert.
+            if (operation.configured === false)
+            {
+                const info = { key: "status.structureUpgrade.balancePending" };
+                return { state: "soon", hint: info, reason: info };
+            }
+
             if (findProject(structureId, "upgrade"))
             {
                 return { state: "missing", hint: { key: "status.build.inProgress" }, reason: { key: "status.build.inProgress" } };
