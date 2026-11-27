@@ -312,6 +312,10 @@
                     if (!training) { return; }
 
                     delete eco.trainings[candidate.id];
+                    if (training.queueBatch) {
+                        const progress = eco.trainingQueueProgress && eco.trainingQueueProgress[candidate.id];
+                        if (progress) progress.completed = Math.min(progress.total, progress.completed + 1);
+                    }
                     Economy._addUnits(candidate.id, 1);
                     Economy._startQueuedTraining(candidate.id);
 
@@ -332,6 +336,10 @@
                     if (project)
                     {
                         GameState.construction[candidate.id] = null;
+                        if (project.queueBatch) {
+                            const progress = GameState.construction.queueProgress && GameState.construction.queueProgress[project.structureId];
+                            if (progress) progress.completed = Math.min(progress.total, progress.completed + 1);
+                        }
                         Economy._applyProject(project);
                         result.completed.push({
                             type: "build",
