@@ -12,7 +12,7 @@ UnitRegistry.register({
     housing: 0,
     maxCount: () => Math.min(BALANCE.builder.maxBuilders, GameState.structures.constructionLevel),
 
-    consumption: [{ resource: "food", rate: () => Math.pow(2, Math.max(0, (GameState.eliteUnits.builderCount || 0) - 1)) }],
+    consumption: [{ resource: "food", rate: () => 5 * (GameState.eliteUnits.builderCount || 0) }],
     production: [],
     refund: { food: BALANCE.refunds["builder"] },
 
