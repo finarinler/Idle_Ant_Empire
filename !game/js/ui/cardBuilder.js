@@ -221,7 +221,6 @@ const CardBuilder = (function ()
         }
         if (otherLines.length || costLines.length)
         {
-            lines.push({ text: I18N.t("tooltip.preview.expectedOther"), heading: true });
             lines.push(...otherLines);
             if (costLines.length)
             {
