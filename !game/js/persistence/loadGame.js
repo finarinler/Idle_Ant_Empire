@@ -180,7 +180,7 @@ function loadSavedConstruction(saved)
     if (saved.queues && typeof saved.queues === "object") Object.entries(saved.queues).forEach(([id, queue]) => {
         if (!StructureRegistry.has(id) || !Array.isArray(queue)) return;
         const clean = queue.slice(0, 1000).filter(job => job && Number.isInteger(job.count) && job.count > 0 && Number.isFinite(job.factor) && job.factor > 0 && job.factor <= 1).map(job => ({ count: job.count, factor: job.factor }));
-        if (clean.length) { GameState.construction.queues[id] = clean; if (!GameState.construction.queueProgress[id]) { const active = ["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].queueBatch) ? 1 : 0; GameState.construction.queueProgress[id] = { completed: 0, total: active + clean.reduce((sum, job) => sum + job.count, 0) }; } }
+        if (clean.length) { GameState.construction.queues[id] = clean; if (!GameState.construction.queueProgress[id]) { const active = ["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build") ? 1 : 0; GameState.construction.queueProgress[id] = { completed: 0, total: active + clean.reduce((sum, job) => sum + job.count, 0) }; } }
     });
 }
 
