@@ -791,3 +791,9 @@ I18N.register("it", {
     "achievement.epLegend1000.unlocked": "Hai ottenuto un totale di {goal} punti obiettivo.",
     "achievement.epLegend1000.reward": "Solo traguardo di progresso – nessuna ricompensa EP."
 });
+
+
+I18N.register("it", {
+    "button.alreadyTrained": "Già addestrato",
+    "button.alreadyBuilt": "Già costruito"
+});
