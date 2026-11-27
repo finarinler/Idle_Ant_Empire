@@ -99,9 +99,9 @@ I18N.register("en", {
     "loading.scriptError": "Failed to load: {path}",
 
     /* ---------- Resources ---------- */
-    "resource.food": "Food (F)",
+    "resource.food": "Food ([[F]])",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larvae (L)",
+    "resource.larvae": "Larvae ([[L]])",
 
     /* ---------- General UI ---------- */
     "card.type.unitBasic": "Unit · Basic",
@@ -144,10 +144,10 @@ I18N.register("en", {
     "expedition.scoutLockedTitle": "The scout runs expeditions automatically.",
 
     /* ---------- Units ---------- */
-    "unit.ant.name": "Ant (A)",
+    "unit.ant.name": "Ant ([[A]])",
     "unit.ant.desc": "Gathers food for your colony.",
     "unit.ant.buy": "Buy ant",
-    "unit.queen.name": "Queen (Q)",
+    "unit.queen.name": "Queen ([[Q]])",
     "unit.queen.desc": "Lays the larvae from which new ants emerge.",
     "unit.queen.buy": "Buy queen",
     "unit.scout.name": "Scout",
