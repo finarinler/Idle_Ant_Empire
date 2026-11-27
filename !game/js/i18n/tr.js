@@ -799,3 +799,15 @@ I18N.register("tr", {
     "button.alreadyTrained": "Zaten eğitildi",
     "button.alreadyBuilt": "Zaten inşa edildi"
 });
+
+
+/* ---------- Research-gated storage and brood chamber upgrades ---------- */
+I18N.register("tr", {
+    "structure.storageUpgrade.name": "Depo Odası Geliştirmesi",
+    "structure.storageUpgrade.desc": "Her seviyede yiyecek deposunu 10.000 artırır. Her seviye araştırılmalıdır.",
+    "structure.broodUpgrade.name": "Kuluçka Odası Geliştirmesi",
+    "structure.broodUpgrade.desc": "Her seviyede larva deposunu 2.500 artırır. Her seviye araştırılmalıdır.",
+    "structure.capacityUpgrade.target": "Hedef seviye: {level}",
+    "status.structureUpgrade.balancePending": "Geliştirme maliyetleri ve inşaat süreleri daha sonra belirlenecek.",
+    "changelog.entry.storageBroodUpgrades": "Depo ve kuluçka odaları için araştırma gerektiren dokuz geliştirme seviyesi hazırlandı."
+});
