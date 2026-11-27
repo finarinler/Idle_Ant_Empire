@@ -99,9 +99,9 @@ I18N.register("fr", {
     "loading.scriptError": "Échec du chargement de\u00a0: {path}",
 
     /* ---------- Ressources ---------- */
-    "resource.food": "Nourriture (F)",
+    "resource.food": "Nourriture ([[F]])",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larves (L)",
+    "resource.larvae": "Larves ([[L]])",
 
     /* ---------- Interface générale ---------- */
     "card.type.unitBasic": "Unité · Basique",
@@ -144,10 +144,10 @@ I18N.register("fr", {
     "expedition.scoutLockedTitle": "L’éclaireuse mène les expéditions automatiquement.",
 
     /* ---------- Unités ---------- */
-    "unit.ant.name": "Fourmi (A)",
+    "unit.ant.name": "Fourmi ([[A]])",
     "unit.ant.desc": "Récolte de la nourriture pour ta colonie.",
     "unit.ant.buy": "Acheter une fourmi",
-    "unit.queen.name": "Reine (Q)",
+    "unit.queen.name": "Reine ([[Q]])",
     "unit.queen.desc": "Pond les larves dont naissent de nouvelles fourmis.",
     "unit.queen.buy": "Acheter une reine",
     "unit.scout.name": "Éclaireuse",
