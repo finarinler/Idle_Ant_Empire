@@ -628,6 +628,7 @@ I18N.register("fr", {
     "changelog.entry.actionPreview": "Les info-bulles dynamiques affichent les effets, les coûts totaux et la durée des actions simples et des lots 10×, 25× et MAX.",
     "changelog.entry.housingCostScaling": "Coût des chambres d’habitation ajusté.",
     "changelog.entry.strayAntHousing": "Les fourmis égarées ne rejoignent la colonie que si l’espace disponible est suffisant.",
+    "changelog.entry.builderUpkeepDisplay": "Il consumo di cibo è ora mostrato nella scheda del costruttore.",
     "tooltip.preview.production.food": "Production de nourriture",
     "tooltip.preview.production.larvae": "Production de larves",
     "tooltip.preview.consumption.food": "Consommation de nourriture",
