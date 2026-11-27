@@ -633,7 +633,6 @@ I18N.register("de", {
     "changelog.entry.hideCappedCostProgress": "Bei Einheiten und Gebäuden, die ihr Maximum erreicht haben, werden Kostenanzeige und Fortschrittsbalken ausgeblendet.",
     "tooltip.preview.expectedProduction": "Produktion",
     "tooltip.preview.expectedConsumption": "Verbrauch",
-    "tooltip.preview.expectedOther": "Rest",
     "tooltip.preview.expectedTime": "Zeit",
     "tooltip.preview.expectedCosts": "Erwartete Kosten",
     "tooltip.preview.expectedDuration": "Erwartete Dauer",
