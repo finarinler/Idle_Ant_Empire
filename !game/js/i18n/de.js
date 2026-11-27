@@ -16,6 +16,7 @@ I18N.register("de", {
     "nav.military": "Militär",
     "nav.logbook": "Logbuch",
     "nav.achievements": "Erfolge",
+    "nav.prestige": "Prestige",
     "nav.statistics": "Statistik",
     "nav.options": "Optionen",
     "expedition.eyebrow": "ERKUNDUNG & BEUTE",
