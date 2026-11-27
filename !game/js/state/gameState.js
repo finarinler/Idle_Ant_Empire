@@ -69,7 +69,10 @@ const GameState = {
         criticalExpeditionsCount: 0,
         failedExpeditionsCount: 0,
         totalPlayTimeSeconds: 0,
-        totalPurchasedAnts: 0
+        totalPurchasedAnts: 0,
+        currentAchievementPoints: 0,
+        totalAchievementPointsEarned: 0,
+        achievementPointsInitialized: false
     },
 
     research: {
