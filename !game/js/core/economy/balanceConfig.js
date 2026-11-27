@@ -42,9 +42,10 @@ const BALANCE = {
     housing: {
         baseCapacityPerChamber: 10,
         costGrowth: 1.10,                                             // +10 % je weiterer Wohnkammer
-        maxLevel: 10,
-        // Zeit je Upgrade-Stufe in Sekunden: 1→2 ... 9→10
-        upgradeSeconds: [120, 300, 600, 900, 1200, 1800, 2700, 3600, 7200],
+        // Internes Level 1 entspricht der sichtbaren Ausbaustufe 0.
+        maxLevel: 11,
+        // Bauzeit je sichtbarer Ausbaustufe: 0→1 ... 9→10 (Sekunden)
+        upgradeSeconds: [120, 300, 600, 900, 1200, 1800, 2700, 3600, 5400, 7200],
         skipCostSurcharge: 1.2,                                       // übersprungene Stufen: Kosten +20 %
         skipTimeFactor: 2                                             // übersprungene Stufen: Zeit ×2
     },
@@ -141,9 +142,9 @@ const BALANCE = {
         housing: {
             baseCost: { food: 150 },
             buildSeconds: 10,
-            capacityBonusPerLevel: 5,                 // Wohnraum je Wohnkammer: 10 + 5 × (Stufe − 1)
-            // Nahrungskosten je Upgrade-Stufe 1→2 ... 9→10
-            upgradeFood: [500, 1500, 4000, 10000, 25000, 60000, 150000, 400000, 1000000]
+            capacityBonusPerLevel: 5,                 // +5 Wohnraum je Ausbaustufe; internes Level 1 = sichtbare Stufe 0
+            // Nahrungskosten je sichtbarer Ausbaustufe 0→1 ... 9→10
+            upgradeFood: [500, 1000, 5000, 10000, 15000, 50000, 100000, 250000, 500000, 1000000]
         },
 
         mushroomFarm: { baseCost: { food: 150 }, costGrowth: 1.10, buildSeconds: 10 },
@@ -165,6 +166,12 @@ const BALANCE = {
 
         storageRoomBuildSeconds: 900,
         broodChamberBuildSeconds: 900,
+
+        // Gemeinsame Ausbaukurve für Vorratskammer und Brutkammer.
+        capacityUpgrade: {
+            upgradeFood: [10000, 25000, 50000, 75000, 100000, 250000, 500000, 750000, 1000000],
+            upgradeSeconds: [600, 900, 1800, 2700, 3600, 5400, 7200, 9000, 10800]
+        },
 
         builder: {
             baseCost: { ants: 25, food: 1500, larvae: 150, queens: 1 },
