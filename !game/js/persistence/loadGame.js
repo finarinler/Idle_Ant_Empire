@@ -138,6 +138,15 @@ function loadSavedEconomy(saved)
             eco.trainingQueueProgress[unitId] = { completed: progress.completed, total: progress.total };
         });
     }
+
+    // Alte / verwaiste Zähler ohne laufenden Mehrfachauftrag nicht in den Spielzustand übernehmen.
+    Object.keys(eco.trainingQueueProgress).forEach(unitId =>
+    {
+        const activeBatch = !!(eco.trainings[unitId] && eco.trainings[unitId].queueBatch && eco.trainings[unitId].remaining > 0);
+        const queuedBatch = !!(eco.trainingQueues[unitId] && eco.trainingQueues[unitId].length);
+        if (!activeBatch && !queuedBatch) { delete eco.trainingQueueProgress[unitId]; }
+    });
+
     if (saved.unmet && typeof saved.unmet === "object")
     {
         Object.keys(eco.unmet).forEach(key =>
