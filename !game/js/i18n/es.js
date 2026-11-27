@@ -662,6 +662,7 @@ I18N.register("es", {
     "options.tooltips": "Tooltips de acción",
     "options.tooltipsDescription": "Mostrar tooltips de acción con efectos, cambios de producción y costes",
     "changelog.entry.tooltipsUpdated": "Tooltips actualizados.",
+    "changelog.entry.layoutUpdated": "Diseño actualizado.",
     "changelog.entry.actionPreview": "Los tooltips de acción ahora muestran los cambios de producción previstos y pueden activarse o desactivarse en Opciones.",
 });
 
