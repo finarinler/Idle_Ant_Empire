@@ -148,6 +148,7 @@
             stats: [
                 { label: { key: "card.stat.buildSpeed" }, value: () => `−${formatDecimal(BALANCE.builder.reductionPerBuilder * 100, 0)} %`, tone: "positive" },
                 { label: { key: "card.stat.buildTimeNow" }, value: () => `−${formatDecimal((1 - Economy.getBuildTimeFactor()) * 100, 0)} %`, tone: "positive" },
+                survivalUpkeep("builder", 0),
                 housingStat("builder"),
                 trainingStat("builder")
             ],
