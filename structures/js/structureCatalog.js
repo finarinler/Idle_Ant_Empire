@@ -73,6 +73,52 @@
         return housingUpgradeTarget;
     }
 
+    function createCapacityUpgradeCard(config)
+    {
+        let target = 2;
+        const currentLevel = () => GameState.structures[config.levelKey];
+        const clampTarget = () =>
+        {
+            target = Math.max(currentLevel() + 1, Math.min(config.maxLevel, target));
+            return target;
+        };
+        const capacityAt = level => StructureRegistry.get(config.structureId).capacityAtLevel(level);
+
+        return {
+            id: config.id,
+            icon: "⇧",
+            type: { key: "card.type.structureUpgrade" },
+            name: { key: config.nameKey },
+            desc: { key: config.descKey },
+            count: { value: currentLevel, max: config.maxLevel },
+            stats: [
+                {
+                    label: { key: config.capacityLabel },
+                    value: () => `${formatGameNumber(capacityAt(currentLevel()))} → ${formatGameNumber(capacityAt(clampTarget()))}`,
+                    tone: "positive"
+                },
+                { label: { key: "card.stat.buildTime" }, value: () => "—" },
+                { label: { key: "card.stat.needsBuilder" }, value: { key: "card.value.yes" } }
+            ],
+            stepper: {
+                label: () => ({ key: "structure.capacityUpgrade.target", params: { level: clampTarget() } }),
+                canDec: () => clampTarget() > currentLevel() + 1,
+                canInc: () => clampTarget() < config.maxLevel,
+                dec: () => { target--; CardBuilder.updateAll(); },
+                inc: () => { target++; CardBuilder.updateAll(); }
+            },
+            cost: () => ({ values: {}, order: [config.resource] }),
+            action: {
+                label: { key: "button.upgrade" },
+                missingLabel: { key: "button.upgrade" },
+                run: () => startStructureProject(config.structureId, "upgrade", clampTarget())
+            },
+            status: () => currentLevel() >= config.maxLevel
+                ? { state: "max", hint: { key: "status.elite.maxReached" } }
+                : projectStatus(config.structureId, "upgrade", clampTarget())
+        };
+    }
+
     CardBuilder.register("structures-basic", [
         {
             id: "housing",
@@ -163,7 +209,6 @@
             type: { key: "card.type.structureBasic" },
             name: { key: "structure.royalChamber.name" },
             desc: { key: "structure.royalChamber.desc" },
-            cost: "???",
             action: { label: { key: "button.locked" } },
             status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
         }
@@ -172,6 +217,26 @@
     CardBuilder.register("structures-elite", []);
 
     CardBuilder.register("structures-upgrades", [
+        createCapacityUpgradeCard({
+            id: "storage-room-upgrade",
+            structureId: "storage-room",
+            levelKey: "storageRoomLevel",
+            maxLevel: 10,
+            nameKey: "structure.storageUpgrade.name",
+            descKey: "structure.storageUpgrade.desc",
+            capacityLabel: "card.stat.foodLimit",
+            resource: "food"
+        }),
+        createCapacityUpgradeCard({
+            id: "brood-chamber-upgrade",
+            structureId: "brood-chamber",
+            levelKey: "broodChamberLevel",
+            maxLevel: 10,
+            nameKey: "structure.broodUpgrade.name",
+            descKey: "structure.broodUpgrade.desc",
+            capacityLabel: "card.stat.larvaeLimit",
+            resource: "larvae"
+        }),
         {
             id: "housing-upgrade",
             icon: "⇧",
