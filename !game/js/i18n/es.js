@@ -628,6 +628,7 @@ I18N.register("es", {
     "changelog.entry.actionPreview": "Los tooltips dinámicos muestran efectos, costes totales y duración para acciones individuales y lotes de 10×, 25× y MAX.",
     "changelog.entry.housingCostScaling": "Costes de la Cámara de Vivienda ajustados.",
     "changelog.entry.strayAntHousing": "Las hormigas extraviadas solo se unen si hay suficiente espacio disponible.",
+    "changelog.entry.builderUpkeepDisplay": "La consommation de nourriture est désormais affichée sur la carte du bâtisseur.",
     "tooltip.preview.production.food": "Producción de alimento",
     "tooltip.preview.production.larvae": "Producción de larvas",
     "tooltip.preview.consumption.food": "Consumo de alimento",
