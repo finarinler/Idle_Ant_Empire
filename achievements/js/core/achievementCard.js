@@ -33,7 +33,7 @@ function isAchievementSeriesStageVisible(id){
 function createAchievementToggle(group,title,icon,countClass,cards,expanded){
  const heading=document.createElement("button"); heading.type="button"; heading.className="achievement-category-toggle";
  heading.setAttribute("aria-expanded",String(expanded));
- heading.innerHTML='<span class="achievement-category-icon" aria-hidden="true">'+icon+'</span><span class="achievement-category-name">'+title+'</span><span class="achievement-category-count '+countClass+'">0 / 0</span><span class="achievement-category-chevron" aria-hidden="true">⌄</span>';
+ heading.innerHTML='<span class="achievement-category-icon" aria-hidden="true">'+icon+'</span><span class="achievement-category-name">'+title+'</span><span class="achievement-points-count">0 / 0 EP</span><span class="achievement-category-count '+countClass+'">0 / 0</span><span class="achievement-category-chevron" aria-hidden="true">⌄</span>';
  cards.hidden=!expanded;
  heading.addEventListener("click",()=>{const open=heading.getAttribute("aria-expanded")==="true";heading.setAttribute("aria-expanded",String(!open));cards.hidden=open;group.classList.toggle("is-collapsed",open);});
  group.append(heading,cards);
@@ -69,14 +69,23 @@ function refreshAchievementCategoryCounts(){
   const categoryId=group.dataset.achievementCategory;
   const definitions=ACHIEVEMENTS.filter(item=>(item.category||"other")===categoryId);
   const unlocked=definitions.filter(item=>GameState.achievements[item.id]).length;
+  const earnedEP=definitions.reduce((sum,item)=>sum+(GameState.achievements[item.id]?Math.max(0,Number(item.epReward)||0):0),0);
+  const possibleEP=definitions.reduce((sum,item)=>sum+Math.max(0,Number(item.epReward)||0),0);
+  const epCount=group.querySelector(":scope > .achievement-category-toggle .achievement-points-count");
   const count=group.querySelector(":scope > .achievement-category-toggle .achievement-category-count");
+  if(epCount)epCount.textContent=formatGameNumber(earnedEP)+" / "+formatGameNumber(possibleEP)+" EP";
   if(count)count.textContent=unlocked+" / "+definitions.length;
  });
  ACHIEVEMENT_SERIES.forEach(series=>{
   const group=DOM.achievementList.querySelector('[data-achievement-series="'+series.id+'"]');if(!group)return;
-  const unlocked=series.ids.filter(id=>GameState.achievements[id]).length;
+  const definitions=series.ids.map(getAchievementDefinition).filter(Boolean);
+  const unlocked=definitions.filter(item=>GameState.achievements[item.id]).length;
+  const earnedEP=definitions.reduce((sum,item)=>sum+(GameState.achievements[item.id]?Math.max(0,Number(item.epReward)||0):0),0);
+  const possibleEP=definitions.reduce((sum,item)=>sum+Math.max(0,Number(item.epReward)||0),0);
+  const epCount=group.querySelector(".achievement-points-count");
   const count=group.querySelector(".achievement-series-count");
-  if(count)count.textContent=I18N.t("achievements.series.progress",{unlocked:unlocked,total:series.ids.length});
+  if(epCount)epCount.textContent=formatGameNumber(earnedEP)+" / "+formatGameNumber(possibleEP)+" EP";
+  if(count)count.textContent=I18N.t("achievements.series.progress",{unlocked:unlocked,total:definitions.length});
  });
 }
 function renderAchievementCard(id,content,isUnlocked=false,progressPercent=0){
