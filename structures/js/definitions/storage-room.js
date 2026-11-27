@@ -2,8 +2,8 @@
     Vorratskammer (Definition)
     Einmal baubar. Setzt die Nahrungskapazität auf 10.000 INSGESAMT.
     Neun weitere Ausbaustufen erhöhen das Lager jeweils um 10.000.
-    Forschung schaltet die Stufen einzeln frei. Kosten und Zeiten der Upgrades bleiben
-    bis zur späteren Balance-Festlegung deaktiviert.
+    Forschung schaltet die Stufen einzeln frei. Kosten und Bauzeiten stehen zentral in
+    BALANCE.provisional.capacityUpgrade.
 ========================= */
 
 const STORAGE_ROOM_UPGRADE_MAX_LEVEL = 10;
@@ -36,11 +36,20 @@ StructureRegistry.register({
     },
 
     upgrade: {
-        configured: false,
+        configured: true,
         requiresBuilder: true,
         levelKey: "storageRoomLevel",
         maxLevel: STORAGE_ROOM_UPGRADE_MAX_LEVEL,
         getUnlockedLevel: () => GameState.research.storageRoomUpgradeLevel || 1,
-        getInfo: () => ({ cost: {}, seconds: 0 })
+        getInfo: targetLevel => {
+            const from = GameState.structures.storageRoomLevel;
+            const to = Math.max(from + 1, Math.min(STORAGE_ROOM_UPGRADE_MAX_LEVEL, targetLevel || from + 1));
+            let food = 0, seconds = 0;
+            for (let level = from; level < to; level++) {
+                food += BALANCE.provisional.capacityUpgrade.upgradeFood[level - 1];
+                seconds += BALANCE.provisional.capacityUpgrade.upgradeSeconds[level - 1];
+            }
+            return { cost: { food: Big(food) }, seconds };
+        }
     }
 });
