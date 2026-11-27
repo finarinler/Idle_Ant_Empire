@@ -45,11 +45,11 @@ function initializeAchievementPointsForExistingAchievements()
     }
 
     const stats = GameState.stats;
-    const hasUnlockedPointRewards = ACHIEVEMENTS.some(definition =>
-        GameState.achievements[definition.id] && Number(definition.epReward) > 0
-    );
-    if (stats.achievementPointsInitialized === true
-        && ((Number(stats.totalAchievementPointsEarned) || 0) > 0 || !hasUnlockedPointRewards))
+
+    // Die Nachvergütung ist eine einmalige Migration. Das Flag ist maßgeblich:
+    // Auch ein gültiger Gesamtstand von 0 darf beim Neuladen nicht erneut
+    // als Anlass für eine Nachvergütung bereits freigeschalteter Erfolge dienen.
+    if (stats.achievementPointsInitialized === true)
     {
         updateAchievementPointsDisplay();
         return;
