@@ -16,6 +16,7 @@ I18N.register("it", {
     "nav.military": "Esercito",
     "nav.logbook": "Diario di bordo",
     "nav.achievements": "Obiettivi",
+    "nav.prestige": "Prestigio",
     "nav.statistics": "Statistiche",
     "nav.options": "Opzioni",
     "expedition.eyebrow": "ESPLORAZIONE E BOTTINO",
