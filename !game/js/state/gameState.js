@@ -72,7 +72,8 @@ const GameState = {
         totalPurchasedAnts: 0,
         currentAchievementPoints: 0,
         totalAchievementPointsEarned: 0,
-        achievementPointsInitialized: false
+        achievementPointsInitialized: false,
+        achievementPointsIntegrityFixApplied: false
     },
 
     research: {
@@ -114,6 +115,35 @@ const GameState = {
         expeditionMisfortune: false,
         expeditionMisfortuneMaster: false,
         expeditionMisfortuneLegend: false,
+
+        // Neue normale Erfolge mit EP
+        foodReserve1000: false,
+        foodReserve10000: false,
+        larvaeReserve100: false,
+        larvaeReserve500: false,
+        queenCourt250: false,
+        queenEmpire500: false,
+        collectorHarvest500: false,
+        collectorHarvest1000: false,
+        mushroomFarmSettlement500: false,
+        mushroomFarmMetropolis1000: false,
+        purchasedAnts2000: false,
+        purchasedAnts5000: false,
+        expeditionColony2500: false,
+        expeditionWorld5000: false,
+        criticalFortune500: false,
+        criticalFortune1000: false,
+        colonyRescuer25: false,
+
+        // Dauerhafte EP-Meilensteine
+        epFirstSpark5: false,
+        epMore10: false,
+        epOnTrack25: false,
+        epSmallTreasure50: false,
+        epSuccessful100: false,
+        epBigStep250: false,
+        epCollector500: false,
+        epLegend1000: false
     },
 
     expedition: {
