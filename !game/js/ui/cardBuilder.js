@@ -352,10 +352,10 @@ const CardBuilder = (function ()
             const track = create("div", "iae-card-progress-track", progress);
             create("div", "iae-card-progress-fill", track, { id: entry.progressId });
         }
-        else if (entry.trainingProgressId)
+        if (entry.trainingProgressId)
         {
-            progress.classList.add("iae-card-training-progress");
-            const track = create("div", "iae-card-progress-track", progress);
+            progress.classList.add("iae-card-has-training-progress");
+            const track = create("div", "iae-card-progress-track iae-card-training-progress-track", progress);
             create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
         }
 
