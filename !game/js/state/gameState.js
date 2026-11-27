@@ -51,6 +51,7 @@ const GameState = {
         broodExpertEnabled: true,
         trainings: {},
         trainingQueues: {},
+        trainingQueueProgress: {},
         unmet: { food: Big(0), larvae: Big(0) }   // nicht erfüllter Verbrauch (kumuliert)
     },
 
@@ -58,7 +59,8 @@ const GameState = {
     construction: {
         free: null,
         builder: null,
-        queues: {}
+        queues: {},
+        queueProgress: {}
     },
 
     stats: {
