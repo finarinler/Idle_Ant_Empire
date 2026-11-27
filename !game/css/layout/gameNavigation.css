@@ -555,6 +555,16 @@
 }
 .game-navigation-toggle .category-title {
     flex: 0 0 auto;
+    color: var(--game-muted);
+}
+.game-navigation-toggle .mandible-icon span {
+    background: var(--game-muted);
+}
+.game-navigation-toggle:hover .category-title {
+    color: var(--game-text);
+}
+.game-navigation-toggle:hover .mandible-icon span {
+    background: var(--game-text);
 }
 .game-navigation-toggle .category-divider {
     min-width: 12px;
