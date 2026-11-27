@@ -668,3 +668,9 @@ I18N.register("it", {
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("it", {
 });
+
+/* ---------- Queue completion counters ---------- */
+I18N.register("it", {
+    "queue.progress.training": "Addestrate: {completed}/{total}",
+    "queue.progress.build": "Costruiti: {completed}/{total}"
+});
