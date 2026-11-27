@@ -434,7 +434,7 @@ I18N.register("fr", {
     "structure.housing.name": "Chambre d'habitation",
     "structure.housing.desc": "Offre de l'espace de vie à tes fourmis.",
     "structure.housingUpgrade.name": "Amélioration des logements",
-    "structure.housingUpgrade.desc": "Améliore toutes les chambres à la fois.\nLes niveaux peuvent être sautés.",
+    "structure.housingUpgrade.desc": "Améliore toutes les chambres d’habitation.\nChaque niveau doit être recherché.",
     "structure.housingUpgrade.target": "Objectif : niveau {level}",
     "structure.mushroomFarm.name": "Champignonnière",
     "structure.mushroomFarm.desc": "Produit de la nourriture.\nLes collecteurs augmentent la production totale.",
