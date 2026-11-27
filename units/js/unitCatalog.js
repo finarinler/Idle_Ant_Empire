@@ -28,6 +28,10 @@
         missingLabel: { key: "button.missingResources" },
         preview: { kind: "unit", id },
         batchOptions: () => Economy.getTrainingBatchOptions(id),
+        queueProgress: () => {
+            const progress = Economy.getTrainingQueueProgress(id);
+            return progress ? { ...progress, key: "queue.progress.training" } : null;
+        },
         batchRun: amount => recruitUnitBatch(id, amount),
         run
     });
