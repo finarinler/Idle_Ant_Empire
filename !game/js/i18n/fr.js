@@ -811,3 +811,8 @@ I18N.register("fr", {
     "status.structureUpgrade.balancePending": "Les coûts et les durées de construction seront définis ultérieurement.",
     "changelog.entry.storageBroodUpgrades": "Neuf niveaux d’amélioration soumis à la recherche ont été préparés pour les chambres de stockage et d’élevage."
 });
+
+
+I18N.register("fr", {
+    "status.structureUpgrade.requiresBuilding": "La chambre correspondante doit d’abord être construite."
+});
