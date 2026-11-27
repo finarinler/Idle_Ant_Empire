@@ -184,7 +184,7 @@ const CardBuilder = (function ()
         if (entry.action.preview.kind === "unit")
         {
             const unitDef = UnitRegistry.get(entry.action.preview.id);
-            if (unitDef.housing > 0) { otherLines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity), abbreviation: "A" }); }
+            if (unitDef.housing > 0) { otherLines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity) }); }
             if (entry.action.preview.id === "builder")
             {
                 const before = Economy.getUnitNumber("builder");
