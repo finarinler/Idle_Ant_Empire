@@ -177,14 +177,14 @@ const CardBuilder = (function ()
             const capacity = preview.capacity[resource];
             if (capacity && capacity.isPositive())
             {
-                otherLines.push({ text: `+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}` });
+                otherLines.push({ text: `+${formatGameNumber(capacity)}`, abbreviation: resourceNames[resource] , suffix: ` ${I18N.t("tooltip.preview.capacity")}` });
             }
         });
 
         if (entry.action.preview.kind === "unit")
         {
             const unitDef = UnitRegistry.get(entry.action.preview.id);
-            if (unitDef.housing > 0) { otherLines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity) }); }
+            if (unitDef.housing > 0) { otherLines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity), abbreviation: "A" }); }
             if (entry.action.preview.id === "builder")
             {
                 const before = Economy.getUnitNumber("builder");
@@ -193,7 +193,7 @@ const CardBuilder = (function ()
                 if (reduction > 0) { otherLines.push({ text: I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %" }); }
             }
         }
-        else if (entry.action.preview.id === "housing-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity) }); }
+        else if (entry.action.preview.id === "housing-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity), abbreviation: "A" }); }
         else if (entry.action.preview.id === "construction-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity) }); }
 
         const costLines = [];
@@ -221,12 +221,9 @@ const CardBuilder = (function ()
         }
         if (otherLines.length || costLines.length)
         {
+            lines.push({ text: I18N.t("tooltip.preview.expectedCosts"), heading: true });
             lines.push(...otherLines);
-            if (costLines.length)
-            {
-                lines.push({ text: I18N.t("tooltip.preview.expectedCosts"), heading: true });
-                lines.push(...costLines);
-            }
+            lines.push(...costLines);
         }
         timeLines.push({ text: `${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}` });
         if (timeLines.length)
@@ -243,10 +240,25 @@ const CardBuilder = (function ()
             if (line.cost !== undefined)
             {
                 // Kosten aufrunden und Ressourcen-Kürzel als goldene Abbreviation rendern.
-                I18N.renderInto(row, `${formatCostNumber(line.cost)} ${line.label}`);
+                row.append(document.createTextNode(formatCostNumber(line.cost) + " "));
+                const abbr = document.createElement("span");
+                abbr.className = "abbr-gold";
+                abbr.textContent = line.abbreviation;
+                row.append(abbr);
             }
             else
             {
+                if (line.abbreviation)
+                {
+                    row.append(document.createTextNode(line.text));
+                    const abbr = document.createElement("span");
+                    abbr.className = "abbr-gold";
+                    abbr.textContent = line.abbreviation;
+                    row.append(abbr);
+                    if (line.suffix) { row.append(document.createTextNode(line.suffix)); }
+                }
+                else
+                {
                 const suffixStart = line.text.lastIndexOf(" ");
             const suffix = suffixStart >= 0 ? line.text.slice(suffixStart + 1) : "";
             const abbreviation = line.tone && suffix.length === 3 && "FLAK".includes(suffix[0]) && suffix.slice(1) === "/s"
@@ -263,6 +275,7 @@ const CardBuilder = (function ()
                 else
                 {
                     row.textContent = line.text;
+                }
                 }
             }
             nodes.preview.appendChild(row);
