@@ -127,9 +127,22 @@
             status: () => projectStatus("mushroom-farm", "build")
         },
         {
+            id: "royal-chamber",
+            icon: "♕",
+            type: { key: "card.type.structureBasic" },
+            name: { key: "structure.royalChamber.name" },
+            desc: { key: "structure.royalChamber.desc" },
+            cost: "???",
+            action: { label: { key: "button.locked" } },
+            status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
+        }
+    ]);
+
+    CardBuilder.register("structures-elite", [
+        {
             id: "construction",
             icon: "⚒",
-            type: { key: "card.type.structureBasic" },
+            type: { key: "card.type.structureElite" },
             name: { key: "structure.construction.name" },
             desc: { key: "structure.construction.desc" },
             count: { value: () => GameState.structures.constructionLevel, max: BALANCE.builder.maxBuilders },
@@ -145,7 +158,7 @@
         {
             id: "storage",
             icon: "⌂",
-            type: { key: "card.type.structureBasic" },
+            type: { key: "card.type.structureElite" },
             name: { key: "structure.storage.name" },
             desc: { key: "structure.storage.desc" },
             count: { value: () => GameState.structures.storageCount, max: 1 },
@@ -161,7 +174,7 @@
         {
             id: "nursery",
             icon: "⌂",
-            type: { key: "card.type.structureBasic" },
+            type: { key: "card.type.structureElite" },
             name: { key: "structure.nursery.name" },
             desc: { key: "structure.nursery.desc" },
             count: { value: () => GameState.structures.nurseryCount, max: 1 },
@@ -173,20 +186,8 @@
             cost: buildCost("brood-chamber", ["larvae", "ants", "food"]),
             action: buildAction("brood-chamber"),
             status: () => projectStatus("brood-chamber", "build")
-        },
-        {
-            id: "royal-chamber",
-            icon: "♕",
-            type: { key: "card.type.structureBasic" },
-            name: { key: "structure.royalChamber.name" },
-            desc: { key: "structure.royalChamber.desc" },
-            cost: "???",
-            action: { label: { key: "button.locked" } },
-            status: () => ({ state: "soon", hint: { key: "card.hint.soon" } })
         }
     ]);
-
-    CardBuilder.register("structures-elite", []);
 
     CardBuilder.register("structures-upgrades", [
         {
