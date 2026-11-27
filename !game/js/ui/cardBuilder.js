@@ -155,46 +155,48 @@ const CardBuilder = (function ()
         const preview = Economy.getActionPreview(entry.action.preview.kind, entry.action.preview.id, quantity);
         if (!preview.quantity) { hidePreview(nodes); return; }
 
-        const lines = [];
+        const productionLines = [];
+        const consumptionLines = [];
+        const otherLines = [];
+        const timeLines = [];
         const unit = preview.quantity === 1 ? "" : ` · ${preview.quantity}×`;
         const resourceNames = { food: "F", larvae: "L", ants: "A", queens: "K" };
 
-        lines.push({ text: `${I18N.t("tooltip.preview.expectedProduction")}${unit}`, heading: true });
         RESOURCE_IDS.forEach(resource =>
         {
             const produced = preview.produced[resource];
             const consumed = preview.consumed[resource];
             if (produced && produced.isPositive())
             {
-                lines.push({ text: `${I18N.t("tooltip.preview.production." + resource)}: +${formatRate(produced)} ${resourceNames[resource]}/s`, tone: "production" });
+                productionLines.push({ text: `${I18N.t("tooltip.preview.production." + resource)}: +${formatRate(produced)} ${resourceNames[resource]}/s`, tone: "production" });
             }
             if (consumed && consumed.isPositive())
             {
-                lines.push({ text: `${I18N.t("tooltip.preview.consumption." + resource)}: −${formatRate(consumed)} ${resourceNames[resource]}/s`, tone: "consumption" });
+                consumptionLines.push({ text: `${I18N.t("tooltip.preview.consumption." + resource)}: −${formatRate(consumed)} ${resourceNames[resource]}/s`, tone: "consumption" });
             }
             const capacity = preview.capacity[resource];
             if (capacity && capacity.isPositive())
             {
-                lines.push({ text: `+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}`, tone: "production" });
+                otherLines.push({ text: `+${formatGameNumber(capacity)} ${resourceNames[resource]} ${I18N.t("tooltip.preview.capacity")}` });
             }
         });
 
         if (entry.action.preview.kind === "unit")
         {
             const unitDef = UnitRegistry.get(entry.action.preview.id);
-            if (unitDef.housing > 0) { lines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity) }); }
+            if (unitDef.housing > 0) { otherLines.push({ text: I18N.t("tooltip.preview.housingUsed") + ": +" + formatGameNumber(unitDef.housing * preview.quantity) }); }
             if (entry.action.preview.id === "builder")
             {
                 const before = Economy.getUnitNumber("builder");
                 const after = Math.min(BALANCE.builder.maxBuilders, before + preview.quantity);
                 const reduction = (after - before) * BALANCE.builder.reductionPerBuilder;
-                if (reduction > 0) { lines.push({ text: I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %" }); }
+                if (reduction > 0) { otherLines.push({ text: I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %" }); }
             }
         }
-        else if (entry.action.preview.id === "housing-chamber") { lines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity) }); }
-        else if (entry.action.preview.id === "construction-chamber") { lines.push({ text: I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity) }); }
+        else if (entry.action.preview.id === "housing-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity) }); }
+        else if (entry.action.preview.id === "construction-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity) }); }
 
-        lines.push({ text: I18N.t("tooltip.preview.expectedCosts"), heading: true });
+        const costLines = [];
         Object.keys(resourceNames).forEach(resource =>
         {
             const value = preview.costs[resource];
@@ -203,10 +205,37 @@ const CardBuilder = (function ()
                 : resource === "larvae" ? I18N.t("resource.larvae")
                 : resource === "ants" ? I18N.t("tooltip.preview.ants")
                 : I18N.t("tooltip.preview.queens");
-            lines.push({ cost: value, label });
+            costLines.push({ cost: value, label });
         });
 
-        lines.push({ text: `${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}` });
+        const lines = [];
+        if (productionLines.length)
+        {
+            lines.push({ text: `${I18N.t("tooltip.preview.expectedProduction")}${unit}`, heading: true });
+            lines.push(...productionLines);
+        }
+        if (consumptionLines.length)
+        {
+            lines.push({ text: I18N.t("tooltip.preview.expectedConsumption"), heading: true });
+            lines.push(...consumptionLines);
+        }
+        if (otherLines.length || costLines.length)
+        {
+            lines.push({ text: I18N.t("tooltip.preview.expectedOther"), heading: true });
+            lines.push(...otherLines);
+            if (costLines.length)
+            {
+                lines.push({ text: I18N.t("tooltip.preview.expectedCosts"), heading: true });
+                lines.push(...costLines);
+            }
+        }
+        timeLines.push({ text: `${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}` });
+        if (timeLines.length)
+        {
+            lines.push({ text: I18N.t("tooltip.preview.expectedTime"), heading: true });
+            lines.push(...timeLines);
+        }
+
         nodes.preview.textContent = "";
         lines.forEach(line =>
         {
