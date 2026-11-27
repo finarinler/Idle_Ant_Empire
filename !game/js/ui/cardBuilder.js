@@ -193,7 +193,7 @@ const CardBuilder = (function ()
                 if (reduction > 0) { otherLines.push({ text: I18N.t("tooltip.preview.buildSpeed") + ": −" + formatDecimal(reduction * 100, 1) + " %" }); }
             }
         }
-        else if (entry.action.preview.id === "housing-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity), abbreviation: "A" }); }
+        else if (entry.action.preview.id === "housing-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.housingCapacity") + ": +" + formatGameNumber(Economy.getHousingPerChamber() * preview.quantity) }); }
         else if (entry.action.preview.id === "construction-chamber") { otherLines.push({ text: I18N.t("tooltip.preview.builderLimit") + ": +" + formatGameNumber(preview.quantity) }); }
 
         const costLines = [];
