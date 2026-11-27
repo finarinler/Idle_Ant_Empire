@@ -433,7 +433,7 @@ I18N.register("en", {
     "structure.housing.name": "Housing Chamber",
     "structure.housing.desc": "Provides living space for your ants.",
     "structure.housingUpgrade.name": "Housing Upgrade",
-    "structure.housingUpgrade.desc": "Upgrades all housing chambers at once.\nLevels may be skipped.",
+    "structure.housingUpgrade.desc": "Improves all housing chambers.\nEach level must be researched.",
     "structure.housingUpgrade.target": "Target: level {level}",
     "structure.mushroomFarm.name": "Mushroom Farm",
     "structure.mushroomFarm.desc": "Produces food.\nCollectors boost total output.",
