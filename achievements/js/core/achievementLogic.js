@@ -32,8 +32,18 @@ function updateAchievementPointsDisplay()
     if (totalNode) totalNode.textContent = formatGameNumber(total);
 }
 
+let achievementPointsLocaleListenerRegistered = false;
+
 function initializeAchievementPointsForExistingAchievements()
 {
+    if (!achievementPointsLocaleListenerRegistered
+        && typeof I18N !== "undefined"
+        && typeof I18N.onChange === "function")
+    {
+        I18N.onChange(updateAchievementPointsDisplay);
+        achievementPointsLocaleListenerRegistered = true;
+    }
+
     const stats = GameState.stats;
     if (stats.achievementPointsInitialized === true)
     {
