@@ -281,8 +281,7 @@
             if (affordable > 0) { Economy._removeUnits(id, affordable); }
         }
 
-        // MAX bleibt deaktiviert, solange der für dieses Gebäude benötigte Bauplatz belegt ist.
-        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: buildingSlotBusy ? 0 : affordable };
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
     };
 
     Economy.recruitBatch = function (id, amount, factorOverride)
@@ -529,7 +528,8 @@
                 GameState[store.section][store.key]++;
             }
         } finally { GameState[store.section][store.key] -= pending + affordable; }
-        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
+        // MAX bleibt deaktiviert, solange der für dieses Gebäude benötigte Bauplatz belegt ist.
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: buildingSlotBusy ? 0 : affordable };
     };
 
     Economy.queueProjectBatch = function (id, amount)
