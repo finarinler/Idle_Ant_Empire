@@ -639,6 +639,7 @@ I18N.register("de", {
     "changelog.entry.actionPreview": "Dynamische Tooltips zeigen Effekte, Gesamtkosten und Zeiten für Einzelaktionen sowie 10×-, 25×- und MAX-Aufträge.",
     "changelog.entry.housingCostScaling": "Wohnkammerkosten angepasst.",
     "changelog.entry.strayAntHousing": "Verirrte Ameisen schließen sich nur an, wenn ausreichend Wohnraum frei ist.",
+    "changelog.entry.builderUpkeepDisplay": "Food consumption is now displayed on the Builder card.",
     "tooltip.preview.production.food": "Nahrungsproduktion",
     "tooltip.preview.production.larvae": "Larvenproduktion",
     "tooltip.preview.consumption.food": "Nahrungsverbrauch",
