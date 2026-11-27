@@ -342,23 +342,6 @@ const CardBuilder = (function ()
         nodes.costLabel = create("span", "iae-card-label", costBlock);
         nodes.cost = create("div", "iae-card-cost-line", costBlock, { id: `${entry.id}-cost-display` });
 
-        // Fester Platzhalter sorgt dafür, dass Kosten, Fortschritt und Button
-        // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
-        const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
-        nodes.progress = progress;
-
-        if (entry.progressId)
-        {
-            const track = create("div", "iae-card-progress-track", progress);
-            create("div", "iae-card-progress-fill", track, { id: entry.progressId });
-        }
-        if (entry.trainingProgressId)
-        {
-            if (entry.progressId) { progress.classList.add("iae-card-dual-progress"); }
-            const track = create("div", "iae-card-progress-track iae-card-training-progress-track", progress);
-            create("div", "iae-card-progress-fill iae-card-training-progress-fill", track, { id: entry.trainingProgressId });
-        }
-
         if (entry.stepper)
         {
             const stepper = create("div", "iae-card-stepper", card);
@@ -508,14 +491,22 @@ const CardBuilder = (function ()
         }
 
         const queueProgress = action.queueProgress ? action.queueProgress() : null;
-        const hasQueueProgress = !!(queueProgress && queueProgress.total > 0);
-        nodes.button.classList.toggle("has-queue-progress", hasQueueProgress);
-        if (hasQueueProgress)
+        const hasBatchProgress = !!(queueProgress && queueProgress.total > 0);
+        const hasTimedProgress = !!(queueProgress && Number.isFinite(Number(queueProgress.fraction)));
+        const hasActionProgress = hasBatchProgress || hasTimedProgress;
+        nodes.button.classList.toggle("has-queue-progress", hasActionProgress);
+        if (hasBatchProgress)
         {
             const completed = Math.max(0, Math.min(Number(queueProgress.completed) || 0, Number(queueProgress.total) || 0));
             const total = Math.max(1, Number(queueProgress.total) || 1);
             nodes.buttonProgress.style.width = `${completed / total * 100}%`;
             setText(nodes.buttonLabel, { key: queueProgress.key, params: { completed, total } });
+        }
+        else if (hasTimedProgress)
+        {
+            const fraction = Math.max(0, Math.min(1, Number(queueProgress.fraction) || 0));
+            nodes.buttonProgress.style.width = `${fraction * 100}%`;
+            setText(nodes.buttonLabel, queueProgress.key ? { key: queueProgress.key } : label);
         }
         else
         {
