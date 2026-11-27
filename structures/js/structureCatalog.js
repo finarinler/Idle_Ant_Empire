@@ -73,7 +73,7 @@
             type: { key: "card.type.structureUpgrade" },
             name: { key: config.nameKey },
             desc: { key: config.descKey },
-            count: { value: getLevel, max: config.maxLevel },
+            count: { value: () => Math.max(0, getLevel() - 1), max: config.maxLevel - 1 },
             stats: [
                 { label: { key: config.capacityLabel }, value: () => { const def = StructureRegistry.get(config.structureId); return formatGameNumber(def.capacityAtLevel(getLevel())) + " → " + formatGameNumber(def.capacityAtLevel(getTarget())); }, tone: "positive" },
                 { label: { key: "card.stat.buildTime" }, value: () => "—" },
@@ -190,7 +190,7 @@
             type: { key: "card.type.structureUpgrade" },
             name: { key: "structure.housingUpgrade.name" },
             desc: { key: "structure.housingUpgrade.desc" },
-            count: { value: () => GameState.structures.housingLevel, max: BALANCE.housing.maxLevel },
+            count: { value: () => Math.max(0, GameState.structures.housingLevel - 1), max: BALANCE.housing.maxLevel },
             stats: [
                 { label: { key: "card.stat.perChamber" }, value: () => `${formatGameNumber(Economy.getHousingPerChamber())} → ${formatGameNumber(StructureRegistry.get("housing-chamber").housingCapacity(getNextHousingUpgradeTarget()))}`, tone: "positive" },
                 {
