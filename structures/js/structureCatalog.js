@@ -28,6 +28,10 @@
         missingLabel: { key: "button.build" },
         preview: { kind: "structure", id: structureId },
         batchOptions: () => Economy.getProjectBatchOptions(structureId),
+        queueProgress: () => {
+            const progress = Economy.getProjectQueueProgress(structureId);
+            return progress ? { ...progress, key: "queue.progress.build" } : null;
+        },
         batchRun: amount => startStructureProjectBatch(structureId, amount),
         run: () => startStructureProject(structureId, "build")
     });
