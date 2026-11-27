@@ -434,7 +434,7 @@ I18N.register("es", {
     "structure.housing.name": "Cámara de alojamiento",
     "structure.housing.desc": "Ofrece espacio vital para tus hormigas.",
     "structure.housingUpgrade.name": "Mejora de alojamiento",
-    "structure.housingUpgrade.desc": "Mejora todas las cámaras a la vez.\nSe pueden saltar niveles.",
+    "structure.housingUpgrade.desc": "Mejora todas las cámaras de vivienda.\nCada nivel debe investigarse.",
     "structure.housingUpgrade.target": "Objetivo: nivel {level}",
     "structure.mushroomFarm.name": "Granja de hongos",
     "structure.mushroomFarm.desc": "Produce comida.\nLos recolectores aumentan la producción total.",
