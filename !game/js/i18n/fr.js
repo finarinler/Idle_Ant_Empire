@@ -791,3 +791,9 @@ I18N.register("fr", {
     "achievement.epLegend1000.unlocked": "Vous avez obtenu un total de {goal} points de réussite.",
     "achievement.epLegend1000.reward": "Jalon de progression uniquement – aucune récompense en PA."
 });
+
+
+I18N.register("fr", {
+    "button.alreadyTrained": "Déjà formé",
+    "button.alreadyBuilt": "Déjà construit"
+});
