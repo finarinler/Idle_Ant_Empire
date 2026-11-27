@@ -38,6 +38,7 @@ function serializeEconomy()
         hatch: Object.assign({}, eco.hatch),
         trainings: Object.assign({}, eco.trainings || {}),
         trainingQueues: JSON.parse(JSON.stringify(eco.trainingQueues || {})),
+        trainingQueueProgress: JSON.parse(JSON.stringify(eco.trainingQueueProgress || {})),
         unmet
     };
 }
