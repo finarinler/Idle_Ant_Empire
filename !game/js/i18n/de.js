@@ -8,6 +8,7 @@ I18N.register("de", {
 
     /* ---------- Seitenbereiche (alpha-v0.00.006c) ---------- */
     "nav.aria": "Spielbereiche",
+    "nav.menu": "Navigation",
     "nav.expeditions": "Expeditionen",
     "nav.units": "Einheiten",
     "nav.structures": "Gebäude",
