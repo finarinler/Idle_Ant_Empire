@@ -203,7 +203,7 @@ const CardBuilder = (function ()
                 : resource === "larvae" ? I18N.t("resource.larvae")
                 : resource === "ants" ? I18N.t("tooltip.preview.ants")
                 : I18N.t("tooltip.preview.queens");
-            lines.push({ text: `${formatGameNumber(value)} ${label}` });
+            lines.push({ cost: value, label });
         });
 
         lines.push({ text: `${I18N.t("tooltip.preview.expectedDuration")}: ${formatDuration(preview.seconds)}` });
@@ -212,18 +212,26 @@ const CardBuilder = (function ()
         {
             const row = document.createElement("div");
             row.className = line.heading ? "iae-card-preview-heading" : line.tone ? "iae-card-preview-" + line.tone : "";
-            const abbreviation = line.tone && line.text.match(/^(.*?)([FLAK])(\/s)$/);
-            if (abbreviation)
+            if (line.cost !== undefined)
             {
-                row.append(document.createTextNode(abbreviation[1]));
-                const abbr = document.createElement("span");
-                abbr.className = "abbr-gold";
-                abbr.textContent = abbreviation[2];
-                row.append(abbr, document.createTextNode(abbreviation[3]));
+                // Kosten aufrunden und Ressourcen-Kürzel als goldene Abbreviation rendern.
+                I18N.renderInto(row, `${formatCostNumber(line.cost)} ${line.label}`);
             }
             else
             {
-                row.textContent = line.text;
+                const abbreviation = line.tone && line.text.match(/^(.*?)([FLAK])(\\/s)$/);
+                if (abbreviation)
+                {
+                    row.append(document.createTextNode(abbreviation[1]));
+                    const abbr = document.createElement("span");
+                    abbr.className = "abbr-gold";
+                    abbr.textContent = abbreviation[2];
+                    row.append(abbr, document.createTextNode(abbreviation[3]));
+                }
+                else
+                {
+                    row.textContent = line.text;
+                }
             }
             nodes.preview.appendChild(row);
         });
