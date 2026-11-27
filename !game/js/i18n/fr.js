@@ -655,3 +655,9 @@ I18N.register("fr", {
     "options.tooltipsDescription": "Afficher les info-bulles d’action avec les effets, les variations de production et les coûts",
     "changelog.entry.actionPreview": "Les info-bulles affichent désormais les variations de production prévues et peuvent être activées ou désactivées dans les options.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("fr", {
+    "changelog.entry.builderUpkeep": "Chaque bâtisseur consomme désormais 5 nourriture/s."
+});
