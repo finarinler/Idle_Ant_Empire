@@ -816,3 +816,8 @@ I18N.register("es", {
 I18N.register("es", {
     "status.structureUpgrade.requiresBuilding": "Primero debes construir la cámara correspondiente."
 });
+
+
+I18N.register("es", {
+    "changelog.entry.unitBalanceUpdated": "Balance de unidades ajustado."
+});
