@@ -802,3 +802,9 @@ I18N.register("en", {
     "achievement.epLegend1000.unlocked": "You have earned a total of {goal} achievement points.",
     "achievement.epLegend1000.reward": "Progress milestone only – no EP reward."
 });
+
+
+I18N.register("en", {
+    "button.alreadyTrained": "Already Trained",
+    "button.alreadyBuilt": "Already Built"
+});
