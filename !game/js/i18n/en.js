@@ -108,6 +108,7 @@ I18N.register("en", {
     "card.type.unitBasic": "Unit · Basic",
     "card.type.unitElite": "Unit · Elite",
     "card.type.structureBasic": "Building · Basic",
+    "card.type.structureElite": "Building · Elite",
     "card.label.cost": "Cost",
     "card.stat.bought": "Bought",
     "card.stat.foodProduction": "Production",
