@@ -811,3 +811,8 @@ I18N.register("tr", {
     "status.structureUpgrade.balancePending": "Geliştirme maliyetleri ve inşaat süreleri daha sonra belirlenecek.",
     "changelog.entry.storageBroodUpgrades": "Depo ve kuluçka odaları için araştırma gerektiren dokuz geliştirme seviyesi hazırlandı."
 });
+
+
+I18N.register("tr", {
+    "status.structureUpgrade.requiresBuilding": "Önce ilgili oda inşa edilmelidir."
+});
