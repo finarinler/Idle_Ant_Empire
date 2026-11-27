@@ -311,9 +311,15 @@
         if (!progress || progress.total <= 1 || progress.completed >= progress.total) { return null; }
 
         // Die Mehrfachanzeige ist nur sichtbar, solange der Batch noch läuft.
-        const hasActiveBatch = !!(eco.trainings[id] && eco.trainings[id].queueBatch);
+        const training = eco.trainings && eco.trainings[id];
+        const hasActiveBatch = !!(training && training.queueBatch && training.remaining > 0);
         const hasQueuedBatch = !!(eco.trainingQueues[id] && eco.trainingQueues[id].length);
-        if (!hasActiveBatch && !hasQueuedBatch) { return null; }
+        if (!hasActiveBatch && !hasQueuedBatch)
+        {
+            // Verwaiste Fortschrittsdaten aus älteren Spielständen dürfen keinen Button-Zähler anzeigen.
+            delete eco.trainingQueueProgress[id];
+            return null;
+        }
 
         return { completed: progress.completed, total: progress.total };
     };
