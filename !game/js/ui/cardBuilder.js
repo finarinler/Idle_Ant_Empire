@@ -346,6 +346,8 @@ const CardBuilder = (function ()
         // unabhängig von der Anzahl der Stat-Zeilen immer an derselben Stelle sitzen.
         const progress = create("div", "iae-card-progress iae-card-progress-slot", card);
         nodes.progress = progress;
+        nodes.queueProgress = create("div", "iae-card-queue-progress", card);
+        nodes.queueProgress.hidden = true;
 
         if (entry.progressId)
         {
@@ -519,6 +521,15 @@ const CardBuilder = (function ()
         }
 
         setText(nodes.hint, status.hint || "");
+        const queueProgress = action.queueProgress ? action.queueProgress() : null;
+        if (nodes.queueProgress) {
+            nodes.queueProgress.hidden = !queueProgress || !queueProgress.total;
+            if (queueProgress && queueProgress.total) {
+                setText(nodes.queueProgress, { key: queueProgress.key, params: { completed: queueProgress.completed, total: queueProgress.total } });
+            } else {
+                setText(nodes.queueProgress, "");
+            }
+        }
 
         if (nodes.batchButtons)
         {
