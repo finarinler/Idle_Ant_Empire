@@ -25,6 +25,7 @@ const APP_MODULES = [
     { script: "!game/js/ui/!ui.js", loader: "loadUIModules" },
     { script: "!game/js/persistence/!persistence.js", loader: "loadPersistenceModules" },
     { script: "achievements/js/!achievements.js", loader: "loadAchievementModules" },
+    { script: "prestige/js/prestigeLogic.js" },
     { script: "expedition/js/!expeditions.js", loader: "loadExpeditionModules" },
     { script: "units/js/!units.js", loader: "loadUnitModules" },
     { script: "structures/js/!structures.js", loader: "loadStructureModules" },
