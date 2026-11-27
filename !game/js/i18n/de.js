@@ -685,3 +685,7 @@ I18N.register("de", {
     "queue.progress.training": "Ausgebildet: {completed}/{total}",
     "queue.progress.build": "Errichtet: {completed}/{total}"
 });
+
+I18N.register("de", {
+    "changelog.entry.queueProgress": "Ausbildungs- und Bauwarteschlangen zeigen jetzt den bereits abgeschlossenen Fortschritt."
+});
