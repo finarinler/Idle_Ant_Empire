@@ -193,6 +193,10 @@
                 keepLabel: true,
                 preview: { kind: "unit", id: "scout" },
                 batchOptions: () => hasScout() ? { ten: false, twentyFive: false, max: 0 } : Economy.getTrainingBatchOptions("scout"),
+                queueProgress: () => {
+                    const progress = Economy.getTrainingQueueProgress("scout");
+                    return progress ? { ...progress, key: "queue.progress.training" } : null;
+                },
                 batchRun: amount => recruitUnitBatch("scout", amount),
                 run: () => hasScout() ? toggleScoutAutomation() : buyScout()
             },
@@ -267,6 +271,10 @@
                 missingLabel: { key: "button.missingResources" },
                 preview: { kind: "unit", id: "brood-expert" },
                 batchOptions: () => Economy.getTrainingBatchOptions("brood-expert"),
+                queueProgress: () => {
+                    const progress = Economy.getTrainingQueueProgress("brood-expert");
+                    return progress ? { ...progress, key: "queue.progress.training" } : null;
+                },
                 batchRun: amount => recruitUnitBatch("brood-expert", amount),
                 run: buyBroodExpert
             },
