@@ -281,7 +281,8 @@
             if (affordable > 0) { Economy._removeUnits(id, affordable); }
         }
 
-        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: affordable };
+        // MAX bleibt deaktiviert, solange der für dieses Gebäude benötigte Bauplatz belegt ist.
+        return { ten: affordable >= 10, twentyFive: affordable >= 25, max: buildingSlotBusy ? 0 : affordable };
     };
 
     Economy.recruitBatch = function (id, amount, factorOverride)
@@ -510,6 +511,9 @@
         const def = StructureRegistry.get(id), store = def.store;
         if (!def.build) { return { ten: false, twentyFive: false, max: 0 }; }
         const current = Economy.getStructureNumber(id), queue = (GameState.construction.queues || {})[id] || [];
+        const info = Economy.getProjectInfo(id, "build");
+        const slot = info.requiresBuilder ? "builder" : "free";
+        const buildingSlotBusy = Boolean(GameState.construction[slot]);
         const active = ["free", "builder"].filter(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build").length;
         const pending = active + queue.reduce((n, job) => n + (Number(job.count) || 0), 0);
         const limit = Math.max(0, Math.min(1000, Math.floor((def.maxCount === undefined ? Infinity : def.maxCount) - current - pending)));
