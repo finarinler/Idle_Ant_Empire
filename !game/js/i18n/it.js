@@ -99,9 +99,9 @@ I18N.register("it", {
     "loading.scriptError": "Errore durante il caricamento di: {path}",
 
     /* ---------- Risorse ---------- */
-    "resource.food": "Cibo (F)",
+    "resource.food": "Cibo ([[F]])",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larve (L)",
+    "resource.larvae": "Larve ([[L]])",
 
     /* ---------- Interfaccia generale ---------- */
     "card.type.unitBasic": "Unità · Base",
@@ -144,10 +144,10 @@ I18N.register("it", {
     "expedition.scoutLockedTitle": "L’esploratrice conduce le spedizioni automaticamente.",
 
     /* ---------- Unità ---------- */
-    "unit.ant.name": "Formica (A)",
+    "unit.ant.name": "Formica ([[A]])",
     "unit.ant.desc": "Raccoglie cibo per la tua colonia.",
     "unit.ant.buy": "Compra formica",
-    "unit.queen.name": "Regina (Q)",
+    "unit.queen.name": "Regina ([[Q]])",
     "unit.queen.desc": "Depone le larve da cui nascono nuove formiche.",
     "unit.queen.buy": "Compra regina",
     "unit.scout.name": "Esploratrice",
