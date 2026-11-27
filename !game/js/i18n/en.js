@@ -827,3 +827,8 @@ I18N.register("en", {
 I18N.register("en", {
     "status.structureUpgrade.requiresBuilding": "The corresponding chamber must be built first."
 });
+
+
+I18N.register("en", {
+    "changelog.entry.unitBalanceUpdated": "Unit balance adjusted."
+});
