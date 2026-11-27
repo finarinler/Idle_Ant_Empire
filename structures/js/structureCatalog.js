@@ -79,7 +79,9 @@
         const currentLevel = () => GameState.structures[config.levelKey];
         const clampTarget = () =>
         {
-            target = Math.max(currentLevel() + 1, Math.min(config.maxLevel, target));
+            target = currentLevel() >= config.maxLevel
+                ? config.maxLevel
+                : Math.max(currentLevel() + 1, Math.min(config.maxLevel, target));
             return target;
         };
         const capacityAt = level => StructureRegistry.get(config.structureId).capacityAtLevel(level);
