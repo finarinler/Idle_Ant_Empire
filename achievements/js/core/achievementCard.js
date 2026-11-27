@@ -3,19 +3,21 @@
 ========================= */
 const ACHIEVEMENT_CATEGORY_ORDER = [
  {id:"basic",icon:"✦"},{id:"collect",icon:"📦"},{id:"build",icon:"🏗"},{id:"units",icon:"🐜"},
- {id:"expedition",icon:"🧭"},{id:"research",icon:"⚗"},{id:"military",icon:"⚔"},{id:"other",icon:"🏆"}
+ {id:"expedition",icon:"🧭"},{id:"research",icon:"⚗"},{id:"military",icon:"⚔"},{id:"ep",icon:"⭐"},{id:"other",icon:"🏆"}
 ];
 const ACHIEVEMENT_SERIES = [
  {id:"colonyMilestones",category:"basic",titleKey:"achievements.series.colonyMilestones",icon:"🏡",ids:["firstSteps","goldenAge","knowledgeIsPower"]},
  {id:"gatheringAchievements",category:"collect",titleKey:"achievements.series.gatheringAchievements",icon:"📦",ids:["smallCollector"]},
+ {id:"foodReserves",category:"collect",titleKey:"achievements.series.foodReserves",icon:"🥫",ids:["foodReserve1000","foodReserve10000"]},
+ {id:"larvaeReserves",category:"units",titleKey:"achievements.series.larvaeReserves",icon:"🐛",ids:["larvaeReserve100","larvaeReserve500"]},
  {id:"colonyConstruction",category:"build",titleKey:"achievements.series.colonyConstruction",icon:"🏗️",ids:["buildColony"]},
- {id:"ants",category:"units",titleKey:"achievements.series.ants",icon:"🐜",ids:["purchasedAnts1","purchasedAnts10","purchasedAnts50","purchasedAnts100","purchasedAnts250","purchasedAnts500","purchasedAnts1000"]},
- {id:"queens",category:"units",titleKey:"achievements.series.queens",icon:"👑",ids:["smallColony","queenColonyTwentyFive","queenColonyHundred"]},
- {id:"collectors",category:"units",titleKey:"achievements.series.collectors",icon:"🍄",ids:["collector10","collector25","collector50","collector100","collector250"]},
- {id:"farms",category:"build",titleKey:"achievements.series.farms",icon:"🍄",ids:["mushroomFarmTen","mushroomFarmTwentyFive","mushroomFarmFifty","mushroomFarmHundred","mushroomFarmTwoFifty"]},
- {id:"completedExpeditions",category:"expedition",titleKey:"achievements.series.completedExpeditions",icon:"🧭",ids:["expeditionVeteran","speedExpeditions","expeditionCommander"]},
- {id:"verySuccessfulExpeditions",category:"expedition",titleKey:"achievements.series.verySuccessfulExpeditions",icon:"⭐",ids:["criticalMastery"]},
- {id:"expeditionAchievements",category:"expedition",titleKey:"achievements.series.expeditionAchievements",icon:"🏆",ids:["foundTenAnts"]},
+ {id:"ants",category:"units",titleKey:"achievements.series.ants",icon:"🐜",ids:["purchasedAnts1","purchasedAnts10","purchasedAnts50","purchasedAnts100","purchasedAnts250","purchasedAnts500","purchasedAnts1000","purchasedAnts2000","purchasedAnts5000"]},
+ {id:"queens",category:"units",titleKey:"achievements.series.queens",icon:"👑",ids:["smallColony","queenColonyTwentyFive","queenColonyHundred","queenCourt250","queenEmpire500"]},
+ {id:"collectors",category:"units",titleKey:"achievements.series.collectors",icon:"🍄",ids:["collector10","collector25","collector50","collector100","collector250","collectorHarvest500","collectorHarvest1000"]},
+ {id:"farms",category:"build",titleKey:"achievements.series.farms",icon:"🍄",ids:["mushroomFarmTen","mushroomFarmTwentyFive","mushroomFarmFifty","mushroomFarmHundred","mushroomFarmTwoFifty","mushroomFarmSettlement500","mushroomFarmMetropolis1000"]},
+ {id:"completedExpeditions",category:"expedition",titleKey:"achievements.series.completedExpeditions",icon:"🧭",ids:["expeditionVeteran","speedExpeditions","expeditionCommander","expeditionColony2500","expeditionWorld5000"]},
+ {id:"verySuccessfulExpeditions",category:"expedition",titleKey:"achievements.series.verySuccessfulExpeditions",icon:"⭐",ids:["criticalMastery","criticalFortune500","criticalFortune1000"]},
+ {id:"expeditionAchievements",category:"expedition",titleKey:"achievements.series.expeditionAchievements",icon:"🏆",ids:["foundTenAnts","colonyRescuer25"]},
  {id:"expeditionFailures",category:"expedition",titleKey:"achievements.series.expeditionFailures",icon:"🛡️",ids:["expeditionMisfortune","expeditionMisfortuneMaster","expeditionMisfortuneLegend"]}
 ];
 function getAchievementDefinition(id){return ACHIEVEMENTS.find(item=>item.id===id);}
