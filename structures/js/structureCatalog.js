@@ -29,6 +29,10 @@
         preview: { kind: "structure", id: structureId },
         batchOptions: () => Economy.getProjectBatchOptions(structureId),
         batchRun: amount => startStructureProjectBatch(structureId, amount),
+        queueProgress: () => {
+            const progress = Economy.getProjectProgress(structureId, "build");
+            return Economy.getProject(structureId, "build") ? { fraction: progress, key: "button.build" } : null;
+        },
         run: () => startStructureProject(structureId, "build")
     });
 
@@ -97,7 +101,6 @@
                 { label: { key: "card.stat.perChamber" }, value: () => formatGameNumber(Economy.getHousingPerChamber()) },
                 buildTimeStat("housing-chamber", "build")
             ],
-            progressId: "progress-housing",
             cost: buildCost("housing-chamber", ["food"]),
             action: buildAction("housing-chamber"),
             status: () => projectStatus("housing-chamber", "build")
@@ -115,7 +118,6 @@
                 totalProductionStat("mushroom-farm", "food"),
                 buildTimeStat("mushroom-farm", "build")
             ],
-            progressId: "progress-mushroom",
             cost: buildCost("mushroom-farm", ["food"]),
             action: buildAction("mushroom-farm"),
             status: () => projectStatus("mushroom-farm", "build")
