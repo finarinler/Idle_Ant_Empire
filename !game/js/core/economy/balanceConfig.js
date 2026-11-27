@@ -26,7 +26,7 @@ const BALANCE = {
         "collector": 30,
         "storage-keeper": 150,
         "grand-nurse": 150,
-        "builder": 300,
+        "builder": 300, // Basiswert; die tatsächliche Ausbildungszeit steht in BALANCE.builder.trainingSecondsByCount
         "brood-expert": 300,
         "scout": 600
     },
@@ -39,7 +39,9 @@ const BALANCE = {
         maxBuilders: 10,
         // Benötigte und für das jeweilige Ausbauprojekt gebundene Baumeister.
         housingUpgradeRequirements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        capacityUpgradeRequirements: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+        capacityUpgradeRequirements: [2, 3, 4, 5, 6, 7, 8, 9, 10],
+        // Ausbildungszeit je Baumeister Nr. 1 bis 10 (Sekunden).
+        trainingSecondsByCount: [300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1800]
     },
 
     housing: {
@@ -165,7 +167,11 @@ const BALANCE = {
             { max: Infinity, seconds: 60 }
         ],
 
-        constructionChamber: { cost: { food: 1000, larvae: 75, ants: 50, queens: 1 }, buildSeconds: 600 },
+        constructionChamber: {
+            cost: { food: 1000, larvae: 75, ants: 50, queens: 1 },
+            // Bauzeit je Baukammer Nr. 1 bis 10 (Sekunden).
+            buildSecondsByCount: [600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3600]
+        },
 
         storageRoomBuildSeconds: 900,
         broodChamberBuildSeconds: 900,
