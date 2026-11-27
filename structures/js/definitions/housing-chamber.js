@@ -13,7 +13,8 @@
 
     const config = BALANCE.provisional.housing;
 
-    // Wohnraum je Wohnkammer auf dem gegebenen Level
+    // Internes Level 1 entspricht sichtbarer Ausbaustufe 0 (10 Wohnplätze).
+    // Jede abgeschlossene Ausbaustufe erhöht den Wohnraum um 5.
     function housingCapacity(level)
     {
         return BALANCE.housing.baseCapacityPerChamber + config.capacityBonusPerLevel * (Math.max(1, level) - 1);
