@@ -434,7 +434,7 @@ I18N.register("tr", {
     "structure.housing.name": "Barınak Odası",
     "structure.housing.desc": "Karıncaların için yaşam alanı sağlar.",
     "structure.housingUpgrade.name": "Barınak Geliştirmesi",
-    "structure.housingUpgrade.desc": "Tüm barınak odalarını birlikte geliştirir.\nSeviyeler atlanabilir.",
+    "structure.housingUpgrade.desc": "Tüm yaşam odalarını geliştirir.\nHer seviye araştırılmalıdır.",
     "structure.housingUpgrade.target": "Hedef: seviye {level}",
     "structure.mushroomFarm.name": "Mantar Çiftliği",
     "structure.mushroomFarm.desc": "Yiyecek üretir.\nToplayıcılar toplam üretimi artırır.",
