@@ -10,6 +10,8 @@
     function initGameNavigation()
     {
         const nav = document.querySelector(".game-navigation");
+        const navToggle = document.getElementById("game-navigation-toggle");
+        const navItems = document.getElementById("game-navigation-items");
         const header = document.querySelector(".sticky-top");
 
         // Die Navigation bleibt direkt unter dem tatsächlich sichtbaren Header.
@@ -36,6 +38,39 @@
         const optionsPanel = document.getElementById("options-menu");
         const achievementPanel = document.getElementById("achievement-container");
         const logPanel = document.getElementById("log-container");
+
+        // Auf Mobilgeräten startet das Menü standardmäßig geschlossen.
+        // Die letzte Auswahl bleibt lokal erhalten.
+        const navigationStorageKey = "idleAntEmpireNavigationCollapsed";
+        function setNavigationCollapsed(collapsed, persist = true)
+        {
+            if (!nav || !navToggle || !navItems) return;
+            nav.classList.toggle("is-collapsed", collapsed);
+            navItems.hidden = collapsed;
+            navToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+            const icon = navToggle.querySelector(".game-navigation-toggle-icon");
+            if (icon) icon.textContent = collapsed ? "⌄" : "⌃";
+            if (persist)
+            {
+                try { localStorage.setItem(navigationStorageKey, collapsed ? "1" : "0"); }
+                catch (error) { /* Navigation funktioniert auch ohne lokalen Speicher. */ }
+            }
+        }
+
+        if (nav && navToggle && navItems)
+        {
+            let savedState = null;
+            try { savedState = localStorage.getItem(navigationStorageKey); }
+            catch (error) { /* Auf mobilen Browsern kann Speicher gesperrt sein. */ }
+            const initiallyCollapsed = savedState === null
+                ? window.matchMedia("(max-width: 800px)").matches
+                : savedState === "1";
+            setNavigationCollapsed(initiallyCollapsed, false);
+            navToggle.addEventListener("click", () =>
+            {
+                setNavigationCollapsed(!nav.classList.contains("is-collapsed"));
+            });
+        }
 
         if (!nav || !navButtons.length || !views.length)
         {
@@ -146,6 +181,7 @@
         {
             if (button.getAttribute("aria-disabled") === "true") return;
             showView(button.dataset.gameView);
+            if (window.matchMedia("(max-width: 800px)").matches) setNavigationCollapsed(true);
         }));
 
         document.querySelectorAll("[data-game-view-target]").forEach(button =>
