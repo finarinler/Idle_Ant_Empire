@@ -674,3 +674,7 @@ I18N.register("fr", {
     "queue.progress.training": "Formées : {completed}/{total}",
     "queue.progress.build": "Construits : {completed}/{total}"
 });
+
+I18N.register("fr", {
+    "changelog.entry.queueProgress": "Les files d’entraînement et de construction affichent désormais la progression terminée."
+});
