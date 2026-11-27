@@ -99,9 +99,9 @@ I18N.register("de", {
     "loading.scriptError": "Fehler beim Laden von: {path}",
 
     /* ---------- Ressourcen ---------- */
-    "resource.food": "Nahrung (F)",
+    "resource.food": "Nahrung ([[F]])",
     "resource.maxRate": "Max.",
-    "resource.larvae": "Larven (L)",
+    "resource.larvae": "Larven ([[L]])",
 
     /* ---------- Allgemeine UI ---------- */
     "card.type.unitBasic": "Einheit · Basis",
@@ -144,10 +144,10 @@ I18N.register("de", {
     "expedition.scoutLockedTitle": "Die Kundschafterin führt Expeditionen automatisch durch.",
 
     /* ---------- Einheiten ---------- */
-    "unit.ant.name": "Ameise (A)",
+    "unit.ant.name": "Ameise ([[A]])",
     "unit.ant.desc": "Sammelt Nahrung für deine Kolonie.",
     "unit.ant.buy": "Ameise kaufen",
-    "unit.queen.name": "Königin (Q)",
+    "unit.queen.name": "Königin ([[Q]])",
     "unit.queen.desc": "Legt die Larven, aus denen neue Ameisen entstehen.",
     "unit.queen.buy": "Königin kaufen",
     "unit.scout.name": "Kundschafterin",
