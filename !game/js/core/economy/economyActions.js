@@ -404,9 +404,13 @@
 
     /* ---------- Bauprojekte ---------- */
 
-    Economy.getBuildTimeFactor = function ()
+    Economy.getBuildTimeFactor = function (assignedBuilders)
     {
-        const builders = Math.min(Economy.getUnitNumber("builder"), BALANCE.builder.maxBuilders);
+        const available = Economy.getUnitNumber("builder");
+        const builders = Math.min(
+            assignedBuilders === undefined ? available : assignedBuilders,
+            BALANCE.builder.maxBuilders
+        );
         return 1 - BALANCE.builder.reductionPerBuilder * builders;
     };
 
@@ -455,7 +459,7 @@
         return {
             cost: info.cost,
             baseSeconds: info.seconds,
-            seconds: info.seconds * Economy.getBuildTimeFactor(),
+            seconds: info.seconds * Economy.getBuildTimeFactor(requiresBuilder ? requiredBuilders : undefined),
             requiresBuilder,
             requiredBuilders
         };
