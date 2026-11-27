@@ -682,8 +682,8 @@ I18N.register("de", {
 
 /* ---------- Queue completion counters ---------- */
 I18N.register("de", {
-    "queue.progress.training": "Ausgebildet: {completed}/{total}",
-    "queue.progress.build": "Errichtet: {completed}/{total}"
+    "queue.progress.training": "{completed}/{total} Ausgebildet",
+    "queue.progress.build": "{completed}/{total} Errichtet"
 });
 
 I18N.register("de", {
