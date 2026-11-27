@@ -816,3 +816,8 @@ I18N.register("fr", {
 I18N.register("fr", {
     "status.structureUpgrade.requiresBuilding": "La chambre correspondante doit d’abord être construite."
 });
+
+
+I18N.register("fr", {
+    "changelog.entry.unitBalanceUpdated": "Équilibrage des unités ajusté."
+});
