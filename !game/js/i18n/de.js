@@ -802,3 +802,9 @@ I18N.register("de", {
     "achievement.epLegend1000.unlocked": "Du hast insgesamt {goal} Erfolgspunkte gesammelt.",
     "achievement.epLegend1000.reward": "Reiner Fortschrittsmeilenstein – keine EP-Belohnung."
 });
+
+
+I18N.register("de", {
+    "button.alreadyTrained": "Bereits Ausgebildet",
+    "button.alreadyBuilt": "Bereits Errichtet"
+});
