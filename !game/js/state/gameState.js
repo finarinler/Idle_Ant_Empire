@@ -73,7 +73,10 @@ const GameState = {
         currentAchievementPoints: 0,
         totalAchievementPointsEarned: 0,
         achievementPointsInitialized: false,
-        achievementPointsIntegrityFixApplied: false
+        achievementPointsIntegrityFixApplied: false,
+        prestigeCount: 0,
+        prestigePoints: 0,
+        totalPrestigePointsEarned: 0
     },
 
     research: {
