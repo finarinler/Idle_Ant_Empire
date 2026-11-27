@@ -659,5 +659,4 @@ I18N.register("fr", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("fr", {
-    "changelog.entry.builderUpkeep": "Chaque bâtisseur consomme désormais 5 nourriture/s."
 });
