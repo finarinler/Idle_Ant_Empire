@@ -816,3 +816,8 @@ I18N.register("tr", {
 I18N.register("tr", {
     "status.structureUpgrade.requiresBuilding": "Önce ilgili oda inşa edilmelidir."
 });
+
+
+I18N.register("tr", {
+    "changelog.entry.unitBalanceUpdated": "Birim dengesi ayarlandı."
+});
