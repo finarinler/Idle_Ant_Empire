@@ -96,6 +96,9 @@ function initGame()
     // Gespeicherten Spielstand laden
     loadGame();
 
+    // Bestehende Erfolge nach dem Laden des Spielstands einmalig mit EP nachvergüten.
+    initializeAchievementPointsForExistingAchievements();
+
     // Offline-Produktion und abgeschlossene Ausbildungen nachholen
     const offlineResult = applyOfflineProgress();
     handleEconomyResult(offlineResult);
