@@ -791,3 +791,9 @@ I18N.register("es", {
     "achievement.epLegend1000.unlocked": "Has conseguido un total de {goal} puntos de logro.",
     "achievement.epLegend1000.reward": "Hito de progreso; no otorga EP."
 });
+
+
+I18N.register("es", {
+    "button.alreadyTrained": "Ya entrenado",
+    "button.alreadyBuilt": "Ya construido"
+});
