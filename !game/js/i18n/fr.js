@@ -799,3 +799,15 @@ I18N.register("fr", {
     "button.alreadyTrained": "Déjà formé",
     "button.alreadyBuilt": "Déjà construit"
 });
+
+
+/* ---------- Research-gated storage and brood chamber upgrades ---------- */
+I18N.register("fr", {
+    "structure.storageUpgrade.name": "Amélioration de la chambre à réserves",
+    "structure.storageUpgrade.desc": "Augmente le stockage de nourriture de 10 000 par niveau. Chaque niveau doit être recherché.",
+    "structure.broodUpgrade.name": "Amélioration de la chambre d’élevage",
+    "structure.broodUpgrade.desc": "Augmente le stockage de larves de 2 500 par niveau. Chaque niveau doit être recherché.",
+    "structure.capacityUpgrade.target": "Niveau cible : {level}",
+    "status.structureUpgrade.balancePending": "Les coûts et les durées de construction seront définis ultérieurement.",
+    "changelog.entry.storageBroodUpgrades": "Neuf niveaux d’amélioration soumis à la recherche ont été préparés pour les chambres de stockage et d’élevage."
+});
