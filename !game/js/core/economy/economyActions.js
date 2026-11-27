@@ -292,6 +292,9 @@
         if (!Number.isFinite(quantity) || quantity < 1 || quantity > 1000 || factor <= 0 || factor > 1 || (factor <= 0.80 && quantity < 26)) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
         const options = Economy.getTrainingBatchOptions(id);
         if (quantity > options.max) { return { ok: false, reason: { key: "status.elite.cannotAfford" } }; }
+        const progress = GameState.economy.trainingQueueProgress[id];
+        if (!progress || progress.completed >= progress.total) GameState.economy.trainingQueueProgress[id] = { completed: 0, total: quantity };
+        else progress.total += quantity;
         const queue = GameState.economy.trainingQueues[id] || [];
         const last = queue[queue.length - 1];
         if (last && last.factor === factor) { last.count += quantity; }
@@ -299,6 +302,12 @@
         GameState.economy.trainingQueues[id] = queue;
         Economy._startQueuedTraining(id);
         return { ok: true, queued: quantity };
+    };
+
+    Economy.getTrainingQueueProgress = function (id)
+    {
+        const progress = GameState.economy.trainingQueueProgress && GameState.economy.trainingQueueProgress[id];
+        return progress && progress.total > 0 ? { completed: progress.completed, total: progress.total } : null;
     };
 
     Economy._startQueuedTraining = function (id)
@@ -312,7 +321,7 @@
         if (state.state !== "available") { return false; }
         const duration = Economy.getTrainingSeconds(id) * job.factor;
         if (!Number.isFinite(duration) || duration <= 0 || !Economy._spend(Economy.getRecruitCost(id))) { return false; }
-        eco.trainings[id] = { duration, remaining: duration, batchFactor: job.factor };
+        eco.trainings[id] = { duration, remaining: duration, batchFactor: job.factor, queueBatch: true };
         job.count--;
         if (job.count <= 0) { queue.shift(); }
         if (!queue.length) { delete eco.trainingQueues[id]; }
@@ -540,11 +549,21 @@
         const options = Economy.getProjectBatchOptions(id);
         if (quantity > options.max) return { ok: false, reason: { key: "status.elite.cannotAfford" } };
         GameState.construction.queues = GameState.construction.queues || {};
+        GameState.construction.queueProgress = GameState.construction.queueProgress || {};
+        const progress = GameState.construction.queueProgress[id];
+        if (!progress || progress.completed >= progress.total) GameState.construction.queueProgress[id] = { completed: 0, total: quantity };
+        else progress.total += quantity;
         const queue = GameState.construction.queues[id] || [], last = queue[queue.length - 1];
         if (last && last.factor === factor) last.count += quantity; else queue.push({ count: quantity, factor });
         GameState.construction.queues[id] = queue;
         Economy._startQueuedProject(id);
         return { ok: true, queued: quantity };
+    };
+
+    Economy.getProjectQueueProgress = function (id)
+    {
+        const progress = GameState.construction.queueProgress && GameState.construction.queueProgress[id];
+        return progress && progress.total > 0 ? { completed: progress.completed, total: progress.total } : null;
     };
 
     Economy._startQueuedProject = function (id)
@@ -557,7 +576,7 @@
         const job = queue[0], info = Economy.getProjectInfo(id, "build"), slot = info.requiresBuilder ? "builder" : "free";
         if (GameState.construction[slot] || (info.requiresBuilder && Economy.getUnitNumber("builder") < 1) || !Economy._spend(info.cost)) return false;
         const duration = info.seconds * job.factor;
-        GameState.construction[slot] = { structureId: id, kind: "build", targetLevel: 0, duration, remaining: duration, batchFactor: job.factor };
+        GameState.construction[slot] = { structureId: id, kind: "build", targetLevel: 0, duration, remaining: duration, batchFactor: job.factor, queueBatch: true };
         if (--job.count <= 0) queue.shift();
         if (!queue.length) delete queues[id];
         return true;
