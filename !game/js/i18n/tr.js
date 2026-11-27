@@ -662,6 +662,7 @@ I18N.register("tr", {
     "options.tooltips": "İşlem ipuçları",
     "options.tooltipsDescription": "Etkileri, üretim değişikliklerini ve maliyetleri işlem ipuçlarında göster",
     "changelog.entry.tooltipsUpdated": "İpuçları güncellendi.",
+    "changelog.entry.layoutUpdated": "Düzen güncellendi.",
     "changelog.entry.actionPreview": "İşlem ipuçları artık beklenen üretim değişikliklerini gösterir ve Seçenekler bölümünden açılıp kapatılabilir.",
 });
 
