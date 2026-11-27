@@ -666,3 +666,9 @@ I18N.register("en", {
     "options.tooltipsDescription": "Show action tooltips with effects, production changes and costs",
     "changelog.entry.actionPreview": "Action tooltips now show expected production changes and can be enabled or disabled in Options.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("en", {
+    "changelog.entry.builderUpkeep": "Each builder now consumes 5 food/s."
+});
