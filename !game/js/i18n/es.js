@@ -622,7 +622,6 @@ I18N.register("es", {
     "changelog.entry.hideCappedCostProgress": "Se ocultan el coste y la barra de progreso de las unidades y edificios que han alcanzado su máximo.",
     "tooltip.preview.expectedProduction": "Producción",
     "tooltip.preview.expectedConsumption": "Consumo",
-    "tooltip.preview.expectedOther": "Otros",
     "tooltip.preview.expectedTime": "Tiempo",
     "tooltip.preview.expectedCosts": "Costes previstos",
     "tooltip.preview.expectedDuration": "Duración prevista",
