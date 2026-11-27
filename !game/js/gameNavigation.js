@@ -50,8 +50,7 @@
             if (gameShell) gameShell.classList.toggle("navigation-collapsed", collapsed);
             navItems.hidden = collapsed;
             navToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
-            const icon = navToggle.querySelector(".game-navigation-toggle-icon");
-            if (icon) icon.textContent = collapsed ? "⌄" : "⌃";
+
             if (persist)
             {
                 try { localStorage.setItem(navigationStorageKey, collapsed ? "1" : "0"); }
