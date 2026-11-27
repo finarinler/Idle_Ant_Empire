@@ -180,6 +180,12 @@
             return BALANCE.getCountBasedSeconds(nextCollector, BALANCE.collector.trainingSecondsByCount);
         }
 
+        if (id === "builder")
+        {
+            const nextBuilder = Economy.getUnitNumber(id) + 1;
+            return BALANCE.builder.trainingSecondsByCount[Math.min(BALANCE.builder.maxBuilders, nextBuilder) - 1];
+        }
+
         return BALANCE.trainingSeconds[id];
     };
 
