@@ -414,6 +414,12 @@
         return 1 - BALANCE.builder.reductionPerBuilder * builders;
     };
 
+    function getStructureMaxCount(def)
+    {
+        const max = typeof def.maxCount === "function" ? def.maxCount() : def.maxCount;
+        return max === undefined || max === null ? Infinity : max;
+    }
+
     function getOperation(def, kind)
     {
         return kind === "upgrade" ? def.upgrade : def.build;
@@ -513,7 +519,7 @@
 
         if (kind === "build")
         {
-            const maxCount = def.maxCount === undefined ? Infinity : def.maxCount;
+            const maxCount = getStructureMaxCount(def);
 
             if (findProject(structureId, "build"))
             {
@@ -584,7 +590,7 @@
         const buildingSlotBusy = Boolean(GameState.construction[slot]);
         const active = ["free", "builder"].filter(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build").length;
         const pending = active + queue.reduce((n, job) => n + (Number(job.count) || 0), 0);
-        const limit = Math.max(0, Math.min(1000, Math.floor((def.maxCount === undefined ? Infinity : def.maxCount) - current - pending)));
+        const limit = Math.max(0, Math.min(1000, Math.floor(getStructureMaxCount(def) - current - pending)));
         const stock = { ants: getTotalAnts(), food: GameState.resources.food, larvae: GameState.resources.larvae, queens: GameState.resources.queens };
         let affordable = 0;
         // Aktive und bereits vorgemerkte Bauaufträge bei dynamischen Folgekosten berücksichtigen.
@@ -638,7 +644,7 @@
         if (!queue || !queue.length) { delete queues[id]; return false; }
         if (["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].kind === "build")) return false;
         const def = StructureRegistry.get(id);
-        if ((def.requirement && def.requirement()) || Economy.getStructureNumber(id) >= (def.maxCount === undefined ? Infinity : def.maxCount)) return false;
+        if ((def.requirement && def.requirement()) || Economy.getStructureNumber(id) >= getStructureMaxCount(def)) return false;
         const job = queue[0], info = Economy.getProjectInfo(id, "build"), slot = info.requiresBuilder ? "builder" : "free";
         if (GameState.construction[slot] || (info.requiresBuilder && Economy.getUnitNumber("builder") < 1) || !Economy._spend(info.cost)) return false;
         const duration = info.seconds * job.factor;
