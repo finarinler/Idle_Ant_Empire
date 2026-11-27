@@ -685,3 +685,7 @@ I18N.register("en", {
     "queue.progress.training": "Trained: {completed}/{total}",
     "queue.progress.build": "Built: {completed}/{total}"
 });
+
+I18N.register("en", {
+    "changelog.entry.queueProgress": "Training and construction queues now show completed progress."
+});
