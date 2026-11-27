@@ -36,8 +36,6 @@ async function loadAchievementModules()
     await loadResearchAchievements();
     await loadScripts(["achievements/js/core/achievementPoints.js"]);
 
-    // Bereits vorhandene freigeschaltete Erfolge einmalig mit EP nachvergüten.
-    initializeAchievementPointsForExistingAchievements();
 
     // Alle Erfolge direkt beim Start darstellen – nicht erst nach dem ersten Ressourcen-Tick.
     // Bereits erfüllte, aber noch nicht gespeicherte Erfolge werden regulär freigeschaltet.
