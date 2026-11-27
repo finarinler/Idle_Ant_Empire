@@ -525,7 +525,7 @@
 }
 
 
-/* Einklappbare Hauptnavigation – besonders kompakt auf Mobilgeräten */
+/* Einklappbare Hauptnavigation – nutzt dieselben Mandibeln wie Kategorien */
 .game-navigation {
     width: 100%;
     box-sizing: border-box;
@@ -533,37 +533,40 @@
 .game-navigation-toggle {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    gap: 15px;
     width: 100%;
-    min-height: 46px;
-    padding: 10px 13px;
-    border: 1px solid #6b512e;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #302516, #1e1912);
-    color: var(--game-gold-bright);
+    min-height: 0;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
     font: inherit;
-    font-weight: 750;
     text-align: left;
     cursor: pointer;
 }
 .game-navigation-toggle:hover {
-    border-color: var(--game-gold-bright);
-    background: linear-gradient(135deg, #3a2c19, #241c12);
+    background: transparent;
 }
 .game-navigation-toggle:focus-visible {
-    outline: 2px solid var(--game-gold-bright);
+    outline: 2px solid var(--gold-brown);
     outline-offset: 3px;
+    border-radius: 5px;
 }
-.game-navigation-toggle-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 28px;
-    height: 24px;
-    border-radius: 6px;
-    background: rgba(197, 163, 110, .12);
-    font-size: 1.25rem;
-    line-height: 1;
+.game-navigation-toggle .category-title {
+    flex: 0 0 auto;
+}
+.game-navigation-toggle .category-divider {
+    min-width: 12px;
+}
+.game-navigation-toggle .mandible-icon {
+    flex: 0 0 auto;
+}
+.game-navigation.is-collapsed .game-navigation-toggle .mandible-icon span:first-child {
+    transform: rotate(45deg) translateY(2px);
+}
+.game-navigation.is-collapsed .game-navigation-toggle .mandible-icon span:last-child {
+    transform: rotate(-45deg) translateY(2px);
 }
 .game-navigation-items {
     display: flex;
