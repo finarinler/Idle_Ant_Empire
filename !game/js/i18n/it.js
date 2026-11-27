@@ -434,7 +434,7 @@ I18N.register("it", {
     "structure.housing.name": "Camera abitativa",
     "structure.housing.desc": "Offre spazio abitativo alle tue formiche.",
     "structure.housingUpgrade.name": "Potenziamento alloggi",
-    "structure.housingUpgrade.desc": "Potenzia tutte le camere insieme.\nI livelli possono essere saltati.",
+    "structure.housingUpgrade.desc": "Migliora tutte le camere abitative.\nOgni livello deve essere ricercato.",
     "structure.housingUpgrade.target": "Obiettivo: livello {level}",
     "structure.mushroomFarm.name": "Fungaia",
     "structure.mushroomFarm.desc": "Produce cibo.\nI raccoglitori aumentano la produzione totale.",
