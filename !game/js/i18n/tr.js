@@ -633,7 +633,6 @@ I18N.register("tr", {
     "changelog.entry.collapsibleNavigation": "Gezinme menüsü artık mandibula düğmesiyle açılıp kapatılabilir.",
     "changelog.entry.maxBuildSlot": "Gerekli inşaat yuvası doluyken MAX düğmesi devre dışı bırakılır.",
     "changelog.entry.goldResourceAbbreviations": "Kaynak ve birim kısaltmaları artık göstergelerde ve adlarda altın rengiyle vurgulanıyor.",
-    undefined
     "tooltip.preview.production.food": "Yiyecek üretimi",
     "tooltip.preview.production.larvae": "Larva üretimi",
     "tooltip.preview.consumption.food": "Yiyecek tüketimi",
