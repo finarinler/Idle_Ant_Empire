@@ -219,8 +219,12 @@ const CardBuilder = (function ()
             }
             else
             {
-                const abbreviation = line.tone && line.text.match(/^(.*?)([FLAK])(\\/s)$/);
-                if (abbreviation)
+                const suffixStart = line.text.lastIndexOf(" ");
+            const suffix = suffixStart >= 0 ? line.text.slice(suffixStart + 1) : "";
+            const abbreviation = line.tone && suffix.length === 3 && "FLAK".includes(suffix[0]) && suffix.slice(1) === "/s"
+                ? [line.text.slice(0, suffixStart + 1), suffix[0], "/s"]
+                : null;
+            if (abbreviation)
                 {
                     row.append(document.createTextNode(abbreviation[1]));
                     const abbr = document.createElement("span");
