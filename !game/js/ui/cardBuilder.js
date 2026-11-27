@@ -205,7 +205,7 @@ const CardBuilder = (function ()
                 : resource === "larvae" ? I18N.t("resource.larvae")
                 : resource === "ants" ? I18N.t("tooltip.preview.ants")
                 : I18N.t("tooltip.preview.queens");
-            costLines.push({ cost: value, label });
+            costLines.push({ cost: value, label, abbreviation: resourceNames[resource] });
         });
 
         const lines = [];
@@ -250,7 +250,7 @@ const CardBuilder = (function ()
             {
                 if (line.abbreviation)
                 {
-                    row.append(document.createTextNode(line.text));
+                    row.append(document.createTextNode(line.text + " "));
                     const abbr = document.createElement("span");
                     abbr.className = "abbr-gold";
                     abbr.textContent = line.abbreviation;
