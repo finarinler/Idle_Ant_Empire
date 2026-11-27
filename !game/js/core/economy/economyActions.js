@@ -466,6 +466,12 @@
             return { state: "locked", hint: blocked.key ? blocked : undefined, reason: blocked };
         }
 
+        if (kind === "upgrade" && Economy.getStructureNumber(structureId) <= 0)
+        {
+            const info = { key: "status.structureUpgrade.requiresBuilding" };
+            return { state: "locked", hint: info, reason: info };
+        }
+
         if (kind === "build")
         {
             const maxCount = def.maxCount === undefined ? Infinity : def.maxCount;
