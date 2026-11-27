@@ -113,8 +113,8 @@ const BALANCE = {
 
     carriedOver: {
         queen: {
-            baseFood: 500, foodScaling: 1.075,
-            baseAnts: 1,   antsScaling: 1.05
+            baseFood: 500, foodScaling: 1.075
+            // Ameisenkosten: linear nach Königinnen-Nummer (1 A, 2 A, 3 A, ...).
         },
         scout: { cost: { ants: 50, food: 5000, larvae: 1000, queens: 1 }, maxCount: 1 },
         broodExpert: { baseCost: { ants: 100, food: 1000, larvae: 250, queens: 1 }, maxCount: 5 },
