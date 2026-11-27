@@ -16,6 +16,7 @@ I18N.register("tr", {
     "nav.military": "Ordu",
     "nav.logbook": "Günlük",
     "nav.achievements": "Başarımlar",
+    "nav.prestige": "Prestij",
     "nav.statistics": "İstatistikler",
     "nav.options": "Seçenekler",
     "expedition.eyebrow": "KEŞİF VE GANİMET",
