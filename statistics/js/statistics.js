@@ -58,6 +58,7 @@
         set("stat-ants-found", valueText(resources.antsFound));
         set("stat-ants-bred", valueText(resources.bredAnts));
         set("stat-queens", valueText(resources.queens));
+        set("stat-achievement-points-total", integerText(stats.totalAchievementPointsEarned));
         set("stat-buildings", integerText(buildings));
         set("stat-expeditions", integerText(stats.expeditionsCount));
         set("stat-expedition-ants", valueText(stats.expeditionAntsFound));
