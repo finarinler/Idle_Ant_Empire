@@ -671,8 +671,8 @@ I18N.register("it", {
 
 /* ---------- Queue completion counters ---------- */
 I18N.register("it", {
-    "queue.progress.training": "Addestrate: {completed}/{total}",
-    "queue.progress.build": "Costruiti: {completed}/{total}"
+    "queue.progress.training": "{completed}/{total} addestrate",
+    "queue.progress.build": "{completed}/{total} costruiti"
 });
 
 I18N.register("it", {
