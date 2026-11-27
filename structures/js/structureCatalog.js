@@ -25,7 +25,8 @@
 
     const buildAction = (structureId) => ({
         label: { key: "button.build" },
-        missingLabel: { key: "button.build" },
+        missingLabel: { key: "button.missingResources" },
+        builtLabel: { key: "button.alreadyBuilt" },
         preview: { kind: "structure", id: structureId },
         batchOptions: () => Economy.getProjectBatchOptions(structureId),
         queueProgress: () => {
