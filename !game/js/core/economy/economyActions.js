@@ -308,14 +308,12 @@
     {
         const eco = GameState.economy;
         const progress = eco.trainingQueueProgress && eco.trainingQueueProgress[id];
-        if (!progress || progress.total <= 1) { return null; }
+        if (!progress || progress.total <= 1 || progress.completed >= progress.total) { return null; }
 
-        // Die Anzeige gehört ausschließlich zu einer Mehrfachausbildung.
-        // Alte/übernommene Zähler ohne laufenden Batch sollen den normalen
-        // Buttontext "Ausbilden" nicht dauerhaft verdrängen.
+        // Die Mehrfachanzeige ist nur sichtbar, solange der Batch noch läuft.
         const hasActiveBatch = !!(eco.trainings[id] && eco.trainings[id].queueBatch);
         const hasQueuedBatch = !!(eco.trainingQueues[id] && eco.trainingQueues[id].length);
-        if (progress.completed <= 0 && !hasActiveBatch && !hasQueuedBatch) { return null; }
+        if (!hasActiveBatch && !hasQueuedBatch) { return null; }
 
         return { completed: progress.completed, total: progress.total };
     };
@@ -573,7 +571,13 @@
     Economy.getProjectQueueProgress = function (id)
     {
         const progress = GameState.construction.queueProgress && GameState.construction.queueProgress[id];
-        return progress && progress.total > 0 ? { completed: progress.completed, total: progress.total } : null;
+        const queues = GameState.construction.queues && GameState.construction.queues[id];
+        const active = ["free", "builder"].some(slot => {
+            const project = GameState.construction[slot];
+            return project && project.structureId === id && project.kind === "build" && project.queueBatch;
+        });
+        if (!progress || progress.total <= 1 || progress.completed >= progress.total || (!active && !(queues && queues.length))) { return null; }
+        return { completed: progress.completed, total: progress.total };
     };
 
     Economy._startQueuedProject = function (id)
