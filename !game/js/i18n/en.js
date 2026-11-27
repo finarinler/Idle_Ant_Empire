@@ -639,6 +639,7 @@ I18N.register("en", {
     "changelog.entry.actionPreview": "Dynamic tooltips show effects, total costs and durations for single actions and 10×, 25× and MAX batches.",
     "changelog.entry.housingCostScaling": "Housing Chamber costs adjusted.",
     "changelog.entry.strayAntHousing": "Stray ants only join when enough housing space is available.",
+    "changelog.entry.builderUpkeepDisplay": "Ahora se muestra el consumo de comida en la tarjeta del constructor.",
     "tooltip.preview.production.food": "Food production",
     "tooltip.preview.production.larvae": "Larvae production",
     "tooltip.preview.consumption.food": "Food consumption",
