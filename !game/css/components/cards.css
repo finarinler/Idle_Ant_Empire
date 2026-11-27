@@ -181,3 +181,15 @@
 @media (max-width: 600px) {
     .iae-card-preview { min-width: 210px; max-width: calc(100vw - 20px); max-height: min(230px, calc(100vh - 20px)); }
 }
+
+
+/* Fortschritt der Mehrfach-Ausbildungs- und Bauwarteschlangen */
+.iae-card-queue-progress {
+    margin: -5px 0 11px;
+    color: var(--research-gold-bright);
+    font-size: .75rem;
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+.iae-card-queue-progress[hidden] { display: none; }
