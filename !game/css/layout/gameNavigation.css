@@ -661,3 +661,57 @@
 .game-content > .header-status-line {
     margin-bottom: 12px;
 }
+
+
+/* Mobile: feste seitliche Slide-Navigation, die den Spielbereich verschiebt. */
+@media (max-width: 800px) {
+    .game-shell {
+        --mobile-nav-width: 240px;
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 10px;
+        overflow-x: clip;
+        transition: grid-template-columns .28s ease;
+    }
+    .game-shell:not(.navigation-collapsed) {
+        grid-template-columns: var(--mobile-nav-width) minmax(0, 1fr);
+    }
+    .game-navigation,
+    .game-navigation.is-collapsed {
+        position: sticky;
+        top: var(--game-navigation-sticky-top, 0px);
+        width: var(--mobile-nav-width);
+        min-width: var(--mobile-nav-width);
+        max-height: min(70vh, 640px);
+        overflow: hidden;
+        padding: 8px;
+        transition: width .28s ease, min-width .28s ease, padding .28s ease;
+    }
+    .game-navigation.is-collapsed {
+        width: 48px;
+        min-width: 48px;
+        padding-inline: 5px;
+    }
+    .game-navigation-toggle {
+        min-height: 42px;
+        justify-content: center;
+        gap: 0;
+        white-space: nowrap;
+    }
+    .game-navigation-toggle .category-title,
+    .game-navigation-toggle .category-divider { display: none; }
+    .game-navigation-toggle .mandible-icon { margin: 0; }
+    .game-navigation-items {
+        max-height: calc(min(70vh, 640px) - 58px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .game-navigation.is-collapsed .game-navigation-items { display: none; }
+    .game-nav-button { white-space: nowrap; }
+    .game-content { min-width: 0; }
+    .game-main { min-width: 0; }
+}
+
+@media (max-width: 460px) {
+    .game-shell { --mobile-nav-width: 240px; gap: 8px; }
+    .game-navigation { border-radius: 10px; }
+}
