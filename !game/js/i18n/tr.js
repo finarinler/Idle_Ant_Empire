@@ -108,6 +108,7 @@ I18N.register("tr", {
     "card.type.unitBasic": "Birim · Temel",
     "card.type.unitElite": "Birim · Elit",
     "card.type.structureBasic": "Bina · Temel",
+    "card.type.structureElite": "Bina · Elit",
     "card.label.cost": "Maliyet",
     "card.stat.bought": "Satın alınan",
     "card.stat.foodProduction": "Üretim",
