@@ -10,7 +10,7 @@ StructureRegistry.register({
     id: "construction-chamber",
     nameKey: "structure.construction.name",
     store: { section: "structures", key: "constructionLevel" },
-    maxCount: 1,
+    maxCount: BALANCE.builder.maxBuilders,
 
     requirement: () => GameState.achievements.smallColony ? null : { key: null },
 
@@ -18,7 +18,7 @@ StructureRegistry.register({
         requiresBuilder: BALANCE.provisional.requiresBuilder.constructionChamber,
         getInfo: () => ({
             cost: BALANCE.provisional.constructionChamber.cost,
-            seconds: BALANCE.provisional.constructionChamber.buildSeconds
+            seconds: BALANCE.provisional.constructionChamber.buildSecondsByCount[Math.min(BALANCE.builder.maxBuilders, Economy.getStructureNumber("construction-chamber") + 1) - 1]
         })
     }
 });
