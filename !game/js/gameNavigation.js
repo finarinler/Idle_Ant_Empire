@@ -12,6 +12,7 @@
         const nav = document.querySelector(".game-navigation");
         const navToggle = document.getElementById("game-navigation-toggle");
         const navItems = document.getElementById("game-navigation-items");
+        const gameShell = nav?.closest(".game-shell");
         const header = document.querySelector(".sticky-top");
 
         // Die Navigation bleibt direkt unter dem tatsächlich sichtbaren Header.
@@ -46,6 +47,7 @@
         {
             if (!nav || !navToggle || !navItems) return;
             nav.classList.toggle("is-collapsed", collapsed);
+            if (gameShell) gameShell.classList.toggle("navigation-collapsed", collapsed);
             navItems.hidden = collapsed;
             navToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
             const icon = navToggle.querySelector(".game-navigation-toggle-icon");
