@@ -791,3 +791,9 @@ I18N.register("tr", {
     "achievement.epLegend1000.unlocked": "Toplam {goal} başarı puanı topladın.",
     "achievement.epLegend1000.reward": "Yalnızca ilerleme kilometre taşı – EP ödülü yok."
 });
+
+
+I18N.register("tr", {
+    "button.alreadyTrained": "Zaten eğitildi",
+    "button.alreadyBuilt": "Zaten inşa edildi"
+});
