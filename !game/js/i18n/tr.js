@@ -622,7 +622,6 @@ I18N.register("tr", {
     "changelog.entry.hideCappedCostProgress": "Maksimum sayıya ulaşan birim ve binalarda maliyet alanı ile ilerleme çubuğu gizlenir.",
     "tooltip.preview.expectedProduction": "Üretim",
     "tooltip.preview.expectedConsumption": "Tüketim",
-    "tooltip.preview.expectedOther": "Diğer",
     "tooltip.preview.expectedTime": "Süre",
     "tooltip.preview.expectedCosts": "Beklenen maliyetler",
     "tooltip.preview.expectedDuration": "Beklenen süre",
