@@ -112,7 +112,8 @@ function loadSavedEconomy(saved)
 
             eco.trainings[unitId] = {
                 duration: training.duration,
-                remaining: Math.min(training.remaining, training.duration)
+                remaining: Math.min(training.remaining, training.duration),
+                ...(training.queueBatch ? { queueBatch: true } : {})
             };
         });
     }
@@ -124,9 +125,19 @@ function loadSavedEconomy(saved)
             if (!UnitRegistry.has(unitId) || !Array.isArray(queue)) { return; }
             eco.trainingQueues[unitId] = queue.slice(0, 1000).filter(job => job && Number.isInteger(job.count) && job.count > 0 && Number.isFinite(job.factor) && job.factor > 0 && job.factor <= 1).map(job => ({ count: job.count, factor: job.factor }));
             if (!eco.trainingQueues[unitId].length) { delete eco.trainingQueues[unitId]; }
+            else if (!eco.trainingQueueProgress[unitId]) {
+                const active = eco.trainings[unitId] ? 1 : 0;
+                eco.trainingQueueProgress[unitId] = { completed: 0, total: active + eco.trainingQueues[unitId].reduce((sum, job) => sum + job.count, 0) };
+            }
         });
     }
 
+    if (saved.trainingQueueProgress && typeof saved.trainingQueueProgress === "object") {
+        Object.entries(saved.trainingQueueProgress).forEach(([unitId, progress]) => {
+            if (!UnitRegistry.has(unitId) || !progress || !Number.isInteger(progress.completed) || !Number.isInteger(progress.total) || progress.completed < 0 || progress.total < 1 || progress.completed > progress.total) return;
+            eco.trainingQueueProgress[unitId] = { completed: progress.completed, total: progress.total };
+        });
+    }
     if (saved.unmet && typeof saved.unmet === "object")
     {
         Object.keys(eco.unmet).forEach(key =>
@@ -159,14 +170,17 @@ function loadSavedConstruction(saved)
             kind: project.kind,
             targetLevel: Number.isFinite(project.targetLevel) ? Math.floor(project.targetLevel) : 0,
             duration: project.duration,
-            remaining: Math.min(project.remaining, project.duration)
+            remaining: Math.min(project.remaining, project.duration),
+            ...(project.queueBatch ? { queueBatch: true } : {})
         };
     });
     GameState.construction.queues = {};
+    GameState.construction.queueProgress = {};
+    if (saved.queueProgress && typeof saved.queueProgress === "object") Object.entries(saved.queueProgress).forEach(([id, progress]) => { if (!StructureRegistry.has(id) || !progress || !Number.isInteger(progress.completed) || !Number.isInteger(progress.total) || progress.completed < 0 || progress.total < 1 || progress.completed > progress.total) return; GameState.construction.queueProgress[id] = { completed: progress.completed, total: progress.total }; });
     if (saved.queues && typeof saved.queues === "object") Object.entries(saved.queues).forEach(([id, queue]) => {
         if (!StructureRegistry.has(id) || !Array.isArray(queue)) return;
         const clean = queue.slice(0, 1000).filter(job => job && Number.isInteger(job.count) && job.count > 0 && Number.isFinite(job.factor) && job.factor > 0 && job.factor <= 1).map(job => ({ count: job.count, factor: job.factor }));
-        if (clean.length) GameState.construction.queues[id] = clean;
+        if (clean.length) { GameState.construction.queues[id] = clean; if (!GameState.construction.queueProgress[id]) { const active = ["free", "builder"].some(slot => GameState.construction[slot] && GameState.construction[slot].structureId === id && GameState.construction[slot].queueBatch) ? 1 : 0; GameState.construction.queueProgress[id] = { completed: 0, total: active + clean.reduce((sum, job) => sum + job.count, 0) }; } }
     });
 }
 
