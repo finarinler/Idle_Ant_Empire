@@ -56,16 +56,10 @@
         value: () => `${formatDuration(Economy.getProjectInfo(structureId, kind, target ? target() : undefined).seconds)}`
     });
 
-    // Zielstufe des globalen Wohnkammer-Upgrades (Überspringen erlaubt)
-    let housingUpgradeTarget = 2;
-
-    function clampHousingTarget()
+    // Wohnkammern werden ausschließlich um genau eine Stufe pro Ausbau verbessert.
+    function getNextHousingUpgradeTarget()
     {
-        const level = GameState.structures.housingLevel;
-        const max = BALANCE.housing.maxLevel;
-
-        housingUpgradeTarget = Math.max(level + 1, Math.min(max, housingUpgradeTarget));
-        return housingUpgradeTarget;
+        return Math.min(BALANCE.housing.maxLevel, GameState.structures.housingLevel + 1);
     }
 
     // Karten für Kapazitäts-Upgrades von Vorrats- und Brutkammer.
@@ -198,37 +192,30 @@
             desc: { key: "structure.housingUpgrade.desc" },
             count: { value: () => GameState.structures.housingLevel, max: BALANCE.housing.maxLevel },
             stats: [
-                { label: { key: "card.stat.perChamber" }, value: () => `${formatGameNumber(Economy.getHousingPerChamber())} → ${formatGameNumber(StructureRegistry.get("housing-chamber").housingCapacity(clampHousingTarget()))}`, tone: "positive" },
+                { label: { key: "card.stat.perChamber" }, value: () => `${formatGameNumber(Economy.getHousingPerChamber())} → ${formatGameNumber(StructureRegistry.get("housing-chamber").housingCapacity(getNextHousingUpgradeTarget()))}`, tone: "positive" },
                 {
                     label: { key: "card.stat.buildTime" },
                     value: () => GameState.structures.housingLevel >= BALANCE.housing.maxLevel
                         ? "—"
-                        : formatDuration(Economy.getProjectInfo("housing-chamber", "upgrade", clampHousingTarget()).seconds)
+                        : formatDuration(Economy.getProjectInfo("housing-chamber", "upgrade", getNextHousingUpgradeTarget()).seconds)
                 },
                 { label: { key: "card.stat.needsBuilder" }, value: { key: "card.value.yes" } }
             ],
-            stepper: {
-                label: () => ({ key: "structure.housingUpgrade.target", params: { level: clampHousingTarget() } }),
-                canDec: () => clampHousingTarget() > GameState.structures.housingLevel + 1,
-                canInc: () => clampHousingTarget() < BALANCE.housing.maxLevel,
-                dec: () => { housingUpgradeTarget--; CardBuilder.updateAll(); },
-                inc: () => { housingUpgradeTarget++; CardBuilder.updateAll(); }
-            },
             progressId: "progress-housing-upgrade",
             cost: () => ({
                 values: GameState.structures.housingLevel >= BALANCE.housing.maxLevel
                     ? {}
-                    : Economy.getProjectInfo("housing-chamber", "upgrade", clampHousingTarget()).cost,
+                    : Economy.getProjectInfo("housing-chamber", "upgrade", getNextHousingUpgradeTarget()).cost,
                 order: ["food"]
             }),
             action: {
                 label: { key: "button.upgrade" },
                 missingLabel: { key: "button.upgrade" },
-                run: () => startStructureProject("housing-chamber", "upgrade", clampHousingTarget())
+                run: () => startStructureProject("housing-chamber", "upgrade", getNextHousingUpgradeTarget())
             },
             status: () => GameState.structures.housingLevel >= BALANCE.housing.maxLevel
                 ? { state: "max", hint: { key: "status.elite.maxReached" } }
-                : projectStatus("housing-chamber", "upgrade", clampHousingTarget())
+                : projectStatus("housing-chamber", "upgrade", getNextHousingUpgradeTarget())
         },
         createCapacityUpgradeCard({ id: "storage-room-upgrade", structureId: "storage-room", levelKey: "storageRoomLevel", maxLevel: 10, nameKey: "structure.storageUpgrade.name", descKey: "structure.storageUpgrade.desc", capacityLabel: "card.stat.foodLimit", resource: "food" }),
         createCapacityUpgradeCard({ id: "brood-chamber-upgrade", structureId: "brood-chamber", levelKey: "broodChamberLevel", maxLevel: 10, nameKey: "structure.broodUpgrade.name", descKey: "structure.broodUpgrade.desc", capacityLabel: "card.stat.larvaeLimit", resource: "larvae" })
