@@ -10,7 +10,8 @@ StructureRegistry.register({
     id: "construction-chamber",
     nameKey: "structure.construction.name",
     store: { section: "structures", key: "constructionLevel" },
-    maxCount: BALANCE.builder.maxBuilders,
+    // Die nächste Baukammer wird erst nach ihrer jeweiligen Forschung freigeschaltet.
+    maxCount: () => Math.min(BALANCE.builder.maxBuilders, Math.max(1, Number(GameState.research.constructionChamberLevel) || 1)),
 
     requirement: () => GameState.achievements.smallColony ? null : { key: null },
 
