@@ -655,3 +655,9 @@ I18N.register("it", {
     "options.tooltipsDescription": "Mostra i tooltip delle azioni con effetti, variazioni di produzione e costi",
     "changelog.entry.actionPreview": "I tooltip delle azioni mostrano ora le variazioni di produzione previste e possono essere attivati o disattivati nelle Opzioni.",
 });
+
+
+/* ---------- alpha-v0.00.007d ---------- */
+I18N.register("it", {
+    "changelog.entry.builderUpkeep": "Ogni costruttore consuma ora 5 cibo/s."
+});
