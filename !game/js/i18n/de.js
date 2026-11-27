@@ -810,3 +810,15 @@ I18N.register("de", {
     "button.alreadyTrained": "Bereits Ausgebildet",
     "button.alreadyBuilt": "Bereits Errichtet"
 });
+
+
+/* ---------- Research-gated storage and brood chamber upgrades ---------- */
+I18N.register("de", {
+    "structure.storageUpgrade.name": "Vorratskammer-Ausbau",
+    "structure.storageUpgrade.desc": "Erhöht das Nahrungslager um 10.000 je Stufe. Jede Stufe muss erforscht werden.",
+    "structure.broodUpgrade.name": "Brutkammer-Ausbau",
+    "structure.broodUpgrade.desc": "Erhöht das Larvenlager um 2.500 je Stufe. Jede Stufe muss erforscht werden.",
+    "structure.capacityUpgrade.target": "Ziel: Stufe {level}",
+    "status.structureUpgrade.balancePending": "Kosten und Bauzeiten für dieses Upgrade werden später festgelegt.",
+    "changelog.entry.storageBroodUpgrades": "Neun erforschungspflichtige Ausbaustufen für Vorratskammer und Brutkammer vorbereitet."
+});
