@@ -670,5 +670,4 @@ I18N.register("en", {
 
 /* ---------- alpha-v0.00.007d ---------- */
 I18N.register("en", {
-    "changelog.entry.builderUpkeep": "Each builder now consumes 5 food/s."
 });
