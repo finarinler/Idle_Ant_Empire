@@ -418,7 +418,19 @@
             ? operation.getInfo(targetLevel)
             : operation.getInfo();
 
-        let requiresBuilder = Boolean(operation.requiresBuilder);
+        let requiredBuilders = operation.requiresBuilder ? 1 : 0;
+
+        // Ausbauprojekte reservieren die für ihre sichtbare Zielstufe festgelegte Baumeisterzahl.
+        if (kind === "upgrade" && structureId === "housing-chamber")
+        {
+            requiredBuilders = BALANCE.builder.housingUpgradeRequirements[Math.max(0, (targetLevel || GameState.structures.housingLevel + 1) - 2)] || 1;
+        }
+        else if (kind === "upgrade" && (structureId === "storage-room" || structureId === "brood-chamber"))
+        {
+            requiredBuilders = BALANCE.builder.capacityUpgradeRequirements[Math.max(0, (targetLevel || GameState.structures[operation.levelKey] + 1) - 2)] || 1;
+        }
+
+        let requiresBuilder = requiredBuilders > 0;
 
         // Ab der 16. Wohnkammer bzw. der 26. Pilzfarm wird ein Baumeister benötigt.
         // Die Nummer bezieht sich auf das als Nächstes gestartete Bauprojekt.
@@ -435,7 +447,8 @@
             cost: info.cost,
             baseSeconds: info.seconds,
             seconds: info.seconds * Economy.getBuildTimeFactor(),
-            requiresBuilder
+            requiresBuilder,
+            requiredBuilders
         };
     };
 
@@ -527,7 +540,7 @@
             return { state: "missing", hint: message, reason: message };
         }
 
-        if (info.requiresBuilder && Economy.getUnitNumber("builder") < 1)
+        if (info.requiresBuilder && Economy.getUnitNumber("builder") < info.requiredBuilders)
         {
             const message = { key: "status.build.needBuilder" };
             return { state: "missing", hint: message, reason: message };
@@ -639,7 +652,9 @@
             kind,
             targetLevel: kind === "upgrade" ? targetLevel : 0,
             duration: info.seconds,
-            remaining: info.seconds
+            remaining: info.seconds,
+            // Baumeister sind während der gesamten Laufzeit diesem Projekt zugeordnet.
+            buildersAssigned: info.requiredBuilders
         };
 
         return { ok: true, durationSeconds: info.seconds };
