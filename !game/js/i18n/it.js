@@ -811,3 +811,8 @@ I18N.register("it", {
     "status.structureUpgrade.balancePending": "Costi e tempi di costruzione saranno definiti in seguito.",
     "changelog.entry.storageBroodUpgrades": "Preparati nove livelli di potenziamento soggetti a ricerca per le camere di stoccaggio e covata."
 });
+
+
+I18N.register("it", {
+    "status.structureUpgrade.requiresBuilding": "La camera corrispondente deve essere costruita prima."
+});
