@@ -660,6 +660,7 @@ I18N.register("it", {
 I18N.register("it", {
     "options.tooltips": "Tooltip azioni",
     "options.tooltipsDescription": "Mostra i tooltip delle azioni con effetti, variazioni di produzione e costi",
+    "changelog.entry.tooltipsUpdated": "Tooltip aggiornati.",
     "changelog.entry.actionPreview": "I tooltip delle azioni mostrano ora le variazioni di produzione previste e possono essere attivati o disattivati nelle Opzioni.",
 });
 
