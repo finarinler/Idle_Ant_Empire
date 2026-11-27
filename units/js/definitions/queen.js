@@ -14,9 +14,8 @@ function getCurrentQueenFoodCost()
 
 function getCurrentQueenAntCost()
 {
-    const config = BALANCE.carriedOver.queen;
-
-    return Big(config.baseAnts).mul(Big(config.antsScaling).pow(GameState.resources.queens)).ceil();
+    // Die nächste Königin kostet so viele Ameisen wie ihre laufende Nummer.
+    return Big(GameState.resources.queens).add(1);
 }
 
 UnitRegistry.register({
